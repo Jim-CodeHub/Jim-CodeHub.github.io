@@ -75,7 +75,7 @@
 ## 一. 简介 ##
 &ensp;&ensp;&ensp;&ensp;C++起源于贝尔实验室，从C派生、与C兼容、编译时绑定。C++融合了POP、OOP和泛型编程（模板）等编程方式，使用 **类** 和 **对象** 来描述数据，强调数据的表达方式，具有**封装**、**继承**、**多态**、异常处理等特性。  
 &ensp;&ensp;&ensp;&ensp;附：[C++之父Bjarne Stroustrup的个人主页](http://www.stroustrup.com/index.html)。  
-&ensp;&ensp;&ensp;&ensp;![Bjarne Stroustrup](image/Bjarne_Stroustrup.jpg)
+&ensp;&ensp;&ensp;&ensp;![Bjarne Stroustrup](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/Bjarne_Stroustrup.jpg)
 
 ## 六. 模板
 &ensp;&ensp;&ensp;&ensp;模板是C++泛型编程的基础，可以独立于任何特定变量类型的方式编写代码，包含函数模板和类模板。在设计函数和类时可以在任何关于变量类型的地方设置模板（T），在使用时可以指定任意类型变量以实现泛型编程。  
