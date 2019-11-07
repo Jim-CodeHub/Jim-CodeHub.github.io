@@ -25,7 +25,7 @@
 	
 - Programming Language
 	- C 
-	- [C++](https://github.com/Jim-CodeHub/Skills-list/raw/master/doc/c++.md)
+	- [C++](https://github.com/Jim-CodeHub/Skills-list/tree/master/doc/c++.md)
 
 - GUI
 	- QT
