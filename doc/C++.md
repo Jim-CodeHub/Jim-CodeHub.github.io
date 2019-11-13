@@ -120,7 +120,7 @@
 
 
 ## 五. 多态
-&ensp;&ensp;&ensp;&ensp;C++继承衍生了多态特性，继承于同一父类的不同子类通过重写父类的**（纯）虚函数**来实现不同功能的方式称为多态，是**自下而上**的过程。  
+&ensp;&ensp;&ensp;&ensp;C++继承衍生了多态特性，继承于同一父类的不同子类通过重写父类的<strong>（纯）虚函数</strong>来实现不同功能的方式称为多态，是**自下而上**的过程。  
 
 &ensp;&ensp;&ensp;&ensp;<strong>1. 静态联编</strong>  
 
@@ -142,6 +142,7 @@
 &ensp;&ensp;&ensp;&ensp;&rarr; 运算符重载   
 
 &ensp;&ensp;&ensp;&ensp;重载的运算符表现为由关键字<font color=purple>operator</font>指定的、以运算符为函数名的函数，重载的运算符必须是有效的C++运算符（附录D），参数个数必须与运算符操作数相等，<u style="paddin-bottom:20; border-bottom:20px">且至少一个属于复合类型（<font color=purple>class</font>/<font color=purple>struct</font>/<font color=purple>enum</font>）</u>。  
+
 &ensp;&ensp;&ensp;&ensp;运算符将表达式中的第一个操作数作为第一个形参，第二个操作数作为第二个形参。操作符重载可以定义在类的内外，当在类中定义时，第一个形参省略，默认为所在类的类类型。运算符“=”必须在类中定义。
 
 &ensp;&ensp;&ensp;&ensp;`语法：R_TYPE operator 操作符([class/struct/enum] NAME [OPT *指针, &引用, ...], ...){...};`
@@ -183,7 +184,7 @@
 
 &ensp;&ensp;&ensp;&ensp;**模板使得算法独立于特定的数据类型，迭代器使得算法独立于使用的容器类型**。  
 ## 七. 异常
-&ensp;&ensp;&ensp;&ensp;C++异常是处理程序错误的重要机制，不同于传统C的返回值判定、信号、断言、错误编号、跳转等处理方式，异常处理可获得更详细和精准的信息并将问题检测和问题处理分离，通过关键字$\color{purple}{try}$检查异常、<font color=purple>throw</font>抛出异常、<font color=purple>catch</font>捕获异常，如果抛出异常后未进行捕获，则程序将被终止。
+&ensp;&ensp;&ensp;&ensp;C++异常是处理程序错误的重要机制，不同于传统C的返回值判定、信号、断言、错误编号、跳转等处理方式，异常处理可获得更详细和精准的信息并将问题检测和问题处理分离，通过关键字$\color{#FF0000}{try}$检查异常、<font color=purple>throw</font>抛出异常、<font color=purple>catch</font>捕获异常，如果抛出异常后未进行捕获，则程序将被终止。
 
 &ensp;&ensp;&ensp;&ensp;`语法：CODEBLOCK{throw [expression]}; try{CODEBLOCK}catch(exception param list){...}...catch(...){...}`  
   
@@ -240,6 +241,7 @@
 ## <article align=center>附录 E 虚函数表与指针</article>
 
 &ensp;&ensp;&ensp;&ensp;编译器会为虚基类（和抽象类，下同）中的虚函数建立虚函数表（V-Table），虚函数表是一个数组，数组元素是按虚函数声明顺序排列的、指向各虚函数的指针（_vptr）。  
+
 &ensp;&ensp;&ensp;&ensp;虚基类及其派生类都使用一个指针空间（前4Byte或8Byte）来存放虚函数表指针，虚基类每实例化一个对象，就为该对象添加一个虚函数表指针，对于多重继承的类就添加多个虚函数表指针。一个类的所有对象都共享同一个虚函数表。  
 
 &ensp;&ensp;&ensp;&ensp;![V-Table](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/V-Table.jpg)  
