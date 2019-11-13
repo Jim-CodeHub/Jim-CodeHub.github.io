@@ -174,16 +174,21 @@
 &ensp;&ensp;&ensp;&ensp;`备注：模板函数的形参必须包含所定义的所有模板，不要求返回值。模板在类中可自由定义`  
 
 &ensp;&ensp;&ensp;&ensp;<font size=4>**STL（Standard template library）**</font>   
-&ensp;&ensp;&ensp;&ensp;标准模板库由HP实验室研发，现已成为C++标准。STL包含大量的数据结构和算法的类模板，并将数据结构和算法分离。  
-&ensp;&ensp;&ensp;&ensp;STL包含三种类型代码：容器（Containers）、算法（Algorithms）和迭代器（iterators）；容器是抽象数据类型的模板实现（模板类），即数据结构，如动态数组、列表、队栈、图等。算法用于操作容器（模板函数），如增、删、改、查等。迭代器（又称游标）用于遍历容器，如递增、递减、定位等。  
+
+&ensp;&ensp;&ensp;&ensp;标准模板库由HP实验室研发，现已成为C++标准。STL包含大量数据结构和算法的类模板，并将数据结构和算法分离。    
+
+&ensp;&ensp;&ensp;&ensp;STL包含三种类型代码：容器（Containers）、算法（Algorithms）和迭代器（iterators）；容器是抽象数据类型的模板实现（模板类），即数据结构，如动态数组、列表、队栈、图等。算法用于操作容器（模板函数），如增、删、改、查等。迭代器（又称游标）用于遍历容器，如递增、递减、定位等。 
+ 
 &ensp;&ensp;&ensp;&ensp;容器类中的方法是针对特定的数据结构而设计的，更多使用的是非成员方法（即算法）来操作容器。特别的，容器类中存在与算法同名的方法，原因是相比通用算法其执行更有效率。  
+
 &ensp;&ensp;&ensp;&ensp;**模板使得算法独立于特定的数据类型，迭代器使得算法独立于使用的容器类型**。  
 ## 七. 异常
-&ensp;&ensp;&ensp;&ensp;C++异常是处理程序错误的重要机制，不同于传统C的返回值判定、信号、断言、错误编号、跳转等处理方式，异常处理可获得更详细和精准的信息并将问题检测和问题处理分离，通过关键字<font color=purple>try</font>检查异常、<font color=purple>throw</font>抛出异常、<font color=purple>catch</font>捕获异常，如果抛出异常后未进行捕获，则程序将被终止。
+&ensp;&ensp;&ensp;&ensp;C++异常是处理程序错误的重要机制，不同于传统C的返回值判定、信号、断言、错误编号、跳转等处理方式，异常处理可获得更详细和精准的信息并将问题检测和问题处理分离，通过关键字$\color{purple}{try}$检查异常、<font color=purple>throw</font>抛出异常、<font color=purple>catch</font>捕获异常，如果抛出异常后未进行捕获，则程序将被终止。
 
 &ensp;&ensp;&ensp;&ensp;`语法：CODEBLOCK{throw [expression]}; try{CODEBLOCK}catch(exception param list){...}...catch(...){...}`  
   
 &ensp;&ensp;&ensp;&ensp;<font color=purple>try-catch</font>语句可以（在<font color=purple>try</font>代码块中）嵌套，<font color=purple>catch</font>列表及外层<font color=purple>catch</font>列表中至少要有一个形参匹配所抛出的异常量类型，否则发生异常时程序将被终止。可在列表最后设置<font color=purple>catch(...)</font>以匹配任何异常类型。  
+
 &ensp;&ensp;&ensp;&ensp;将嵌套内层捕获到的异常再抛出（到嵌套外层）的方法是再次利用<font color=purple>throw</font>语句，但表达式为空。 一般当嵌套内层无法处理某些异常时会利用该方法。  
 
 &ensp;&ensp;&ensp;&ensp;`备注：throw语句将终止执行后续指令、expression可以是任何表达式语句`  
