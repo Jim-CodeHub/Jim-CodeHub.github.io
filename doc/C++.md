@@ -17,7 +17,7 @@
 &ensp;&ensp;&ensp;&ensp;传统结构体的使用方式是类的使用方式的子集，类还具有方法成员和权限控制能力。
 ## 三. 封装
 &ensp;&ensp;&ensp;&ensp;C++类的成员具有访问限制：Private（私有，默认）、Protected（保护）、Public（公有）。
-<table style="font-size:14; text-align:center; padding-left:26; width:763px; margin-top:">
+<table style="font-size:14; text-align:center; padding-left:26; width:763px;">
 <tr>
 <td>封装方式</td><td style="wid">访问限制</td>
 </tr>
@@ -31,7 +31,7 @@
 <td>Private</td><td>类、友元函数</td>
 </tr>
 </table>
-&ensp;&ensp;&ensp;&ensp;一般将数据成员设计为私有、方法成员设计为公有，仅对派生类开放的成员设计为保护类型。类的对象通过公有或保护方法来操作私有数据。C++将结构体扩展成类，具备类的所有特性，但默认访问限制为公有。
+&ensp;&ensp;&ensp;&ensp;一般将数据成员设计为私有、方法成员设计为公有，仅对派生类开放的成员设计为保护类型。类的对象通过公有或保护方法来操作私有数据。C++将结构体扩展成类，具备类的所有特性，但默认访问限制为公有。  
 
 &ensp;&ensp;&ensp;&ensp;`语法：class/struct CLASS_NAME{... pulic:... protected:... private:...};`
 
@@ -44,7 +44,8 @@
 &ensp;&ensp;&ensp;&ensp;`语法：class/struct CLASS_NAME{... pulic: CLASS_NAME(Param list){...};};`
 
 &ensp;&ensp;&ensp;&ensp;&rarr; 创建对象的方法：  
-&ensp;&ensp;&ensp;&ensp;+ `栈中：class/struct CLASS_NAME	`&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&nbsp;&nbsp;&nbsp;` OBJ <OPT [n]数组, (...)构造传参>;`  
+
+&ensp;&ensp;&ensp;&ensp;+ `栈中：class/struct CLASS_NAME`&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&nbsp;&nbsp;&nbsp;` OBJ <OPT [n]数组, (...)构造传参>;`  
 &ensp;&ensp;&ensp;&ensp;+ `堆中：class/struct CLASS_NAME *Pobj = new OBJ <OPT [n]数组, (...)构造传参>;`  
 
 &ensp;&ensp;&ensp;&ensp;默认构造函数形参为空，创建对象时未传参则调用默认构造函数。
@@ -67,6 +68,7 @@
 &ensp;&ensp;&ensp;&ensp;`语法：class/struct CLASS_NAME{... pulic: ~CLASS_NAME(){...};};`  
 
 &ensp;&ensp;&ensp;&ensp;&rarr; 销毁对象的方法：  
+
 &ensp;&ensp;&ensp;&ensp;+ `栈中：栈中的对象在其所在作用域结束时自动销毁`  
 &ensp;&ensp;&ensp;&ensp;+ `堆中：delete <OPT []数组对象 > Pobj;` 
 
@@ -77,13 +79,13 @@
 &ensp;&ensp;&ensp;&ensp;`语法：class/struct CLASS_NAME{... friend R_TYPE FUN(...); ...friend class CLASS_NAME;};`  
 
 ## 四. 继承
-&ensp;&ensp;&ensp;&ensp;继承是C++代码重用和功能扩展的重要机制，**子类（派生类）**通过继承**父类（超类、基类）**来重用、实现和扩展父类的功能，并可多重继承，是自下而上的过程。  
+&ensp;&ensp;&ensp;&ensp;继承是C++代码重用和功能扩展的重要机制<strong>子类（派生类）</strong>通过继承<strong>父类（超类、基类）</strong>来重用、实现和扩展父类的功能，并可多重继承，是<strong>自下而上</strong>的过程。  
 
 &ensp;&ensp;&ensp;&ensp;`语法：class/struct CLASS_NAME : WAY CLASS_B, WAY CLASS_C, ...{...};`
 
 &ensp;&ensp;&ensp;&ensp;WAY表示Public、Protected和Private继承方式，用于限制子类对父类成员的访问权限。
 
-<table style="font-size:14; text-align:center; padding-left:26; width:763px; margin-top:">
+<table style="font-size:14; text-align:center; padding-left:26; width:763px;">
 
 <tr>
 <td rowspan=2>继承方式</td>
@@ -103,6 +105,7 @@
 </tr>
 </table>
 &ensp;&ensp;&ensp;&ensp;父类私有成员总是对子类不可见的，父类公有成员限制随继承方式改变，父类保护成员仅在私有继承时改变访问限制。在内存分配上，子类深拷贝了父类Public和Protected成员。  
+
 &ensp;&ensp;&ensp;&ensp;构造、拷贝构造和析构函数不能被继承，子类构造对象时先调用父类（默认）构造函数，并可指定形参以调用父类重载的构造函数。子类拷贝对象时先调用父类拷贝构造函数、析构对象时反之。
 
 &ensp;&ensp;&ensp;&ensp;<strong>1. 多继承与二义性</strong>  
@@ -167,7 +170,7 @@
 ## 六. 模板
 &ensp;&ensp;&ensp;&ensp;模板是C++泛型编程的基础，可以独立于任何特定变量类型的方式编写代码，包含函数模板和类模板。在设计函数和类时可以在任何关于变量类型的地方设置模板（T），在使用时可以指定任意类型变量以实现泛型编程。  
 
-&ensp;&ensp;&ensp;&ensp;`语法：template <typename TYPE_NAME, ...> class CLASS_NAME{}; / ... FUN_NAME(...){}`
+&ensp;&ensp;&ensp;&ensp;`语法：template <typename TYPE_NAME, ...> class CLASS_NAME{}; / ... FUN_NAME(...){}`  
 &ensp;&ensp;&ensp;&ensp;`备注：模板函数的形参必须包含所定义的所有模板，不要求返回值。模板在类中可自由定义`  
 
 &ensp;&ensp;&ensp;&ensp;<font size=4>**STL（Standard template library）**</font>   
@@ -205,7 +208,7 @@
 <br>
 ## <article align=center>附录 D 不可重载运算符</article>
 
-<table style="font-size:14; text-align:center; padding-left:26; width:763px; margin-top:">
+<table style="font-size:14; text-align:center; padding-left:26; width:763px;">
 <tr>
 <td>运算符</td><td style="wid">描述</td>
 </tr>
