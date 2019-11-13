@@ -229,15 +229,6 @@
 </tr>
 </table>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 ## <article align=center>附录 E 虚函数表与指针</article>
 
 &ensp;&ensp;&ensp;&ensp;编译器会为虚基类（和抽象类，下同）中的虚函数建立虚函数表（V-Table），虚函数表是一个数组，数组元素是按虚函数声明顺序排列的、指向各虚函数的指针（_vptr）。  
