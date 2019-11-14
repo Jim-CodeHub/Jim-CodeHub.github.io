@@ -1,3 +1,4 @@
+<html>
 This is Jim site
 
 <img src="./image/V-Table.jpg" alt="my img" />
@@ -7,7 +8,8 @@ This is Jim site
 <script>
 alert("this is javascript test");
 </script>
-
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
 <script>
 $(document).ready(function(){
   $("button").click(function(){
@@ -18,7 +20,10 @@ $(document).ready(function(){
 });
 </script>
 
+<body>
 <button> Click to test jquery</button>
-<div id="div1"> div 1</div>
-<div id="div1"> div 2</div>
-<div id="div1"> div 3</div>
+<div id="div1" style="width:80px;height:80px;display:none;background-color:red;"></div><br>
+<div id="div2" style="width:80px;height:80px;display:none;background-color:green;"></div><br>
+<div id="div3" style="width:80px;height:80px;display:none;background-color:blue;"></div>
+</body>
+</html>
