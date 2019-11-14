@@ -7,3 +7,17 @@ This is Jim site
 <script>
 alert("this is javascript test");
 </script>
+
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("#div1").fadeIn();
+    $("#div2").fadeIn("slow");
+    $("#div3").fadeIn(3000);
+  });
+});
+</script>
+
+<div id="div1"> div 1</div>
+<div id="div1"> div 2</div>
+<div id="div1"> div 3</div>
