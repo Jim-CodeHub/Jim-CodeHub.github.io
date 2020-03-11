@@ -10,7 +10,7 @@ uboot分为官网版本、Soc厂商版本和第三方版本。
 目录树变化：第一次从u-boot-1.3.2版本增加了“api”目录，第二次从2010.6版 本合并了“cpu”与“lib_xxx”目录到“arch”目录，并分离出通用的“lib”目录。
 配置的变化：从2014.10版本开始支持图形界面配置“$make menuconfig”
 
-[corePCB][https://github.com/Jim-CodeHub/Skills-list/raw/master/image/CorePCB.png]
+![corePCB](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/CorePCB.png)
 Soc厂商uboot从官网uboot移植以支持其Soc和核心PCB，第三方一般是PCB底板厂商，其uboot从Soc厂商移植以支持其底板PCB。
 2.目录分析
 u-boot-2019.07版本uboot有1630个目录、21757个文件，其主要目录结构及含义如下：
@@ -59,7 +59,7 @@ Bootloader与硬件相关，因此都集成了很多平台，PC端有适用Linux
 
 
 附录C：uboot（Hush-shell）命令
-[cmd](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/uboo-Hush-shell命令.png)
+![cmd](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/uboo-Hush-shell命令.png)
 
 
 
