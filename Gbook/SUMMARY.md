@@ -3,9 +3,10 @@
 * [Introduction](README.md)
 
 * [Extend](README.md)
+	* [MCU](README.md)
 	* [English](README.md)
 		* [IELTS 7.5+](README.md)
-	* [Git](README.md)
+	* [Git](pages/Git.md)
 		* [GitHub](README.md)
 		* [GitBook](README.md)
 	* [Programming Language](README.md)
@@ -14,6 +15,11 @@
 		* [C](README.md)
 		* [ASM](README.md)
 	* [Markdown](README.md)
+	* [Algorithm](README.md)
+	* [DataStructure](README.md)
+	* [Communication](README.md)
+		* [Serial Communication](pages/Communication.md)
+	* [Encoding](README.md)
 
 * [GUI](README.md)
 	* [Qt](pages/Qt.md)
@@ -26,9 +32,9 @@
 		* [Bootloader](pages/Bootloader.md)
 
 * [PCB Layout](README.md)
-	* [Analog Elec](README.md)
+	* [Analog Elec](pages/Analog.md)
 	* [Digtal Elec](README.md)
-	* [PCB Design](README.md)
+	* [PCB Design](pages/PCB.md)
 
 * [Branch](README.md)
 	* [Automation](README.md)

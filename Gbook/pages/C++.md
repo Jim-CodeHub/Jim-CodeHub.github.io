@@ -258,3 +258,131 @@
  
 &ensp;&ensp;&ensp;&ensp;TBD
 
+
+
+一.C++抽象
+
+(1)this指针
+对象的地址向成员函数的传递是编译器自动完成的，方式是作为成员函数的第一个隐含形参，这个形参就是this指针。this指针属于类，指向被实例化的对象。
+通过*this/this可返回对象/对象地址，常用于避免成员变量与形参同名产生的歧义。
+(2)静态成员
+类中的静态成员是受限于类作用域的static类型的变量和函数，不属于任何对象，不占用对象空间，也没有this指针，静态函数只能访问静态变量。
+访问静态成员的方法是直接使用类作用域“::”，类中一切不需要实例化就可以确定行为方式的函数都应该设计为静态的。
+类的静态变量必须在类外、main函数之前初始化，且需指定类并省略static关键字。
+
+
+-临时匿名对象
+class a{
+	a(){};
+	a(int i){...}
+};
+
+a(); //临时匿名对象，调用后马上又被析构
+a(1); //临时匿名对象，调用后马上又被析构
+a(aa) //相当于 class a aa;
+
+	class a aa;
+	aa = a(); //临时匿名对象，但对象又被接管，这不会调用拷贝构造，并且临时构造对象不会马上被析构
+
+
+	--组合：一个类包含另一个类的对象（以其它类的对象为成员）
+
+	C++ 11 关键词auto新解：
+	原auto被使用频率很小，所以C++11将auto赋予新的含义，即具有自动推导功能，这就导致使用auto的同时必须被初始化，也就导致auto不能做形参：
+	auto a = 1;
+	int b = 10;
+	auto a = b;
+	vector<float> c;
+	auto a = c.begin();
+	如此这般，auto变量会因赋值类型而自动推导。
+
+	附录A. C++命名空间与作用域
+
+	namespace SPC_NAME{...}; using namespace SPC_NAME; using SPC_NAME;
+	C语言定义了三类作用域：文件、函数和复合语句，C++增加了类作用域“::”和命名空间作用域，命名空间将同名全局作用域的函数和变量分离，使程序扩展更加便捷。命名空间可以嵌套，使用命名空间通过using关键字或直接限定前缀SPC_NAME::X。
+	C++标准命名空间为“std”，标准库无“.h”或“.hpp”结尾的头文件均包含于标准命名空间中。参考命名空间实例：c++_link\namespace.cpp
+
+
+
+
+
+	附录C. C++引用
+
+	var_type &quote = var；var_type &fun(...var_type &);
+	引用是变量的别名，类似Unix系统下的软链接，不占存储空间，向函数传参和作为返回值时相比传值、传址（指针）具有较高的效率和安全性。引用的声明和定义必须同时完成，一旦定义就不能重复绑定。
+
+
+
+
+	附录D. C++向C兼容
+
+	extern “C”{C function declare list}; 
+在C++出现之前已有大量的C源码，为向下兼容，C++允许与C代码混合编程，方法是使用关键字extern“C”限制于C函数声明列表。
+在编写C程序时，为了方便向上兼容可对C函数声明列表设定宏开关：c++ link\extern C.h。
+
+
+
+
+
+
+
+附录H. C++资源
+
+项目	地址/名称	描述
+网址	C++ FAQ 	C++常见问题
+网址	Free Country 	免费的C++库，涵盖压缩、存档、游戏、GUI等编程
+网址	C and C++ Users Group 	免费C++库，涵盖AI、动画、加密、数据库等编程
+书籍	Essential C++	-
+书籍	C++ Primer Plus	-
+
+
+附录I. C++标准异常
+
+![stdExp](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/stdException.png)
+
+
+std::exception	所有标准 C++ 异常的父类
+std::bad_alloc	通过 new 抛出
+std::bad_cast	通过 dynamic_cast 抛出
+std::bad_exception	处理 C++ 程序中无法预期的异常时非常有用
+std::bad_typeid	通过 typeid 抛出
+std::logic_error	理论上可以通过读取代码来检测到的异常
+std::domain_error	当使用了一个无效的数学域时，会抛出该异常
+std::invalid_argument	当使用了无效的参数时，会抛出该异常
+std::length_error	当创建了太长的 std::string 时，会抛出该异常
+std::out_of_range	通过std::vector 、 std::bitset<>::operator[]()等抛出
+std::runtime_error	理论上不可以通过读取代码来检测到的异常
+std::overflow_error	当发生数学上溢时，会抛出该异常。
+std::range_error	当尝试存储超出范围的值时，会抛出该异常。
+std::underflow_error	当发生数学下溢时，会抛出该异常
+
+
+
+附录I. C++标准与头文件
+
+ANSI 与ISO 于1998年通过C++98标准， 03年更新标准为C++03，该标准只修正了C++98标准的错误，因此用C++98表示 C++98/C++03。2011年通过了C++11标准，该标准较C++98增加了众多特性，同时还提供了C++标准类库。
+C++标准规定标准类库使用无后缀的头文件以区别传统C格式和自定的头文件，C++保留了C的头文件并增加了从C转换后的无后缀头文件（eg：<math.h> => <cmath>），所有无后缀的头文件都支持命名空间。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+附录J. C++ new与delete
+
+C++使用new和delete开辟和销毁堆空间，与C中的malloc和free的使用方式类似，本质上是对malloc和free的封装。
+
+
+noexcept可有效阻止异常的传播与扩散
+#include <iostream>
+
