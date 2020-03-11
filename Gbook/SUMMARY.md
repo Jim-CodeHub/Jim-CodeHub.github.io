@@ -16,7 +16,7 @@
 	* [Markdown](README.md)
 
 * [GUI](README.md)
-	* [Qt](README.md)
+	* [Qt](pages/Qt.md)
 
 * [Linux](README.md)
 	* [OS Programming](README.md)
@@ -29,4 +29,7 @@
 	* [Analog Elec](README.md)
 	* [Digtal Elec](README.md)
 	* [PCB Design](README.md)
+
+* [Branch](README.md)
+	* [Automation](README.md)
 
