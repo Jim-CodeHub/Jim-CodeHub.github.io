@@ -23,7 +23,7 @@
 	* [BSP](README.md)
 	    * [Device driver](README.md)
 		* [Kernel](README.md)
-		* [Bootloader](Bootloader.md)
+		* [Bootloader](pages/Bootloader.md)
 
 * [PCB Layout](README.md)
 	* [Analog Elec](README.md)
