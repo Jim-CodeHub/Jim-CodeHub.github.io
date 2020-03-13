@@ -32,10 +32,10 @@
 		* [Kernel](README.md)
 		* [Bootloader](pages/Bootloader.md)
 
-* [PCB Layout](README.md)
+* [PCB Design](README.md)
 	* [Analog Elec](pages/Analog.md)
 	* [Digtal Elec](README.md)
-	* [PCB Design](pages/PCB.md)
+	* [PCB](pages/PCB.md)
 
 * [Branch](README.md)
 	* [Automation](README.md)
