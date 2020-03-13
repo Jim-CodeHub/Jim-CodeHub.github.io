@@ -20,6 +20,7 @@
 	* [Communication](README.md)
 		* [Serial Communication](pages/Communication.md)
 	* [Encoding](README.md)
+	* [RegEx](README.md)
 
 * [GUI](README.md)
 	* [Qt](pages/Qt.md)
