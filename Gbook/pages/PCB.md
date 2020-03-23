@@ -1,13 +1,12 @@
 
 ## concept 
 PCB (Printed Circuit Board) 印制电路板，简称电路板。PCB是电子元器件的电气连接载体和支撑体，在20世纪50年代开始推广，是现代广泛采用的集成电路构建技术。
-[Tips : Appendix-A](#附录A：古老的电路构建方式)
+[Tips : Appendix-A](#Appendix-A)
 
 ## structure 
 PCB consists of Solder mask, Medium, Copper and Silk layer. 阻焊剂常呈绿色，覆盖于PCB上下表面以阻止被保护电路被焊接，丝印层于阻焊层之上用于描述元件、备注等信息，铜层是PCB的核心，表铜层覆盖于阻焊层之下，内铜层以介质层分隔，各层之间通过过孔通信。
 
-![structure](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Structure_1.png)
-![structure](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Structure_2.png)
+![structure](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/structure.png)
 
 Tips : PCB铜层厚度以盎司Oz为单位，1Oz = 35um，常规规格为1Oz，另有2Oz、3Oz等。介质层由FR-4等级的环氧树脂、玻璃纤维和填充剂复合而成。
 
@@ -896,7 +895,7 @@ GND的种类
 
 
 
-## 附录A：古老的电路构建方式
+## <q id = "Appendix-A">Appendix-A：古老的电路构建方式 </q>
 
 ### 快速构建
 这是一种非常草率的方法，只对构造极其简单的电路原型有用。它通过在任意大小的空间里把元器件焊接在一起来构成非常简单的电路。
