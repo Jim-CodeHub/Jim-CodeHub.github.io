@@ -1,6 +1,7 @@
 
-## 简介
-PCB（Printed Circuit Board） 印制电路板，简称电路板。PCB是电子元器件的电气连接载体和支撑体，在20世纪50年代开始推广，是现代广泛采用的电路构建技术。
+## concept 
+PCB (Printed Circuit Board) 印制电路板，简称电路板。PCB是电子元器件的电气连接载体和支撑体，在20世纪50年代开始推广，是现代广泛采用的集成电路构建技术。
+[Appendix](#附录A：古老的电路构建方式)
 
 
 # PCBA 测试架
@@ -888,20 +889,23 @@ GND的种类
 
 
 
-附录A：古老的电路构建方式
+## 附录A：古老的电路构建方式
 
-1.快速构建
+### 快速构建
 这是一种非常草率的方法，只对构造极其简单的电路原型有用。它通过在任意大小的空间里把元器件焊接在一起来构成非常简单的电路。
-![stdExp](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/快速构建.png)
+![QConstruct](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/QConstruct.png)
 
 如图，将晶体放在处理器上方，晶体引线直接焊接到处理器引脚，其它引线也焊接到处理器引脚来引入电源和接地从而把处理器的I/O和外部连接起来。
-2.面包板
-面包板又称电路实验板，是带有排列孔的塑料块儿，它被设计用来盛放DIP封装（双列直插封装）的集成电路和离散元器件。术语“面包板”可追溯到真空管时代，当时真空管无线电设备是建立在一块用于切面包的结实木板上的，因此得名。
 
-![stdExp](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/面包板.png)
+### 面包板
+面包板又称电路实验板，是带有排列孔的塑料/铁/磁块儿，它被设计用来盛放DIP封装（双列直插封装）的集成电路和离散元器件。术语“面包板”可追溯到真空管时代，当时真空管无线电设备是建立在一块用于切面包的结实木板上的，因此得名。
+
+![Bboard](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Bboard.png)
 使用面包板也不是搭建健壮可靠系统的方法，面包板限制于过多的电容、串扰及噪声敏感度，长期使用后还有机器故障。面包板上的电路连接是通过一段段小的电线来实现的，而这些电线构成了小的天线，这些小天线会吸收周围零散的电磁辐射从而影响电路。
-3.绕接技术
+
+### 绕接技术
 绕接曾经是常用的电路构建技术，必须是DIP封装的电路才能使用绕接，它通过约0.6英寸的引脚安装在插座上，然后用绕砸工具（绕砸器和剥线器）在引脚周围绕上电线，这样便构成了一个电路，这也被称为冷焊技术，即不带焊接的一种线与引脚间的紧密电气连接技术。
 
-![stdExp](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/匝绕计数.png)
+![WinTech](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/WinTech.png)
 绕接是一种非常快速的原型技术，且健壮和可靠。在早期，NASA（美国国家航天局）惯于使用绕接技术构建宇宙飞船电子设备，并且许多大型计算机也使用这种技术。
+
