@@ -34,7 +34,7 @@
 
 * [PCB Design](README.md)
 	* [Analog Elec](pages/Analog.md)
-	* [Digtal Elec](README.md)
+	* [Digital Elec](pages/Digital.md)
 	* [PCB](pages/PCB.md)
 
 * [Branch](README.md)
