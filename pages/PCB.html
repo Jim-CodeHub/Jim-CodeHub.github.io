@@ -663,7 +663,7 @@
 <h2 id="11-concept">1.1 Concept</h2>
 <p>PCB (Printed Circuit Board) &#x5370;&#x5236;&#x7535;&#x8DEF;&#x677F;&#xFF0C;&#x7B80;&#x79F0;&#x7535;&#x8DEF;&#x677F;&#x3002;PCB&#x662F;&#x7535;&#x5B50;&#x5143;&#x5668;&#x4EF6;&#x7684;&#x7535;&#x6C14;&#x8FDE;&#x63A5;&#x8F7D;&#x4F53;&#x548C;&#x652F;&#x6491;&#x4F53;&#xFF0C;&#x5728;20&#x4E16;&#x7EAA;50&#x5E74;&#x4EE3;&#x5F00;&#x59CB;&#x63A8;&#x5E7F;&#xFF0C;&#x662F;&#x73B0;&#x4EE3;&#x5E7F;&#x6CDB;&#x91C7;&#x7528;&#x7684;&#x96C6;&#x6210;&#x7535;&#x8DEF;&#x6784;&#x5EFA;&#x6280;&#x672F;&#x3002;
 <a href="#Appendix-A">Tips : Appendix-A Ancient circuit construction mode</a></p>
-<h2 id="12-structure">1.2. Structure</h2>
+<h2 id="12-structure">1.2 Structure</h2>
 <p>PCB consists of Solder mask, Medium, Copper and Silk layer. &#x963B;&#x710A;&#x5242;&#x5E38;&#x5448;&#x7EFF;&#x8272;&#xFF0C;&#x8986;&#x76D6;&#x4E8E;PCB&#x4E0A;&#x4E0B;&#x8868;&#x9762;&#x4EE5;&#x963B;&#x6B62;&#x88AB;&#x4FDD;&#x62A4;&#x7535;&#x8DEF;&#x88AB;&#x710A;&#x63A5;&#xFF0C;&#x4E1D;&#x5370;&#x5C42;&#x4E8E;&#x963B;&#x710A;&#x5C42;&#x4E4B;&#x4E0A;&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x5143;&#x4EF6;&#x3001;&#x5907;&#x6CE8;&#x7B49;&#x4FE1;&#x606F;&#xFF0C;&#x94DC;&#x5C42;&#x662F;PCB&#x7684;&#x6838;&#x5FC3;&#xFF0C;&#x8868;&#x94DC;&#x5C42;&#x8986;&#x76D6;&#x4E8E;&#x963B;&#x710A;&#x5C42;&#x4E4B;&#x4E0B;&#xFF0C;&#x5185;&#x94DC;&#x5C42;&#x4EE5;&#x4ECB;&#x8D28;&#x5C42;&#x5206;&#x9694;&#xFF0C;&#x5404;&#x5C42;&#x4E4B;&#x95F4;&#x901A;&#x8FC7;&#x8FC7;&#x5B54;&#x901A;&#x4FE1;&#x3002;</p>
 <p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/structure.png" alt="structure"></p>
 <p>Tips : PCB&#x94DC;&#x5C42;&#x539A;&#x5EA6;&#x4EE5;&#x76CE;&#x53F8;Oz&#x4E3A;&#x5355;&#x4F4D;&#xFF0C;1Oz = 35um&#xFF0C;&#x5E38;&#x89C4;&#x89C4;&#x683C;&#x4E3A;1Oz&#xFF0C;&#x53E6;&#x6709;2Oz&#x3001;3Oz&#x7B49;&#x3002;&#x4ECB;&#x8D28;&#x5C42;&#x7531;FR-4&#x7B49;&#x7EA7;&#x7684;&#x73AF;&#x6C27;&#x6811;&#x8102;&#x3001;&#x73BB;&#x7483;&#x7EA4;&#x7EF4;&#x548C;&#x586B;&#x5145;&#x5242;&#x590D;&#x5408;&#x800C;&#x6210;&#x3002;</p>
@@ -826,6 +826,9 @@ Note : Dense drilling affect the effect of copper filling.</p>
 <p><em>Gerber</em> is an international standard format for describe PCB images, which provides data for each process of PCB maker. <em>Drill files</em> is extracted from Gerber for describe position, size and type of drillings. <em>BOM</em>-Bill of Material for describe PCB components and properties. </p>
 <p>Tips : *.pcb file can be provided directly to PCB maker, but some unpredictable problems MAY arise.</p>
 <hr>
+<h2 id="14-pcb-standard">1.4 PCB standard</h2>
+<p>IPC standard is an international PCB standard about the whole life cycle of PCB. <a href="http://www.ipc.org/" target="_blank">Official website</a></p>
+<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/IPCStandardTree.png" alt="IPCStandardTree"> <br> <center> <font color="gray"> IPC standards tree </font> </center> <br></p>
 <h1 id="2-pcb-electromagnetic-compatibility">2 PCB Electromagnetic compatibility</h1>
 <h2 id="21-concept">2.1 Concept</h2>
 <p>EMC (Electromagnetic compatibility) &#x7535;&#x78C1;&#x517C;&#x5BB9;&#x6027;&#xFF0C;&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x8BBE;&#x5907;&#x6216;&#x7CFB;&#x7EDF;&#x5728;&#x7535;&#x78C1;&#x73AF;&#x5883;&#x4E2D;<strong>&#x62B5;&#x6297;&#x5E72;&#x6270;</strong> (EMS-Electromagnetic susceptibility &#x7535;&#x78C1;&#x8010;&#x53D7;&#x6027;) &#x548C;<strong>&#x91CA;&#x653E;&#x5E72;&#x6270;</strong> (EMI-Electromagnetic interference &#x7535;&#x78C1;&#x5E72;&#x6270;) &#x7684;&#x7279;&#x6027;.</p>
@@ -899,7 +902,7 @@ Note : Dense drilling affect the effect of copper filling.</p>
 <h2 id="appendix-d&#xFF1A;common-component-packaging-"><span id="Appendix-D"> Appendix-D&#xFF1A;Common component packaging </span></h2>
 <hr>
 <h2 id="appendix-e&#xFF1A;huawei-pcb-design-specification-"><span id="Appendix-E"> Appendix-E&#xFF1A;HUAWEI PCB design specification </span></h2>
-<p>Standard : China GB/T 4588.3-2002</p>
+<p>Standard : China GB/T 4588.3-2002 &amp; IPC-2221</p>
 <h3 id="e1-&#x5E03;&#x5C40;&#x89C4;&#x8303;">E.1 &#x5E03;&#x5C40;&#x89C4;&#x8303;</h3>
 <ul>
 <li>&#x9075;&#x7167;&#x201C;&#x5148;&#x5927;&#x540E;&#x5C0F;&#xFF0C;&#x5148;&#x96BE;&#x540E;&#x6613;&#x201D;&#x7684;&#x5E03;&#x7F6E;&#x539F;&#x5219;&#xFF0C;&#x5373;&#x91CD;&#x8981;&#x7684;&#x5355;&#x5143;&#x7535;&#x8DEF;&#x3001;&#x6838;&#x5FC3;&#x5143;&#x5668;&#x4EF6;&#x5E94;&#x5F53;&#x4F18;&#x5148;&#x5E03;&#x5C40;</li>
@@ -1057,7 +1060,65 @@ Note : Dense drilling affect the effect of copper filling.</p>
 
 </table>
 
-<h4 id="e24-pcb&#x5DE5;&#x827A;&#x9650;&#x5236;">E.2.4 PCB&#x5DE5;&#x827A;&#x9650;&#x5236;</h4>
+<h4 id="e24-&#x7EBF;&#x95F4;&#x8DDD;&#x4E0E;&#x7EDD;&#x7F18;&#x7535;&#x538B;&#x7684;&#x5173;&#x7CFB;">E.2.4 &#x7EBF;&#x95F4;&#x8DDD;&#x4E0E;&#x7EDD;&#x7F18;&#x7535;&#x538B;&#x7684;&#x5173;&#x7CFB;</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x7EBF;&#x95F4;&#x7535;&#x538B;(V)</th>
+<th style="text-align:center">&#x5185;&#x5C42;&#x7EBF;&#x95F4;&#x8DDD;(mm)</th>
+<th style="text-align:center">&#x5916;&#x5C42;&#x7EBF;&#x95F4;&#x8DDD;(mm)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">5000</td>
+<td style="text-align:center">11.5</td>
+<td style="text-align:center">14.5</td>
+</tr>
+<tr>
+<td style="text-align:center">4000</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">11.4</td>
+</tr>
+<tr>
+<td style="text-align:center">3000</td>
+<td style="text-align:center">6.5</td>
+<td style="text-align:center">8.43</td>
+</tr>
+<tr>
+<td style="text-align:center">2000</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">5.38</td>
+</tr>
+<tr>
+<td style="text-align:center">1000</td>
+<td style="text-align:center">1.5</td>
+<td style="text-align:center">2.33 </td>
+</tr>
+<tr>
+<td style="text-align:center">500</td>
+<td style="text-align:center">0.25</td>
+<td style="text-align:center">0.8</td>
+</tr>
+<tr>
+<td style="text-align:center">300</td>
+<td style="text-align:center">0.2</td>
+<td style="text-align:center">0.4</td>
+</tr>
+<tr>
+<td style="text-align:center">100</td>
+<td style="text-align:center">0.1</td>
+<td style="text-align:center">0.13</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;= 30</td>
+<td style="text-align:center">0.05</td>
+<td style="text-align:center">0.1</td>
+</tr>
+</tbody>
+</table>
+<p>Tips : &#x53EF;&#x5BF9;&#x7EDD;&#x7F18;&#x4F53;&#x51FB;&#x7A7F;&#x7684;&#x7535;&#x538B;&#x4E3A;&#x7EDD;&#x7F18;&#x4F53;&#x7535;&#x538B;.</p>
+<h4 id="e25-pcb&#x5DE5;&#x827A;&#x9650;&#x5236;">E.2.5 PCB&#x5DE5;&#x827A;&#x9650;&#x5236;</h4>
 <table>
 <thead>
 <tr>
@@ -1079,7 +1140,7 @@ Note : Dense drilling affect the effect of copper filling.</p>
 </tr>
 </tbody>
 </table>
-<h4 id="e25-&#x5B54;&#x3001;&#x710A;&#x76D8;&#x4E0E;&#x677F;&#x539A;&#x7684;&#x5173;&#x7CFB;">E.2.5 &#x5B54;&#x3001;&#x710A;&#x76D8;&#x4E0E;&#x677F;&#x539A;&#x7684;&#x5173;&#x7CFB;</h4>
+<h4 id="e26-&#x5B54;&#x3001;&#x710A;&#x76D8;&#x4E0E;&#x677F;&#x539A;&#x7684;&#x5173;&#x7CFB;">E.2.6 &#x5B54;&#x3001;&#x710A;&#x76D8;&#x4E0E;&#x677F;&#x539A;&#x7684;&#x5173;&#x7CFB;</h4>
 <table>
 <thead>
 <tr>
@@ -1178,7 +1239,7 @@ Note : Dense drilling affect the effect of copper filling.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"PCB","level":"1.5.1","depth":2,"next":{"title":"Analog Elec","level":"1.5.2","depth":2,"path":"pages/Analog.md","ref":"pages/Analog.md","articles":[]},"previous":{"title":"PCB Design","level":"1.5","depth":1,"path":"README.md","ref":"README.md","articles":[{"title":"PCB","level":"1.5.1","depth":2,"path":"pages/PCB.md","ref":"pages/PCB.md","articles":[]},{"title":"Analog Elec","level":"1.5.2","depth":2,"path":"pages/Analog.md","ref":"pages/Analog.md","articles":[]},{"title":"Digital Elec","level":"1.5.3","depth":2,"path":"pages/Digital.md","ref":"pages/Digital.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus"],"pluginsConfig":{"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","back-to-top-button":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/PCB.md","mtime":"2020-03-25T09:17:14.059Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-25T09:17:22.702Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"PCB","level":"1.5.1","depth":2,"next":{"title":"Analog Elec","level":"1.5.2","depth":2,"path":"pages/Analog.md","ref":"pages/Analog.md","articles":[]},"previous":{"title":"PCB Design","level":"1.5","depth":1,"path":"README.md","ref":"README.md","articles":[{"title":"PCB","level":"1.5.1","depth":2,"path":"pages/PCB.md","ref":"pages/PCB.md","articles":[]},{"title":"Analog Elec","level":"1.5.2","depth":2,"path":"pages/Analog.md","ref":"pages/Analog.md","articles":[]},{"title":"Digital Elec","level":"1.5.3","depth":2,"path":"pages/Digital.md","ref":"pages/Digital.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus"],"pluginsConfig":{"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","back-to-top-button":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/PCB.md","mtime":"2020-03-25T11:23:23.723Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-25T11:23:30.177Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

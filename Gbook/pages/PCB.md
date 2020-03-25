@@ -5,7 +5,7 @@
 PCB (Printed Circuit Board) 印制电路板，简称电路板。PCB是电子元器件的电气连接载体和支撑体，在20世纪50年代开始推广，是现代广泛采用的集成电路构建技术。
 [Tips : Appendix-A Ancient circuit construction mode](#Appendix-A)
 
-## 1.2. Structure 
+## 1.2 Structure 
 PCB consists of Solder mask, Medium, Copper and Silk layer. 阻焊剂常呈绿色，覆盖于PCB上下表面以阻止被保护电路被焊接，丝印层于阻焊层之上用于描述元件、备注等信息，铜层是PCB的核心，表铜层覆盖于阻焊层之下，内铜层以介质层分隔，各层之间通过过孔通信。
 
 ![structure](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/structure.png)
@@ -195,6 +195,11 @@ Tips : \*.pcb file can be provided directly to PCB maker, but some unpredictable
 
 ------
 
+## 1.4 PCB standard
+IPC standard is an international PCB standard about the whole life cycle of PCB. [Official website](http://www.ipc.org/)
+
+![IPCStandardTree](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/IPCStandardTree.png) <br> <center> <font color=gray> IPC standards tree </font> </center> <br>
+
 # 2 PCB Electromagnetic compatibility
 
 ## 2.1 Concept 
@@ -307,7 +312,7 @@ FCT测试由又可称为PCBA功能测试，是指对目标内部功能的测试�
 
 ## <span id = "Appendix-E"> Appendix-E：HUAWEI PCB design specification </span>
 
-Standard : China GB/T 4588.3-2002
+Standard : China GB/T 4588.3-2002 & IPC-2221
 
 ### E.1 布局规范
 
@@ -436,13 +441,28 @@ PIN密度 | 信号层 | 板层
 
 </table>
 
-#### E.2.4 PCB工艺限制
+#### E.2.4 线间距与绝缘电压的关系 
+线间电压(V)	| 内层线间距(mm) | 外层线间距(mm)
+		:-: | :-:			 | :-:
+5000		| 11.5			 | 14.5
+4000		| 9				 | 11.4
+3000		| 6.5			 | 8.43
+2000        | 4				 | 5.38
+1000        | 1.5			 | 2.33 
+500			| 0.25			 | 0.8
+300			| 0.2			 | 0.4
+100			| 0.1			 | 0.13
+<= 30		| 0.05			 | 0.1
+
+Tips : 可对绝缘体击穿的电压为绝缘体电压.
+
+#### E.2.5 PCB工艺限制
 限制				   | 国内 | 国际先进水平 
 					:-:|   :-:| :-:
 推荐最小线宽/间距(mil) |   6/6| 4/4
 极限最小线宽/间距(mil) |   4/6| 2/2
 
-#### E.2.5 孔、焊盘与板厚的关系
+#### E.2.6 孔、焊盘与板厚的关系
 
 板厚(mm)	   | 3.0 | 2.5 | 2.0 | 1.6 | 1.0
 			:-:|  :-:|  :-:|  :-:|  :-:| :-:
