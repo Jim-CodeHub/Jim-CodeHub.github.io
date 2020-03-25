@@ -193,12 +193,12 @@ Note : Dense drilling affect the effect of copper filling.
 
 Tips : \*.pcb file can be provided directly to PCB maker, but some unpredictable problems MAY arise.
 
-------
-
 ## 1.4 PCB standard
 IPC standard is an international PCB standard about the whole life cycle of PCB. [Official website](http://www.ipc.org/)
 
 ![IPCStandardTree](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/IPCStandardTree.png) <br> <center> <font color=gray> IPC standards tree </font> </center> <br>
+
+------
 
 # 2 PCB Electromagnetic compatibility
 
@@ -220,13 +220,18 @@ Copper filling, GND separation (for signal layer), 3W wiring (for same layer) & 
 ![OpenLoop](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/OpenLoop.png) <br> <center> <font color=gray> Open-Loop </font> </center> <br>
 ![Resonance](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Resonance.png) <br> <center> <font color=gray> Responance </font> </center> <br>
 
+## 2.4 Impedance
+TBD
+
 ------
 
 # 3 PCB design software 
 
 ## 3.1 KICAD
+Refer to [KICAD Official website](https://kicad-pcb.org/)
 
 ## 3.2 Altium designer
+Refer to [Altium Official website](https://www.altium.com)
 
 ------
 
@@ -454,7 +459,7 @@ PIN密度 | 信号层 | 板层
 100			| 0.1			 | 0.13
 <= 30		| 0.05			 | 0.1
 
-Tips : 可对绝缘体击穿的电压为绝缘体电压.
+Tips : 可击穿绝缘体的电压为绝缘体电压.
 
 #### E.2.5 PCB工艺限制
 限制				   | 国内 | 国际先进水平 
@@ -469,4 +474,6 @@ Tips : 可对绝缘体击穿的电压为绝缘体电压.
 最小孔径(mil)  | 24  | 20  | 16  | 12  | 8
 焊盘直径(mil)  | 40  | 35  | 28  | 25  | 20
 热焊盘直径(mil)| 50  | 45  | 40  | 35  | 30
+
+Tips : 大面积覆铜的连接的焊盘有良好的散热效果以导致元件焊接不稳定，将焊盘制作成十字花形状可以避免这个问题，这种焊盘称为花焊盘或热焊盘.
 
