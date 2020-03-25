@@ -33,9 +33,9 @@
 		* [Bootloader](pages/Bootloader.md)
 
 * [PCB Design](README.md)
+	* [PCB](pages/PCB.md)
 	* [Analog Elec](pages/Analog.md)
 	* [Digital Elec](pages/Digital.md)
-	* [PCB](pages/PCB.md)
 
 * [Branch](README.md)
 	* [Automation](README.md)
