@@ -10,7 +10,8 @@
 		"custom-favicon",
 		"popup",
 		"-sharing",
-		"sharing-plus"
+		"sharing-plus",
+		"expandable-chapters"
 	],
 
 	"pluginsConfig": {
