@@ -30,3 +30,92 @@ Segger公司的产品，在商业应用条件下有免费使用方式：
 - 销售邮箱：sales@micrium.com
 - 信息咨询：info@micrium.com
 ·官网：https://www.micrium.com/
+
+---
+# Qt 安装与移植
+
+Qt分为Qt库和Qt集成开发环境两部分
+
+Qt Library: qt-everywhere-opensource-src-4.8.6.tar.bz2
+Qt Creator: qt-creator-opensource-linux-x86_64-3.2.1.run
+
+Qt Creator用于开发Qt应用程序，Qt应用程序的编译和运行依赖于Qt库
+Qt everywhere系列版本是qt库版本之一，如其名，可以应用在任何平台
+
+以下是Qt库配置步骤：
+
+注意：要编译Qt库，先要正确编译tslib并导出其环境变量; 要先安装g++
+
+目的：1. 编译出qmake供Qt Creator使用，以编译出在目标板中运行的Qt应用程序
+2. 移植编译好的Qt库到目标板文件系统中，以在目标板中可以运行Qt应用程序  
+
+步骤：
+1.  解压缩，进入目录
+2.  $sudo ./qteverywhere.sh 
+3.  $sudo make 
+4.  $sudo make install
+安装路径为 /usr/local/arm/qt4.8.6
+5.  PC测试：
+#cp /usr/local/arm/qt4.8.6/bin/qmake /usr/bin/arm-qmake
+#arm-qmake -v 出现版本信息即为成功 
+
+6.  移植到目标板中的文件系统： 
+cd /usr/local/arm/qt4.8.6/
+$ cp -ar lib/libQt* lib/fonts/ /myrootfs/xxx/lib
+$ cp -ar demos/embeddedialogs/embeddedialogs home/forlinx/work/rootfs-mini/forlinx/qt/bin
+
+以上目录可能不同，其拷贝的库也是挑选来的，也可以将所有的Qt lib库拷贝过去，
+第二个demos目录下的文件用于测试
+这种方法是拷贝到还没有烧录到FLASH的文件系统，也可以在烧录并成功运行文件系统之后再通过USB/FTP
+等路径拷贝进去
+
+7.  设置环境变量（目标板主的/etc/profile）
+
+export QTDIR=/forlinx/qt
+export LD_LIBRARY_PATH=$QTDIR/lib:$LD_LIBRARY_PATH
+export QT_QPA_GENERIC_PLUGINS=tslib
+export QT_QWS_FONTDIR=$QTDIR/lib/fonts
+export QT_QPA_PLATFORM_PLUGIN_PATH=$QTDIR/plugins
+export QT_QPA_FB_TSLIB=1
+export QWS_SIZE=800x480
+export QTS_DISPLAY=LinuxFb:/dev/fb0
+KEYPAD_DEV=/dev/input/event0
+export LD_LIBRARY_PATH=/forlinx/qt/lib/plugins/imageformats:$LD_LIBRARY_PATH
+export QT_PLUGIN_PATH=/forlinx/qt/lib/plugins
+export QWS_MOUSE_PROTO=”Tslib:/dev/input/event1”
+
+配置路径和参数要跟实际一致
+
+测试方法
+#cd /forlinx/qt/bin
+#./embeddedialogs –qws
+执行之后在目标板屏幕上会出现Qt界面
+
+
+以下是Qt Creator的配置步骤:
+
+Qt Creator的安装就是一路下一步
+Qt Creator的配置分为3步:
+1. 配置编译工具，要使程序能在目标板上运行，就要指定交叉编译工具    
+
+点击 工具-选项-编译和运行-选择编译一栏-点击添加-选择GCC-在下面路径浏览交叉编译工具xxxx-g++的路径
+
+2.Qt version设置，这一步就是添加Qt everyone编译出来的qmake
+
+点击 工具-选项-编译和运行-选择Qt version一栏-点击添加直接选择qmake路径
+
+3. 添加构建套件，这一步主要是选择Qt库版本和编译器种类
+
+点击 工具-选项-编译和运行-选择Kits一栏-点击添加-选择编译器版本GCC-选择Qt版本Qt4.8.6(qt4.8.6) 
+
+	最后Qt版本选择，应该是系统自动提示本地存在的Qt
+
+	over 可以开始构建工程，编写应用程序
+
+
+
+
+
+
+
+
