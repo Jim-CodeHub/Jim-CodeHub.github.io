@@ -8,7 +8,7 @@
 	* [English]()
 		* [IELTS 7.5+]()
 	* [Communication]()
-		* [Serial Communication](pages/Communication.md)
+		* [Serial Communication](pages/extension/Communication.md)
 	* [OS]()
 	* [MFC]()
 
@@ -29,9 +29,9 @@
 
 * [Programming]()
 	* [Programming language]()
-		* [Python]()
+		* [Python](pages/Python.md)
 		* [C++](pages/C++.md)
-		* [C]()
+		* [C](pages/C.md)
 		* [ASM]()
 	* [Data structure]()
 	* [Algorithm]()
