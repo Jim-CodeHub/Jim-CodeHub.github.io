@@ -12,7 +12,6 @@
 	* [MFC]()
 	* [Web]()
 		* [XML](pages/extension/XML.md)
-			* [XPath](pages/extension/XPath.md)
 
 * [GUI]()
 	* [Qt](pages/Qt.md)
