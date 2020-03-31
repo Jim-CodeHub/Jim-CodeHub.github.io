@@ -10,6 +10,9 @@
 		* [Serial Communication](pages/extension/Communication.md)
 	* [OS]()
 	* [MFC]()
+	* [Web]()
+		* [XML](pages/extension/XML.md)
+			* [XPath](pages/extension/XPath.md)
 
 * [GUI]()
 	* [Qt](pages/Qt.md)
@@ -21,7 +24,7 @@
 		* [Git](pages/Git.md)
 		* [Markdown]()
 		* [doxygen](pages/doxygen.md)
-	* [OS Programming]()
+	* [OS Programming](Posix.md)
 	* [BSP]()
 	    * [Device driver]()
 		* [Kernel]()
