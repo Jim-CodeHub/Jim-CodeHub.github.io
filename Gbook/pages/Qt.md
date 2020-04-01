@@ -1,37 +1,153 @@
-1.μC-GUI与emWin
-μC-GUI和emWin都是嵌入式系统图形库，emWin由Segger公司研发，μC-GUI是Segger面向Micrium公司的定制产品，两款产品资料通用，但拥有各自的使用许可条文。
 
-2.μC-GUI
-Micrium公司的所有产品，在任何商业应用条件下都不是免费的，并且对所有产品拥有统一的在商业中使用的许可条文：
-①单一产品许可：需指定CPU型号，最终产品名称，没有数量和时间限制
-②产品线许可：无需指定CPU型号，需指定最终产品名称
-③CPU类型（平台）许可：只需指定CPU型号，可以生产各种产品
-④站点许可：只需指定站点，CPU、最终产品名称和数量都没有限制
-价格表（Micrium中国总代 - 北京麦克泰软件技术有限公司，μC-GUI报价）：
-类型				价格（元）	时间
-单一产品许可		RMB130,000	永久
-产品线许可			RMB650,000	永久
-CPU类型（平台）许可	RMB845,000	永久
-站点许可			-			-
+# Concept
+Cross-platform software development for **embedded & desktop** with C++ language, "One framework. One codebase. Any platform.", "Light and Powerful". [refer to official website](https://www.qt.io).
 
-3.emWin
-Segger公司的产品，在商业应用条件下有免费使用方式：
-① Segger公司提供定制服务，定制公司用于产品最终解释权，如Segger向ST公司定制STemWin，则使用含有STemWin库的ST芯片时无需支付库的使用费用；而Segger向Micrium公司定制μC-GUI，但使用μC-GUI时需要遵循Micrium公司许可条款。
-② Segger公司提供合作机制，如Segger与NXP公司合作，凡使用NXP芯片的用户，都可以免费使用emWin库（信息来源：https://www.nxp.com/pages/emwin-graphics-library:EMWIN-GRAPHICS-LIBRARY）。
+![QConstruct](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/QtFramework.png) <br> <center> <font color=gray> Qt framework </font> </center> <br>
+
+# Feature
+## Design Tools
+Everything you need for designing an amazing user interface and the ultimate user experience.
+
+Name																					| Description
+:-:													 									| :-:
+[Qt Design Studio](https://doc.qt.io/qtdesignstudio/index.html)							| UI desing and develoment environment 
+[Qt 3D Studio](https://doc.qt.io/qt3dstudio/index.html)									| 
+[Qt Designer](https://doc-snapshots.qt.io/qt5-dev/qtdesigner-manual.html)				| Intergrated into Qt Creator for GUIs desgin using Qt Widgets
+[Qt quick designer](https://doc.qt.io/qtcreator/creator-using-qt-quick-designer.html)	| Intergrated into Qt Creator for GUIs desgin using Qt Quick 
+
+## Development Tools
+Qt has it's own cross-platform IDE and is chock-full of tools designed for developing applications and UIs once and deploying them across multiple operating systems.
+
+Name																								| Description
+:-:													 												| :-:
+[Qt QmlLive](https://doc.qt.io/QtQmlLive/index.html) 												| 
+[GammaRay](https://doc.qt.io/GammaRay/index.html)	 												| Higher level debugging tools 
+[Emulator](https://doc.qt.io/emulator/index.html)	 												| Device emulation
+[Qt Creator](https://doc.qt.io/qtcreator/index.html)												| Cross-platform IDE for Qt
+[Qt Linguist](https://doc.qt.io/qt-5/qtlinguist-index.html)											| Qt text translator
+[qmake](https://doc.qt.io/qt-5/qmake-manual.html)													| Intergrated into Qt Creator, makefile generator for Qt and other Proj
+[Makeqpf](https://doc.qt.io/qt-5/qt-embedded-makeqpf.html)											| QPF2 fonts Creator for Embedded Linux
+[Meta-Object Compiler (MOC)](https://doc.qt.io/qt-5/moc.html)										| Check macro 'Q\_OBJECT' and generat C++ source file (for Signal-Slots .etc)
+[User Interface Compiler (UIC)](https://doc.qt.io/qt-5/uic.html)									| Read '.ui' file and generat C++ header file
+[Resource Compiler (RCC)](https://doc.qt.io/qt-5/rcc.html)											| Embed resource (.qrc) into APP during the build process
+[Qt D-Bus XML compiler (qdbusxml2cpp)](https://doc.qt.io/qt-5/qdbusxml2cpp.html)					| 
+[D-Bus Viewer](https://doc.qt.io/qt-5/qdbusviewer.html)												| 
+[Qt Quick Compiler](https://doc.qt.io/QtQuickCompiler)												| Compile QML to binary file for Qt Quick applications
+[Qt VS Tools)](https://doc.qt.io/qtvstools/index.html)												| MicrosoftVisualStudio suitable tools
+[Qt Distance Field Generator](https://doc.qt.io/qt-5/qtdistancefieldgenerator-index.html)			|
+[Qt Installer Framework](https://doc.qt.io/qtinstallerframework/index.html)							| Qt APP installer creator for desktop Linux/Windows/MacOS  
+[Qbs](https://doc.qt.io/qbs/index.html)																| Across-platform support tools
+[Qt Assistant](https://doc.qt.io/qt-5/qtassistant-index.html)										| Intergrated into Qt Creator
+[Qt Configuration Tool](https://doc.qt.io/QtForDeviceCreation/qt-configuration-tool.html)			| Creating and building smaller Qt binaries (Only for commercial license)
+[On-device Depolyment and Debugging](https://doc.qt.io/QtForDeviceCreation/b2qt-deploying-b2qt.html)|
+
+## Framework Essentials
+These are the APIs and libraries that provide the backbone of Qt. Qt contains a rich set of fundamental enablers,which provide higher-level UI and application development components.
+
+Name																			| Description
+:-:													 							| :-:
+[Qt Core](https://doc.qt.io/qt-5/qtcore-index.html)								| Meta-Object, Signal & Slots .etc
+[Qt GUI](https://doc.qt.io/qt-5/qtgui-index.html)								| Image, fonts, text, 2D graphics .etc
+[Qt Multimedia](https://doc.qt.io/qt-5/qtmultimedia-index.html)					| Camera, radio, vedio .etc
+[Qt Multimesia Widgets](https://doc.qt.io/qt-5/qtmultimediawidgets-index.html)	|
+[Qt Network](https://doc.qt.io/qt-5/qtnetwork-index.html)						| HTTP, TCP/IP, cookies .etc
+[Qt QML](https://doc.qt.io/qt-5/qtqml-index.html)								|
+[Qt Quick Dialogs](https://doc.qt.io/qt-5/qtquickdialogs-index.html)			| 
+[Qt Quick Layouts](https://doc.qt.io/qt-5/qtquicklayouts-index.html) 			| 
+[Qt Quick](https://doc.qt.io/qt-5/qtquick-index.html)							|
+[Qt Quick Controls](https://doc.qt.io/qt-5/qtquickcontrols-index.html)			|
+[Qt Quick Test](https://doc.qt.io/qt-5/qtquicktest-index.html)					|
+[Qt SQL](https://doc.qt.io/qt-5/qtsql-index.html)								| SQL database support
+[Qt Test](https://doc.qt.io/qt-5/qttest-index.html)								|
+[Qt Widgets](https://doc.qt.io/qt-5/qtwidgets-index.html)						| Provids UI, such as QLable, QTxxEdit .etc
+
+Tips : QML (Qt Markup Language) starts from Qt5 and design for mobile devices UI design and all 'Qt Quick xxx' are based on QML.
+
+## Framework Addones
+Qt is an unbelievably comprehensive framework full of features beyond the essentials all designed to provide you with a truly professional development experience
+
+Name																		| Description
+:-:																			| :-:
+[Active Qt](https://doc.qt.io/qt-5/activeqt-index.html)						| for ActiveX and COM
+[Qt 3D](https://doc.qt.io/qt-5/qt3d-index.html)								|
+[Qt Android Extras](https://doc.qt.io/qt-5/qtandroidextras-index.html)		| Provides platform-specific APIs for Android
+[Qt Bluetooth](https://doc.qt.io/qt-5/qtbluetooth-index.html)				| Provides access to Bluetooth hardware
+[Qt Canvas 3D](https://doc.qt.io/qt-5.9/qtcanvas3d-index.html)				|
+[Qt Concurrent](https://doc.qt.io/qt-5/qtconcurrent-index.html)				| High-level multi-thread support
+[Qt D-Bus](https://doc.qt.io/qt-5/qtdbus-index.html)						| Inter-process communication support
+[Qt Gamepad](https://doc.qt.io/qt-5/qtgamepad-index.html)					| For game
+[Qt Graphical Effects](https://doc.qt.io/qt-5/qtgraphicaleffects-index.html)|
+[Qt Help](https://doc.qt.io/qt-5/qthelp-index.html)							| Similar to Qt Assistant for APP
+[Qt Image Formats](https://doc.qt.io/qt-5/qtimageformats-index.html)		| Plugins for additional image formats: TIFF, NMG, TGA .etc 
+[Qt Location](https://doc.qt.io/qt-5/qtlocation-index.html)					| Displays map, navigation and place content in QML APP
+[Qt Mac Extras](https://doc.qt.io/qt-5/qtmacextras-index.html)				|
+[Qt NFC](https://doc.qt.io/qt-5/qtnfc-index.html)							| Provides access to to NFC hardware 
+... ...																		| [Click to view more](https://www.qt.io/features#js-8-2) 
+
+# History
+1991 Norway *Eirik Chambe-Eng* & *Haavard Nord* -> 1994 Trolltech Co.,Ltd -> 2000 GPL version -> 2008 acquired by NOKIA and Add LGPL version -> 2011 sold to Digia Co.,Ltd 
+
+# License Models 
+Name		| Description
+:-:			| :-:
+Commercial	| $5508/Year
+LGPL v3		| Free, commercial friendly
+GPL v3		| Free
+GPL v2		| Free
+
+Tips : Different Qt modules are under different license conditions. Using LGPL to write commercial code on the premise of only using **QT DYNAMIC LINK LIBRARY**.
 
 
 
 
-附录A：Micrium 总部（美）联系方式
 
-·电话：1-954-217-2036
-·传真：1-954-217-2037
-·邮箱：
-- 销售邮箱：sales@micrium.com
-- 信息咨询：info@micrium.com
-·官网：https://www.micrium.com/
 
----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Development Platforms
+MacOS Windows Linux
+
+# Target Platforms
+Linux/X11
+Windows
+macOS
+Android
+IOS/tvOS/watchOS
+WinRT/UWP10
+Embedded Linux
+INTEGRITY
+QNX
+VxWorks
+Bare metal
+
+
+
+
+
+
+
+
+
+
+
+下载:
+中国科学技术大学：http://mirrors.ustc.edu.cn/qtproject/
+清华大学：https://mirrors.tuna.tsinghua.edu.cn/qt/
+北京理工大学：http://mirror.bit.edu.cn/qtproject/
+中国互联网络信息中心：https://mirrors.cnnic.cn/qt/
 # Qt 安装与移植
 
 Qt分为Qt库和Qt集成开发环境两部分
@@ -61,7 +177,7 @@ Qt everywhere系列版本是qt库版本之一，如其名，可以应用在任�
 
 6.  移植到目标板中的文件系统： 
 cd /usr/local/arm/qt4.8.6/
-$ cp -ar lib/libQt* lib/fonts/ /myrootfs/xxx/lib
+$ cp -ar lib/libQt\* lib/fonts/ /myrootfs/xxx/lib
 $ cp -ar demos/embeddedialogs/embeddedialogs home/forlinx/work/rootfs-mini/forlinx/qt/bin
 
 以上目录可能不同，其拷贝的库也是挑选来的，也可以将所有的Qt lib库拷贝过去，
