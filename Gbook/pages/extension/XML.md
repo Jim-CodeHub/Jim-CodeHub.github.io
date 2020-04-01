@@ -1,3 +1,68 @@
+
+## XPath
+
+### Concept
+XPath是使用**路径表达式遍历XML**文档的语言，内置函数库，Javascript、Python等都实现了XPath功能及其函数。
+
+### 路径表达式
+表达式				| 描述													| 示例
+:-:					| :-:													| :-:
+nodename			| 相对路径-选取此节点的所有子节点						| bookstore 
+/					| 绝对路径-选取根节点									| /bookstore
+//					| 无视路径-选择所有匹配节点								| book
+.					| 当前路径-选取当前节点									|
+..					| 上级路径-选取当前节点的父节点							|
+@					| 选取属性												| /bookstore/book/@lang 
+\*					| 匹配任何元素节点										| /bookstore/\* 
+@\*					| 匹配任何属性节点										|	
+node()				| 匹配任何节点											|
+[X]					| 用于定位，X为不等式、数值和函数等						| /bookstroe/book[1]
+ancestor			| 选取当前节点的所有先辈（父、祖父等）					| ancestor::book 
+ancestor-or-self	| 选取当前节点的所有先辈（父、祖父等）以及当前节点本身	|
+attribute			| 选取当前节点的所有属性								| attribute::lang
+child				| 选取当前节点的所有子元素								| child::text()
+descendant			| 选取当前节点的所有后代元素（子、孙等）				|
+descendant-or-self	| 选取当前节点的所有后代元素（子、孙等）以及当前节点本身|
+following			| 选取文档中当前节点的结束标签之后的所有节点			|
+namespace			| 选取当前节点的所有命名空间节点						|
+parent				| 选取当前节点的父节点									|
+preceding			| 选取文档中当前节点的开始标签之前的所有节点			|
+preceding-sibling	| 选取当前节点之前的所有同级节点						|
+self				| 选取当前节点											|
+
+Tips : 示例 - /bookstore//book[2]/child::text()，选取bookstore节点下的所有book元素中的第二个下的所有子元素的文本，将该表达式作为Javascript、Python等XPath函数的形参即可返回结果。
+
+### 运算符
++/-/\*/div/=/!=/\</<=/\>/>=/or/and/mod/|(节点集合)
+
+### [XPath内置函数](https://www.w3school.com.cn/xpath/xpath_functions.asp)
+
+### 路径表达式 - 步Step
+轴::节点[谓语]， 节点是通过沿着路径 (path) 或者步 (steps) 来选取的 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Chapter 一. XML基础篇
 
 一．概念
@@ -177,69 +242,6 @@ function fun()
 
 
 	Chapter 三. XML技术篇
-
-	一．XPath
-	XPath是在XML文档中查找信息的语言，使用路径表达式遍历XML文档，是很多XML高级应用的基础，内置标准函数库。
-	1.XPath语法
-	基本表达式
-	表达式	描述
-	nodename	选取此节点的所有节点
-	/	从根节点选取
-	//	选取所有匹配节点
-	.	选取当前节点
-	..	选取当前节点的父节点
-	@	选取属性
-
-	谓语表达式
-	表达式	描述
-	baseExp[FunExp]	在基本表达式基础上，使用“[]”进行谓语表达，以查找特定节点
-	示例
-	/bookstore/book[1]	选取bookstore元素下的第一个book子元素
-	/bookstore/book[last()]	选取bookstore元素下的最后一个book子元素
-	/bookstore/book[last()-1]	选取bookstore元素下的倒数第二个book子元素
-	//title[@lang]	选取属性为lang的所有title元素
-	//title[@lang=’eng’]	选择属性为lang且值为eng的所有title元素
-	/bookstore/book[price>2]/title	选取bookstore元素中price值大于2的book元素的所有title元素
-
-	通配符
-	表达式	描述
-	*	匹配任何元素节点
-	@*	匹配任何属性节点
-	node()	匹配任何类型节点
-	2.XPath步与轴
-	轴可定义相对于当前节点的节点集，步包含轴、节点测试（识别轴内部的节点）和谓语，步的语法为“轴::节点测试[谓语]”。
-	轴
-	名称	描述
-	ancestor	选取当前节点的所有先辈（父、祖父等）
-	ancestor-or-self	选取当前节点的所有先辈（父、祖父等）以及当前节点本身
-	attribute	选取当前节点的所有属性
-	child	选取当前节点的所有子元素
-	descendant	选取当前节点的所有后代元素（子、孙等）
-	descendant-or-self	选取当前节点的所有后代元素（子、孙等）以及当前节点本身
-	following	选取文档中当前节点的结束标签之后的所有节点
-	namespace	选取当前节点的所有命名空间节点
-	parent	选取当前节点的父节点
-	preceding	选取文档中当前节点的开始标签之前的所有节点
-	preceding-sibling	选取当前节点之前的所有同级节点
-	self	选取当前节点
-	示例
-	child::book	选取所有属于当前节点的子元素的 book 节点
-	attribute::lang	选取当前节点的 lang 属性
-	child::*	选取当前节点的所有子元素
-	attribute::*	选取当前节点的所有属性
-	child::text()	选取当前节点的所有文本子节点
-	descendant::book	选取当前节点的所有 book 后代
-	ancestor::book	选择当前节点的所有 book 先辈
-	child::*/child::price	选取当前节点的所有 price 孙节点
-	3.XPath运算符
-	名称	描述
-	|	计算两个节点集
-	or	或
-	and	与
-	div	除法
-	加、减、乘、取余、大于、小于、等于、不等于、等运算符与C相同
-	XPath库函数手册：https://www.w3school.com.cn/xpath/xpath_functions.asp。
-
 
 
 
