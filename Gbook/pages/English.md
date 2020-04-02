@@ -2,6 +2,28 @@ Aim : IELTS 7.5+
 
 # Teacher Yang 全民英语训练营 
 
+## Day 29 *The Picture of Dorian Gray* -- 奥斯卡·王尔德(英)
+
+- soul n.灵魂，心灵
+
+和sea海洋相关，来自日耳曼传说：人的灵魂源于大海，也归于大海。
+
+- passion n.激情，热情
+
+来自基督教，-pass-词根为痛苦之意，早期指耶稣被钉十字架时承受的巨大痛苦，后来衍生为一种强烈的情感-”热情、激情“
+
+- compassion n.同情，同情心
+
+com前缀表聚合、共同，共同承担痛苦，能感受到彼此的痛苦，即同情，是较正式的词汇。
+
+- someone VS some one
+
+都指”某个人“，前者泛指某个人，后者指代大家都知道的那一类/一个人。
+
+- virtue n.美德
+
+美德是看不见的，本身是虚拟的事物，与Virtual相关，VR即Virtual reality
+
 ## Day 30 *Animal farm* -- 乔治·奥威尔(英)
 
 - slave n.奴隶, slavery n.奴役、奴隶制度
