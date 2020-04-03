@@ -3,6 +3,7 @@
 * [Introduction](README.md)
 
 * [Extension]()
+	* [SoftwareCopyrghts](pages/SoftwareCopyrights.md)
 	* [Database]()
 	* [MatLab](pages/extension/matlab.md)
 	* [English](pages/English.md)
