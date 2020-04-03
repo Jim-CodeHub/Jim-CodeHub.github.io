@@ -144,6 +144,7 @@ DTD和XML Schema都可以定义XML文档结构（如元素、属性、元素个�
 Chapter 二. XML高级篇
 
 一．XML DOM
+“DOM 定义了所有文档元素的对象和属性，以及访问它们的方法”
 DOM - Document Object Model文档对象模型，定义了XML、HTML等文档元素的对象和属性，以及操作和访问（增、删、改、查）它们的方法（接口）。
 W3C DOM分为三个级别：核心DOM、XML DOM、HTML DOM。
 1.节点

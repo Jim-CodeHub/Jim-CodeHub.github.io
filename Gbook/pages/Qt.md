@@ -1,11 +1,20 @@
 
-# Concept
+# 1 Concept
 Cross-platform software development for **embedded & desktop** with C++ language, "One framework. One codebase. Any platform.", "Light and Powerful". [refer to official website](https://www.qt.io).
 
 ![QConstruct](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/QtFramework.png) <br> <center> <font color=gray> Qt framework </font> </center> <br>
 
-# Feature
-## Design Tools
+## 1.1 History
+1991 Norway *Eirik Chambe-Eng* & *Haavard Nord* -> 1994 Trolltech Co.,Ltd -> 2000 GPL version -> 2008 acquired by NOKIA and Add LGPL version -> 2011 sold to Digia Co.,Ltd 
+
+## 1.2 Dowload
+- 中国科学技术大学：http://mirrors.ustc.edu.cn/qtproject/
+- 清华大学：https://mirrors.tuna.tsinghua.edu.cn/qt/
+- 北京理工大学：http://mirror.bit.edu.cn/qtproject/
+- 中国互联网络信息中心：https://mirrors.cnnic.cn/qt/
+
+# 2 Feature
+## 2.1 Design Tools
 Everything you need for designing an amazing user interface and the ultimate user experience.
 
 Name																					| Description
@@ -15,7 +24,7 @@ Name																					| Description
 [Qt Designer](https://doc-snapshots.qt.io/qt5-dev/qtdesigner-manual.html)				| Intergrated into Qt Creator for GUIs desgin using Qt Widgets
 [Qt quick designer](https://doc.qt.io/qtcreator/creator-using-qt-quick-designer.html)	| Intergrated into Qt Creator for GUIs desgin using Qt Quick 
 
-## Development Tools
+## 2.2 Development Tools
 Qt has it's own cross-platform IDE and is chock-full of tools designed for developing applications and UIs once and deploying them across multiple operating systems.
 
 Name																								| Description
@@ -41,7 +50,7 @@ Name																								| Description
 [Qt Configuration Tool](https://doc.qt.io/QtForDeviceCreation/qt-configuration-tool.html)			| Creating and building smaller Qt binaries (Only for commercial license)
 [On-device Depolyment and Debugging](https://doc.qt.io/QtForDeviceCreation/b2qt-deploying-b2qt.html)|
 
-## Framework Essentials
+## 2.3 Framework Essentials
 These are the APIs and libraries that provide the backbone of Qt. Qt contains a rich set of fundamental enablers,which provide higher-level UI and application development components.
 
 Name																			| Description
@@ -63,7 +72,7 @@ Name																			| Description
 
 Tips : QML (Qt Markup Language) starts from Qt5 and design for mobile devices UI design and all 'Qt Quick xxx' are based on QML.
 
-## Framework Addones
+## 2.4 Framework Addones
 Qt is an unbelievably comprehensive framework full of features beyond the essentials all designed to provide you with a truly professional development experience
 
 Name																		| Description
@@ -84,10 +93,7 @@ Name																		| Description
 [Qt NFC](https://doc.qt.io/qt-5/qtnfc-index.html)							| Provides access to to NFC hardware 
 ... ...																		| [Click to view more](https://www.qt.io/features#js-8-2) 
 
-# History
-1991 Norway *Eirik Chambe-Eng* & *Haavard Nord* -> 1994 Trolltech Co.,Ltd -> 2000 GPL version -> 2008 acquired by NOKIA and Add LGPL version -> 2011 sold to Digia Co.,Ltd 
-
-# License Models 
+## 2.5 License Models 
 Name		| Description
 :-:			| :-:
 Commercial	| $5508/Year
@@ -97,6 +103,24 @@ GPL v2		| Free
 
 Tips : Different Qt modules are under different license conditions. Using LGPL to write commercial code on the premise of only using **QT DYNAMIC LINK LIBRARY**.
 
+## 2.6 Development Platforms
+MacOS, Windows, Linux.
+
+##2.7 Target Platforms
+Linux/X11, Windows, macOS, Android, IOS/tvOS/watchOS, WinRT/UWP10, Embedded Linux, INTEGRITY, QNX, VxWorks, Bare metal.
+
+# 3 Development
+
+---
+零散知识点
+
+QFileDialog::getOpenFileName(this, tr("open"), "c:\\");
+
+使用该函数可以实现文件浏览器的功能，open字符串是弹出的浏览对话框的标题名，c:\\ 表示默认打开路径
+
+打印调试信息使用qDebug(); 可以类似printf一样输入格式化信息，信息是直接打印在调试框的，而不是打印在GUI上
+
+使用QMessageBox::information()；可以弹出对话框打印信息。
 
 
 
@@ -117,21 +141,6 @@ Tips : Different Qt modules are under different license conditions. Using LGPL t
 
 
 
-# Development Platforms
-MacOS Windows Linux
-
-# Target Platforms
-Linux/X11
-Windows
-macOS
-Android
-IOS/tvOS/watchOS
-WinRT/UWP10
-Embedded Linux
-INTEGRITY
-QNX
-VxWorks
-Bare metal
 
 
 
@@ -142,12 +151,41 @@ Bare metal
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----
+培训教程
 
 下载:
-中国科学技术大学：http://mirrors.ustc.edu.cn/qtproject/
-清华大学：https://mirrors.tuna.tsinghua.edu.cn/qt/
-北京理工大学：http://mirror.bit.edu.cn/qtproject/
-中国互联网络信息中心：https://mirrors.cnnic.cn/qt/
 # Qt 安装与移植
 
 Qt分为Qt库和Qt集成开发环境两部分
