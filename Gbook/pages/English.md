@@ -37,8 +37,45 @@ com前缀表聚合、共同，共同承担痛苦，能感受到彼此的痛苦�
 - now 也用于吸引人注意力， 或者用于转义话题
 
 
+## Day 32 *Mercedes-Benz - The best or nothing*
 
+- then as now 一如既往
 
+- satisfy vt.使满意，使满足
+
+来自法语，名词satisfaction，形容词satisfied, satisfactory，satisfying.
+
+## Day 33 *IHG(InterContinental Hotels Group)*
+
+- deliver vt. 递送，发表，接生
+
+de -> dis, liver -> Liber自由，即释放束缚，让其自由之意。Delivery n.快递
+
+- span n.跨度 vt.跨越
+
+lifespan 寿命
+
+- luxury n.奢侈，奢华
+
+Lux 品牌“力士”。形容词luxurious
+
+- pure adj.纯的，纯粹的，纯洁的
+来自拉丁文
+
+- distinct adj.明显的，明显不同的 
+dis - 分离， stinck -> stick 刺、戳，分开刺，即强调分开做标记，表示明显的、明显不同的
+
+- brand n.品牌，商标 vt.给...打烙印
+bran 与 burn相关，用高温的工具在动物身上做标记、打烙印
+
+- provide vt.提供
+pro表示向前，vid与vis看相关，向前看即表示能预见需求，即提供
+
+- community n.社区
+commun 与 common相关，community强调的是一群人共同居住的地方，即社区
+
+- continent n.大陆
+与continue相关，表示连接在一起的土地，也指不包括英国和爱尔兰的欧洲大陆
 
 
 

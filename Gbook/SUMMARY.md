@@ -13,6 +13,7 @@
 	* [MFC]()
 	* [Web]()
 		* [XML](pages/extension/XML.md)
+			* [JDF](pages/extension/JDF.md)
 
 * [GUI]()
 	* [Qt](pages/Qt.md)
@@ -24,6 +25,7 @@
 		* [Git](pages/Git.md)
 		* [Markdown]()
 		* [doxygen](pages/doxygen.md)
+		* [Shell](pages/Shell.md)
 	* [OS Programming](Posix.md)
 	* [BSP]()
 	    * [Device driver]()
