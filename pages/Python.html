@@ -41,6 +41,10 @@
                 
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
@@ -377,7 +381,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1.1" >
+        <li class="chapter " data-level="1.4.1.1" data-path="GCC.html">
+            
+                <a href="GCC.html">
+            
+                    
+                    GCC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" >
             
                 <span>
             
@@ -390,7 +407,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.1.2" data-path="Git.html">
+        <li class="chapter " data-level="1.4.1.3" data-path="Git.html">
             
                 <a href="Git.html">
             
@@ -403,7 +420,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.1.3" >
+        <li class="chapter " data-level="1.4.1.4" >
             
                 <span>
             
@@ -416,7 +433,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.1.4" data-path="doxygen.html">
+        <li class="chapter " data-level="1.4.1.5" data-path="doxygen.html">
             
                 <a href="doxygen.html">
             
@@ -429,7 +446,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.1.5" data-path="Shell.html">
+        <li class="chapter " data-level="1.4.1.6" data-path="Shell.html">
             
                 <a href="Shell.html">
             
@@ -777,7 +794,44 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction">Introduction</h1>
+                                <h1 id="1-introduction">1 Introduction</h1>
+<p>Python&#x662F;&#x89E3;&#x91CA;&#x578B;&#x3001;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x3001;&#x52A8;&#x6001;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x9AD8;&#x7EA7;&#x7F16;&#x7A0B;&#x811A;&#x672C;&#x8BED;&#x8A00;&#xFF0C;&#x7531;<em>Guido van Rossum</em>&#x53D1;&#x660E;&#x4E0E;1989&#x5E74;&#xFF0C;&#x5F00;&#x6E90;&#x4E14;&#x4F7F;&#x7528;GPL&#x534F;&#x8BAE;&#x3002;<a href="https://www.python.org" target="_blank">Official website</a>.</p>
+<p>Tips : Paython&#x76EE;&#x524D;&#x6709;&#x4E24;&#x4E2A;&#x7248;&#x672C;&#x7EBF;&#xFF0C;2.x&#x548C;3.x&#xFF0C;&#x5B98;&#x65B9;&#x5BA3;&#x5E03;2020&#x5E74;1&#x6708;1&#x65E5;&#xFF0C;&#x505C;&#x6B62;2.x&#x7684;&#x66F4;&#x65B0;&#xFF08;&#x6700;&#x540E;&#x7248;&#x672C;2.7&#xFF09;</p>
+<h2 id="11-feature">1.1 Feature</h2>
+<p>Easy, Tortable&#xFF0C;Extensible, Terminal mode, Rich Libs, Glue lang, Database, GUI, AI, Big data, Game, Web... ...</p>
+<h2 id="12">1.2</h2>
+<h1 id="vs-c">VS C++</h1>
+<h2 id="&#x6807;&#x8BC6;&#x7B26;">&#x6807;&#x8BC6;&#x7B26;</h2>
+<p>&#x6807;&#x8BC6;&#x7B26;&#x4E0E;C++&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x4E0B;&#x5212;&#x7EBF;&#x4F5C;&#x4E3A;&#x6807;&#x8BC6;&#x7B26;&#x5728;Ptyhon&#x4E2D;&#x6709;&#x7279;&#x522B;&#x7684;&#x7528;&#x9014; _A\ __A _A_ __A__</p>
+<p>python&#x4FDD;&#x7559;&#x5B57;&#x7B26;(python&#x5173;&#x952E;&#x5B57;)</p>
+<pre><code>and    exec    not
+assert    finally    or
+break    for    pass
+class    from    print
+continue    global    raise
+def    if    return
+del    import    try
+elif    in    while
+else    is    with
+except    lambda    yield
+</code></pre><h2 id="&#x4EE3;&#x7801;&#x5757;">&#x4EE3;&#x7801;&#x5757;</h2>
+<p>python&#x4F7F;&#x7528;&#x4E25;&#x683C;&#x7684;&#x7F29;&#x8FDB;&#x6765;&#x89E3;&#x6790;&#x4EE3;&#x7801;&#x5757;&#xFF0C;&#x7F29;&#x8FDB;&#x5C3A;&#x5BF8;&#x53EF;&#x914D;&#x7F6E;(&#x4E00;&#x822C;&#x4E3A;&#x5355;&#x4E2A;&#x5236;&#x8868;&#x7B26;)&#xFF0C;&#x4F46;&#x5FC5;&#x987B;&#x4E00;&#x81F4;&#x3002;</p>
+<h2 id="&#x5F15;&#x53F7;">&#x5F15;&#x53F7;</h2>
+<p>&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5355;&#x5F15;&#x53F7;&#x548C;&#x4E09;&#x5F15;&#x53F7;&#x6765;&#x8868;&#x793A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4E09;&#x5F15;&#x53F7;&#x53EF;&#x8DE8;&#x884C;</p>
+<h2 id="&#x6CE8;&#x91CA;">&#x6CE8;&#x91CA;</h2>
+<p>&#x4F7F;&#x7528;#&#xFF0C;&#x53EF;&#x4EE5;&#x653E;&#x5728;&#x7A7A;&#x767D;&#x8D77;&#x59CB;&#x884C;&#x4E5F;&#x53EF;&#x4EE5;&#x653E;&#x5728;&#x8BED;&#x53E5;&#x540E;&#x9762;&#xFF0C;&#x5728;&#x7A7A;&#x767D;&#x884C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E09;&#x4E2A;&#x5355;&#x5F15;&#x53F7;&#x548C;&#x4E09;&#x4E2A;&#x53CC;&#x5F15;&#x53F7;&#x5F00;&#x5934;&#x548C;&#x7ED3;&#x5C3E;&#x8868;&#x793A;&#x591A;&#x884C;&#x6CE8;&#x91CA;</p>
+<h2 id="&#x8BED;&#x53E5;">&#x8BED;&#x53E5;</h2>
+<p>python&#x8BED;&#x53E5;&#x7ED3;&#x675F;&#x540E;&#x7684;&#x5206;&#x53F7;&#x53EF;&#x9009;&#xFF0C;&#x4F46;&#x4E00;&#x884C;&#x5199;&#x591A;&#x4E2A;&#x8BED;&#x53E5;&#x65F6;&#x5FC5;&#x987B;&#x4F7F;&#x7528;</p>
+<p>&#x547D;&#x4EE4;&#x884C;&#xFF1A;
+$python </p>
+<blockquote>
+<blockquote>
+<p>&gt;</p>
+</blockquote>
+</blockquote>
+<p>&#x547D;&#x4EE4;&#x884C;&#x89E3;&#x6790;&#xFF1A;
+$python xx.py</p>
+<p>&#x4E00;&#x822C;.py&#x6587;&#x4EF6;&#x4E2D;&#x6CA1;&#x6709;&#x5728;&#x5934;&#x90E8;&#x58F0;&#x660E;&#x89E3;&#x6790;&#x811A;&#x672C;&#x53CA;&#x8DEF;&#x5F84;&#x65F6;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x89E3;&#x6790;</p>
 <h2 id="key-word">Key word</h2>
 <p>Python
 Guido
@@ -799,24 +853,6 @@ Automated management</p>
 <p>There should be one - and preferably only one - obvious way to do it</p>
 <p>Format fasten</p>
 <p>Constraint syntax format</p>
-<h2 id="official-web-site">Official web site</h2>
-<p><a href="https://www.python.org" target="_blank">https://www.python.org</a></p>
-<h2 id="install">Install</h2>
-<pre><code>Linux (for source file):
-    ./configure
-    make
-    make install
-
-Windows:
-    Windows x86_64 MSI installer
-    Windows x86 MSI installer
-
-MAC:
-    omit
-</code></pre><p>Note : to config evn</p>
-<h2 id="type">Type</h2>
-<p>Python 2.x (2.7.x classical and the last 2.x version (at 2020.1.1))
-Ptyhon 3.x (New)</p>
 <h2 id="compare-with-c">Compare with C++</h2>
 <p>key words:
     and exec not
@@ -1575,7 +1611,7 @@ __xxx__    -&gt; system internal
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.5.1.1","depth":3,"next":{"title":"C++","level":"1.5.1.2","depth":3,"path":"pages/C++.md","ref":"pages/C++.md","articles":[]},"previous":{"title":"Programming language","level":"1.5.1","depth":2,"ref":"","articles":[{"title":"Python","level":"1.5.1.1","depth":3,"path":"pages/Python.md","ref":"pages/Python.md","articles":[]},{"title":"C++","level":"1.5.1.2","depth":3,"path":"pages/C++.md","ref":"pages/C++.md","articles":[]},{"title":"C","level":"1.5.1.3","depth":3,"path":"pages/C.md","ref":"pages/C.md","articles":[]},{"title":"ASM","level":"1.5.1.4","depth":3,"ref":"","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters"],"pluginsConfig":{"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","back-to-top-button":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/Python.md","mtime":"2020-03-26T01:55:11.254Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-08T11:11:00.779Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.5.1.1","depth":3,"next":{"title":"C++","level":"1.5.1.2","depth":3,"path":"pages/C++.md","ref":"pages/C++.md","articles":[]},"previous":{"title":"Programming language","level":"1.5.1","depth":2,"ref":"","articles":[{"title":"Python","level":"1.5.1.1","depth":3,"path":"pages/Python.md","ref":"pages/Python.md","articles":[]},{"title":"C++","level":"1.5.1.2","depth":3,"path":"pages/C++.md","ref":"pages/C++.md","articles":[]},{"title":"C","level":"1.5.1.3","depth":3,"path":"pages/C.md","ref":"pages/C.md","articles":[]},{"title":"ASM","level":"1.5.1.4","depth":3,"ref":"","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button"],"pluginsConfig":{"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/Python.md","mtime":"2020-04-09T09:21:30.285Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-09T12:28:18.393Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1618,6 +1654,10 @@ __xxx__    -&gt; system internal
     
         
         <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
         
     
         

@@ -21,6 +21,7 @@
 
 * [Linux]()
 	* [GNU Tools]()
+		* [GCC](pages/GCC.md)
 		* [Makefile]()
 		* [Git](pages/Git.md)
 		* [Markdown]()

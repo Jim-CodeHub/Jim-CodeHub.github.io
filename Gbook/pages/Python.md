@@ -1,4 +1,73 @@
-# Introduction
+# 1 Introduction
+
+Python是解释型、面向对象、动态数据类型的高级编程脚本语言，由*Guido van Rossum*发明与1989年，开源且使用GPL协议。[Official website](https://www.python.org).
+
+Tips : Paython目前有两个版本线，2.x和3.x，官方宣布2020年1月1日，停止2.x的更新（最后版本2.7）
+
+## 1.1 Feature
+
+Easy, Tortable，Extensible, Terminal mode, Rich Libs, Glue lang, Database, GUI, AI, Big data, Game, Web... ...
+
+## 1.2 
+
+
+
+
+
+
+
+
+# VS C++
+
+## 标识符
+标识符与C++相同，但下划线作为标识符在Ptyhon中有特别的用途 \_A\ \_\_A \_A\_ \_\_A\_\_
+
+python保留字符(python关键字)
+
+	and	exec	not
+	assert	finally	or
+	break	for	pass
+	class	from	print
+	continue	global	raise
+	def	if	return
+	del	import	try
+	elif	in	while
+	else	is	with
+	except	lambda	yield
+
+## 代码块
+python使用严格的缩进来解析代码块，缩进尺寸可配置(一般为单个制表符)，但必须一致。
+
+## 引号
+还可以使用单引号和三引号来表示字符串，三引号可跨行
+
+## 注释
+使用#，可以放在空白起始行也可以放在语句后面，在空白行可以使用三个单引号和三个双引号开头和结尾表示多行注释
+
+## 语句
+python语句结束后的分号可选，但一行写多个语句时必须使用
+
+
+
+
+
+
+
+
+
+命令行：
+$python 
+>>>
+
+命令行解析：
+$python xx.py
+
+一般.py文件中没有在头部声明解析脚本及路径时使用这种方法解析
+
+
+
+
+
 
 ## Key word
 
@@ -25,28 +94,6 @@ There should be one - and preferably only one - obvious way to do it
 Format fasten
 
 Constraint syntax format
-
-## Official web site
-https://www.python.org
-
-## Install
-	Linux (for source file):
-		./configure
-		make
-		make install
-	
-	Windows:
-		Windows x86_64 MSI installer
-		Windows x86 MSI installer
-
-	MAC:
-		omit
-
-Note : to config evn
-
-## Type
-Python 2.x (2.7.x classical and the last 2.x version (at 2020.1.1))
-Ptyhon 3.x (New)
 
 ## Compare with C++
 

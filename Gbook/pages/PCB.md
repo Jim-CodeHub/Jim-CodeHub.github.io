@@ -378,7 +378,105 @@ FCT测试由又可称为PCBA功能测试，是指对目标内部功能的测试�
 
 ## <span id = "Appendix-D"> Appendix-D：Common component packaging </span>
 
-------
+
+
+<table width="100%" align="center" text-align="center">
+
+<tr>
+<th rowspan="2"> Class </th> 
+<th rowspan="2"> Type </th> 
+<th rowspan="2"> Name </th> 
+<th colspan="2"> Picture </th> 
+</tr>
+
+<tr>
+<th> Footprint </th> 
+<th> 3D </th> 
+</tr>
+
+<tr>
+<td align="center", valign="center"> surface mount </td>
+<td align="center", valign="center"> BGA/PAC </td>
+<td align="center", valign="center"> Ball Grid Array </td>
+<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/BGA-PCB.png.png">BGA</a> </td>
+<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/BGA-3D.png.png">BGA</a> </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> surface mount </td>
+<td align="center", valign="center"> QFP </td>
+<td align="center", valign="center"> Quad Flat Package </td>
+<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/LQFP-PCB.png">LQFP</a> </td>
+<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/LQFP-3D.png">LQFP</a> </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> surface mount </td>
+<td align="center", valign="center"> SOT </td>
+<td align="center", valign="center"> Small Out-Line Transistor </td>
+<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/SOT-PCB.png">SOT</a> </td>
+<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/SOT-3D.png">SOT</a> </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> surface mount </td>
+<td align="center", valign="center"> SMD </td>
+<td align="center", valign="center"> Surface mount devices </td>
+<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/SMD-PCB.png">SMD</a> </td>
+<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/SMD-3D.png">SMD</a> </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> surface mount / inline </td>
+<td align="center", valign="center"> SOP/SO </td>
+<td align="center", valign="center"> Small Out-Line Package </td>
+<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/SOP-PCB.png">SOP</a> </td>
+<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/SOP-3D.png">SOP</a> </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> surface mount / inline </td>
+<td align="center", valign="center"> TO </td>
+<td align="center", valign="center"> Transistor Outline Package </td>
+<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/TO-PCB.png">TO</a> </td>
+<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/TO-3D.png">TO</a> </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> inline </td>
+<td align="center", valign="center"> SIP </td>
+<td align="center", valign="center"> single in-line package </td>
+<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/SIP-PCB.png">SIP</a> </td>
+<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/SIP-3D.png">SIP</a> </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> inline </td>
+<td align="center", valign="center"> AXIAL </td>
+<td align="center", valign="center"> - </td>
+<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/AXIAL-PCB.png">AXIAL</a> </td>
+<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/AXIAL-3D.png">AXIAL</a> </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> inline </td>
+<td align="center", valign="center"> DIP/DIL </td>
+<td align="center", valign="center"> dual in-line package </td>
+<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/DIP-PCB.png">DIP</a> </td>
+<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/DIP-3D.png">DIP</a> </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> Binding </td>
+<td align="center", valign="center"> COB </td>
+<td align="center", valign="center"> Chip On Board </td>
+<td align="center", valign="center"> - </td>
+<td align="center", valign="center"> - </td>
+</tr>
+
+</table>
+
+---
 
 ## <span id = "Appendix-E"> Appendix-E：HUAWEI PCB design specification </span>
 

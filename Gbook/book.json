@@ -11,7 +11,8 @@
 		"popup",
 		"-sharing",
 		"sharing-plus",
-		"expandable-chapters"
+		"expandable-chapters",
+		"page-toc-button"
 	],
 
 	"pluginsConfig": {
@@ -44,6 +45,11 @@
                 "viber",
                 "whatsapp"
             ]
-        }
+        },
+		        
+		"page-toc-button": {
+			"maxTocDepth": 4,
+			"minTocSize": 2
+		}
 	}
 }
