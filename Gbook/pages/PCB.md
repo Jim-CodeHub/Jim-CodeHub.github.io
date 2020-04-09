@@ -398,8 +398,8 @@ FCT测试由又可称为PCBA功能测试，是指对目标内部功能的测试�
 <td align="center", valign="center"> surface mount </td>
 <td align="center", valign="center"> BGA/PAC </td>
 <td align="center", valign="center"> Ball Grid Array </td>
-<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/BGA-PCB.png.png">BGA</a> </td>
-<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/BGA-3D.png.png">BGA</a> </td>
+<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/BGA-PCB.png">BGA</a> </td>
+<td align="center", valign="center"> <a href="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/PCB/Footprint/BGA-3D.png">BGA</a> </td>
 </tr>
 
 <tr>
