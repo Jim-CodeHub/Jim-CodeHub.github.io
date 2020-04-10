@@ -1,3 +1,52 @@
+
+
+
+词来源
+1. 来自神话，如希腊神话
+2. 来自国家，如古罗马、日耳曼、斯拉夫、凯尔特、中国广东、日本、法国、德国、拉丁等等
+3. 词缀造词，前缀和后缀 
+
+
+
+
+
+
+# 2 Words
+
+## 2.1 Source class
+
+### 2.1.1 China
+
+- ketchup [‘ketʃəp] n. 番茄酱
+
+来自广东，广东称番茄酱为茄汁，粤语发音与英文类似
+
+### 2.1.2 Japan
+
+## 2.2 Affix class
+
+## 2.2.1 Prefix class
+
+### 2.2.1.1 con- & com- 表聚集
+
+## 2.3 Suffix class
+
+## 2.3 Myth class 
+
+### 2.3.1 Pro
+
+
+
+
+
+
+
+
+
+
+
+
+
 Aim : IELTS 7.5+
 
 # Teacher Yang 全民英语训练营 
@@ -76,6 +125,38 @@ commun 与 common相关，community强调的是一群人共同居住的地方，
 
 - continent n.大陆
 与continue相关，表示连接在一起的土地，也指不包括英国和爱尔兰的欧洲大陆
+
+# Day 34 *Nick's Manhattan Beach*
+
+- Manhattan [mæn’hæt(ə)n] n. 曼哈顿（美国纽约辖区和中心区）
+
+- cocktail [ˈkɑ:kteɪl] n. 鸡尾酒
+cock + tail 公鸡 + 尾巴
+
+- wine 一般指葡萄酒，来自vine葡萄树
+
+- spacious 宽敞的
+来自space
+
+- crave vt/vi 渴望
+比desire强烈，是desire strongly的感觉
+
+- patio 露台
+
+- exhibition 展览会
+
+ex 表示向外，hib与hold拿相关，即表示将东西拿出去，即展览，动词exhibit
+
+inhibit 含义反之：印制、约束、阻碍等
+
+- beverage 饮品
+
+bever 与beer啤酒相关
+
+- impeccable  无瑕疵的，无可挑剔的，无懈可击的
+
+im pec - pick 无法 挑选
+
 
 
 
