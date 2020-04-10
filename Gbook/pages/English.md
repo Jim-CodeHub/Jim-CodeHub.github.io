@@ -198,3 +198,29 @@ Tips : 一个句子一定是主谓宾组成的，但通常有省略成分。主�
 
 Tips : 词 是 句子的组成成分，属于句子的子集。
 
+---
+
+HP销售文案示例
+
+- NPI - New product introduction 新产品介绍
+
+如：HP SmartStream Direct-to-Finish NPI ，惠普 SmartStream Direct-to-Finish 新品介绍
+
+- Sales team 销售团队
+
+- bottleneck 瓶颈 : bottle + neck
+
+- streamline n.流线 v.使流线， 简化...的过程
+
+- speed-to-market 加速上市，表示将产品加速的推向市场
+
+- Front End [计]前端
+
+- Pre- requirements 先决条件
+
+- APJ Asia Pacific Japan 亚太和日本地区
+
+亚太 ： 亚洲及太平洋地区，中国、中国接壤和附近间接接壤地区（俄罗斯远东地区、新加坡、文莱、柬埔寨、泰国、印度尼西亚、菲律宾、越南、朝鲜等等）、朝鲜、韩国、澳大利亚、新西兰等
+
+
+
