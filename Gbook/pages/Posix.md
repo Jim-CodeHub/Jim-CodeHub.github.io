@@ -95,11 +95,11 @@ IN_NONBLOCK/IN_CLOEXEC can be set for *flags* to perform block and close-on-exec
 
 On success, return a new file descriptor. On error, -1 is returned, and errno is set to indicate the error :
 
-- EINVAL (inotify_init1()) An invalid value was specified in flags.
-- EMFILE The user limit on the total number of inotify instances has been reached.
-- EMFILE The per-process limit on the number of open file descriptors has been reached.
-- ENFILE The system-wide limit on the total number of open files has been reached.
-- ENOMEM Insufficient kernel memory is available.
+- EINVAL - (inotify_init1()) An invalid value was specified in flags.
+- EMFILE - The user limit on the total number of inotify instances has been reached.
+- EMFILE - The per-process limit on the number of open file descriptors has been reached.
+- ENFILE - The system-wide limit on the total number of open files has been reached.
+- ENOMEM - Insufficient kernel memory is available.
 
 #### 1.1.1.3 Note
 
@@ -117,116 +117,117 @@ Add a new watch or modifies an existing watch for the file or directory whose lo
 
 On success, return a nonnegative watch descriptor.  On error, -1 is returned and errno is set appropriately :
 
-- EACCES Read access to the given file is not permitted.
-- EBADF  The given file descriptor is not valid.
-- EFAULT *pathname* points outside of the process's accessible address space.
-- EINVAL The given event mask contains no valid events; or fd is not an inotify file descriptor.
-- ENAMETOOLONG *pathname* is too long.
-- ENOENT A directory component in *pathname* does not exist or is a dangling symbolic link.
-- ENOMEM Insufficient kernel memory was available.
-- ENOSPC The user limit on the total number of inotify watches was reached or the kernel failed to allocate a needed resource.
+- EACCES - Read access to the given file is not permitted.
+- EBADF  - The given file descriptor is not valid.
+- EFAULT - *pathname* points outside of the process's accessible address space.
+- EINVAL - The given event mask contains no valid events; or fd is not an inotify file descriptor.
+- ENAMETOOLONG - *pathname* is too long.
+- ENOENT - A directory component in *pathname* does not exist or is a dangling symbolic link.
+- ENOMEM - Insufficient kernel memory was available.
+- ENOSPC - The user limit on the total number of inotify watches was reached or the kernel failed to allocate a needed resource.
 
-#### 1.1.1.3 read() 
+#### 1.1.2.3 read() 
 
-`ssize_t read(int fd, void *buf, size_t count)` SHALL called to featch filesystem events from structure `struct inotify_event{}` :
+`ssize_t read(int fd, void *buf, size_t count)` SHALL called to featch filesystem events from structure `struct inotify_event{}` :  
 
-`
-struct inotify_event{
-	int      wd;       /* Watch descriptor */
-	uint32_t mask;     /* Bits, mask describing event */ 
-	uint32_t cookie;   /* Unique cookie associating related events only for IN_MOVED_FROM and IN_MOVED_TO */
-	uint32_t len;      /* Size of name field (including '\0') */
-	char     name[];   /* Optional terminated with '\0', exist only when file events watched and reaturn, and may have multi '\0' endings to alignment content */ 
-}
-`
+```
+struct inotify_event{  
+	int      wd;       /* Watch descriptor */ 
+	uint32_t mask;     /* Bits, mask describing event */  
+	uint32_t cookie;   /* Unique cookie associating related events only for IN_MOVED_FROM and IN_MOVED_TO */  
+	uint32_t len;      /* Size of name field (including '\0') */  
+	char     name[];   /* Optional terminated with '\0', exist only when file events watched and reaturn, and may have multi '\0' endings to alignment content */  
+}  
+```
 
-Object		| Macro				| Events description					| Note 
-:-:			| :-:				| :-:									| :-:
-file		| IN_ACESS			| accesse								| +
-file		| IN_CLOSE_WRITE	| opene for writing was closed			| +
-file		| IN_MODIFY			| modify								| +
-file		| IN_MOVED_FROM		| rename an old name					| +
-file		| IN_MOVED_TO		| rename a new name						| +
-file		| IN_MOVE			| = IN_MOVED_FROM | IN_MOVED_TO			| +
-file & dir	| IN_CREATE			| create								| +
-file & dir  | IN_DELETE			| delete								| + 
-file & dir  | IN_OPEN			| open									| *
-file & dir	| IN_CLOSE_NOWRITE	| opened for non-writing was closed		| * 
-file & dir  | IN_CLOSE			| = IN_CLOSE_WRITE | IN_CLOSE_NOWRITE	| *
-file & dir	| IN_ATTRIB			| attributes were changed				| *
-file & dir  | IN_MOVE_SELF		| -										| * 
-file & dir  | IN_DELETE_SELF	| -										| *
+Object		| Macro				| Events description						| Note 
+:-:			| :-:				| :-:										| :-:
+file		| IN_ACESS			| accesse									| +
+file		| IN_CLOSE_WRITE	| opene for writing was closed				| +
+file		| IN_MODIFY			| modify									| +
+file		| IN_MOVED_FROM		| rename an old name						| +
+file		| IN_MOVED_TO		| rename a new name							| +
+file		| IN_MOVE			| = IN_MOVED_FROM &#124 IN_MOVED_TO			| +
+file & dir	| IN_CREATE			| create									| +
+file & dir  | IN_DELETE			| delete									| + 
+file & dir  | IN_OPEN			| open										| *
+file & dir	| IN_CLOSE_NOWRITE	| opened for non-writing was closed			| * 
+file & dir  | IN_CLOSE			| = IN_CLOSE_WRITE &#124 IN_CLOSE_NOWRITE	| *
+file & dir	| IN_ATTRIB			| attributes were changed					| *
+file & dir  | IN_MOVE_SELF		| -											| * 
+file & dir  | IN_DELETE_SELF	| -											| *
+\-			| IN_ALL_EVENTS		| monitor all events						| for add
+\-			| IN_EXCL_UNLINK	| except unlink events (since Linux 2.6.36) | for add
+\-			| IN_DONT_FOLLOW	| - (since Linux 2.6.15)					| for add
+\-			| IN_MASK_ADD		| append instead cover for the same pathname| for add
+\-			| IN_ONE_SHOT		| remove it once occure (since Linux 2.6.16)| for add
+\-			| IN_ONLYDIR		| monitor only if it's directory			| for add
+\-			| IN_IGNORED		| objcet which monitored has been removed	| for read
+\-			| IN_ISDIR			| about directory							| for read
+\-			| IN_Q_OVERFLOW		| wd == -1									| for read
+\-			| IN_UNMOUNT		| filesystem unmount						| for read  
 
 <br><center> <font color=gray> mask of structure inotify_event and for inotify_add_watch() param </font> </center><br>
 
 Tips : \* refer that both for the directory itself and for objects inside the directory and + refer that only for objects inside the directory.
 
-#### 1.1.1.4 Note 
-, and the param *buf* should be set bigger enough for the reason of the member of structure inotify_event <u>name</u>. 
+#### 1.1.2.4 Note 
+
+The param *buf* of read() should be set bigger enough for the reason of the member of structure inotify_event <u>name</u>, otherwise 0 will be return for the kernel version 2.6.21and EINVAL will be set for errno for the kernel version 2.6.21. 
+
+### 1.1.3 inotify_rm_watch(int fd, int wd)
+
+Remove an existing watch (*wd*) from an inotify instance which associated with the file descriptor *fd*.
+
+#### 1.1.3.1 Parameters
+
+-
+
+#### 1.1.3.2 Return value 
+
+On success, inotify_rm_watch() returns zero.  On error, -1 is returned and errno is set to indicate the cause of the error:
+
+- EBADF - fd is not a valid file descriptor.
+- EINVAL - The watch descriptor wd is not valid; or fd is not an inotify file descriptor.
+
+#### 1.1.3.3 close()
+
+The kernel will release resource only if function *close(int fd)* is called. 
+
+#### 1.1.3.4 Note
+
+Removing a watch causes an IN_IGNORED event to be generated for this watch descriptor.
+
+### 1.1.4 Config 
+
+- /proc/sys/fs/inotify/max_queued_events, config the max queue events
+- /proc/sys/fs/inotify/max_user_instances, config the max user instance
+- /proc/sys/fs/inotify/max_user_watches, config the max user watch
+
+### 1.1.5 Bug & Note
+BUG:
+在inotify_rm_watch从监视列表中删除项目后，如果没有调用close关闭文件描述符，那么该项目已产生的事件仍然是可读取的，
+，如果inotify_add_watch在列表中增加项目，则很可能分配到那些删除但未关闭的文件描述符，如果此时用户又去读，那么读到的将不是预期的
+。避免这个问题的方法是要么删除之间就把该读的读取，删除后就关闭文件描述符，那么删除后就不要在读取了。
 
 	如果read是在阻塞模式下，没有事件发生时将一直阻塞，直到事件发生或者被signal信号中断。
 
 	被信号中断的情况是read函数调用失败（错误为EINTR）导致的系统自发发送的。
 
-
-	read的出参buffer一定要设定的足够大：sizeof(struct inotify_event) + NAME_MAX + 1，否则对于2.6.21之前的内核read将返回0，2.6.21及之后的内核将出错EINVAL
-
-
-
-
-	/proc/sys/fs/inotify/max_queued_events
-	/proc/sys/fs/inotify/max_user_instances
-	/proc/sys/fs/inotify/max_user_watches
-
-inotify_rm_watch()
-	从监视列表中移除监视项目
-
-
-close()
-	调用close关闭文件描述符，内核才会真正释放资源。
-
-
-
-监视的事件(mask表示的值，和inotify_add_watch()的mask参数值)：
-
-
-
-注意：Inotify是基于inode的，可以为所监视的文件在其它任意目录建立软链接，任何对软链接的操作如同操作文件本身
-
-- inotify_add_watch 可能用到以下宏:
-
-IN_ALL_EVENTS 监视所有事件
-
-IN_EXCL_UNLINK (since Linux 2.6.36)，不监视目录中的子项的unlink事件
-
-IN_DONT_FOLLOW (since Linux 2.6.15)，如果所监视的是符号链接，不要解除pathname的引用 (TBD)
-
-IN_MASK_ADD pathname的实例已经存在了，不要覆盖它，而是增加一个监视
-IN_ONE_SHOT 所监视事件发生一次就不再监视（从监视列表中删除）, 2.6.16之后
-
-IN_ONLYDIR pathname是目录才监视，负责不监视
-
-- read mark返回可能还有以下宏	
-
-IN_IGNORED 所监视的对象已经被删除(对象删除包含删除、移动到其它目录、文件系统umount等)，或其事件被删除（inotify_rm_watch)
-IN_ISIDR 事件是关于目录的
-IN_Q_OVERFLOW 事件队列溢出了，此时wd=-1
-IN_UNMOUNT 如上，文件系统umount了。
-
 NOTE:
 fallocate函数在3.19之前不产生事件
 
 NOTE：
-inotify 可以联合select、epoll和poll来编写应用程序
-
-	
-
 
 inotify API不报告由于mmap（2）、msync（2）和munmap（2）而可能发生的文件访问和修改。
 
 inotify 监视文件是通过其文件名作为ID，如果文件名改变（且监视列表中没有这个文件名）那么将失去对该文件的监视
 
--程序示例
+注意：Inotify是基于inode的，可以为所监视的文件在其它任意目录建立软链接，任何对软链接的操作如同操作文件本身
+
+### 1.1.6 Code example
+
+```
 #include <errno.h>
 #include <poll.h>
 #include <stdio.h>
@@ -240,8 +241,7 @@ inotify 监视文件是通过其文件名作为ID，如果文件名改变（且�
    argv is the list of watched directories.
    Entry 0 of wd and argv is unused. */
 
-	static void
-handle_events(int fd, int *wd, int argc, char* argv[])
+static void handle_events(int fd, int *wd, int argc, char* argv[])
 {
 	/* Some systems cannot read integer variables if they are not
 	   properly aligned. On other systems, incorrect alignment may
@@ -308,16 +308,15 @@ handle_events(int fd, int *wd, int argc, char* argv[])
 
 			/* Print type of filesystem object */
 
-                  if (event->mask & IN_ISDIR)
-					                         printf(" [directory]\n");
-				                     else
-										                        printf(" [file]\n");
+			if (event->mask & IN_ISDIR)
+				printf(" [directory]\n");
+			else
+				printf(" [file]\n");
 		}
 	}
 }
 
-	int
-main(int argc, char* argv[])
+int main(int argc, char* argv[])
 {
 	char buf;
 	int fd, i, poll_num;
@@ -393,36 +392,32 @@ main(int argc, char* argv[])
 
 			if (fds[0].revents & POLLIN) {
 
-	/* Console input is available. Empty stdin and quit */
+				/* Console input is available. Empty stdin and quit */
 
-	while (read(STDIN_FILENO, &buf, 1) > 0 && buf != '\n')
-		continue;
-	break;
+				while (read(STDIN_FILENO, &buf, 1) > 0 && buf != '\n')
+					continue;
+				break;
+			}
+
+			if (fds[1].revents & POLLIN) {
+
+				/* Inotify events are available */
+
+				handle_events(fd, wd, argc, argv);
+			}
+		}
+	}
+
+	printf("Listening for events stopped.\n");
+
+	/* Close inotify file descriptor */
+
+	close(fd);
+
+	free(wd);
+	exit(EXIT_SUCCESS);
 }
+```
 
-if (fds[1].revents & POLLIN) {
-
-	/* Inotify events are available */
-
-	handle_events(fd, wd, argc, argv);
-}
-}
-}
-
-printf("Listening for events stopped.\n");
-
-/* Close inotify file descriptor */
-
-close(fd);
-
-free(wd);
-exit(EXIT_SUCCESS);
-}
-
-
-BUG:
-在inotify_rm_watch从监视列表中删除项目后，如果没有调用close关闭文件描述符，那么该项目已产生的事件仍然是可读取的，
-，如果inotify_add_watch在列表中增加项目，则很可能分配到那些删除但未关闭的文件描述符，如果此时用户又去读，那么读到的将不是预期的
-。避免这个问题的方法是要么删除之间就把该读的读取，删除后就关闭文件描述符，那么删除后就不要在读取了。
-
+Tips : function `select()`, `poll()` and `epoll()` can be used for inotify.
 
