@@ -15,7 +15,7 @@
 
 ### 2.5.1 Signals 
 
-Signal is a 'soft interrupt'.
+Signal is a 'soft interrupt', which used to handle asynchronous events.
 
 #### 2.5.1.2 Send Signals 
 
@@ -36,6 +36,100 @@ Signal is a 'soft interrupt'.
 - 捕捉信号：
 	- signal(SIG, CALLBACK); 同一个信号注册多次则最后一个回调函数有效，该函数适合单信号处理环境
 	- sigaction(SIG, ACT, OLDACT); 
+
+
+## 3 Asyn I/O (AIO)
+
+## 3.1 I/O Multiplexing 
+
+	背景：
+	对于文件描述符的状态（如socket的文件描述符、open的文件描述符等等，系统并不主动告诉我们任何信息，文件描述符关联的文件发生的任何变化都需要我们主动去查询，
+
+	有“阻塞+多进程/多线程”、“非阻塞查询"和”异步I/O“可选，但这些方法都不理想
+
+	I/O多路复用是单进程下的 信号、轮询等多种方式的组合体.
+
+
+
+	I/O多路复用 - 构造一个描述符列表，调用特定函数查询这些列表，直到这些描述符中有一个已经准备好进行I/O时才返回
+
+	select, pselect, 和 poll 是posix标准内的，eselect在Linux中存在
+
+- select
+
+	int select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout);
+
+	timeout - 在描述符列表中没有可读、可写、异常时，函数阻塞的时长，或描述为“没有捕捉到信号”等待的时长。 
+			  NULL为永久等待，即阻塞模式
+			  timeout->tv_sec==0 && timeout->tvu_sec=0 不等待，轮询一次所有的文件描述符就返回，即非阻塞模式
+			  对上述成员赋值即表示等待固定时长，如果超时后返回值为0表示没有可用fd
+
+			  文件描述符是否是阻塞的，不会影响select，它的超时只由timeout决定
+
+	readfds/writefds/exceptfds 分别为读、写、异常文件描述符集的指针，POSIX对于fd_set类型的实现是可选择的，因为实际应用中并不会
+	直接使用该结构体，而是调用如下函数宏：
+
+	int  FD_ISSET(int fd, fd_set *set); //判断文件描述符是否属于该集合
+	void FD_SET(int fd, fd_set *set);	//添加文件描述符
+	void FD_CLR(int fd, fd_set *set);   //删除文件描述符
+	void FD_ZERO(fd_set *set);			//删除所有文件描述符
+
+	nfds - 最大文件描述符编号+1, 因为文件描述符编号从0开始。该参数是一个范围限制，如果设置为N，则上述三个集合的文件描述符都必须小于N才能被检测，
+	非常保险的做法是设置FD_SIZE，该宏表示支持的最大文件描述符值。通常通过打开的文件描述符做比较，来确定哪一个才是最大的。
+
+	返回值：
+
+	-1 出错，返回0（超时没有fd准备好），>0表示已经准备好了的文件描述符的数量，如果同一个描述符同时准备好读和写则返回值对其计数两次
+
+	准备好的含义是，select返回之后（大于0），可以read/write，且不会阻塞。另外对于普通文件，read、write和异常文件描述符总是准备好的
+
+
+	注意：select 遇到文件尾端时仍然认为是可读的，直到读完该尾端。select返回后，调用read返回0，因为到达了尾端
+
+- pselect
+
+	int pselect(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, const struct timespec *timeout, const sigset_t *sigmask);
+
+	pselect 将超时类型改为timspec，能精确到纳秒， 并增加了sigset_t类型，即信号量屏蔽集，
+			当sigmask为NULL时，pselect与select表现相同
+			信号屏蔽字，即信号屏蔽集，被屏蔽的信号不能发送给pselect所在进程（实际上是阻塞信号，因为恢复后信号仍然可用，被阻塞的信号仍然被发送），返回时恢复屏蔽信号。
+
+- poll 
+	
+	poll支持任何类型的文件描述符（而select只支持读、写和异常的文件描述符），
+
+	int poll(struct pollfd *fds, nfds_t nfds, int timeout);
+
+	fds应该是一个数组，pollfd结构体如下：
+
+	struct pollfd {
+		int fd;		//要检测的文件描述符，当设置小于0时，poll将忽略
+		short event;	//告诉用户感兴趣的事件
+		short revents; //内核返回给用户当前发生的事件
+	};
+
+   nfds表示数组元素个数
+
+   events可选值为POLLIN/.....以及它们的或值
+   reevents另外可返回POLLERR/POLLHUP/POLLNVAL异常，这三个值events不能设置
+
+   POLLUP表示挂断，此时只能读文件描述符，而不能写
+
+
+   timeout = -1 表示永久等待，当有文件描述符准备好时返回一个+值，如果收到信号中断则返回-1, errno = EINTR。
+
+   = 0 不等待
+
+   >0 毫秒值，如果超时未准备好则poll返回0
+
+   与select一样，文件描述符是否阻塞不影响poll，只由timeout决定
+
+
+
+
+
+	
+
 
 
 
@@ -142,7 +236,7 @@ struct inotify_event{
 
 Object		| Macro				| Events description						| Note 
 :-:			| :-:				| :-:										| :-:
-file		| IN_ACESS			| accesse									| +
+file		| IN_ACCESS			| accesse									| +
 file		| IN_CLOSE_WRITE	| opene for writing was closed				| +
 file		| IN_MODIFY			| modify									| +
 file		| IN_MOVED_FROM		| rename an old name						| +
@@ -190,11 +284,7 @@ On success, inotify_rm_watch() returns zero.  On error, -1 is returned and errno
 - EBADF - fd is not a valid file descriptor.
 - EINVAL - The watch descriptor wd is not valid; or fd is not an inotify file descriptor.
 
-#### 1.1.3.3 close()
-
-The kernel will release resource only if function *close(int fd)* is called. 
-
-#### 1.1.3.4 Note
+#### 1.1.3.3 Note
 
 Removing a watch causes an IN_IGNORED event to be generated for this watch descriptor.
 
@@ -205,6 +295,9 @@ Removing a watch causes an IN_IGNORED event to be generated for this watch descr
 - /proc/sys/fs/inotify/max_user_watches, config the max user watch
 
 ### 1.1.5 Bug & Note
+
+NOTE: 所有wd删除后，调用close函数关闭inofiy fd，以释放内核资源
+
 BUG:
 在inotify_rm_watch从监视列表中删除项目后，如果没有调用close关闭文件描述符，那么该项目已产生的事件仍然是可读取的，
 ，如果inotify_add_watch在列表中增加项目，则很可能分配到那些删除但未关闭的文件描述符，如果此时用户又去读，那么读到的将不是预期的
@@ -224,6 +317,8 @@ inotify API不报告由于mmap（2）、msync（2）和munmap（2）而可能发
 inotify 监视文件是通过其文件名作为ID，如果文件名改变（且监视列表中没有这个文件名）那么将失去对该文件的监视
 
 注意：Inotify是基于inode的，可以为所监视的文件在其它任意目录建立软链接，任何对软链接的操作如同操作文件本身
+
+由于 inotify 是基于 inode 的，所以 mv 后的目录还在监听中，并且 wd 没有变化，所以目录下文件的改动还是会触发事件。
 
 ### 1.1.6 Code example
 
@@ -421,3 +516,26 @@ int main(int argc, char* argv[])
 
 Tips : function `select()`, `poll()` and `epoll()` can be used for inotify.
 
+
+
+网上的列表
+
+Constant Name	Linux Name	Interpretation
+Access	IN_ACCESS	Object accessed
+Modify	IN_MODIFY	Object modified
+Attributes	IN_ATTRIB	Object attributes modified
+Open	IN_OPEN	File opened
+CloseWrite	IN_CLOSE_WRITE	File closed after contents changed
+CloseOther	IN_CLOSE_NOWRITE	File closed without contents changed
+Close	IN_CLOSE	File closed
+MoveFrom	IN_MOVED_FROM	Object moved from location
+MoveTo	IN_MOVED_TO	Object moved to location
+Move	IN_MOVE	Object moved
+MoveSelf	IN_MOVE_SELF	Object being monitored is deleted
+Create	IN_CREATE	Object created
+Delete	IN_DELETE	Object deleted
+DeleteSelf	IN_DELETE_SELF	Object being monitored is deleted
+Ignored	IN_IGNORED	Ignored
+DirEvent	IN_ISDIR	The monitored object to which the event occurred is a directory
+AllEvents	IN_ALL_EVENTS	Any event
+The constants are set up so they can be or-ed together to create meaningful combinations of event types.
