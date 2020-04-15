@@ -287,29 +287,28 @@ ANSI 与ISO 于1998年通过C++98标准， 03年更新标准为C++03，该标准
 C++使用new和delete开辟和销毁堆空间，与C中的malloc和free的使用方式类似，本质上是对malloc和free的封装。
 
 
-# 互动功能测试
-
-插件支持功能，就是在多行code注释的语言标记位置加一个前缀eval-
-
-```eval-python
-```
+# 功能测试
 
 下面的功能是对一些提示的修饰
-语法 > [!type|style:xx|label:xx|icon:xx|className:xx|labelVisibility:xx|iconVisibility:xx]
 
- !type 可选值 NOTE TIP WARNING DANGER
+使用：> [type]
 
-简单使用：> [!type]
+ **[info] For info**
 
->![NOTE]
->note 
+ Use this for infomation messages.
 
-> ![TIP]
-> tip 
+> **[info] For info**
+>
+> Use this for infomation messages.
 
-> ![WARNING]
-> warning 
-	
-> ![DANGER]
-> danger 
+> **[warning] For warning**
+>
+> Use this for warning messages.
 
+> **[danger] For danger**
+>
+> Use this for danger messages.
+
+> **[success] For info**
+>
+> Use this for success messages.
