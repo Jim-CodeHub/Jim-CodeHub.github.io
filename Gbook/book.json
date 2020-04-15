@@ -12,7 +12,10 @@
 		"-sharing",
 		"sharing-plus",
 		"expandable-chapters",
-		"page-toc-button"
+		"page-toc-button",
+		"pageview-count",
+		"tbfed-pagefooter",
+		"flexible-alerts"
 	],
 
 	"pluginsConfig": {
@@ -50,6 +53,12 @@
 		"page-toc-button": {
 			"maxTocDepth": 4,
 			"minTocSize": 2
+		},
+
+		"tbfed-pagefooter": {
+			"copyright":"Copyright &copy Jim 2019-2020",
+			"modify_label": "Revision time: ",
+			"modify_format": "YYYY-MM-DD HH:mm:ss"
 		}
 	}
 }

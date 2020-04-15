@@ -31,7 +31,7 @@
 	* [BSP]()
 	    * [Device driver]()
 		* [RootFS]()
-		* [Kernel]()
+		* [Kernel](pages/Kernel.md)
 		* [Bootloader](pages/Bootloader.md)
 
 * [Programming]()
