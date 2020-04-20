@@ -1,0 +1,277 @@
+1. MFC before
+win32程序框架: 程序代码 + UI资源
+
+C++程序代码	通过	C++编译器	生成目标文件 .obj
+
+UI资源		通过	RC编译器	生成		 .res（二进制）
+
+连接器		将.obj和.res链接	生成		 .EXE可执行文件
+
+
+-----------------------------------------------------------
+
+UI资源：功能菜单、对话框样式、程序图标、光标形状，实际文件如.ico、.bmp、.cur等，
+这些资源必须在资源描述文档	x.rc中	描述，RC编译器会读取.rc文档以生成.res文件
+
+.rc文件类似一个数据库，以文本的形式格式化维护UI资源信息，在VS中.rc是以结构化形式打开的，看不到直接的原貌。
+看源代码需要用其它编辑器打开。
+
+常用的资源有：ICON、CURSOR、BITMAP、FONT、DIALOG、MENU、ACCELERATOR、STRING、VERSIONINFO、TOOLBAR等
+
+
+-----------------------------------------------------------
+
+C++ 编译器编译 (.cpp .hpp) -> *.obj
+RC  编译器编译  *.rc       -> *.res
+
+链接 *.obj + *.res		   -> x.exe
+
+
+2. .rc与.rc2
+
+.rc资源是可以在VS中编辑的，.rc2常存放不能由VS编辑的任何资源，即.rc2中的资源都是手动管理的
+
+
+3. 问题嵌入：关于error C2011: XXX 重定义
+release版本编译通过，debug版本却不行，#parama once已经使用， 换成#ifndef...开关也不行
+
+最后... 重新生成解决方案，就通过了....................,
+
+	因为是从别的电脑拷贝过来的，与当前电脑的编译环境不同，所以要是重新生成方案，
+
+	为什么release版本能编译通过呢？因为在之前的电脑上就没有进行release编译，所以在当前电脑上就是重新生成的方案...
+
+
+	4. _tmain、main与WinMain
+
+	_tmain是为了UNICODE字符集而引入的宏，对于ASCII字符集，_tmain被解析为main
+	对于UNICODE字符集，_tmain被翻译成wmain
+
+	类推，VS中_t _T等类似接口，都与UNICODE字符集相关
+
+	windows应用程序入口和MFC程序都是从WinMain函数开始的，
+
+	对于“MFC应用程序”项目，主函数是被封装的，用户看不到主函数入口
+
+	5. #pragma once 
+
+	不被普遍支持的、防止头文件被重复包含的机制
+
+	传统的方式为：#ifndef xxx 
+#defind xxx
+	...
+#endif
+
+	这种方式仍然被广泛采用， 缺点是xxx宏命名容易冲突，为此要自己设计与众不同的宏名称
+
+	对于#parama one ，在文件开头声明一次即可，它不使用宏命名，因此不会有冲突问题，
+
+	但是，它的机制是只能保证被此语句所声明的文件不被重复包含，
+	所以如果一个头文件被复制多次，它也不知道这些头文件是相同的...
+
+
+	6. MFC应用程序 快速构建
+
+	A. 新建
+
+	文件-》新建-》项目-》MFC-》选择"MFC应用程序“-》在当前对话框下面输入项目名称、位置、解决方案名等信息
+	，确认之后，一路选择默认项即可
+
+	这里要注意，“单文档”（SDI）与“多个文档”（MDI）的区别，后者可以在对话框中再打开对话框，前者只能有一个对话框
+
+	B. 架构
+
+	新建之后，（解决方案）视图中出现“头文件”、“源文件”、“资源文件”和Readme.txt，三个文件夹（管理项）和一个说明文档
+
+	头文件中，自动生成的项目有：
+	ChildFrm.h			----------------		子窗口
+
+	如果是单文档的MFC，是没有该文件的
+
+	MainFrm.h			----------------		主窗口
+
+	包含CMainFrame类，派生自CMDIFrameWnd/CFrameWnd，控制着所有MDI/SDI的框架的功能
+
+	Resource.h			----------------		资源定义
+
+	Resource资源宏定义是在用VS打开并操作.rc文件时自动添加的，
+	如果手动修改了.rc文件内容，那么相同的ID值就需要手动添加到Resourse.h文件中
+
+	（要保证）Resource.h和.rc文件总是同步的，Resource.h的内容就像一个索引，通过
+	ID来找到具体的资源，而.rc文件定义了资源的具体表现形式
+
+	Resource.h是源代码和资源的连接桥梁
+
+	项目名.h			----------------		主头文件，包含Resource.h
+
+	项目名Doc.h			----------------		文档
+	项目名View.h		----------------		视图
+
+	Document/View 是MFC的主要框架模式，文档用于数据的保存和加载，View用于查看这些对象
+
+	stdafx.h			----------------		用于生成预编译头（PCH）和名为StdAfx.obj 的预编译类型文件
+
+	包含了MFC的核心组件头文件
+
+	targetver.h			----------------		定义了最低平台的要求（宏），更改相应的宏，可以适配响应的操作系统和浏览器平台
+
+	源文件中，自动生成的项目有：
+	ChildFrm.cpp（当MFC为多文档时存在）、MainFrm.cpp、项目名.cpp、项目名Doc.cpp、项目名View.cpp、stdafx.cpp分别对应头文件
+	以实现声明的类。其中stdafx.cpp中只包含了stdafx.h，用于生成预编译信息。
+
+
+	资源文件，自动生成的项目有：
+	项目名.ico			----------------		应用程序的图标
+	项目名.rc			----------------		应用程序使用的所有资源列表
+	项目名.rc2			----------------		.rc是可以用VS编辑的，所有不能由VS编辑的资源放置.rc2中
+	项目名Doc.ico		----------------		应用程序子窗口的图标（当MFC为多文档时存在）
+	Toolbar.bmp			----------------		工具栏位图，这个图片是一个连续的包含所有常用工具图标，IDR_MAINFRAME TOOLBAR中的数值
+	指定了使用范围，以此确定具体使用的图标。
+
+	常用资源说明：
+	ACCELERATOR	: 快捷键列表，一系列组合键的集合，常与菜单命令关联
+
+
+
+	7. #pragma comment( comment-type [,"commentstring"] )
+
+	“链接库在程序中指定”取代“在编译时以命令行方式指定”的方法
+
+	comment-type	可选 compiler，exestr，lib，linker
+
+	compiler 放置编译器的版本或者名字到一个对象文件，该选项是被linker忽略的
+	lib		 放置一个库搜索记录到对象文件中。commentstring 指定要搜索lib的名称和路径
+	linker	 指定一个连接选项，替代命令行指定链接的方式
+
+	commentstring	为comment-type指定附加信息
+
+
+	8. Bcompare 分析
+
+	SCC项目工程使用“MFC应用程序”(单个文档、无数据库)方式建立，新建“MFC应用程序”项目，对比SCC工程如下：
+
+	不同的文件有：res文件夹（Toolbar.bmp修改）、MainFrm.cpp、MainFrm.h、Resource.h、项目名.cpp、项目名.h、项目名.rc
+	、项目名View.cpp、项目名View.h、stdafx.h
+
+	未更改的文件：项目名Doc.h、项目名Doc.cpp、targetver.h、项目名.rc2、stdafx.cpp
+
+	说明：MFC的DOC/VIEW结构是MFC的核心之一，DOC负责数据的管理、VIEW负责数据的显示，
+	SCC项目没有用到DOC.*，说明没有把数据交给DOC管理
+
+	targetver.h是为兼容平台开放的宏开关，该文件没有修改，说明没有处理平台兼容相关内容
+
+	.rc2是加载VS不能直接管理的资源使用的，该文件没有修改，说明没有额外的资源通过.rc2管理
+	。或者说，SCC项目的所有资源都是可通过VS操作的，都是使用.rc统一管理的
+
+	stdafx.cpp 本身没什么内容，只包含了stdafx.h，而该头文件是为预编译准备的，SCC项目在该文件
+	中添加了若干"#parama comment(...)"，来实现编译时的库的自动加载
+
+	新增的文件有：
+	资源：
+	button/*.bmp		  - 按钮图标，
+			fold/*.bmp fold/*.png - 文件夹图标
+			icon/*.bmp			  - 对话框中的一些示例图标
+
+			icon.ico			  -	执行程序图标，也是应用程序打开后左上角的图标
+			项目名2.ico			  - 
+			welcome.bmp			  - 软件打开后显示的图标
+			pdf.bmp				  - 
+
+			库：
+			lib/pdflib/			  -	pdf库
+			lib/pdf2img			  -	pdf转图片库
+			lib/CxImage			  - 一个优秀的图像操作类库。它可以快捷地存取、显示、转换各种图像
+			lib/haru			  - 另一个pdf库，前者是收费库
+			lib/libhid			  - HID（Human Interface Device人机交互设备）库，被USB相关程序使用
+
+			注：其中pdflib.dll和pdf2img.dll被（拷贝）放置在源码目录以方便编译
+
+			USB相关：
+			usb100.h									-	USB的一些结构体和宏定义，被USBTools.h所包含
+			USBStatusDlg.h&cpp							-	USB对话框，完成显示功能
+			USBTools.h&cpp								-	完成USB设备的操作（打开、关闭、读写等）
+
+			DataCommunicationManager.h&cpp				-	利用USB进行通信的数据的定义方式
+
+			条形码相关：
+			BarcodeManagementDlg.h&cpp					-	条形码对话框，完成显示功能
+			CODE39.h&cpp								-	3 of 9 code条形码处理程序(CODE39码编制简单、能够对任意长度的数据进行编码)
+
+			密码相关：
+			PasswordSettingDlg.h&cpp					-	设置密码对话框
+
+			工作组相关：
+			RecycleDlg.&cpp								-	“工作组” 回收程序（删除）
+			SaveJobListDlg.&cpp							-	“工作组” 添加程序
+
+			工具条相关：
+			scbarg.h、scbarg.cpp						-	 可浮动工具（条/窗口）
+			sizecbar.h、sizecbar.cpp					-	 可变大小工具（条/窗口）
+
+			注：这里的四个文件已成为”非正式模板“，实现可浮动、可变大小的工具条/窗口时可以直接加载使用
+
+			序列号相关：
+			SerialNumberDlg.h&cpp						-	 序列号对话框
+			SerialNumberDlg.htm							-	 HTML文件，被SerialNumberDlg.h、SerialNumberDlg.cpp文件引用
+
+			CardSerialNumberInfo.h&cpp					-	 卡片序列号信息，没有具体实现，仅有空的构造和析构函数
+
+			参数定制相关：
+			CCustomizedParaManager.h&cpp				-	 没有具体实现，仅有空的构造和析构函数
+
+
+			语言相关：
+			LanguageManager.h&cpp						-	 软件语言的加载、设定等
+
+			安全相关：
+			SecurityManager.h&cpp						-	 哈希算法、MD5生成等
+
+			？？？：
+			CreaseTipDlg.&cpp							-	 压痕提示对话框
+
+			图片相关：
+			InsertImgDlg.h&cpp							-	 插入图片对话框
+
+			时间相关:
+			TimeManager.h&cpp							-	 更新时间、获取时间、设置时间戳等
+
+			机器限制相关:
+			MachineLimitParaManagement.h&cpp			-	设置机器参数(8335BSC、5375BSC、331SCC、331BSC)
+
+			MachineLimitParaSetDlg.h&cpp				-	参数设置对话框
+
+			BasicParameterDefine.h&cpp					-	基础参数，含一些限定值（宏）
+
+	PDF相关：
+	PdfGenerator.h&cpp							-	 PDF生成器
+
+	工具：
+	SCCUtil.h&cpp
+
+	？？？：
+	MainListDlg.h&cpp
+
+	job管理：
+	JobFileManager.h&cpp						-	job文件管理
+
+	作业参数设置相关：
+	SCCWidgetInfo.h&cpp							-	定义了一个很大的数组，供窗口调用来显示相关数据
+
+	ApplicationParaManagement.h&.cpp
+
+	MachineParaManagement.h&cpp
+
+	JobParaAutoSetDlg.h&cpp
+	JobParaFastAutoSetDlg.h&cpp
+	JobParaManuleSetDlg.h&cpp
+
+
+	其它：
+	项目名.aps文件		：该文件是资源文件的二进制版本，实际上是编译后VS自动生成的
+	ClassDiagram1.cd	：类视图文件，由VS自动生成
+	HitArea.bmp			: 与鼠标点击事件相关（点击区域位图文件），该文件未加载到项目中
+	MyControlBar.cpp&h	: 头文件和源码文件都是空的，该文件未加载到项目中
+	test.bmp			: 位图文件，该文件未加载到项目中
+	applicate.png		: 申请表图片，该文件未加载到项目中
+
+	9. Bcompare 分析	

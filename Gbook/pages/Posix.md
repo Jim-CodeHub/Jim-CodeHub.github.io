@@ -55,6 +55,13 @@ Signal is a 'soft interrupt', which used to handle asynchronous events.
 
 		使同步阻塞IO并发的方式是利用进程和线程，所有阻塞IO各一个进程/线程，并且如果使用线程则需做好数据同步.
 
+		同步IO不一定阻塞，阻塞的也不一定是同步IO，同步IO表示 用户触发IO操作之后 要去阻塞等待或轮询IO结果，有了结果再同步执行其它指令，这就是同步的意思
+
+		异步IO不一定不阻塞，不阻塞的也不一定是异步IO，异步IO表示 用户触发IO操作之后 不用阻塞等待或轮询IO结果 这些都交给内核来完成 用户可以继续执行自己的指令，
+		等IO有结果之后内核会通知用户，这可以通过信号或回调函数来完成IO触发的既定任务。
+
+		异步IO好比到某机构登记注册，然后等电话通知再去取东西一样，这段时间你什么都行。而同步就是你要一直排队等待看看结果出来没有。
+
 	2. 同步不阻塞IO
 		这种情况下表示IO不会立即完成，为检测是否完成要一直轮询，并适当的加入延时，当没有获取到数据时errno会被设置成相应错误码，如EAGAIN(再来一次)或其它错误，所以可以通过函数返回值和错误码确定是否继续下一次循环。
 
@@ -73,6 +80,8 @@ Signal is a 'soft interrupt', which used to handle asynchronous events.
 
 		Tips：多路复用是对事件阻塞，而不是对IO阻塞.
 
+		多路复用也不是完全的异步， 只能说在事件通知上是异步的，而实际读写函数还是同步完成的，因为仍然需要阻塞或轮询
+
 	4. 异步非阻塞IO - AIO
 		这种模式利用了处理速度与I/O速度之间的差异，处理器速度被认为是极快的，I/O速度被认为是慢操作。
 
@@ -80,6 +89,12 @@ Signal is a 'soft interrupt', which used to handle asynchronous events.
 		当IO响应达到时，会产生一个信号或或执行一个基于线程的回调函数来完成这次 I/O 处理过程
 
 		这类似于为未来要发生的事件准备好资源，当事件发生时自动触发和利用该资源，整个过程不用用户监控，用户要做的就是注册登记并准备资源。
+
+
+任何的“同步”字样，可以想象你和别人跑步，跑的很快，然后到一个位置X停下来等待其它的人，其它的人中的某些到了X也停下来等待剩余的人，直到所有的人到达了X，然后继续往后走，这就是同步
+。
+
+异步可以描述为，你在开始跑之前就告诉其它人我不等人，但是到了X给我打电话我去接你们
 
 
 
@@ -332,7 +347,7 @@ file & dir  | IN_DELETE_SELF	| -											| *
 \-			| IN_EXCL_UNLINK	| except unlink events (since Linux 2.6.36) | for add
 \-			| IN_DONT_FOLLOW	| - (since Linux 2.6.15)					| for add
 \-			| IN_MASK_ADD		| append instead cover for the same pathname| for add
-\-			| IN_ONE_SHOT		| remove it once occure (since Linux 2.6.16)| for add
+\-			| IN_ONESHOT		| remove it once occure (since Linux 2.6.16)| for add
 \-			| IN_ONLYDIR		| monitor only if it's directory			| for add
 \-			| IN_IGNORED		| objcet which monitored has been removed	| for read
 \-			| IN_ISDIR			| about directory							| for read
@@ -341,7 +356,9 @@ file & dir  | IN_DELETE_SELF	| -											| *
 
 <br><center> <font color=gray> mask of structure inotify_event and for inotify_add_watch() param </font> </center><br>
 
-Tips : \* refer that both for the directory itself and for objects inside the directory and + refer that only for objects inside the directory.
+Tips : 
+1. or_ed can be used for the macro to create personnalized events.
+2. \* refer that both for the directory itself and for objects inside the directory and + refer that only for objects inside the directory.
 
 #### 1.1.2.4 Note 
 
@@ -374,29 +391,10 @@ Removing a watch causes an IN_IGNORED event to be generated for this watch descr
 
 ### 1.1.5 Bug & Note
 
-NOTE: 所有wd删除后，调用close函数关闭inofiy fd，以释放内核资源
-
-BUG:
-在inotify_rm_watch从监视列表中删除项目后，如果没有调用close关闭文件描述符，那么该项目已产生的事件仍然是可读取的，
-，如果inotify_add_watch在列表中增加项目，则很可能分配到那些删除但未关闭的文件描述符，如果此时用户又去读，那么读到的将不是预期的
-。避免这个问题的方法是要么删除之间就把该读的读取，删除后就关闭文件描述符，那么删除后就不要在读取了。
-
-	如果read是在阻塞模式下，没有事件发生时将一直阻塞，直到事件发生或者被signal信号中断。
-
-	被信号中断的情况是read函数调用失败（错误为EINTR）导致的系统自发发送的。
-
-NOTE:
-fallocate函数在3.19之前不产生事件
-
-NOTE：
-
-inotify API不报告由于mmap（2）、msync（2）和munmap（2）而可能发生的文件访问和修改。
-
-inotify 监视文件是通过其文件名作为ID，如果文件名改变（且监视列表中没有这个文件名）那么将失去对该文件的监视
-
-注意：Inotify是基于inode的，可以为所监视的文件在其它任意目录建立软链接，任何对软链接的操作如同操作文件本身
-
-由于 inotify 是基于 inode 的，所以 mv 后的目录还在监听中，并且 wd 没有变化，所以目录下文件的改动还是会触发事件。
+- **Inotify is based on inode**, so *pathname* movement does not affect any changes 
+- Inotify do not report events that trigs by mmap()/msync()/munmap() 
+- Release inotify resource by close(inotify_fd) instead of close(wd) 
+- The 'watch filedescriptor' isn't a file system object or a file descriptor, it's same like an ID which refer to a *pathname* resource, and only used by 'inotify_rm_watch()'.
 
 ### 1.1.6 Code example
 
@@ -594,26 +592,3 @@ int main(int argc, char* argv[])
 
 Tips : function `select()`, `poll()` and `epoll()` can be used for inotify.
 
-
-
-网上的列表
-
-Constant Name	Linux Name	Interpretation
-Access	IN_ACCESS	Object accessed
-Modify	IN_MODIFY	Object modified
-Attributes	IN_ATTRIB	Object attributes modified
-Open	IN_OPEN	File opened
-CloseWrite	IN_CLOSE_WRITE	File closed after contents changed
-CloseOther	IN_CLOSE_NOWRITE	File closed without contents changed
-Close	IN_CLOSE	File closed
-MoveFrom	IN_MOVED_FROM	Object moved from location
-MoveTo	IN_MOVED_TO	Object moved to location
-Move	IN_MOVE	Object moved
-MoveSelf	IN_MOVE_SELF	Object being monitored is deleted
-Create	IN_CREATE	Object created
-Delete	IN_DELETE	Object deleted
-DeleteSelf	IN_DELETE_SELF	Object being monitored is deleted
-Ignored	IN_IGNORED	Ignored
-DirEvent	IN_ISDIR	The monitored object to which the event occurred is a directory
-AllEvents	IN_ALL_EVENTS	Any event
-The constants are set up so they can be or-ed together to create meaningful combinations of event types.

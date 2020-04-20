@@ -1,0 +1,117 @@
+
+# 1 Introduction
+
+Regular expression (regexp or regex) is a sequence of characters that define a *search pattern*, comes from *formal language theory*. and supported by IEEE Posix with sets **BRE**(Basic Regular Expression) and **ERE**(Extended Regular Expression). 
+
+# 2 Metacharacters
+
+## 2.1 Basic regular expression
+
+MetaCh_BRE		| Description 
+:-:				| :-:
+^S				| matches the string start with *S* (of any line) 
+S$				| matches the string end with *S* (of any line) 
+[S]				| bracket expression. Matches a single character in the scope of *S* ( such as : *[S1-S2]*, *[S1-]*, *[-S2]*, *[S1-Sx-S2]*, ...) 
+[\^S]			| complement of *[S]*
+.				| matches **any** single character
+S\*				| matches *S* zero to gigantic times 
+S{m, n}			| matches *S* at least *m* and not more than *n* times
+(exp)			| sub-expression
+\n				| *n* $\subseteq$ [1, 9], refer to which sub-expression 
+
+<br> <center> <font color=gray> 'S', 'S1', 'S2' refer string or single character </font> </center> <br>
+
+## 2.2 Extended regular expression
+
+MetaCh_ERE		| Description 
+:-:				| :-:
+\(exp\)			| same as *(exp)*
+S\{m, n\}		| same as *S{m, n}* 
+S?				| matches *S* zero or one time
+\+				| matches *S* one to gigantic times
+\S1|S2			| optional *S1* or *S2* 
+
+<br> <center> <font color=gray> 'S', 'S1', 'S2' refer string or single character </font> </center> <br>
+
+Tips : Because of its expressive power and (relative) ease of reading, many other utilities and programming languages have adopted syntax similar to Perl's — for example, Java, JavaScript, Julia, Python, Ruby, Qt, Microsoft's .NET Framework, and XML Schema, PHP ,etc.
+
+## 3 Character classes
+
+The character class is a quick way to express the expressions set. 
+
+POSIX		| Perl | Vim | ASCII					| Description 
+:-:			| :-:  | :-: | :-:						| :-:
+[:alnum:]	| -	   | -	 | [A-Za-z0-9]				| Alphanumeric characters 
+[:alpha:]	| -	   | \a  | [A-Za-z]					| Alphabetic characters
+[:blank:]	| -	   | \s	 | [ \t]					| Space and tab
+[:cntrl:]	| -	   | -   | [\x00-\x1F\x7F]			| Control characters
+[:digit:]	| \d   | \d	 | [0-9]					| Digits 
+[:lower:]	| -	   | \l	 | [a-z]					| Lowercase letters
+[:upper:]	| -	   | \u	 | [A-Z]					| Uppercase letters
+[:print:]	| -	   | \p  | [\x20-\x7E]				| Visible characters and the space character 
+[:space:]	| \s   | \_s | [ \t\r\n\v\f]			| Whitespace characters
+[:xdigit:]  | -    | \x  | [A-Fa-f0-9]				| Hexadecimal digits 
+
+<br> <center> <font color=gray> comparison of different standards about character class </font> </center> <br>
+
+# 3 Matching mode
+
+https://en.wikipedia.org/wiki/Regular_expression
+
+# 3.1 Lazy matching
+# 3.2 Possessive matching
+
+# 4 Note
+
+
+
+
+
+
+grep -E = ERE
+grep -G = BRE
+
+
+Regular expression : RegExp 正则表达式 是计算机理论基础学科中《形式语言与自动机理论》中的内容，是该内容所研究范畴的最小集合。
+
+正则表达式通过一个字符串来描述某个或某些具有这一规则的字符串，用于查找、替换和过滤.（搜索和反搜索？？？）
+
+正则表达式几乎被所有编程语言和搜索工具支持(如编辑器vim、搜索工具awk和sed)。
+更在字符串过滤中发挥重要的功能，比如不当言论、脏话的屏蔽，比如填写注册信息时要符合一定规则等。
+
+有很多文档的词汇手法也模仿正则表达式，比如使用？表示可以出现0或1次
+
+使用正则表达式让你的编程和工作如鱼得水、如虎添翼。
+
+```
+	正则字符：
+
+	*		表示其签名的字符可以出现0~N次。如xyz*，其中xy是必须有的，z可以出现0次，也可以出现N次，于是可以匹配xy、xyz、xyzz、xyzzz...
+	+ 		表示其前面的字符可以出现1~N次
+	？		表示其前面的字符可以出现0~1次
+	{n} 	匹配其前面的字符必须出现n次
+	{n,}	匹配其前面的字符至少出现n次，显然，如果n=0则与*等价、如n=1则与+等价
+	{n,m}	匹配其前面的字符至少出现n次，最多出现m次
+	[]		匹配其里面的字符任何一个，或非任何一个，并支持范围表达，如[xyz] 可以匹配包含x或y或z的任何字符串, [^xyz]表示匹配不包含x和y和z的任何字符串，范围表达如[a-z] [^a-z]
+	.		匹配除换行符'\n'以外的任何单个字符
+	^		匹配以其签名的字符串为起始的字符串，如^abc，可以匹配abc123、abc1、abc...
+	$ 		匹配以其前面的字符串为结尾的字符串，如abc$，可以匹配123abc、1abc、abc...
+	| 		二选一
+
+	https://www.runoob.com/regexp/regexp-metachar.html
+
+	()		子表达式
+	\		用于以上字符的转义
+
+
+	使用：
+		.*			表示任意个单个字符，也就是匹配所有字符的意思
+
+
+
+```
+
+注意：通配符与正则表达式是两个内容，有类似的地方，但不等同，比如\*在通配符中表示所有，而在正则表达式中表示它前面
+的字符可以有0~N个，而正则表达式表示所有要使用复合方式：.\*
+
+

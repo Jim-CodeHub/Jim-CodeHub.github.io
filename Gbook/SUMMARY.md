@@ -36,6 +36,7 @@
 
 * [Programming]()
 	* [Programming language]()
+		* [Regular expression](pages/RegExp.md)
 		* [Python](pages/Python.md)
 		* [C++](pages/C++.md)
 		* [C](pages/C.md)
