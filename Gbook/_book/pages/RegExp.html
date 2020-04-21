@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Regular expression · GitBook</title>
+        <title>RegExp · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -97,7 +97,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="Python.html" />
+    <link rel="next" href="Coding.html" />
     
     
 
@@ -251,14 +251,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.7" >
+        <li class="chapter " data-level="1.2.7" data-path="MFC.html">
             
-                <span>
+                <a href="MFC.html">
             
                     
                     MFC
             
-                </span>
+                </a>
             
 
             
@@ -598,7 +598,7 @@
                 <a href="RegExp.html">
             
                     
-                    Regular expression
+                    RegExp
             
                 </a>
             
@@ -606,7 +606,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.1.2" data-path="Python.html">
+        <li class="chapter " data-level="1.5.1.2" data-path="Coding.html">
+            
+                <a href="Coding.html">
+            
+                    
+                    Coding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.3" data-path="Python.html">
             
                 <a href="Python.html">
             
@@ -619,7 +632,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.1.3" data-path="C++.html">
+        <li class="chapter " data-level="1.5.1.4" data-path="C++.html">
             
                 <a href="C++.html">
             
@@ -632,7 +645,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.1.4" data-path="C.html">
+        <li class="chapter " data-level="1.5.1.5" data-path="C.html">
             
                 <a href="C.html">
             
@@ -645,7 +658,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.1.5" >
+        <li class="chapter " data-level="1.5.1.6" >
             
                 <span>
             
@@ -757,7 +770,7 @@
                 <span>
             
                     
-                    Branch
+                    Automation
             
                 </span>
             
@@ -766,14 +779,14 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" >
+        <li class="chapter " data-level="1.7.1" data-path="automation/Motor.html">
             
-                <span>
+                <a href="automation/Motor.html">
             
                     
-                    Automation
+                    Motor
             
-                </span>
+                </a>
             
 
             
@@ -814,7 +827,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Regular expression</a>
+        <a href=".." >RegExp</a>
     </h1>
 </div>
 
@@ -854,17 +867,34 @@
 </tr>
 <tr>
 <td style="text-align:center">[S]</td>
-<td style="text-align:center">bracket expression. Matches a single character in the scope of <em>S</em>  </td>
+<td style="text-align:center">bracket expression. Matches a single character in the scope of <em>S</em> (<em>[S1-S2]</em>, <em>[S1-]</em>, <em>[-S2]</em>, ...) </td>
+</tr>
+<tr>
+<td style="text-align:center">[^S]</td>
+<td style="text-align:center">complement of <em>[S]</em></td>
+</tr>
+<tr>
+<td style="text-align:center">.</td>
+<td style="text-align:center">matches <strong>any</strong> single character, except &apos;\n&apos; line-break</td>
+</tr>
+<tr>
+<td style="text-align:center">S*</td>
+<td style="text-align:center">matches <em>S</em> zero to gigantic times </td>
+</tr>
+<tr>
+<td style="text-align:center">S{m, n}</td>
+<td style="text-align:center">matches <em>S</em> at least <em>m</em> and not more than <em>n</em> times</td>
+</tr>
+<tr>
+<td style="text-align:center">(exp)</td>
+<td style="text-align:center">sub-expression</td>
+</tr>
+<tr>
+<td style="text-align:center">\n</td>
+<td style="text-align:center"><em>n</em> $\subseteq$ [1, 9], refer to which sub-expression </td>
 </tr>
 </tbody>
 </table>
-<p>( such as : <em>[S1-S2]</em>, <em>[S1-]</em>, <em>[-S2]</em>, <em>[S1-Sx-S2]</em>, ...) 
-[^S]            | complement of <em>[S]</em>
-.                | matches <strong>any</strong> single character, except &apos;\n&apos; line-break
-S*                | matches <em>S</em> zero to gigantic times 
-S{m, n}            | matches <em>S</em> at least <em>m</em> and not more than <em>n</em> times
-(exp)            | sub-expression
-\n                | <em>n</em> $\subseteq$ [1, 9], refer to which sub-expression </p>
 <p><br> <center> <font color="gray"> &apos;S&apos;, &apos;S1&apos;, &apos;S2&apos; refer string or single character </font> </center> <br></p>
 <h2 id="22-extended-regular-expression">2.2 Extended regular expression</h2>
 <table>
@@ -892,9 +922,8 @@ S{m, n}            | matches <em>S</em> at least <em>m</em> and not more than <e
 <td style="text-align:center">matches <em>S</em> one to gigantic times</td>
 </tr>
 <tr>
-<td style="text-align:center">S1\</td>
-<td style="text-align:center">S2</td>
-<td>optional <em>S1</em> or <em>S2</em> </td>
+<td style="text-align:center">S1|S2</td>
+<td style="text-align:center">optional <em>S1</em> or <em>S2</em> </td>
 </tr>
 </tbody>
 </table>
@@ -1011,7 +1040,7 @@ S{m, n}            | matches <em>S</em> at least <em>m</em> and not more than <e
 <p><br> <center> <font color="gray"> wildcards meta-ch list </font> </center> <br></p>
 <p>Tips : some implementations also contain meta-ch similar to regexp, such as <em>[S]</em>, <em>[!S]</em> (which equal to <em>[^S]</em>).</p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; Jim 2019-2020 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Revision time: 
-2020-04-21 09:18:09
+2020-04-21 09:23:16
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1057,7 +1086,7 @@ S{m, n}            | matches <em>S</em> at least <em>m</em> and not more than <e
             
                 
                 
-                <a href="Python.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Python">
+                <a href="Coding.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Coding">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1068,7 +1097,7 @@ S{m, n}            | matches <em>S</em> at least <em>m</em> and not more than <e
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Regular expression","level":"1.5.1.1","depth":3,"next":{"title":"Python","level":"1.5.1.2","depth":3,"path":"pages/Python.md","ref":"pages/Python.md","articles":[]},"previous":{"title":"Programming language","level":"1.5.1","depth":2,"ref":"","articles":[{"title":"Regular expression","level":"1.5.1.1","depth":3,"path":"pages/RegExp.md","ref":"pages/RegExp.md","articles":[]},{"title":"Python","level":"1.5.1.2","depth":3,"path":"pages/Python.md","ref":"pages/Python.md","articles":[]},{"title":"C++","level":"1.5.1.3","depth":3,"path":"pages/C++.md","ref":"pages/C++.md","articles":[]},{"title":"C","level":"1.5.1.4","depth":3,"path":"pages/C.md","ref":"pages/C.md","articles":[]},{"title":"ASM","level":"1.5.1.5","depth":3,"ref":"","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/RegExp.md","mtime":"2020-04-21T01:18:09.653Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-21T01:18:12.289Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"RegExp","level":"1.5.1.1","depth":3,"next":{"title":"Coding","level":"1.5.1.2","depth":3,"path":"pages/Coding.md","ref":"pages/Coding.md","articles":[]},"previous":{"title":"Programming language","level":"1.5.1","depth":2,"ref":"","articles":[{"title":"RegExp","level":"1.5.1.1","depth":3,"path":"pages/RegExp.md","ref":"pages/RegExp.md","articles":[]},{"title":"Coding","level":"1.5.1.2","depth":3,"path":"pages/Coding.md","ref":"pages/Coding.md","articles":[]},{"title":"Python","level":"1.5.1.3","depth":3,"path":"pages/Python.md","ref":"pages/Python.md","articles":[]},{"title":"C++","level":"1.5.1.4","depth":3,"path":"pages/C++.md","ref":"pages/C++.md","articles":[]},{"title":"C","level":"1.5.1.5","depth":3,"path":"pages/C.md","ref":"pages/C.md","articles":[]},{"title":"ASM","level":"1.5.1.6","depth":3,"ref":"","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/RegExp.md","mtime":"2020-04-21T01:23:16.454Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-21T13:03:29.431Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

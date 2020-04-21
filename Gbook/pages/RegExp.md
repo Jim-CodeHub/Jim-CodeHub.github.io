@@ -11,8 +11,7 @@ MetaCh_BRE		| Description
 :-:				| :-:
 ^S				| matches the string start with *S* (of any line) 
 S$				| matches the string end with *S* (of any line) 
-[S]				| bracket expression. Matches a single character in the scope of *S*  
-( such as : *[S1-S2]*, *[S1-]*, *[-S2]*, *[S1-Sx-S2]*, ...) 
+[S]				| bracket expression. Matches a single character in the scope of *S* (*[S1-S2]*, *[S1-]*, *[-S2]*, ...) 
 \[^S]			| complement of *[S]*
 .				| matches **any** single character, except '\n' line-break
 S\*				| matches *S* zero to gigantic times 
@@ -30,7 +29,7 @@ MetaCh_ERE		| Description
 S\{m, n\}		| same as *S{m, n}* 
 S?				| matches *S* zero or one time
 \+				| matches *S* one to gigantic times
-S1\|S2			| optional *S1* or *S2* 
+S1&#124;S2		| optional *S1* or *S2* 
 
 <br> <center> <font color=gray> 'S', 'S1', 'S2' refer string or single character </font> </center> <br>
 

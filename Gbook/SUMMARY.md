@@ -10,7 +10,7 @@
 	* [Communication]()
 		* [Serial Communication](pages/extension/Communication.md)
 	* [OS]()
-	* [MFC]()
+	* [MFC](pages/MFC.md)
 	* [Web]()
 		* [XML](pages/extension/XML.md)
 			* [JDF](pages/extension/JDF.md)
@@ -36,7 +36,8 @@
 
 * [Programming]()
 	* [Programming language]()
-		* [Regular expression](pages/RegExp.md)
+		* [RegExp](pages/RegExp.md)
+		* [Coding](pages/Coding.md)
 		* [Python](pages/Python.md)
 		* [C++](pages/C++.md)
 		* [C](pages/C.md)
@@ -49,6 +50,6 @@
 	* [Analog Elec](pages/Analog.md)
 	* [Digital Elec](pages/Digital.md)
 
-* [Branch]()
-	* [Automation]()
+* [Automation]()
+	* [Motor](pages/automation/Motor.md)
 
