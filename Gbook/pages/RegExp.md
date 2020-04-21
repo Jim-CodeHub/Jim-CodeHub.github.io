@@ -3,7 +3,7 @@
 
 Regular expression (regexp or regex) is a sequence of characters that define a *search pattern*, comes from *formal language theory*. and supported by IEEE Posix with sets **BRE**(Basic Regular Expression) and **ERE**(Extended Regular Expression). 
 
-# 2 Metacharacters
+# 2 Posix metacharacters
 
 ## 2.1 Basic regular expression
 
@@ -11,8 +11,9 @@ MetaCh_BRE		| Description
 :-:				| :-:
 ^S				| matches the string start with *S* (of any line) 
 S$				| matches the string end with *S* (of any line) 
-[S]				| bracket expression. Matches a single character in the scope of *S* ( such as : *[S1-S2]*, *[S1-]*, *[-S2]*, *[S1-Sx-S2]*, ...) 
-[\^S]			| complement of *[S]*
+[S]				| bracket expression. Matches a single character in the scope of *S*  
+( such as : *[S1-S2]*, *[S1-]*, *[-S2]*, *[S1-Sx-S2]*, ...) 
+\[^S]			| complement of *[S]*
 .				| matches **any** single character, except '\n' line-break
 S\*				| matches *S* zero to gigantic times 
 S{m, n}			| matches *S* at least *m* and not more than *n* times
@@ -29,7 +30,7 @@ MetaCh_ERE		| Description
 S\{m, n\}		| same as *S{m, n}* 
 S?				| matches *S* zero or one time
 \+				| matches *S* one to gigantic times
-\S1|S2			| optional *S1* or *S2* 
+S1\|S2			| optional *S1* or *S2* 
 
 <br> <center> <font color=gray> 'S', 'S1', 'S2' refer string or single character </font> </center> <br>
 
@@ -69,5 +70,5 @@ MetaCh	| Description
 
 <br> <center> <font color=gray> wildcards meta-ch list </font> </center> <br>
 
-Tips : some implementations also contain meta-ch similar to regexp, such as *[S]*, *[!S]* (which equal to *[^S]*).
+Tips : some implementations also contain meta-ch similar to regexp, such as *[S]*, *[!S]* (which equal to *\[^S]*).
 
