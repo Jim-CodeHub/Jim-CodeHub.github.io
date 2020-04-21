@@ -862,7 +862,7 @@
 </tr>
 <tr>
 <td style="text-align:center">.</td>
-<td style="text-align:center">matches <strong>any</strong> single character</td>
+<td style="text-align:center">matches <strong>any</strong> single character, except &apos;\n&apos; line-break</td>
 </tr>
 <tr>
 <td style="text-align:center">S*</td>
@@ -916,7 +916,7 @@
 </tbody>
 </table>
 <p><br> <center> <font color="gray"> &apos;S&apos;, &apos;S1&apos;, &apos;S2&apos; refer string or single character </font> </center> <br></p>
-<p>Tips : Because of its expressive power and (relative) ease of reading, many other utilities and programming languages have adopted syntax similar to Perl&apos;s &#x2014; for example, Java, JavaScript, Julia, Python, Ruby, Qt, Microsoft&apos;s .NET Framework, and XML Schema, PHP ,etc.</p>
+<p>Tips : Because of its expressive power and (relative) ease of reading, many other utilities and programming languages have adopted syntax similar to Perl&apos;s &#x2014; for example, Java, JavaScript, Julia, Python, Ruby, Qt, Microsoft&apos;s .NET Framework, and XML Schema, PHP, awk, sed, etc.</p>
 <h2 id="3-character-classes">3 Character classes</h2>
 <p>The character class is a quick way to express the expressions set. </p>
 <table>
@@ -1003,45 +1003,32 @@
 </tbody>
 </table>
 <p><br> <center> <font color="gray"> comparison of different standards about character class </font> </center> <br></p>
-<h1 id="3-matching-mode">3 Matching mode</h1>
-<p><a href="https://en.wikipedia.org/wiki/Regular_expression" target="_blank">https://en.wikipedia.org/wiki/Regular_expression</a></p>
-<h1 id="31-lazy-matching">3.1 Lazy matching</h1>
-<h1 id="32-possessive-matching">3.2 Possessive matching</h1>
-<h1 id="4-note">4 Note</h1>
-<p>grep -E = ERE
-grep -G = BRE</p>
-<p>Regular expression : RegExp &#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F; &#x662F;&#x8BA1;&#x7B97;&#x673A;&#x7406;&#x8BBA;&#x57FA;&#x7840;&#x5B66;&#x79D1;&#x4E2D;&#x300A;&#x5F62;&#x5F0F;&#x8BED;&#x8A00;&#x4E0E;&#x81EA;&#x52A8;&#x673A;&#x7406;&#x8BBA;&#x300B;&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x662F;&#x8BE5;&#x5185;&#x5BB9;&#x6240;&#x7814;&#x7A76;&#x8303;&#x7574;&#x7684;&#x6700;&#x5C0F;&#x96C6;&#x5408;&#x3002;</p>
-<p>&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x6765;&#x63CF;&#x8FF0;&#x67D0;&#x4E2A;&#x6216;&#x67D0;&#x4E9B;&#x5177;&#x6709;&#x8FD9;&#x4E00;&#x89C4;&#x5219;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x7528;&#x4E8E;&#x67E5;&#x627E;&#x3001;&#x66FF;&#x6362;&#x548C;&#x8FC7;&#x6EE4;.&#xFF08;&#x641C;&#x7D22;&#x548C;&#x53CD;&#x641C;&#x7D22;&#xFF1F;&#xFF1F;&#xFF1F;&#xFF09;</p>
-<p>&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x51E0;&#x4E4E;&#x88AB;&#x6240;&#x6709;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x548C;&#x641C;&#x7D22;&#x5DE5;&#x5177;&#x652F;&#x6301;(&#x5982;&#x7F16;&#x8F91;&#x5668;vim&#x3001;&#x641C;&#x7D22;&#x5DE5;&#x5177;awk&#x548C;sed)&#x3002;
-&#x66F4;&#x5728;&#x5B57;&#x7B26;&#x4E32;&#x8FC7;&#x6EE4;&#x4E2D;&#x53D1;&#x6325;&#x91CD;&#x8981;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x6BD4;&#x5982;&#x4E0D;&#x5F53;&#x8A00;&#x8BBA;&#x3001;&#x810F;&#x8BDD;&#x7684;&#x5C4F;&#x853D;&#xFF0C;&#x6BD4;&#x5982;&#x586B;&#x5199;&#x6CE8;&#x518C;&#x4FE1;&#x606F;&#x65F6;&#x8981;&#x7B26;&#x5408;&#x4E00;&#x5B9A;&#x89C4;&#x5219;&#x7B49;&#x3002;</p>
-<p>&#x6709;&#x5F88;&#x591A;&#x6587;&#x6863;&#x7684;&#x8BCD;&#x6C47;&#x624B;&#x6CD5;&#x4E5F;&#x6A21;&#x4EFF;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x6BD4;&#x5982;&#x4F7F;&#x7528;&#xFF1F;&#x8868;&#x793A;&#x53EF;&#x4EE5;&#x51FA;&#x73B0;0&#x6216;1&#x6B21;</p>
-<p>&#x4F7F;&#x7528;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x8BA9;&#x4F60;&#x7684;&#x7F16;&#x7A0B;&#x548C;&#x5DE5;&#x4F5C;&#x5982;&#x9C7C;&#x5F97;&#x6C34;&#x3001;&#x5982;&#x864E;&#x6DFB;&#x7FFC;&#x3002;</p>
-<pre><code>    &#x6B63;&#x5219;&#x5B57;&#x7B26;&#xFF1A;
-
-    *        &#x8868;&#x793A;&#x5176;&#x7B7E;&#x540D;&#x7684;&#x5B57;&#x7B26;&#x53EF;&#x4EE5;&#x51FA;&#x73B0;0~N&#x6B21;&#x3002;&#x5982;xyz*&#xFF0C;&#x5176;&#x4E2D;xy&#x662F;&#x5FC5;&#x987B;&#x6709;&#x7684;&#xFF0C;z&#x53EF;&#x4EE5;&#x51FA;&#x73B0;0&#x6B21;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x51FA;&#x73B0;N&#x6B21;&#xFF0C;&#x4E8E;&#x662F;&#x53EF;&#x4EE5;&#x5339;&#x914D;xy&#x3001;xyz&#x3001;xyzz&#x3001;xyzzz...
-    +         &#x8868;&#x793A;&#x5176;&#x524D;&#x9762;&#x7684;&#x5B57;&#x7B26;&#x53EF;&#x4EE5;&#x51FA;&#x73B0;1~N&#x6B21;
-    &#xFF1F;        &#x8868;&#x793A;&#x5176;&#x524D;&#x9762;&#x7684;&#x5B57;&#x7B26;&#x53EF;&#x4EE5;&#x51FA;&#x73B0;0~1&#x6B21;
-    {n}     &#x5339;&#x914D;&#x5176;&#x524D;&#x9762;&#x7684;&#x5B57;&#x7B26;&#x5FC5;&#x987B;&#x51FA;&#x73B0;n&#x6B21;
-    {n,}    &#x5339;&#x914D;&#x5176;&#x524D;&#x9762;&#x7684;&#x5B57;&#x7B26;&#x81F3;&#x5C11;&#x51FA;&#x73B0;n&#x6B21;&#xFF0C;&#x663E;&#x7136;&#xFF0C;&#x5982;&#x679C;n=0&#x5219;&#x4E0E;*&#x7B49;&#x4EF7;&#x3001;&#x5982;n=1&#x5219;&#x4E0E;+&#x7B49;&#x4EF7;
-    {n,m}    &#x5339;&#x914D;&#x5176;&#x524D;&#x9762;&#x7684;&#x5B57;&#x7B26;&#x81F3;&#x5C11;&#x51FA;&#x73B0;n&#x6B21;&#xFF0C;&#x6700;&#x591A;&#x51FA;&#x73B0;m&#x6B21;
-    []        &#x5339;&#x914D;&#x5176;&#x91CC;&#x9762;&#x7684;&#x5B57;&#x7B26;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#xFF0C;&#x6216;&#x975E;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#xFF0C;&#x5E76;&#x652F;&#x6301;&#x8303;&#x56F4;&#x8868;&#x8FBE;&#xFF0C;&#x5982;[xyz] &#x53EF;&#x4EE5;&#x5339;&#x914D;&#x5305;&#x542B;x&#x6216;y&#x6216;z&#x7684;&#x4EFB;&#x4F55;&#x5B57;&#x7B26;&#x4E32;, [^xyz]&#x8868;&#x793A;&#x5339;&#x914D;&#x4E0D;&#x5305;&#x542B;x&#x548C;y&#x548C;z&#x7684;&#x4EFB;&#x4F55;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x8303;&#x56F4;&#x8868;&#x8FBE;&#x5982;[a-z] [^a-z]
-    .        &#x5339;&#x914D;&#x9664;&#x6362;&#x884C;&#x7B26;&apos;\n&apos;&#x4EE5;&#x5916;&#x7684;&#x4EFB;&#x4F55;&#x5355;&#x4E2A;&#x5B57;&#x7B26;
-    ^        &#x5339;&#x914D;&#x4EE5;&#x5176;&#x7B7E;&#x540D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4E3A;&#x8D77;&#x59CB;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5982;^abc&#xFF0C;&#x53EF;&#x4EE5;&#x5339;&#x914D;abc123&#x3001;abc1&#x3001;abc...
-    $         &#x5339;&#x914D;&#x4EE5;&#x5176;&#x524D;&#x9762;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4E3A;&#x7ED3;&#x5C3E;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5982;abc$&#xFF0C;&#x53EF;&#x4EE5;&#x5339;&#x914D;123abc&#x3001;1abc&#x3001;abc...
-    |         &#x4E8C;&#x9009;&#x4E00;
-
-    https://www.runoob.com/regexp/regexp-metachar.html
-
-    ()        &#x5B50;&#x8868;&#x8FBE;&#x5F0F;
-    \        &#x7528;&#x4E8E;&#x4EE5;&#x4E0A;&#x5B57;&#x7B26;&#x7684;&#x8F6C;&#x4E49;
-
-
-    &#x4F7F;&#x7528;&#xFF1A;
-        .*            &#x8868;&#x793A;&#x4EFB;&#x610F;&#x4E2A;&#x5355;&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5339;&#x914D;&#x6240;&#x6709;&#x5B57;&#x7B26;&#x7684;&#x610F;&#x601D;
-</code></pre><p>&#x6CE8;&#x610F;&#xFF1A;&#x901A;&#x914D;&#x7B26;&#x4E0E;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x662F;&#x4E24;&#x4E2A;&#x5185;&#x5BB9;&#xFF0C;&#x6709;&#x7C7B;&#x4F3C;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x4F46;&#x4E0D;&#x7B49;&#x540C;&#xFF0C;&#x6BD4;&#x5982;*&#x5728;&#x901A;&#x914D;&#x7B26;&#x4E2D;&#x8868;&#x793A;&#x6240;&#x6709;&#xFF0C;&#x800C;&#x5728;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x8868;&#x793A;&#x5B83;&#x524D;&#x9762;
-&#x7684;&#x5B57;&#x7B26;&#x53EF;&#x4EE5;&#x6709;0~N&#x4E2A;&#xFF0C;&#x800C;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x8868;&#x793A;&#x6240;&#x6709;&#x8981;&#x4F7F;&#x7528;&#x590D;&#x5408;&#x65B9;&#x5F0F;&#xFF1A;.*</p>
+<h1 id="3-lazy-and-possessive-matching">3 Lazy and possessive matching</h1>
+<h1 id="4-unicode">4 Unicode</h1>
+<h1 id="5-wildcard-vs-regexp">5 Wildcard Vs RegExp</h1>
+<p>Wildcards are placeholders while regular expressions are searching pattern, and only &apos;.&apos; in regexp is a wildcard.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">MetaCh</th>
+<th style="text-align:center">Description </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">placeholder for any characters, zero - gigantic</td>
+</tr>
+<tr>
+<td style="text-align:center">?</td>
+<td style="text-align:center">placeholder for any single character</td>
+</tr>
+</tbody>
+</table>
+<p><br> <center> <font color="gray"> wildcards meta-ch list </font> </center> <br></p>
+<p>Tips : some implementations also contain meta-ch similar to regexp, such as <em>[S]</em>, <em>[!S]</em> (which equal to <em><sup><a href="#fn_S" id="reffn_S">S</a></sup></em>).</p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; Jim 2019-2020 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Revision time: 
-2020-04-20 21:00:04
+2020-04-21 09:11:35
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1098,7 +1085,7 @@ grep -G = BRE</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Regular expression","level":"1.5.1.1","depth":3,"next":{"title":"Python","level":"1.5.1.2","depth":3,"path":"pages/Python.md","ref":"pages/Python.md","articles":[]},"previous":{"title":"Programming language","level":"1.5.1","depth":2,"ref":"","articles":[{"title":"Regular expression","level":"1.5.1.1","depth":3,"path":"pages/RegExp.md","ref":"pages/RegExp.md","articles":[]},{"title":"Python","level":"1.5.1.2","depth":3,"path":"pages/Python.md","ref":"pages/Python.md","articles":[]},{"title":"C++","level":"1.5.1.3","depth":3,"path":"pages/C++.md","ref":"pages/C++.md","articles":[]},{"title":"C","level":"1.5.1.4","depth":3,"path":"pages/C.md","ref":"pages/C.md","articles":[]},{"title":"ASM","level":"1.5.1.5","depth":3,"ref":"","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/RegExp.md","mtime":"2020-04-20T13:00:04.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-20T13:00:10.757Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Regular expression","level":"1.5.1.1","depth":3,"next":{"title":"Python","level":"1.5.1.2","depth":3,"path":"pages/Python.md","ref":"pages/Python.md","articles":[]},"previous":{"title":"Programming language","level":"1.5.1","depth":2,"ref":"","articles":[{"title":"Regular expression","level":"1.5.1.1","depth":3,"path":"pages/RegExp.md","ref":"pages/RegExp.md","articles":[]},{"title":"Python","level":"1.5.1.2","depth":3,"path":"pages/Python.md","ref":"pages/Python.md","articles":[]},{"title":"C++","level":"1.5.1.3","depth":3,"path":"pages/C++.md","ref":"pages/C++.md","articles":[]},{"title":"C","level":"1.5.1.4","depth":3,"path":"pages/C.md","ref":"pages/C.md","articles":[]},{"title":"ASM","level":"1.5.1.5","depth":3,"ref":"","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/RegExp.md","mtime":"2020-04-21T01:11:35.158Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-21T01:12:51.225Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
