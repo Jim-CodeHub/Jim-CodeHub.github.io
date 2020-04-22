@@ -1,6 +1,89 @@
 
 # 1 Unix Basic
 
+## 1.1 Introduction 
+
+## 1.2 Architecture
+
+## 1.3 Standardization and Implementations
+
+# 2 I/O
+
+## 2.1 Standard I/O
+
+## 2.2 File I/O
+
+## 2.3 Terminal I/O
+
+# 3 Process
+
+## 3.1 Process Environment
+
+## 3.2 Process Relationships
+
+### 3.2.1 Daemon Processes
+
+## 3.3 Process Control
+
+## 3.4 Inter process Communication 
+
+### 3.4.1 Signals
+
+# 4 Threads
+
+## 4.1 Threads Control
+
+# 5 Network IPC : Socket
+
+# 6 File system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### ioctl(int fd, int request, ...)
+
+\#include <sys/ioctl.h>
+
+ioctl()是IO操作的万能函数，《UNIX高级环境编程》将其比喻IO操作的杂物箱，更多用于终端IO操作.
+
+参数:
+- fd 必须是一个打开的文件描述符
+- request 请求码（一般表示与设备相关的请求码）
+- ... 多参，但一般是一个结构体或者一个char *
+
+第三个参数是为第二个参数准备的，因为C语言没有重载功能，所以就利用fun(ID，...)这样的函数形式来
+提供任意的功能. 所以第三个参数是否存在，存在几个，是入参还是出参，完全由第二个参数决定
+
+如果ioctl用于操作终端IO，则还需另外头文件 <termios.h>
+
+
+在BSP中的设备驱动环节，是可以对ioctl进行注册的，于是在用户层就可以使用对应的命令码和参数来使用ioctl().
+
+
+
+
+
+
+
+
+# 1 Unix Basic
+
 # 2 Process 
 
 ## 2.1 Process Environment
@@ -591,4 +674,6 @@ int main(int argc, char* argv[])
 ```
 
 Tips : function `select()`, `poll()` and `epoll()` can be used for inotify.
+
+
 

@@ -322,3 +322,64 @@ The CRC field checks the entire message (ADU exclude CRC and except parity bits)
 #### 2.4.2 ASCII transmission mode
 #### TBD
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 1 加密狗
+
+## 1.1 Introduction
+
+加密狗又称加密锁，是用于软件加密的、软硬件结合的加密产品。其内置非易失性存储器或嵌入式系统，用于与上位机软件交互通讯以实现防止软件被非法使用的加密目的。含并口（早期）和USB接口样式。
+
+## 1.2 分类
+
+早期加密狗以并口和并口接口卡形式出现，现代加密狗多为USB接口，外形似U盘：
+
+![DongleType](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/DongleType.png) <br> <center> <font color=gray> Dongle type </font> </center> <br>
+
+市场上以序列号认证使用软件的方式也是软件加密的一种形式，但通常不称为加密狗。
+	 
+## 1.3 原理
+
+上位机运行的软件必须与加密狗通讯才能正常运行，其本质就是通过各种手段来实现软硬件安全交互通讯和捆绑运行。
+
+![DongleWork](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/DongleWork.png) <br> <center> <font color=gray> Dongle runing </font> </center> <br>
+
+生产加密狗的厂商对加密狗进行硬件设计和算法编程，软硬件的质量决定了加密狗的价格。软件厂商对加密狗设置算法因子，以使得每一个软件厂商的加密狗对外都是安全的。常见的加密狗算法有AES、ECC、RSA、DES、3DES等。
+
+## 1.4 设计DIY
+
+### 1.4.1 硬件设计
+最简单的加密狗内部至少需要一个非易失性存储器，通过向其写入固件，在上位机软件运行时不断读取该固件来实现简易的加密。
+
+![DongleDIY](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/DongleDIY.png) <br> <center> <font color=gray> Dongle DIY </font> </center> <br>
+
+为增强安全系数，现代加密狗内部都是由处理器、存储器等组成的嵌入式系统。AVR单片机的智峰USB_ISP烧录器内置AVR_ATMEGA8处理器，是一个比较稳定的电路结构，其外形和加密狗相似，通过对该烧录器进行固件改造即可成为加密狗。
+
+### 1.4.2 软件设计
+
+//TBD
+
+## 1.5 品牌排行榜 
+
+品牌		| 公司						| 接口		| 算法
+:-:			| :-:						| :-:		| :-:
+圣天狗		| 赛孚耐/SafeNet（美）		| USB、并口	| AES/ECC/DES
+Hasp HL		| 阿拉丁/Aladdin（以色列）	| USB		| AES/RSA
+深思洛克	| 北京深思洛克				| USB		| RSA/3DES
+飞天诚信	| 北京飞天诚信				| USB		| RSA/3DES
+

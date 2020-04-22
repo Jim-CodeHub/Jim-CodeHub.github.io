@@ -254,3 +254,13 @@ git不是一个简单的VCS，更像是一个小型的文件管理系统
 
 相比其他VCS，git几乎所有的操作都在本地完成，因为本地拥有项目的完整历史，因此速度极其快
 没有网络时可以愉快的编写项目，直到有网络再上传，这样的操作在其它VCS是不存在的
+
+-------
+
+github FUNCTIONS
+
+- 开发者中心 ： https://developer.github.com/
+	- marketplace 允许在github上售卖软件，github提供售卖相关模块
+
+
+

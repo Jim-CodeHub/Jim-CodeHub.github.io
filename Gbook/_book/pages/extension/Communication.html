@@ -474,9 +474,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="../Posix.html">
+        <li class="chapter " data-level="1.4.2" data-path="../Unix.html">
             
-                <a href="../Posix.html">
+                <a href="../Unix.html">
             
                     
                     OS Programming
@@ -514,22 +514,22 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3.2" >
+        <li class="chapter " data-level="1.4.3.2" data-path="../BSP/FileSys.html">
             
-                <span>
+                <a href="../BSP/FileSys.html">
             
                     
-                    RootFS
+                    FileSys
             
-                </span>
+                </a>
             
 
             
         </li>
     
-        <li class="chapter " data-level="1.4.3.3" data-path="../Kernel.html">
+        <li class="chapter " data-level="1.4.3.3" data-path="../BSP/Kernel.html">
             
-                <a href="../Kernel.html">
+                <a href="../BSP/Kernel.html">
             
                     
                     Kernel
@@ -540,9 +540,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3.4" data-path="../Bootloader.html">
+        <li class="chapter " data-level="1.4.3.4" data-path="../BSP/Bootloader.html">
             
-                <a href="../Bootloader.html">
+                <a href="../BSP/Bootloader.html">
             
                     
                     Bootloader
@@ -1084,8 +1084,63 @@ The address must be unique at the same Modbus serial line, and the master has no
 <p>The CRC field checks the entire message (ADU exclude CRC and except parity bits), CRC filed conttains 2 Byte values and low order byte is sent first</p>
 <h4 id="242-ascii-transmission-mode">2.4.2 ASCII transmission mode</h4>
 <h4 id="tbd">TBD</h4>
+<h1 id="1-&#x52A0;&#x5BC6;&#x72D7;">1 &#x52A0;&#x5BC6;&#x72D7;</h1>
+<h2 id="11-introduction">1.1 Introduction</h2>
+<p>&#x52A0;&#x5BC6;&#x72D7;&#x53C8;&#x79F0;&#x52A0;&#x5BC6;&#x9501;&#xFF0C;&#x662F;&#x7528;&#x4E8E;&#x8F6F;&#x4EF6;&#x52A0;&#x5BC6;&#x7684;&#x3001;&#x8F6F;&#x786C;&#x4EF6;&#x7ED3;&#x5408;&#x7684;&#x52A0;&#x5BC6;&#x4EA7;&#x54C1;&#x3002;&#x5176;&#x5185;&#x7F6E;&#x975E;&#x6613;&#x5931;&#x6027;&#x5B58;&#x50A8;&#x5668;&#x6216;&#x5D4C;&#x5165;&#x5F0F;&#x7CFB;&#x7EDF;&#xFF0C;&#x7528;&#x4E8E;&#x4E0E;&#x4E0A;&#x4F4D;&#x673A;&#x8F6F;&#x4EF6;&#x4EA4;&#x4E92;&#x901A;&#x8BAF;&#x4EE5;&#x5B9E;&#x73B0;&#x9632;&#x6B62;&#x8F6F;&#x4EF6;&#x88AB;&#x975E;&#x6CD5;&#x4F7F;&#x7528;&#x7684;&#x52A0;&#x5BC6;&#x76EE;&#x7684;&#x3002;&#x542B;&#x5E76;&#x53E3;&#xFF08;&#x65E9;&#x671F;&#xFF09;&#x548C;USB&#x63A5;&#x53E3;&#x6837;&#x5F0F;&#x3002;</p>
+<h2 id="12-&#x5206;&#x7C7B;">1.2 &#x5206;&#x7C7B;</h2>
+<p>&#x65E9;&#x671F;&#x52A0;&#x5BC6;&#x72D7;&#x4EE5;&#x5E76;&#x53E3;&#x548C;&#x5E76;&#x53E3;&#x63A5;&#x53E3;&#x5361;&#x5F62;&#x5F0F;&#x51FA;&#x73B0;&#xFF0C;&#x73B0;&#x4EE3;&#x52A0;&#x5BC6;&#x72D7;&#x591A;&#x4E3A;USB&#x63A5;&#x53E3;&#xFF0C;&#x5916;&#x5F62;&#x4F3C;U&#x76D8;&#xFF1A;</p>
+<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/DongleType.png" alt="DongleType"> <br> <center> <font color="gray"> Dongle type </font> </center> <br></p>
+<p>&#x5E02;&#x573A;&#x4E0A;&#x4EE5;&#x5E8F;&#x5217;&#x53F7;&#x8BA4;&#x8BC1;&#x4F7F;&#x7528;&#x8F6F;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;&#x4E5F;&#x662F;&#x8F6F;&#x4EF6;&#x52A0;&#x5BC6;&#x7684;&#x4E00;&#x79CD;&#x5F62;&#x5F0F;&#xFF0C;&#x4F46;&#x901A;&#x5E38;&#x4E0D;&#x79F0;&#x4E3A;&#x52A0;&#x5BC6;&#x72D7;&#x3002;</p>
+<h2 id="13-&#x539F;&#x7406;">1.3 &#x539F;&#x7406;</h2>
+<p>&#x4E0A;&#x4F4D;&#x673A;&#x8FD0;&#x884C;&#x7684;&#x8F6F;&#x4EF6;&#x5FC5;&#x987B;&#x4E0E;&#x52A0;&#x5BC6;&#x72D7;&#x901A;&#x8BAF;&#x624D;&#x80FD;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#xFF0C;&#x5176;&#x672C;&#x8D28;&#x5C31;&#x662F;&#x901A;&#x8FC7;&#x5404;&#x79CD;&#x624B;&#x6BB5;&#x6765;&#x5B9E;&#x73B0;&#x8F6F;&#x786C;&#x4EF6;&#x5B89;&#x5168;&#x4EA4;&#x4E92;&#x901A;&#x8BAF;&#x548C;&#x6346;&#x7ED1;&#x8FD0;&#x884C;&#x3002;</p>
+<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/DongleWork.png" alt="DongleWork"> <br> <center> <font color="gray"> Dongle runing </font> </center> <br></p>
+<p>&#x751F;&#x4EA7;&#x52A0;&#x5BC6;&#x72D7;&#x7684;&#x5382;&#x5546;&#x5BF9;&#x52A0;&#x5BC6;&#x72D7;&#x8FDB;&#x884C;&#x786C;&#x4EF6;&#x8BBE;&#x8BA1;&#x548C;&#x7B97;&#x6CD5;&#x7F16;&#x7A0B;&#xFF0C;&#x8F6F;&#x786C;&#x4EF6;&#x7684;&#x8D28;&#x91CF;&#x51B3;&#x5B9A;&#x4E86;&#x52A0;&#x5BC6;&#x72D7;&#x7684;&#x4EF7;&#x683C;&#x3002;&#x8F6F;&#x4EF6;&#x5382;&#x5546;&#x5BF9;&#x52A0;&#x5BC6;&#x72D7;&#x8BBE;&#x7F6E;&#x7B97;&#x6CD5;&#x56E0;&#x5B50;&#xFF0C;&#x4EE5;&#x4F7F;&#x5F97;&#x6BCF;&#x4E00;&#x4E2A;&#x8F6F;&#x4EF6;&#x5382;&#x5546;&#x7684;&#x52A0;&#x5BC6;&#x72D7;&#x5BF9;&#x5916;&#x90FD;&#x662F;&#x5B89;&#x5168;&#x7684;&#x3002;&#x5E38;&#x89C1;&#x7684;&#x52A0;&#x5BC6;&#x72D7;&#x7B97;&#x6CD5;&#x6709;AES&#x3001;ECC&#x3001;RSA&#x3001;DES&#x3001;3DES&#x7B49;&#x3002;</p>
+<h2 id="14-&#x8BBE;&#x8BA1;diy">1.4 &#x8BBE;&#x8BA1;DIY</h2>
+<h3 id="141-&#x786C;&#x4EF6;&#x8BBE;&#x8BA1;">1.4.1 &#x786C;&#x4EF6;&#x8BBE;&#x8BA1;</h3>
+<p>&#x6700;&#x7B80;&#x5355;&#x7684;&#x52A0;&#x5BC6;&#x72D7;&#x5185;&#x90E8;&#x81F3;&#x5C11;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x975E;&#x6613;&#x5931;&#x6027;&#x5B58;&#x50A8;&#x5668;&#xFF0C;&#x901A;&#x8FC7;&#x5411;&#x5176;&#x5199;&#x5165;&#x56FA;&#x4EF6;&#xFF0C;&#x5728;&#x4E0A;&#x4F4D;&#x673A;&#x8F6F;&#x4EF6;&#x8FD0;&#x884C;&#x65F6;&#x4E0D;&#x65AD;&#x8BFB;&#x53D6;&#x8BE5;&#x56FA;&#x4EF6;&#x6765;&#x5B9E;&#x73B0;&#x7B80;&#x6613;&#x7684;&#x52A0;&#x5BC6;&#x3002;</p>
+<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/DongleDIY.png" alt="DongleDIY"> <br> <center> <font color="gray"> Dongle DIY </font> </center> <br></p>
+<p>&#x4E3A;&#x589E;&#x5F3A;&#x5B89;&#x5168;&#x7CFB;&#x6570;&#xFF0C;&#x73B0;&#x4EE3;&#x52A0;&#x5BC6;&#x72D7;&#x5185;&#x90E8;&#x90FD;&#x662F;&#x7531;&#x5904;&#x7406;&#x5668;&#x3001;&#x5B58;&#x50A8;&#x5668;&#x7B49;&#x7EC4;&#x6210;&#x7684;&#x5D4C;&#x5165;&#x5F0F;&#x7CFB;&#x7EDF;&#x3002;AVR&#x5355;&#x7247;&#x673A;&#x7684;&#x667A;&#x5CF0;USB_ISP&#x70E7;&#x5F55;&#x5668;&#x5185;&#x7F6E;AVR_ATMEGA8&#x5904;&#x7406;&#x5668;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x7A33;&#x5B9A;&#x7684;&#x7535;&#x8DEF;&#x7ED3;&#x6784;&#xFF0C;&#x5176;&#x5916;&#x5F62;&#x548C;&#x52A0;&#x5BC6;&#x72D7;&#x76F8;&#x4F3C;&#xFF0C;&#x901A;&#x8FC7;&#x5BF9;&#x8BE5;&#x70E7;&#x5F55;&#x5668;&#x8FDB;&#x884C;&#x56FA;&#x4EF6;&#x6539;&#x9020;&#x5373;&#x53EF;&#x6210;&#x4E3A;&#x52A0;&#x5BC6;&#x72D7;&#x3002;</p>
+<h3 id="142-&#x8F6F;&#x4EF6;&#x8BBE;&#x8BA1;">1.4.2 &#x8F6F;&#x4EF6;&#x8BBE;&#x8BA1;</h3>
+<p>//TBD</p>
+<h2 id="15-&#x54C1;&#x724C;&#x6392;&#x884C;&#x699C;">1.5 &#x54C1;&#x724C;&#x6392;&#x884C;&#x699C;</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x54C1;&#x724C;</th>
+<th style="text-align:center">&#x516C;&#x53F8;</th>
+<th style="text-align:center">&#x63A5;&#x53E3;</th>
+<th style="text-align:center">&#x7B97;&#x6CD5;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&#x5723;&#x5929;&#x72D7;</td>
+<td style="text-align:center">&#x8D5B;&#x5B5A;&#x8010;/SafeNet&#xFF08;&#x7F8E;&#xFF09;</td>
+<td style="text-align:center">USB&#x3001;&#x5E76;&#x53E3;</td>
+<td style="text-align:center">AES/ECC/DES</td>
+</tr>
+<tr>
+<td style="text-align:center">Hasp HL</td>
+<td style="text-align:center">&#x963F;&#x62C9;&#x4E01;/Aladdin&#xFF08;&#x4EE5;&#x8272;&#x5217;&#xFF09;</td>
+<td style="text-align:center">USB</td>
+<td style="text-align:center">AES/RSA</td>
+</tr>
+<tr>
+<td style="text-align:center">&#x6DF1;&#x601D;&#x6D1B;&#x514B;</td>
+<td style="text-align:center">&#x5317;&#x4EAC;&#x6DF1;&#x601D;&#x6D1B;&#x514B;</td>
+<td style="text-align:center">USB</td>
+<td style="text-align:center">RSA/3DES</td>
+</tr>
+<tr>
+<td style="text-align:center">&#x98DE;&#x5929;&#x8BDA;&#x4FE1;</td>
+<td style="text-align:center">&#x5317;&#x4EAC;&#x98DE;&#x5929;&#x8BDA;&#x4FE1;</td>
+<td style="text-align:center">USB</td>
+<td style="text-align:center">RSA/3DES</td>
+</tr>
+</tbody>
+</table>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; Jim 2019-2020 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Revision time: 
-2020-03-26 09:56:18
+2020-04-22 19:05:10
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1138,7 +1193,7 @@ The address must be unique at the same Modbus serial line, and the master has no
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Serial Communication","level":"1.2.5.1","depth":3,"next":{"title":"OS","level":"1.2.6","depth":2,"ref":"","articles":[]},"previous":{"title":"Communication","level":"1.2.5","depth":2,"ref":"","articles":[{"title":"Serial Communication","level":"1.2.5.1","depth":3,"path":"pages/extension/Communication.md","ref":"pages/extension/Communication.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/extension/Communication.md","mtime":"2020-03-26T01:56:18.548Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-21T13:03:29.431Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Serial Communication","level":"1.2.5.1","depth":3,"next":{"title":"OS","level":"1.2.6","depth":2,"ref":"","articles":[]},"previous":{"title":"Communication","level":"1.2.5","depth":2,"ref":"","articles":[{"title":"Serial Communication","level":"1.2.5.1","depth":3,"path":"pages/extension/Communication.md","ref":"pages/extension/Communication.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/extension/Communication.md","mtime":"2020-04-22T11:05:10.998Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-22T11:11:12.239Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
