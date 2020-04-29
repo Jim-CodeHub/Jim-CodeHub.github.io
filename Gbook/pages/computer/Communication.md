@@ -383,3 +383,14 @@ Hasp HL		| 阿拉丁/Aladdin（以色列）	| USB		| AES/RSA
 深思洛克	| 北京深思洛克				| USB		| RSA/3DES
 飞天诚信	| 北京飞天诚信				| USB		| RSA/3DES
 
+
+
+
+
+
+
+
+
+
+
+

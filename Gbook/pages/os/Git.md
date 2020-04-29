@@ -11,7 +11,6 @@
 
 Tips : This is an information management tool from hell - *Linus torvalds*.
 
-
 # 2 Instructions
 
 # 2.1 Command
@@ -261,6 +260,148 @@ github FUNCTIONS
 
 - 开发者中心 ： https://developer.github.com/
 	- marketplace 允许在github上售卖软件，github提供售卖相关模块
+
+
+
+- 软件包托管：https://github.com/features/packages
+	- 说明：支持npm和多种命令上传和下载
+	https://www.jianshu.com/p/5278180e191c
+https://www.runoob.com/nodejs/nodejs-npm.html
+
+https://zh.wikipedia.org/wiki/Npm
+
+理解：npm 是NPM公司使用JavaScript编写的软件包管理系统，npm提供一个registry的仓库，库中包含百万计的模块，这些模块是全世界的程序员贡献上传的，
+微软的GTIHUB收购了NPM，所以也就拥有了registry库，于是GITHUB用户可以通过npm上传自己的模块到GITHUB的registry，或者从上面下载
+
+类似的，github还提供其它管理命令。
+
+---------
+
+git 打tag
+
+tag 是在最近一次commit上打的标签，一般用于标记迭代的项目版本信息
+
+- 列出tag : 1. $ git tag
+			2. $ git log //在log中的commit后面显示tag
+			3. $ git show v1.5 //查看tag详细信息，含commit信息等
+			4. $ git tag -l "v1.*" //通配符查看
+
+- 新建tag : $ git tag v1.5
+	一个commit上可以新建N个tag
+			$ git tag 9fceb02 v1.5 //给过去的commit打tag
+
+- 备注tag : $ git tag -a V1.5 -m "备注的信息"
+
+- 推送tag ：
+	默认git push origin 是不推送tag的，所以git push origin --tags 才推送tag，可以与源码异步推送，可以理解为是独立的信息
+
+---
+
+GitHub release
+
+在github上发布软件，github 以时间线列表的方式展示
+
+功能在“Edit”按钮下方，与"Commits" "branch" "packages" 并列，名为"release"
+
+github release 功能依赖项目的tag标签
+
+当推送tag后，在"release"自动生成版本线，并提供zip和tar.gz下载功能 
+
+
+---
+
+GitHub issue
+
+对于项目拥有者，可以作为任务管理系统使用，以跟踪问题，或列出将来的任务计划
+对于团队，issue是项目的轻量级协作系统
+对于路人，可以在别人的issue上提出意见和反馈问题
+奇葩用法，也可以把issue当做论坛使用
+
+issue可以被关闭，表示该问题的追踪已停止，问题已解决，讨论入口关闭
+
+使用#n 表示issue的ID，该ID在发起issue时自动创建
+
+当commit时，如果该commit解决了某个issue，那么可以通过 。。。 commit -m "xxx" , fixed #n
+也可以在github中手动关闭issue
+
+issue不是github独有的，issue应该被称为“BTS （bug tracking system）”，即BUG跟踪系统，
+市场上比较有代表性的BTS有Redmine、Trac、BugZilla等。
+
+
+
+ISSUE支持markdown语法
+
+
+----
+
+Github wiki
+
+GitHubWikis是一种让其他人提供内容的简单方法。任何GitHub用户都可以创建和编辑用于文档、示例、支持或任何您希望的内容的页面。
+
+类似维基百科的性质
+
+默认不开启，可以在Setting中的Featrue中勾选，但库要公开才行（不然wiki就没有意义了），或者升级到GitHubPRO
+
+----
+
+Github actions
+http://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html
+
+github actions 是 github 的持续集成服务，18年10月推出
+
+持续集成服务不是github的特有
+
+- 一个项目的研发周期，从设计、开发、测试、发布等要经过很多步骤，大部分项目的流程是类似的，于是可以将这些步骤编写成一个脚本来自动化运行（当然，也可以引用别人写好的脚本）
+，以缩短开发周期，提高开发效率。github action就是做这些事情的.
+
+换句话说，持续集成服务，就是让代码 频繁的、快速的产生结果的服务，好比种一颗花，需要选好土壤、种下种子、施肥浇水、监控温度和湿度、修枝剪叶、开花结果，每次种花你都要来这一遍，然后你发现基本上种所有的花多事这个步骤，那就做一个机器人，教他一次，以后让他自动执行，那么你的工作就是拿到种子就行了，如果这个过程不顺利，机器人帮你记录下哪里出错了，你再改正，然后再投一个种子，于是就形成了 种种子 - 开花， 种种子 - 开花， 种种子 - 反馈 - 种种子 - 开花。持续种种子-持续开花，马上种种子-马上开花，一种种子-就开花，总种种子-总开花，
+
+这样你就能快速的找到问题（如果有的话），并迅速的得到成果。
+
+
+
+
+每个action都是一个独立的脚本，多个脚本组成action脚本集 以完成项目所需
+
+对别其它的持续集成服务，github action允许引用现成的脚本 并且 可以与git动作相关联（如commit)，这是github持续集成的特别之处
+
+使用gtihub action，意味着提交到仓库就自动化完成后续的所有工作，节省了开发人员的大部分精力，也减少了团队的
+
+当然，持续集成也不适合所有项目，或者说不适合所有项目都完全自动化，比如嵌入式产品，最终软件还是要上机运行才能进行功能测试。
+
+github action市场：https://github.com/marketplace?type=actions
+				   https://github.com/sdras/awesome-actions //由路人总结的action脚本链接
+github action官方: https://github.com/actions
+
+
+
+github 实现action，需要在仓库中添加.github目录，并在该目录下创建workflow.yml配置文件，
+
+YAML语言是编写配置文件的语言，详见教程：http://www.ruanyifeng.com/blog/2016/07/yaml.html
+
+workflow.yml 中定义了一系列触发持续集成事件的方法、jobs、运行环境等等数据，action依据这些数据来完成持续集成自动化
+
+如on:push ,当push时就触发持续集成
+
+
+
+持续交付和持续部署是持续集成的后续或子集
+
+" 持续集成 -> 持续交付 -> 持续部署 "
+
+- 持续集成？？？
+
+Continues integration - CI
+
+- 持续交付? ? ?
+
+Continues delivery - CD
+
+- 持续部署? ? ?
+
+Continues deployment - CD
+
+
 
 
 

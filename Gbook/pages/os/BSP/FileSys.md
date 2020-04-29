@@ -267,3 +267,386 @@ rdev -r /dev/fd0 49552
 
 到此为止，你已经获得了你自己的启动/根压缩RAM磁盘(软盘)，你也可以将步骤d和步骤f通过管道一步执行。
 
+
+
+--------
+
+培训内容
+
+5.  QT网络文件系统
+
+a. 解压
+[root@deng Qt]# ls
+rootfs_qtopia_qt4-20141213.tar.gz
+[root@deng Qt]# tar -xzvf rootfs_qtopia_qt4-20141213.tar.gz  
+
+b. 拷贝文件
+[root@deng Qt]# mv rootfs_qtopia_qt4 /qtrootfs
+
+授权
+[root@deng /]# chmod  -R 777 qtrootfs/
+
+
+c. 配置nfs
+[root@deng /]# vim /etc/exports  
+[root@deng /]# cat /etc/exports  
+/qtrootfs *(rw,sync,no_root_sqush)
+
+关闭防火墙
+[root@deng /]# iptables -F 
+关闭安全linux
+[root@deng /]# setenforce  0
+setenforce: SELinux is disabled
+
+重启rpcbind服务
+[root@deng /]# /etc/init.d/rpcbind  restart
+
+重启nfs服务
+[root@deng /]# /etc/init.d/nfs restart
+
+
+验证是否共享
+[root@deng /]# showmount -e 192.168.8.88
+Export list for 192.168.8.88:
+/qtrootfs *
+
+
+d. 设置启动参数
+
+minicom:
+DengJin # set bootargs "root=/dev/nfs nfsroot=192.168.8.88:/qtrootfs ip=192.168.8.77 console=ttySAC0,115200 lcd=S70 ctp=2 "
+DengJin # save
+
+
+
+6. 最小网络文件系统的构建(重点)
+
+	1) 创建共享目录
+	[root@deng /]# mkdir rootfs
+
+	2) 编译busybox
+
+	[root@deng arm]# ls busybox-1.17.2-20101120.tgz 
+	busybox-1.17.2-20101120.tgz
+
+	解压
+	[root@deng arm]# tar -xvf busybox-1.17.2-20101120.tgz 
+
+	[root@deng arm]# cd busybox-1.17.2
+
+	生成默认的配置文件
+	[root@deng busybox-1.17.2]# make defconfig 
+
+	配置
+	[root@deng busybox-1.17.2]# make menuconfig 
+
+	│ ┌───────────────────────────────────────────────────────────┐ │  
+	│ │        Busybox Settings  --->                             │ │   <--- 选择该项 按回车
+	│ │    --- Applets                                            │ │  
+	│ │        Archival Utilities  --->                           │ │  
+	│ │        Coreutils  --->                                    │ │  
+	│ │        Console Utilities  --->                            │ │  
+	│ │        Debian Utilities  --->                             │ │  
+	│ │        Editors  --->                                      │ │  
+	│ │        Finding Utilities  --->                            │ │  
+	│ │        Init Utilities  --->                               │ │  
+	│ │        Login/Password Management Utilities  --->       
+
+
+	出现如下界面
+
+	│         General Configuration  --->           │ 
+	│ │       Build Options  --->                   │ │   <--- 选择此项 按下回车
+	│ │       Debugging Options  --->               │ │  
+	│ │       Installation Options  --->            │ │  
+	│ │       Busybox Library Tuning  --->          │ │  
+	│ │                                                    
+
+	出现如下界面
+	│ ┌──────────────────────────────────────────────────────────────────────┐ │  
+	│ │   [ ] Build BusyBox as a static binary (no shared libs)              │ │   <---选中此项
+	│ │   [ ]   Build BusyBox as a position independent executable           │ │  
+	│ │   [ ] Force NOMMU build                                              │ │  
+	│ │   [ ] Build shared libbusybox                                        │ │  
+	│ │   [*] Build with Large File Support (for accessing files > 2 GB)     │ │  
+	│ │   ()  Cross Compiler prefix                                          │ │  按下回车 输入arm-linux-
+	│ │   ()  Additional CFLAGS                                              │ │  
+	│ │                                             
+
+	最终配置如下:
+	│ ┌──────────────────────────────────────────────────────────────────────┐ │  
+	│ │  [*] Build BusyBox as a static binary (no shared libs)               │ │   <----选中
+	│ │  [ ] Force NOMMU build                                               │ │  
+	│ │  [*] Build with Large File Support (for accessing files > 2 GB)      │ │  
+	│ │  (arm-linux-) Cross Compiler prefix                                  │ │    <---修改的地方
+	│ │  ()  Additional CFLAGS                                               │ │  
+	│ │                                              
+
+	退出 保存
+
+	编译
+	[root@deng busybox-1.17.2]# make -j4
+
+	安装
+	[root@deng busybox-1.17.2]# make install 
+
+	会出现如下目录:
+	[root@deng busybox-1.17.2]# ls -l _install/
+
+	将_install目录中所有的文件拷贝到/rootfs目录中
+	[root@deng busybox-1.17.2]# cd _install/
+	[root@deng _install]# cp * /rootfs/  -rf 
+
+	将配置文件拷贝到/rootfs
+	[root@deng busybox-1.17.2]# cp examples/bootfloppy/etc /rootfs -rf
+
+	创建相关的目录
+	[root@deng rootfs]# mkdir lib home tmp var opt media mnt misc sys root proc net dev
+
+	修改一些配置
+	[root@deng rootfs]# pwd
+	/rootfs
+	[root@deng rootfs]# cd etc
+	[root@deng etc]# ls
+	fstab  init.d  inittab  profile
+
+	修改fstab配置文件如下
+	[root@deng etc]# cat fstab 
+	proc        /proc   proc    defaults    0   0
+	tmpfs       /tmp    tmpfs   defaults    0   0
+	ramfs       /dev    ramfs   defaults    0   0
+	sysfs       /sys    sysfs   defaults    0   0
+
+	创建串口设备
+	[root@deng rootfs]# mknod dev/console c 5 1
+
+	修改rcS内容如下
+	[root@deng rootfs]# cat etc/init.d/rcS 
+
+#! /bin/sh
+	/bin/mount -a
+
+#创建dev设备
+	/sbin/mdev -s
+
+	修改inittab内容如下
+	[root@deng rootfs]# cat etc/inittab 
+	::sysinit:/etc/init.d/rcS
+	::respawn:-/bin/sh
+	tty2::askfirst:-/bin/sh
+	::ctrlaltdel:/bin/umount -a -r
+
+	拷贝库
+	[root@deng rootfs]# cp -rf /usr/local/arm/4.5.1/arm-none-linux-gnueabi/lib/*  lib/
+
+
+																				  配置nfs共享
+																				  [root@deng rootfs]# vim /etc/exports 
+																				  /qtrootfs *(rw,sync,no_root_squash)
+																				  /rootfs *(rw,sync,no_root_squash)
+
+
+																				  设置启动参数
+																				  DengJin # set bootargs "root=/dev/nfs nfsroot=192.168.8.88:/rootfs ip=192.168.8.77 console=ttySAC0,115200 lcd=S
+																				  70 ctp=2"
+																				  DengJin # set bootcmd "movi read kernel 0 0x40008000;bootm 0x40008000"
+																				  DengJin # save
+
+
+
+																				  --------------
+
+
+																				  1. 从SD卡启动文件系统
+
+																				  a. 打包
+																				  [root@deng rootfs]# tar -cjvf nfs.tar.bz2 * 
+
+																				  b. 挂载
+																				  minicom:
+																				  [root@DengJin /]# mount /dev/mmcblk0p2 /mnt
+
+																				  c. 解压到指定的目录
+																				  minicom:
+																				  [root@DengJin /]# tar -xjvf nfs.tar.bz2  -C /mnt
+
+																				  d. 卸载
+																				  minicom:
+																				  [root@DengJin /]# umount  /mnt
+
+																				  e. 重启进入uboot 设置启动参数
+																				  DengJin # set bootargs "root=/dev/mmcblk0p2 console=ttySAC0,115200 lcd=S70 ctp=2"
+																				  DengJin # save
+
+																				  f. 测试
+																				  断掉网线 看看能否进入文件系统
+
+
+
+																				  2. 从SD卡启动Qt文件系统
+
+																				  a. 打包
+																				  [root@deng /]# tar -cjvf qtrootfs.tar.bz2 qtrootfs 
+
+																				  b. 挂载(先进入网络文件系统)
+																				  [root@DengJin /]# mount /dev/mmcblk0p4 /mnt  
+
+																				  c. 解压到指定的目录
+																				  [root@DengJin /]# tar -xzvf rootfs_qtopia_qt4-20141213.tar.gz  -C /mnt
+
+																				  d. 卸载
+																				  [root@DengJin /]# umount  /mnt
+
+																				  e. 烧写ramdisk-u.img
+
+																				  minicom:
+																				  DengJin # fastboot  
+
+																				  PC:
+																				  [root@deng Qt]# fastboot  flash ramdisk  ramdisk-u.img 
+
+																				  f. 设置启动参数
+																				  DengJin # set bootcmd "movi read kernel 0 40008000;movi read rootfs 0 41000000 400000;bootm 40008000 41000000"
+																				  DengJin # set bootargs "root=/dev/mmcblk0p4 console=ttySAC0,115200 lcd=S70 ctp=2"
+	DengJin # save
+
+
+	err0:
+mount: mounting /dev/mmcblk0p4 on /r failed: No such device or address
+Waiting for SD Card...
+mount: mounting /dev/mmcblk0p4 on /r failed: No such device or address
+Waiting for SD Card...
+mount: mounting /dev/mmcblk0p4 on /r failed: No such device or address
+Waiting for SD Card...
+mount: mounting /dev/mmcblk0p4 on /r failed: No such device o
+
+
+3. 将uboot烧写到EMMC
+
+a. 打开emmc设备
+
+从SD卡启动uboot
+DengJin # emmc open 1
+
+b. 下载bl1
+
+minicom:
+DengJin # dnw 40008000
+PC:
+[root@deng tiny4412]# dnw E4412_N.bl1.bin  
+
+minicom:
+DengJin # mmc write 1 40008000 0 0x10
+
+[Notice]
+mmc:命令
+write: 写
+1: 第一个设备
+40008000: 从该地址读内容
+0: 从第0块开始写
+0x10: 写16块 每一块512个字节
+
+
+c. 下载bl2
+minicom:
+DengJin # dnw 40008000
+PC:
+[root@deng tiny4412]# dnw bl2.bin  
+minicom:
+DengJin # mmc write 1 40008000 0x10 0x1c
+
+d. 下载uboot
+minicom:
+DengJin # dnw 40008000
+
+PC: 
+[root@deng tiny4412]# dnw ../../u-boot.bin  
+
+minicom:
+DengJin # mmc write 1 40008000 0x30 0x290 
+
+e. 关掉emmc设备
+DengJin # emmc close 1
+
+
+f. 测试从emmc启动
+看看能否正常启动uboot
+
+
+4. 下载内核
+
+a. 分区
+DengJin # fdisk -c 0 500 800 500
+
+格式化 
+DengJin # fatformat mmc 0:1
+DengJin # ext3format mmc 0:2
+DengJin # ext3format mmc 0:3
+DengJin # ext3format mmc 0:4
+
+b. 下载内核
+minicom:
+DengJin # dnw 40008000
+PC:
+[root@deng linux-3.5]# dnw arch/arm/boot/zImage 
+minicom:
+DengJin # movi write kernel 0 40008000
+DengJin # set bootargs "movi read kernel 0 40008000;bootm 40008000"
+DengJin # save
+
+5. EMMC 最小网络文件系统
+DengJin # set bootargs "root=/dev/nfs nfsroot=192.168.8.88:/rootfs ip=192.168.8.77 console=ttySAC0,115200 lcd=S70 ctp=2"
+DengJin # save
+
+
+6. EMMC Qt网络文件系统
+
+a. 分区
+DengJin # fdisk -c 0 500 800 500 
+DengJin # fatformat mmc 0:1
+
+b. 下载ramdisk-u.img
+minicom:
+DengJin # fastboot
+
+PC:
+[root@deng Qt]# fastboot flash ramdisk ramdisk-u.img 
+
+c. 设置启动参数
+DengJin # set bootcmd "movi read kernel 0 40008000;movi read rootfs 0 41000000 400000;bootm 40008000 41000000"
+DengJin # set bootargs "root=/dev/nfs nfsroot=192.168.8.88:/qtrootfs ip=192.168.8.77 console=ttySAC0,115200 lcd
+=S70 ctp=2"
+DengJin # save
+
+7. 将最小文件系统烧录到emmc中
+
+a. 从网络文件系统启动
+
+挂载
+[root@DengJin /]# mount /dev/mmcblk0p2  /mnt
+
+解压到挂载的目录
+[root@DengJin /]# tar -xjvf nfs.tar.bz2  -C /mnt 
+
+解挂
+[root@DengJin /]# umount  /mnt
+
+重新启动进入uboot 设置启动参数
+DengJin # set bootargs "root=/dev/mmcblk0p2 console=ttySAC0,115200 lcd
+
+8. 将Qt文件系统烧录到emmc中
+
+同SD操作
+
+9. 烧写Adnroid到emmc中
+
+笔记同第二天
+
+
+
+
+
+
+
+
+

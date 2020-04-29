@@ -254,3 +254,13 @@ HP销售文案示例
 
 
 中文、西班牙语和英语为世界使用人数、范围和第一语言的前三
+
+-----------
+
+Mass 质量
+inertia 惯性
+payload 有效负载
+efficiency 效率
+torque 扭矩 
+
+alternating current 交流电

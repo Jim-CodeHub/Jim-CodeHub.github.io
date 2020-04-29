@@ -111,6 +111,31 @@ Linux/X11, Windows, macOS, Android, IOS/tvOS/watchOS, WinRT/UWP10, Embedded Linu
 
 # 3 Development
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 零散知识点
 
@@ -172,15 +197,77 @@ QFileDialog::getOpenFileName(this, tr("open"), "c:\\");
 
 
 
+---
+
+Qt Creator 分析
+
+1. 产生项目
+
+Qt Creator新建项目将产生两个文件夹，以项目名Demo为例：
+	1. build-Demo-Desktop_Qt_5_9_0_MinGW_32bit-Debug
+		包含debug、release目录和Makefile、ui_mainwindows.h文件
+
+		其中ui_mainwindows.h 是Qt 利用'mainwindow.ui'生成的，该文件见下文
+
+		这里也有Makefile，可见qmake的机制最终也是操作Makefile
+
+	2. Demo
+		mainwindow.ui文件、Demo.pro、Demo.pro.user 和 所有源码及头文件
+
+		- mainwindows.ui 是GUI文件，文本类型，内容使用XML格式维护:	
+
+```
+		<?xml version="1.0" encoding="UTF-8"?>
+		<ui version="4.0">
+		.... <!--中间这些节点表达了控件类型、位置、大小、颜色等等信息-->
+		</ui>
+```
+		x.ui文件内容是由Qt的UI设计界面生成的，在设计界面绘制的过程，就是在x.ui写入节点信息的过程
+		x.ui文件会被Qt解析(成ui_mainwindows.h)，然后调用内部绘图函数，根据上述参数来绘制界面，
+
+		Qt利用这种： "UI界面 - XML - 代码绘制" 的方式，屏蔽了底层绘制图形的复杂性，使得开发人员/UI设计人员可以直接上手
+
+
+		- xxx.pro		是项目文件， 文本类型， 内容类似Makfile， 它是qmake工具的操作对象，qmake使用该文件产生上述Makefile： Qt.pro & qmake VS Makefile & make 
+		- xxx.pro.user	也是项目文件，是XML类型，是维护项目信息使用的，类似VS下的“解决方案”
+
+		Tips : qmake工具使用中间文件的方式生成Makefile，也是跨平台编译的要点之一
+
+
+2. MOC
+
+Moc Meta Object compiler  元对象编译器
+
+moc文件 在项目目录下的Debug或Release目录下产生
+
+在启动调试时 MOC 读取项目中的头文件，找到所有包含 "Q_QBJECT" 宏的类， 然后为这些类生成moc_xxx.cpp源文件，
+moc_xx.cpp源文件 是这些类的 meta-Object代码，主要处理“信号-槽"的机制，运行时类型信息和动态属性系统等
+
+MOC以头文件为单位生成源文件，比如A.h中有10个包含O_QBJECT的代码 B.h中有1个包含O_QBJECT代码，则MOC生成一个moc_A.cpp和一个moc_B.cpp
+
+https://doc.qt.io/archives/qt-4.8/moc.html
+https://doc.qt.io/qt-5/why-moc.html
+
+
+3. Qt中的头文件"x.h"与无后缀头文件的区别
+
+没有区别，无后缀的头文件中，只有一句话：包含带后缀的头文件，比如a.h，则A中包含了 '#include "a.h"'
 
 
 
+# 图形的本质
 
+图形的本质是内存中的像素点信息，显示的过程是内存的像素点信息到显卡的显存的赋值过程
 
+任何GUI库的工作，都是绘制内存像素点的过程
 
+如果存在操作系统，那么操作系统一定存在一套API来对接底层显卡接口
 
+上层软件只需调用这套API就可以显示绘制图形
 
+如果没有操作系统，那么软件就要针对该平台的CPU、GPU、显示芯片等直接进行操作
 
+如果裸机所接的显示屏是未知的，那么就需要程序员来构造现实接口来对接上层软件的接口
 
 ----
 培训教程

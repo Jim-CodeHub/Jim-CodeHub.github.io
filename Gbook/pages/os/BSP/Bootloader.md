@@ -1,4 +1,3 @@
-
 #uboot简介
 uboot是GNU开源、嵌入式领域的Bootloader，用于初始化硬件和加载内核（加载模式），并提供基础命令行环境以调试硬件和下载程序（开发模式）。
 官网：http://www.denx.de；（下载）ftp://ftp.denx.de/pub/u-boot/。
@@ -66,3 +65,253 @@ Bootloader与硬件相关，因此都集成了很多平台，PC端有适用Linux
 散装知识点
 ----
 固件（firmware）：存储于ROM中的（固定或永久性）程序。
+
+
+
+
+
+
+
+
+
+
+
+
+
+培训内容
+---------------
+
+1. 交叉编译、环境变量配置、固定的解压位置、
+
+2. 编译tiny4412的uboot
+
+	1. 配置 : $make tiny4412_config             <----- uboot适合该型号的板子
+	2. 编译 ：$make
+	3. 生成工具： $ cd sd_fuse && make
+	4. 烧录到SD；
+		- $dd if=/dev/zero of=/dev/sdb bs=1024 count=1
+		- $./sd_fusing.sh  /dev/sdb
+
+3. minicom
+
+	1. 配置 : minicom -s
+
+4. 更改uboot提示
+
+	1. $ vim include/configs/tiny4412.h 
+
+	将255行
+	255 #define CONFIG_SYS_PROMPT       "TINY4412 # "
+	改为
+	255 #define CONFIG_SYS_PROMPT       "DengJin # "
+
+5. 关闭MMU
+
+	1. $vim include/configs/tiny4412.h + 331, 注释#define CONFIG_ENABLE_MMU
+	2. 修改基地址 $ vim board/samsung/tiny4412/config.mk , CONFIG_SYS_TEXT_BASE = 0xc3e00000 改为0x43e00000
+	从新编译uboot并烧录SD
+
+6. uboot常用命令
+
+md 显示内存的数据
+
+mm 修改内存的数据
+
+coninfo 打印串口设备信息
+
+exit 退出脚本
+
+reset 重新启动uboot
+
+version 打印uboot版本信息
+
+
+printenv 显示环境变量
+setenv  设置环境变量
+saveenv 保存环境变量
+
+
+			1. md 
+			
+			查看从0x50000000 1 开始的4个字节
+			DengJin # md 0x50000000  1
+			
+			
+			查看从0x50000000 1 开始的8个字节
+			DengJin # md 0x50000000  2
+			
+			查看从0x50000000开始的1个字节
+			DengJin # md.b 0x50000000 1
+			50000000: ff    .
+			
+			查看指定地址的内容 .w代表以两个字节为单位 1代表多少个单位
+			DengJin # md.w 0x50000000 1
+			50000000: ffff    ..
+			
+			
+			查看指定地址的内容 .l代表以四个字节为单位 1代表多少个单位
+			DengJin # md.l 0x50000000 1
+			50000000: ffffffff    ....
+			
+			
+			2. mm
+			
+			查看帮助信息
+				DengJin # help mm
+			mm - memory modify (auto-incrementing address)
+			
+				Usage:
+				mm [.b, .w, .l] address
+			
+				每次以字节为单位修改内存的数据
+				DengJin # mm.b 0x50000000
+				50000000: ff ? 11
+				50000001: ff ? 22
+				50000002: ff ? 33
+				50000003: ff ? 44
+				50000004: ff ? 55
+				50000005: ff ? 
+				50000006: ff ? q
+				DengJin # 
+			
+			
+				每次以两个字节为单位修改内存的数据
+				DengJin # mm.w 0x50000000
+				50000000: 2211 ? 1111
+				50000002: 4433 ? 2222
+				50000004: ff55 ? 3333
+				50000006: ffff ? 4444
+				50000008: ffff ? q
+			
+				每次以四个字节为单位修改内存的数据
+				DengJin # mm.l 0x50000000
+				50000000: 22221111 ? 111
+				50000004: 44443333 ? 222
+				50000008: ffffffff ? 333
+				5000000c: ffffffff ? q
+			
+				将所有的可编程的LED全部灭
+				DengJin # md 0x110002e4 1
+				110002e4: 0000000c    ....
+				DengJin # mm 0x110002e4 
+				110002e4: 0000000c ? f
+				110002e8: 00005555 ? q
+			
+			
+				将所有的可编程的LED全部亮
+				DengJin # mm 0x110002e4  
+				110002e4: 0000000f ? 0
+				110002e8: 00005555 ? q
+				DengJin # md 0x110002e4 1
+				110002e4: 00000000    ....
+				DengJin # 
+			
+			
+			
+				Buzzer 
+				CON 0x114000A0
+				DAT 0x114000A4
+			
+				设置为输出
+				DengJin # mm 0x114000A0 
+				114000a0: 00000000 ? 1
+			
+				设置为高电平 Buzzer会叫
+				DengJin # mm 0x114000A4 
+				114000a4: 0000000c ? 0xd
+			
+			
+				设置为高电平 Buzzer不叫
+				DengJin # mm 0x114000A4 
+				114000a4: 0000000c ? 0xc
+			
+				3. coninfo
+			
+				DengJin # coninfo
+				List of available devices:
+				serial   80000003 SIO 
+			
+			
+			
+				4. printenv
+			
+				查看所有环境变量
+				DengJin # printenv
+			
+				查看指定的环境变量的值
+				DengJin # printenv bootdelay
+			
+			
+				5. setenv
+			
+				设置环境变量
+				DengJin # setenv bootdelay 10
+			
+				取消设置的环境变量
+				DengJin # setenv AA
+			
+			
+				6. saveenv
+			
+				保存环境变量
+				DengJin # saveenv
+				Saving Environment to SMDK bootable device...
+				done
+			
+			
+				7. boot
+			
+				执行bootcmd的命令
+				DengJin # boot
+				helloworld
+				uplooking
+
+
+
+				1. fdisk
+
+				帮助信息
+				DengJin # help fdisk 
+				fdisk - fdisk for sd/mmc.
+
+				Usage:
+				fdisk -p <device_num>   - print partition information
+				fdisk -c <device_num> [<sys. part size(MB)> <user data part size> <cache part size>]
+				- create partition
+
+
+				查看分区信息
+				DengJin # fdisk -p 0
+				partion #    size(MB)     block start #    block count    partition_Id 
+				1          5804          3535680        11887200          0x0C 
+				2           327           137160          670560          0x83 
+				3           811           807720         1661160          0x83 
+				4           520          2468880         1066800          0x83 
+
+
+				DengJin #fdisk -c 0 320 806 518
+				fdisk is completed
+
+				partion #    size(MB)     block start #    block count    partition_Id 
+				1          5804          3535680        11887200          0x0C 
+				2           327           137160          670560          0x83 
+				3           811           807720         1661160          0x83 
+				4           520          2468880         1066800          0x83 
+
+
+
+				2. fatformat
+
+				格式化的帮助信息
+				DengJin # help fatformat
+				fatformat - fatformat - disk format by FAT32
+
+
+				Usage:
+				fatformat <interface(only support mmc)> <dev:partition num>
+				- format by FAT32 on 'interface'
+
+				格式化第一个分区
+				DengJin #fatformat mmc 0:1
+
+

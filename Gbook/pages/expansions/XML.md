@@ -282,3 +282,136 @@ $g++ myXercesc.cpp -lxerces-c
 
 W3C XML规范声明：如果 XML 文档存在错误，那么程序就不应当继续处理这个文档。理由是，XML 软件应当轻巧，快速，具有良好的兼容性。
 目前XML最新版本为1.0第五版。XML规范和时间线参看https://www.w3school.com.cn/w3c/w3c_xml.asp和https://www.w3.org/TR/xml/。
+
+
+-----------
+
+## 1 xerces-c 
+
+
+## 1.1 编译
+
+解压，查看doc/html/index.html文档
+
+注意：xerces-c支持使用curl库，如果编译时使能了相关参数，那么xerces-c运行时必须要有curl库的支持，更多选项查看上述index文档 
+
+```
+$ ./configure --disable-network --prefix=./install
+
+...
+
+configure: Report:
+configure:   File Manager: POSIX
+configure:   Mutex Manager: POSIX
+configure:   Transcoder: gnuiconv
+configure:   NetAccessor: disabled
+configure:   Message Loader: inmemory
+
+
+$ make
+
+$ install
+```
+
+结果生成xercesc的动态库和静态库
+
+
+## 1.2 编程
+
+头文件：
+dom/		-- DOM 模型
+		dom 中包含DOM.h，该头文件包含了该目录下的所有头文件，除了impl目录
+
+		注：dom目录下都是DOMxx头文件，而没有实现（或者说只有几个头文件在类中实现了某个虚函数），因为它们都是抽象类，
+			其doxygen文档并未提供完整的类列表，实际这些接口还是有实现这些接口的派生类的
+			这些派生类都在dom/impl目录下，多数以xxxImpl.hpp xxxImpl.cpp结尾，xxx对应dom目录下的抽象类名
+		
+internal/ 
+parsers/	-- SAX相关 分析模块、含验证功能
+sax2/		-- SAX 模型 2
+validators/ 
+xinclude/              
+framework/	-- XML架构相关，提供基础类	
+sax/		-- SAX 模型 1
+util/		-- 工具 以及 平台相关的代码
+
+
+# 2 miniXML
+
+https://www.msweet.org/mxml/
+
+无依赖的纯C编写的轻量级XML库
+
+支持DOM和XML，但不支持验证
+支持Unicode - UTF-8 和 UTF-16
+支持CDATA
+
+LICENSE, Apache License Version 2.0
+
+
+---源码分析
+
+miniXML源码结构及其简单，头文件只有三个 mxml.h mxml-private.h 和 config.h
+
+源码文件如下
+
+1. 增
+mxml-node.c
+
+2. 删
+mxml-node.c
+
+3. 改
+mxml-set.c   
+mxml-attr.c	//专对属性
+
+4. 查
+mxml-get.c		
+mxml-attr.c //专对属性	
+
+5. 遍历
+mxml-search.c 
+
+6. 其它
+mxml-entity.c	//XML和HTML中的实体操作，是指< > & ; \ 等需要转义使用的字符
+mxml-file.c		//文件操作
+mxml-index.c	//提供索引的方法
+mxml-private.c  //线程安全操作
+mxml-string.c   //字符串工具
+
+testmxml.c		//demo，测试使用，没有包含在库中
+
+---
+
+结构体
+
+```
+typedef struct _mxml_node_s mxml_node_t
+
+struct _mxml_node_s			/**** An XML node. ****/
+{
+  mxml_type_t		type;		/* Node type */
+  struct _mxml_node_s	*next;		/* Next node under same parent */
+  struct _mxml_node_s	*prev;		/* Previous node under same parent */
+  struct _mxml_node_s	*parent;	/* Parent node */
+  struct _mxml_node_s	*child;		/* First child node */
+  struct _mxml_node_s	*last_child;	/* Last child node */
+  _mxml_value_t		value;		/* Node value */
+  int			ref_count;	/* Use count */
+  void			*user_data;	/* User data */
+};
+```
+
+---
+
+编程	
+```
+#include <mxlm.h>
+#include <mxlm-private.h>
+#includ <config.h>
+```
+
+
+
+
+

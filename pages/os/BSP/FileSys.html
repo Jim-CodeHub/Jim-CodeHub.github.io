@@ -231,14 +231,14 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" >
+        <li class="chapter " data-level="1.3.1" data-path="../OSPrinciple.html">
             
-                <span>
+                <a href="../OSPrinciple.html">
             
                     
                     OS Principle
             
-                </span>
+                </a>
             
 
             
@@ -249,7 +249,7 @@
                 <span>
             
                     
-                    Linux
+                    Unix
             
                 </span>
             
@@ -360,7 +360,7 @@
                 <a href="../Unix.html">
             
                     
-                    OS Programming
+                    Unix Programming
             
                 </a>
             
@@ -373,7 +373,7 @@
                 <span>
             
                     
-                    BSP
+                    Linux BSP
             
                 </span>
             
@@ -522,20 +522,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.1.2" data-path="../../programming/Coding.html">
-            
-                <a href="../../programming/Coding.html">
-            
-                    
-                    Coding
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.1.3" data-path="../../programming/Python.html">
+        <li class="chapter " data-level="1.4.1.2" data-path="../../programming/Python.html">
             
                 <a href="../../programming/Python.html">
             
@@ -548,7 +535,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.1.4" data-path="../../programming/C++.html">
+        <li class="chapter " data-level="1.4.1.3" data-path="../../programming/C++.html">
             
                 <a href="../../programming/C++.html">
             
@@ -561,7 +548,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.1.5" data-path="../../programming/C.html">
+        <li class="chapter " data-level="1.4.1.4" data-path="../../programming/C.html">
             
                 <a href="../../programming/C.html">
             
@@ -574,7 +561,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.1.6" >
+        <li class="chapter " data-level="1.4.1.5" >
             
                 <span>
             
@@ -675,6 +662,19 @@
             
                     
                     Communication
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../../computer/ComputerOrg.html">
+            
+                <a href="../../computer/ComputerOrg.html">
+            
+                    
+                    ComputerOrg
             
                 </a>
             
@@ -862,7 +862,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.2" data-path="../../expansions/matlab.html">
+        <li class="chapter " data-level="1.8.2" data-path="../../expansions/XML.html">
+            
+                <a href="../../expansions/XML.html">
+            
+                    
+                    XML
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../../expansions/matlab.html">
             
                 <a href="../../expansions/matlab.html">
             
@@ -875,25 +888,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.3" data-path="../../expansions/English.html">
+        <li class="chapter " data-level="1.8.4" data-path="../../expansions/English.html">
             
                 <a href="../../expansions/English.html">
             
                     
                     English
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.4" data-path="../../expansions/XML.html">
-            
-                <a href="../../expansions/XML.html">
-            
-                    
-                    XML
             
                 </a>
             
@@ -1099,8 +1099,319 @@ dd if=/dev/zero of=/dev/ram0 bs=1k count=2048</p>
 rdev /dev/fd0 /dev/fd0
 rdev -r /dev/fd0 49552</p>
 <p>&#x5230;&#x6B64;&#x4E3A;&#x6B62;&#xFF0C;&#x4F60;&#x5DF2;&#x7ECF;&#x83B7;&#x5F97;&#x4E86;&#x4F60;&#x81EA;&#x5DF1;&#x7684;&#x542F;&#x52A8;/&#x6839;&#x538B;&#x7F29;RAM&#x78C1;&#x76D8;(&#x8F6F;&#x76D8;)&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x5C06;&#x6B65;&#x9AA4;d&#x548C;&#x6B65;&#x9AA4;f&#x901A;&#x8FC7;&#x7BA1;&#x9053;&#x4E00;&#x6B65;&#x6267;&#x884C;&#x3002;</p>
+<hr>
+<p>&#x57F9;&#x8BAD;&#x5185;&#x5BB9;</p>
+<ol>
+<li>QT&#x7F51;&#x7EDC;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</li>
+</ol>
+<p>a. &#x89E3;&#x538B;
+[root@deng Qt]# ls
+rootfs_qtopia_qt4-20141213.tar.gz
+[root@deng Qt]# tar -xzvf rootfs_qtopia_qt4-20141213.tar.gz  </p>
+<p>b. &#x62F7;&#x8D1D;&#x6587;&#x4EF6;
+[root@deng Qt]# mv rootfs_qtopia_qt4 /qtrootfs</p>
+<p>&#x6388;&#x6743;
+[root@deng /]# chmod  -R 777 qtrootfs/</p>
+<p>c. &#x914D;&#x7F6E;nfs
+[root@deng /]# vim /etc/exports<br>[root@deng /]# cat /etc/exports<br>/qtrootfs *(rw,sync,no_root_sqush)</p>
+<p>&#x5173;&#x95ED;&#x9632;&#x706B;&#x5899;
+[root@deng /]# iptables -F 
+&#x5173;&#x95ED;&#x5B89;&#x5168;linux
+[root@deng /]# setenforce  0
+setenforce: SELinux is disabled</p>
+<p>&#x91CD;&#x542F;rpcbind&#x670D;&#x52A1;
+[root@deng /]# /etc/init.d/rpcbind  restart</p>
+<p>&#x91CD;&#x542F;nfs&#x670D;&#x52A1;
+[root@deng /]# /etc/init.d/nfs restart</p>
+<p>&#x9A8C;&#x8BC1;&#x662F;&#x5426;&#x5171;&#x4EAB;
+[root@deng /]# showmount -e 192.168.8.88
+Export list for 192.168.8.88:
+/qtrootfs *</p>
+<p>d. &#x8BBE;&#x7F6E;&#x542F;&#x52A8;&#x53C2;&#x6570;</p>
+<p>minicom:
+DengJin # set bootargs &quot;root=/dev/nfs nfsroot=192.168.8.88:/qtrootfs ip=192.168.8.77 console=ttySAC0,115200 lcd=S70 ctp=2 &quot;
+DengJin # save</p>
+<ol>
+<li><p>&#x6700;&#x5C0F;&#x7F51;&#x7EDC;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x6784;&#x5EFA;(&#x91CD;&#x70B9;)</p>
+<p> 1) &#x521B;&#x5EFA;&#x5171;&#x4EAB;&#x76EE;&#x5F55;
+ [root@deng /]# mkdir rootfs</p>
+<p> 2) &#x7F16;&#x8BD1;busybox</p>
+<p> [root@deng arm]# ls busybox-1.17.2-20101120.tgz 
+ busybox-1.17.2-20101120.tgz</p>
+<p> &#x89E3;&#x538B;
+ [root@deng arm]# tar -xvf busybox-1.17.2-20101120.tgz </p>
+<p> [root@deng arm]# cd busybox-1.17.2</p>
+<p> &#x751F;&#x6210;&#x9ED8;&#x8BA4;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;
+ [root@deng busybox-1.17.2]# make defconfig </p>
+<p> &#x914D;&#x7F6E;
+ [root@deng busybox-1.17.2]# make menuconfig </p>
+<p> &#x2502; &#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510; &#x2502;<br> &#x2502; &#x2502;        Busybox Settings  ---&gt;                             &#x2502; &#x2502;   &lt;--- &#x9009;&#x62E9;&#x8BE5;&#x9879; &#x6309;&#x56DE;&#x8F66;
+ &#x2502; &#x2502;    --- Applets                                            &#x2502; &#x2502;<br> &#x2502; &#x2502;        Archival Utilities  ---&gt;                           &#x2502; &#x2502;<br> &#x2502; &#x2502;        Coreutils  ---&gt;                                    &#x2502; &#x2502;<br> &#x2502; &#x2502;        Console Utilities  ---&gt;                            &#x2502; &#x2502;<br> &#x2502; &#x2502;        Debian Utilities  ---&gt;                             &#x2502; &#x2502;<br> &#x2502; &#x2502;        Editors  ---&gt;                                      &#x2502; &#x2502;<br> &#x2502; &#x2502;        Finding Utilities  ---&gt;                            &#x2502; &#x2502;<br> &#x2502; &#x2502;        Init Utilities  ---&gt;                               &#x2502; &#x2502;<br> &#x2502; &#x2502;        Login/Password Management Utilities  ---&gt;       </p>
+</li>
+</ol>
+<pre><code>&#x51FA;&#x73B0;&#x5982;&#x4E0B;&#x754C;&#x9762;
+
+&#x2502;         General Configuration  ---&gt;           &#x2502; 
+&#x2502; &#x2502;       Build Options  ---&gt;                   &#x2502; &#x2502;   &lt;--- &#x9009;&#x62E9;&#x6B64;&#x9879; &#x6309;&#x4E0B;&#x56DE;&#x8F66;
+&#x2502; &#x2502;       Debugging Options  ---&gt;               &#x2502; &#x2502;  
+&#x2502; &#x2502;       Installation Options  ---&gt;            &#x2502; &#x2502;  
+&#x2502; &#x2502;       Busybox Library Tuning  ---&gt;          &#x2502; &#x2502;  
+&#x2502; &#x2502;                                                    
+
+&#x51FA;&#x73B0;&#x5982;&#x4E0B;&#x754C;&#x9762;
+&#x2502; &#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510; &#x2502;  
+&#x2502; &#x2502;   [ ] Build BusyBox as a static binary (no shared libs)              &#x2502; &#x2502;   &lt;---&#x9009;&#x4E2D;&#x6B64;&#x9879;
+&#x2502; &#x2502;   [ ]   Build BusyBox as a position independent executable           &#x2502; &#x2502;  
+&#x2502; &#x2502;   [ ] Force NOMMU build                                              &#x2502; &#x2502;  
+&#x2502; &#x2502;   [ ] Build shared libbusybox                                        &#x2502; &#x2502;  
+&#x2502; &#x2502;   [*] Build with Large File Support (for accessing files &gt; 2 GB)     &#x2502; &#x2502;  
+&#x2502; &#x2502;   ()  Cross Compiler prefix                                          &#x2502; &#x2502;  &#x6309;&#x4E0B;&#x56DE;&#x8F66; &#x8F93;&#x5165;arm-linux-
+&#x2502; &#x2502;   ()  Additional CFLAGS                                              &#x2502; &#x2502;  
+&#x2502; &#x2502;                                             
+
+&#x6700;&#x7EC8;&#x914D;&#x7F6E;&#x5982;&#x4E0B;:
+&#x2502; &#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510; &#x2502;  
+&#x2502; &#x2502;  [*] Build BusyBox as a static binary (no shared libs)               &#x2502; &#x2502;   &lt;----&#x9009;&#x4E2D;
+&#x2502; &#x2502;  [ ] Force NOMMU build                                               &#x2502; &#x2502;  
+&#x2502; &#x2502;  [*] Build with Large File Support (for accessing files &gt; 2 GB)      &#x2502; &#x2502;  
+&#x2502; &#x2502;  (arm-linux-) Cross Compiler prefix                                  &#x2502; &#x2502;    &lt;---&#x4FEE;&#x6539;&#x7684;&#x5730;&#x65B9;
+&#x2502; &#x2502;  ()  Additional CFLAGS                                               &#x2502; &#x2502;  
+&#x2502; &#x2502;                                              
+
+&#x9000;&#x51FA; &#x4FDD;&#x5B58;
+
+&#x7F16;&#x8BD1;
+[root@deng busybox-1.17.2]# make -j4
+
+&#x5B89;&#x88C5;
+[root@deng busybox-1.17.2]# make install 
+
+&#x4F1A;&#x51FA;&#x73B0;&#x5982;&#x4E0B;&#x76EE;&#x5F55;:
+[root@deng busybox-1.17.2]# ls -l _install/
+
+&#x5C06;_install&#x76EE;&#x5F55;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x6587;&#x4EF6;&#x62F7;&#x8D1D;&#x5230;/rootfs&#x76EE;&#x5F55;&#x4E2D;
+[root@deng busybox-1.17.2]# cd _install/
+[root@deng _install]# cp * /rootfs/  -rf 
+
+&#x5C06;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x62F7;&#x8D1D;&#x5230;/rootfs
+[root@deng busybox-1.17.2]# cp examples/bootfloppy/etc /rootfs -rf
+
+&#x521B;&#x5EFA;&#x76F8;&#x5173;&#x7684;&#x76EE;&#x5F55;
+[root@deng rootfs]# mkdir lib home tmp var opt media mnt misc sys root proc net dev
+
+&#x4FEE;&#x6539;&#x4E00;&#x4E9B;&#x914D;&#x7F6E;
+[root@deng rootfs]# pwd
+/rootfs
+[root@deng rootfs]# cd etc
+[root@deng etc]# ls
+fstab  init.d  inittab  profile
+
+&#x4FEE;&#x6539;fstab&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5982;&#x4E0B;
+[root@deng etc]# cat fstab 
+proc        /proc   proc    defaults    0   0
+tmpfs       /tmp    tmpfs   defaults    0   0
+ramfs       /dev    ramfs   defaults    0   0
+sysfs       /sys    sysfs   defaults    0   0
+
+&#x521B;&#x5EFA;&#x4E32;&#x53E3;&#x8BBE;&#x5907;
+[root@deng rootfs]# mknod dev/console c 5 1
+
+&#x4FEE;&#x6539;rcS&#x5185;&#x5BB9;&#x5982;&#x4E0B;
+[root@deng rootfs]# cat etc/init.d/rcS 
+</code></pre><h1 id="binsh">! /bin/sh</h1>
+<pre><code>/bin/mount -a
+</code></pre><h1 id="&#x521B;&#x5EFA;dev&#x8BBE;&#x5907;">&#x521B;&#x5EFA;dev&#x8BBE;&#x5907;</h1>
+<pre><code>/sbin/mdev -s
+
+&#x4FEE;&#x6539;inittab&#x5185;&#x5BB9;&#x5982;&#x4E0B;
+[root@deng rootfs]# cat etc/inittab 
+::sysinit:/etc/init.d/rcS
+::respawn:-/bin/sh
+tty2::askfirst:-/bin/sh
+::ctrlaltdel:/bin/umount -a -r
+
+&#x62F7;&#x8D1D;&#x5E93;
+[root@deng rootfs]# cp -rf /usr/local/arm/4.5.1/arm-none-linux-gnueabi/lib/*  lib/
+
+
+                                                                              &#x914D;&#x7F6E;nfs&#x5171;&#x4EAB;
+                                                                              [root@deng rootfs]# vim /etc/exports 
+                                                                              /qtrootfs *(rw,sync,no_root_squash)
+                                                                              /rootfs *(rw,sync,no_root_squash)
+
+
+                                                                              &#x8BBE;&#x7F6E;&#x542F;&#x52A8;&#x53C2;&#x6570;
+                                                                              DengJin # set bootargs &quot;root=/dev/nfs nfsroot=192.168.8.88:/rootfs ip=192.168.8.77 console=ttySAC0,115200 lcd=S
+                                                                              70 ctp=2&quot;
+                                                                              DengJin # set bootcmd &quot;movi read kernel 0 0x40008000;bootm 0x40008000&quot;
+                                                                              DengJin # save
+
+
+
+                                                                              --------------
+
+
+                                                                              1. &#x4ECE;SD&#x5361;&#x542F;&#x52A8;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;
+
+                                                                              a. &#x6253;&#x5305;
+                                                                              [root@deng rootfs]# tar -cjvf nfs.tar.bz2 * 
+
+                                                                              b. &#x6302;&#x8F7D;
+                                                                              minicom:
+                                                                              [root@DengJin /]# mount /dev/mmcblk0p2 /mnt
+
+                                                                              c. &#x89E3;&#x538B;&#x5230;&#x6307;&#x5B9A;&#x7684;&#x76EE;&#x5F55;
+                                                                              minicom:
+                                                                              [root@DengJin /]# tar -xjvf nfs.tar.bz2  -C /mnt
+
+                                                                              d. &#x5378;&#x8F7D;
+                                                                              minicom:
+                                                                              [root@DengJin /]# umount  /mnt
+
+                                                                              e. &#x91CD;&#x542F;&#x8FDB;&#x5165;uboot &#x8BBE;&#x7F6E;&#x542F;&#x52A8;&#x53C2;&#x6570;
+                                                                              DengJin # set bootargs &quot;root=/dev/mmcblk0p2 console=ttySAC0,115200 lcd=S70 ctp=2&quot;
+                                                                              DengJin # save
+
+                                                                              f. &#x6D4B;&#x8BD5;
+                                                                              &#x65AD;&#x6389;&#x7F51;&#x7EBF; &#x770B;&#x770B;&#x80FD;&#x5426;&#x8FDB;&#x5165;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;
+
+
+
+                                                                              2. &#x4ECE;SD&#x5361;&#x542F;&#x52A8;Qt&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;
+
+                                                                              a. &#x6253;&#x5305;
+                                                                              [root@deng /]# tar -cjvf qtrootfs.tar.bz2 qtrootfs 
+
+                                                                              b. &#x6302;&#x8F7D;(&#x5148;&#x8FDB;&#x5165;&#x7F51;&#x7EDC;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;)
+                                                                              [root@DengJin /]# mount /dev/mmcblk0p4 /mnt  
+
+                                                                              c. &#x89E3;&#x538B;&#x5230;&#x6307;&#x5B9A;&#x7684;&#x76EE;&#x5F55;
+                                                                              [root@DengJin /]# tar -xzvf rootfs_qtopia_qt4-20141213.tar.gz  -C /mnt
+
+                                                                              d. &#x5378;&#x8F7D;
+                                                                              [root@DengJin /]# umount  /mnt
+
+                                                                              e. &#x70E7;&#x5199;ramdisk-u.img
+
+                                                                              minicom:
+                                                                              DengJin # fastboot  
+
+                                                                              PC:
+                                                                              [root@deng Qt]# fastboot  flash ramdisk  ramdisk-u.img 
+
+                                                                              f. &#x8BBE;&#x7F6E;&#x542F;&#x52A8;&#x53C2;&#x6570;
+                                                                              DengJin # set bootcmd &quot;movi read kernel 0 40008000;movi read rootfs 0 41000000 400000;bootm 40008000 41000000&quot;
+                                                                              DengJin # set bootargs &quot;root=/dev/mmcblk0p4 console=ttySAC0,115200 lcd=S70 ctp=2&quot;
+DengJin # save
+
+
+err0:
+</code></pre><p>mount: mounting /dev/mmcblk0p4 on /r failed: No such device or address
+Waiting for SD Card...
+mount: mounting /dev/mmcblk0p4 on /r failed: No such device or address
+Waiting for SD Card...
+mount: mounting /dev/mmcblk0p4 on /r failed: No such device or address
+Waiting for SD Card...
+mount: mounting /dev/mmcblk0p4 on /r failed: No such device o</p>
+<ol>
+<li>&#x5C06;uboot&#x70E7;&#x5199;&#x5230;EMMC</li>
+</ol>
+<p>a. &#x6253;&#x5F00;emmc&#x8BBE;&#x5907;</p>
+<p>&#x4ECE;SD&#x5361;&#x542F;&#x52A8;uboot
+DengJin # emmc open 1</p>
+<p>b. &#x4E0B;&#x8F7D;bl1</p>
+<p>minicom:
+DengJin # dnw 40008000
+PC:
+[root@deng tiny4412]# dnw E4412_N.bl1.bin  </p>
+<p>minicom:
+DengJin # mmc write 1 40008000 0 0x10</p>
+<p>[Notice]
+mmc:&#x547D;&#x4EE4;
+write: &#x5199;
+1: &#x7B2C;&#x4E00;&#x4E2A;&#x8BBE;&#x5907;
+40008000: &#x4ECE;&#x8BE5;&#x5730;&#x5740;&#x8BFB;&#x5185;&#x5BB9;
+0: &#x4ECE;&#x7B2C;0&#x5757;&#x5F00;&#x59CB;&#x5199;
+0x10: &#x5199;16&#x5757; &#x6BCF;&#x4E00;&#x5757;512&#x4E2A;&#x5B57;&#x8282;</p>
+<p>c. &#x4E0B;&#x8F7D;bl2
+minicom:
+DengJin # dnw 40008000
+PC:
+[root@deng tiny4412]# dnw bl2.bin<br>minicom:
+DengJin # mmc write 1 40008000 0x10 0x1c</p>
+<p>d. &#x4E0B;&#x8F7D;uboot
+minicom:
+DengJin # dnw 40008000</p>
+<p>PC: 
+[root@deng tiny4412]# dnw ../../u-boot.bin  </p>
+<p>minicom:
+DengJin # mmc write 1 40008000 0x30 0x290 </p>
+<p>e. &#x5173;&#x6389;emmc&#x8BBE;&#x5907;
+DengJin # emmc close 1</p>
+<p>f. &#x6D4B;&#x8BD5;&#x4ECE;emmc&#x542F;&#x52A8;
+&#x770B;&#x770B;&#x80FD;&#x5426;&#x6B63;&#x5E38;&#x542F;&#x52A8;uboot</p>
+<ol>
+<li>&#x4E0B;&#x8F7D;&#x5185;&#x6838;</li>
+</ol>
+<p>a. &#x5206;&#x533A;
+DengJin # fdisk -c 0 500 800 500</p>
+<p>&#x683C;&#x5F0F;&#x5316; 
+DengJin # fatformat mmc 0:1
+DengJin # ext3format mmc 0:2
+DengJin # ext3format mmc 0:3
+DengJin # ext3format mmc 0:4</p>
+<p>b. &#x4E0B;&#x8F7D;&#x5185;&#x6838;
+minicom:
+DengJin # dnw 40008000
+PC:
+[root@deng linux-3.5]# dnw arch/arm/boot/zImage 
+minicom:
+DengJin # movi write kernel 0 40008000
+DengJin # set bootargs &quot;movi read kernel 0 40008000;bootm 40008000&quot;
+DengJin # save</p>
+<ol>
+<li>EMMC &#x6700;&#x5C0F;&#x7F51;&#x7EDC;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;
+DengJin # set bootargs &quot;root=/dev/nfs nfsroot=192.168.8.88:/rootfs ip=192.168.8.77 console=ttySAC0,115200 lcd=S70 ctp=2&quot;
+DengJin # save</li>
+</ol>
+<ol>
+<li>EMMC Qt&#x7F51;&#x7EDC;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</li>
+</ol>
+<p>a. &#x5206;&#x533A;
+DengJin # fdisk -c 0 500 800 500 
+DengJin # fatformat mmc 0:1</p>
+<p>b. &#x4E0B;&#x8F7D;ramdisk-u.img
+minicom:
+DengJin # fastboot</p>
+<p>PC:
+[root@deng Qt]# fastboot flash ramdisk ramdisk-u.img </p>
+<p>c. &#x8BBE;&#x7F6E;&#x542F;&#x52A8;&#x53C2;&#x6570;
+DengJin # set bootcmd &quot;movi read kernel 0 40008000;movi read rootfs 0 41000000 400000;bootm 40008000 41000000&quot;
+DengJin # set bootargs &quot;root=/dev/nfs nfsroot=192.168.8.88:/qtrootfs ip=192.168.8.77 console=ttySAC0,115200 lcd
+=S70 ctp=2&quot;
+DengJin # save</p>
+<ol>
+<li>&#x5C06;&#x6700;&#x5C0F;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x70E7;&#x5F55;&#x5230;emmc&#x4E2D;</li>
+</ol>
+<p>a. &#x4ECE;&#x7F51;&#x7EDC;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x542F;&#x52A8;</p>
+<p>&#x6302;&#x8F7D;
+[root@DengJin /]# mount /dev/mmcblk0p2  /mnt</p>
+<p>&#x89E3;&#x538B;&#x5230;&#x6302;&#x8F7D;&#x7684;&#x76EE;&#x5F55;
+[root@DengJin /]# tar -xjvf nfs.tar.bz2  -C /mnt </p>
+<p>&#x89E3;&#x6302;
+[root@DengJin /]# umount  /mnt</p>
+<p>&#x91CD;&#x65B0;&#x542F;&#x52A8;&#x8FDB;&#x5165;uboot &#x8BBE;&#x7F6E;&#x542F;&#x52A8;&#x53C2;&#x6570;
+DengJin # set bootargs &quot;root=/dev/mmcblk0p2 console=ttySAC0,115200 lcd</p>
+<ol>
+<li>&#x5C06;Qt&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x70E7;&#x5F55;&#x5230;emmc&#x4E2D;</li>
+</ol>
+<p>&#x540C;SD&#x64CD;&#x4F5C;</p>
+<ol>
+<li>&#x70E7;&#x5199;Adnroid&#x5230;emmc&#x4E2D;</li>
+</ol>
+<p>&#x7B14;&#x8BB0;&#x540C;&#x7B2C;&#x4E8C;&#x5929;</p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; Jim 2019-2020 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Revision time: 
-2020-04-22 18:04:29
+2020-04-27 18:08:32
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1157,7 +1468,7 @@ rdev -r /dev/fd0 49552</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"FileSys","level":"1.3.2.3.2","depth":4,"next":{"title":"Kernel","level":"1.3.2.3.3","depth":4,"path":"pages/os/BSP/Kernel.md","ref":"pages/os/BSP/Kernel.md","articles":[]},"previous":{"title":"Device driver","level":"1.3.2.3.1","depth":4,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/os/BSP/FileSys.md","mtime":"2020-04-22T10:04:29.882Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-24T12:42:11.164Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"FileSys","level":"1.3.2.3.2","depth":4,"next":{"title":"Kernel","level":"1.3.2.3.3","depth":4,"path":"pages/os/BSP/Kernel.md","ref":"pages/os/BSP/Kernel.md","articles":[]},"previous":{"title":"Device driver","level":"1.3.2.3.1","depth":4,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/os/BSP/FileSys.md","mtime":"2020-04-27T10:08:32.413Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-29T09:25:29.334Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>

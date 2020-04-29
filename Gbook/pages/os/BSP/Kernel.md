@@ -85,3 +85,230 @@ inode表 - 存储文件    的信息， 操作文件时内核会将该表加载�
 
 
 
+
+---
+----------------
+培训内容
+
+1. 编译内核源码
+
+内核官网:
+www.kernel.org
+
+a. 解压
+[root@deng arm]# ls linux-3.5-20151029.tgz 
+linux-3.5-20151029.tgz
+[root@deng arm]# tar -xzvf linux-3.5-20151029.tgz
+
+
+b. 配置内核
+
+清除相关文件
+[root@deng linux-3.5]# make distclean 
+
+使用已经移植好的配置
+[root@deng linux-3.5]# cp tiny4412_linux_defconfig  .config 
+
+
+关闭TrustZone
+[root@deng linux-3.5]# make menuconfig 
+
+注意: 使用方向键控制上下移动
+
+│ ┌────────────────────────────────────────────────────────────────────┐ │  
+│ │      [*] Patch physical to virtual translations at runtime         │ │  
+│ │          General setup  --->                                       │ │  
+│ │      [*] Enable loadable module support  --->                      │ │  
+│ │      [*] Enable the block layer  --->                              │ │  
+│ │          System Type  --->         <-----选中此项 然后按回车       │ │  
+│ │      [ ] FIQ Mode Serial Debugger     
+
+出现如下界面
+
+│ ┌─────────────────────────────────────────────────────────────────────┐ │  
+│ │   [*] MMU-based Paged Memory Management Support                     │ │  
+│ │       ARM system type (SAMSUNG EXYNOS)  --->                        │ │  
+│ │       *** Boot options ***                                          │ │  
+│ │   [ ] S3C Initialisation watchdog                                   │ │  
+│ │   [ ] S3C Reboot on decompression error                             │ │  
+│ │   [*] Force UART FIFO on during boot process                        │ │  
+│ │   (0) S3C UART to use for low-level messages                        │ │  
+│ │   (0) Number of additional GPIO pins                                │ │  
+│ │   (0) Space between gpio banks                                      │ │  
+│ │   -*- ADC common driver support                                     │ │  
+│ │   [*] PWM device support                                            │ │  
+│ │       *** Power management ***                                      │ │  
+│ │   [ ] S3C2410 PM Suspend debug                                      │ │  
+│ │   [ ] S3C2410 PM Suspend Memory CRC                                 │ │  
+│ │       SAMSUNG EXYNOS SoCs Support  --->                             │ │  
+│ │       *** Processor Type ***                                        │ │  
+│ │       *** Processor Features ***                                    │ │  
+│ │   [*] Support TrustZone-enabled Trusted Execution Environment       │ │  <------选中此项 按空格
+│ │   [ ] Support for the Large Physical Address Extension              │ │  
+│ │   [*] Support Thumb user binaries                                   │ │  
+│ │   [*] Enable ThumbEE CPU extension    
+
+不要选中Support TrustZone
+│ ┌─────────────────────────────────────────────────────────────────────┐ │  
+│ │   [*] MMU-based Paged Memory Management Support                     │ │  
+│ │       ARM system type (SAMSUNG EXYNOS)  --->                        │ │  
+│ │       *** Boot options ***                                          │ │  
+│ │   [ ] S3C Initialisation watchdog                                   │ │  
+│ │   [ ] S3C Reboot on decompression error                             │ │  
+│ │   [*] Force UART FIFO on during boot process                        │ │  
+│ │   (0) S3C UART to use for low-level messages                        │ │  
+│ │   (0) Number of additional GPIO pins                                │ │  
+│ │   (0) Space between gpio banks                                      │ │  
+│ │   -*- ADC common driver support                                     │ │  
+│ │   [*] PWM device support                                            │ │  
+│ │       *** Power management ***                                      │ │  
+│ │   [ ] S3C2410 PM Suspend debug                                      │ │  
+│ │   [ ] S3C2410 PM Suspend Memory CRC                                 │ │  
+│ │       SAMSUNG EXYNOS SoCs Support  --->                             │ │  
+│ │       *** Processor Type ***                                        │ │  
+│ │       *** Processor Features ***                                    │ │  
+│ │   [ ] Support TrustZone-enabled Trusted Execution Environment       │ │  <-- 取消选中
+│ │   [ ] Support for the Large Physical Address Extension              │ │  
+│ │   [*] Support Thumb user binaries                                   │ │  
+│ │   [*] Enable ThumbEE CPU extension    
+
+然后 exit ... exit  保存
+
+
+c. 编译
+[root@deng linux-3.5]# make -j4
+
+LD      arch/arm/boot/compressed/vmlinux
+OBJCOPY arch/arm/boot/zImage
+Kernel: arch/arm/boot/zImage is ready
+出现以上信息 表示内核编译成功
+
+
+
+2.  安装dnw工具
+
+a. 解压 
+[root@deng arm]# ls dnw-linux.tar.gz  
+dnw-linux.tar.gz
+[root@deng arm]# tar -xzvf dnw-linux.tar.gz 
+
+
+b. 编译
+[root@deng arm]# cd dnw-linux 
+[root@deng dnw-linux]# make 
+
+c. 安装
+[root@deng dnw-linux]# make install
+
+
+d. 测试
+[root@deng dnw-linux]# dnw 
+Usage: dwn [-a load_addr] <filename>
+Default load address: 0x57e00000
+
+
+3. 启动内核
+
+minicom:
+DengJin # dnw 0x40008000
+
+PC:
+[root@deng linux-3.5]# dnw arch/arm/boot/zImage  
+load address: 0x57E00000
+	Writing data...
+100%    0x0048FF8A bytes (4671 K)
+	speed: 3.896146M/S
+	[root@deng linux-3.5]# 
+
+	minicom:
+	DengJin # bootm 0x40008000
+
+	如果能够启动内核 表示Ok
+
+
+	4. Android系统的烧写
+
+	a. 对SD卡进行分区 
+
+	DengJin # fdisk -c 0 500 800 500 
+
+	b. 格式化分区
+	DengJin # fatformat mmc 0:1
+
+
+	c. Android工具的安装
+
+	解压
+	[root@deng arm]# ls android_tools.tgz 
+	android_tools.tgz
+	[root@deng arm]# tar -xvf android_tools.tgz 
+
+	将相关命令拷贝到/usr/local/bin目录中
+	[root@deng arm]# cp usr/local/bin/* /usr/local/bin/
+
+										测试
+										[root@deng arm]# fastboot
+										usage: fastboot [ <option> ] <command>
+
+										d. 编译内核
+
+										[root@deng linux-3.5]# cp tiny4412_android_defconfig .config 
+
+										关掉TrustZone
+
+										[root@deng linux-3.5]# make -j4
+
+
+
+										e. 使用fastboot烧写Android系统
+
+										相关文件
+										images\Android\zImage           Android 内核
+										images\Android\ramdisk-u.img    Android 根分区映象
+										images\Android\system.img       Andorid 系统分区映象
+										image\Android\userdata.img      Andorid Data 分区映象
+
+
+										minicom:
+										DengJin # fastboot
+										PC:
+										烧写自己编译好的内核
+										[root@deng linux-3.5]# fastboot  flash kernel arch/arm/boot/zImage  
+
+
+
+										PC:
+										(格式化userdata和cache)
+										[root@deng Android4.2.2]# fastboot -w 
+
+										烧写ramdisk
+										[root@deng Android4.2.2]# fastboot flash ramdisk ramdisk-u.img 
+
+										烧写system 
+										[root@deng Android4.2.2]# fastboot flash system system.img
+
+
+
+										minicom:
+										设置启动参数
+										DengJin #set bootargs "console=ttySAC0,115200n8 androidboot.console=ttySAC0 lcd=S70 ctp=2"
+										DengJin #saveenv
+
+										说明:
+										bootargs 是内核启动的参数
+										console 是Linux输出的串口
+										androidboot.console Android的输出串口
+										lcd 是屏幕的型号
+										ctp 触摸点数
+
+
+										设置启动命令
+
+										DengJin #set bootcmd "movi read kernel 0 40008000;movi read rootfs 0 41000000 400000;bootm 40008000 41000000"
+										DengJin #saveenv
+
+										说明:
+										bootcmd 启动uboot之后 执行的命令
+
+										复位 重启
+

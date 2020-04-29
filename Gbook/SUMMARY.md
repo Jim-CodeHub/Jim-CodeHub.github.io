@@ -9,8 +9,8 @@
 		* [MFC](pages/gui/MFC.md)
 
 * [Operating system]()
-	* [OS Principle]()
-	* [Linux]()
+	* [OS Principle](pages/os/OSPrinciple.md)
+	* [Unix]()
 		* [GNU Tools]()
 			* [GCC](pages/os/GCC.md)
 			* [Makefile]()
@@ -18,8 +18,8 @@
 			* [Markdown](pages/os/Markdown.md)
 			* [doxygen](pages/os/doxygen.md)
 			* [Shell](pages/os/Shell.md)
-		* [OS Programming](pages/os/Unix.md)
-		* [BSP]()
+		* [Unix Programming](pages/os/Unix.md)
+		* [Linux BSP]()
 			* [Device driver]()
 			* [FileSys](pages/os/BSP/FileSys.md)
 			* [Kernel](pages/os/BSP/Kernel.md)
@@ -30,7 +30,6 @@
 * [Programming]()
 	* [Programming language]()
 		* [RegExp](pages/programming/RegExp.md)
-		* [Coding](pages/programming/Coding.md)
 		* [Python](pages/programming/Python.md)
 		* [C++](pages/programming/C++.md)
 		* [C](pages/programming/C.md)
@@ -42,6 +41,7 @@
 
 * [Principles of Computer Organization]()
 	* [Communication](pages/computer/Communication.md)
+	* [ComputerOrg](pages/computer/ComputerOrg.md)
 
 * [Hardware Design]()
 	* [PCB](pages/hardware/PCB.md)
@@ -57,8 +57,8 @@
 
 * [Expansions]()
 	* [Database]()
+	* [XML](pages/expansions/XML.md)
 	* [MatLab](pages/expansions/matlab.md)
 	* [English](pages/expansions/English.md)
-	* [XML](pages/expansions/XML.md)
 	* [JDF](pages/expansions/JDF.md)
 
