@@ -1387,8 +1387,49 @@ struct _mxml_node_s            /**** An XML node. ****/
 <pre><code>#include &lt;mxlm.h&gt;
 #include &lt;mxlm-private.h&gt;
 #includ &lt;config.h&gt;
+</code></pre><hr>
+<h1 id="1-xerces-c">1 Xerces-C++</h1>
+<h2 id="11-introduction">1.1 Introduction</h2>
+<h2 id="12-programming">1.2 Programming</h2>
+<h3 id="121-using-dom-api">1.2.1 Using DOM API</h3>
+<p>DOM APIs start with the &apos;DOM&apos; prefix, and header file is &apos;<xercesc dom="" dom.hpp="">&apos;. </xercesc></p>
+<h4 id="1211-dom-writes">1.2.1.1 DOM writes</h4>
+<ol>
+<li>Get implementation</li>
+</ol>
+<pre><code>static DOMImplementation \*    getDOMImplementation (const XMLCh \*features);
+static DOMImplementationList \*    getDOMImplementationList (const XMLCh \*features);
+
+static DOMImplementation \* getDOMImplementation();
+</code></pre><p>Note : param &apos;features&apos; MUST BE formatted with &apos;Feature [space] version&apos; or &apos;Featrue&apos;, and &apos;Featrue&apos; SHALL BE &apos;XML&apos;/&apos;Range&apos;/&apos;Traversal&apos;/&apos;Core&apos; etc.</p>
+<ol>
+<li>Create document </li>
+</ol>
+<pre><code>DOMDocument \*createDocument (const XMLCh \*namespaceURI, const XMLCh \*qualifiedName, DOMDocumentType \*doctype, MemoryManager \*const manager=XMLPlatformUtils::fgMemoryManager);
+DOMDocument \*createDocument (MemoryManager *const manager=XMLPlatformUtils::fgMemoryManager);
+</code></pre><ol>
+<li>Create nodes(element/attribute/text/comment...) </li>
+</ol>
+<pre><code>DOMElement \*createElement (const XMLCh \*tagName);
+DOMElement \* getDocumentElement(); //get root element 
+...
+</code></pre><ol>
+<li>Construct DOM tree(append/remove/insert/...)</li>
+</ol>
+<pre><code>DOMNode \*appendChild (DOMNode *newChild);
+...
+</code></pre><h4 id="1212-dom-serializer">1.2.1.2 DOM serializer</h4>
+<p>DOMLSSerializer provides the &quot;Save&quot; interface for serializing (writing) a DOM document into XML data. The XML data can be written to various type of output stream.</p>
+<h4 id="1213-dom-reads">1.2.1.3 DOM reads</h4>
+<h3 id="122-using-sax-api">1.2.2 Using SAX API</h3>
+<h3 id="123-using-utilities">1.2.3 Using utilities</h3>
+<h3 id="use-string-in-xerces-c">Use string in Xerces-C++</h3>
+<p>class XMLString and XMLStringTokenizer are used to handle string in xercesc</p>
+<p>#</p>
+<pre><code>#include &lt;xercesc/util/XMLString.hpp&gt;
+#include &lt;xercesc/util/XMLStringTokenizer.hpp&gt;
 </code></pre><footer class="page-footer"><span class="copyright">Copyright &#xA9; Jim 2019-2020 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Revision time: 
-2020-04-29 16:18:23
+2020-05-06 14:45:21
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1445,7 +1486,7 @@ struct _mxml_node_s            /**** An XML node. ****/
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"XML","level":"1.8.2","depth":2,"next":{"title":"MatLab","level":"1.8.3","depth":2,"path":"pages/expansions/matlab.md","ref":"pages/expansions/matlab.md","articles":[]},"previous":{"title":"Database","level":"1.8.1","depth":2,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/expansions/XML.md","mtime":"2020-04-29T08:18:23.642Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-29T09:25:29.334Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"XML","level":"1.8.2","depth":2,"next":{"title":"MatLab","level":"1.8.3","depth":2,"path":"pages/expansions/matlab.md","ref":"pages/expansions/matlab.md","articles":[]},"previous":{"title":"Database","level":"1.8.1","depth":2,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/expansions/XML.md","mtime":"2020-05-06T06:45:21.759Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-06T13:04:19.334Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

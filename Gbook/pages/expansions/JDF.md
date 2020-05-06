@@ -14,9 +14,147 @@ JDF - Job Definition Format，作业定义格式，基于[XML](https://jim-codeh
 
 ### 1.2.1 Structure
 
+JDF作业由一组以倒立的树型结构组织的节点组成，根节点描述了作业的总体意图，靠近根节点的节点定义了产品的组成部分（与根节点一起被命名为**产品节点**），中间节点是描述产品节点的生产过程的过程组（称为**过程组节点**），叶节点是过程组节点的详细拆分（称为**过程节点**）。
+
+![JDF Structure](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JDFSturctrue.png) <br><center> <font color=gray> JDF Structure </font> </center><br>
+
+上一级直接节点的输出是下一级节点的输入资源，因此一个产品可以有多种路由方案，[MIS](#MIS)会作出这些决策。
+
+### 1.2.2 Coordinate Systems
+
+TBD
+
+
+### 1.2.3 ResourcePool and ResourceLinkPool
+
+资源是JDF数据的核心，是描述产品和生产过程的主要信息，所有的资源都包含在**ResourcePool**（称为资源池）节点下，**ResourceLinkPool**（称为资源链接池）与ResourcePool中的资源节点一一对应，其*rRef*属性对应*ResourcePoll*下的*ID*属性，其*Usage*属性描述了所链接的资源是*Ouput*/*Input*。每一个JDF文档都必须包含*ResourcePool*和*ResourceLinkPool*节点。
+
+```JDF 简约框架
+
+<JDF Type = "Product" ...><!--产品节点-->
+
+	<!----------------------------过程组节点1------------------------------>
+
+	<JDF Type = "ProcessGroup" ...>
+		<AuditPool><!--审计节点-->
+			...
+		</AuditPool>
+		
+		<!------------------------过程节点1-1------------------------------>
+
+		<JDF Type = "1.1" ...>
+			<ResourcePool><!--局部资源池节点-->
+				...
+			</ResourcePool>
+			<RsourceLinkPool>
+				...
+			</RsourceLinkPool><!--局部资源链接池节点-->
+		</JDF>
+
+		<!------------------------过程节点1-2------------------------------>
+
+		<JDF Type = "1.2" ...>
+			<ResourcePool><!--局部资源池节点-->
+				...
+			</ResourcePool>
+			<RsourceLinkPool><!--局部资源链接池节点-->
+			...
+			</RsourceLinkPool>
+		</JDF>
+	</JDF>
+
+	<ResourcePool><!--全局资源池节点-->
+	...
+	</ResourcePool>
+	<RsourceLinkPool><!--全局资源链接池节点-->
+	...
+	</RsourceLinkPool>
+
+	<!----------------------------过程组节点2------------------------------>
+
+	<JDF Type = "ProcessGroup" ...>
+
+		<!------------------------过程节点2-1------------------------------>
+
+		<JDF Type = "2.1" ...>
+			<ResourcePool><!--局部资源池节点-->
+			...
+			</ResourcePool>
+			<RsourceLinkPool><!--局部资源链接池节点-->
+			...
+			</RsourceLinkPool>
+		</JDF>
+
+		<!------------------------过程节点2-2------------------------------>
+
+		<JDF Type = "2.2" ...>
+			<ResourcePool><!--局部资源池节点-->
+			...
+			</ResourcePool>
+			<RsourceLinkPool><!--局部资源链接池节点-->
+			...
+			</RsourceLinkPool>
+		</JDF>
+	</JDF>
+</JDF>
+```
+
 ## 1.3 <span id = "JMF"> JMF </span>
 
 JMF - Job Messaging Format，作业消息格式，基于XML技术，以HTTP(s)为通信载体，用于工作流节点的信息交互。表现为系统自举和设置、作业和设备的动态状态、资源利用和错误跟踪、管道控制、设备设置和作业变更、队列控制和作业提交、设备功能描述等。
+
+### 1.3.1 JMF Family
+
+#### 1.3.1.1 Query
+
+Query用于向服务器（泛指消息被动接收方，如Device，下同）查询消息，并从服务器返回Response响应。如果Query消息包含Subscription订阅（称之为可持续通道），则服务器在所订阅的事件发生时将向所订阅的URL发送Signal消息，直到服务器收到StopPersistentChannel的Command为止（可持续通道关闭）。
+
+在JMF-ICS-1.5中，Query包含的消息类型有：KnownDevices、KnownMessages、KnownSubscriptions、QueueStatus、SubmissionMethods
+
+#### 1.3.1.2 Command
+
+Command用于向服务器发送指令以改变其状态，并从服务器返回Response响应。如果Command消息包含AcknowledgeURL属性，则Response消息需包含'Acknowledge=true/false'属性，如果'Acknowledge=true'表示controller支持Acknowledge，在指令执行完毕后将向AcknowledgeURL发送Acknowledge消息以汇报执行结果。
+
+#### 1.3.1.3 Signal
+
+Signal是单向消息，用于服务器自动广播状态变化。服务器产生Signal消息的条件有三种：客户端（泛指上游控制器，如Agent、Controller，下同）使用包含Subscription的Query消息进行了查询、服务器接收的JDF节点中的NodeInfo节点中包含含有Subscription的Query消息、Hard-Wired。Hard-Wired的方式属于主动信号发送方式，实现方法如预设（通过文件或其它方式）一个URL列表，当设备开机或首次连接到网络时广播信号以告知设备信息和所能提供的服务等。
+
+> **[info] Note**
+>
+> Signal基于属于HTTP - C/S模型，本质上也是双向消息，服务器发送时可设置ChannelMode属性值为Reliable（即可靠信号），此时客户端必须返回Response，但无论如何服务器都可以选择忽略响应。
+
+#### 1.3.1.4 Response 
+
+Response用于服务器同步响应Query和Command消息，或用于客户端响应服务器的Signal消息，以表明消息已接收并翻译。当Response的ReturnCode属性大于0时，Response应该包含Notification元素以描述返回状态。Response的refID属性值等同于Query或Command中的ID属性值。
+
+#### 1.3.1.5 Acknowledge
+
+Acknowledge是服务器对客户端的Command或Query消息的异步单向应答，其refID属性值为发送方ID值。Acknowledge仅在Command消息指定AcknowledgeURL属性或AcknowledgeFormat和AcknowledgeTemplate属性，且服务器支持应答时才产生。当服务器执行一个Command需要较长时间时，先返回Response响应，等待Command执行完成再返回Acknowledge。
+
+### 1.3.2 JMF Message Level
+
+1. No messaging：不使用JMF，JDF可以在每个过程结点包含Audit元素代替JMF消息机制。
+2. Notification：支持Notification的服务器通过发送Signal来提供单向消息，通知消息在开始和完成作业中的某个过程时通知客户端。该服务器可能还提供一些错误情况的通知。
+3. Query Support：支持Query的服务器通过传递当前的JobID属性、排队的JobID属性或当前工作过程的状态来应答其它控制器的询问。
+4. Command support：这种等级为服务器提供了处理命令的能力，服务器可以接收命令，例如中断当前的作业、重启作业或者改变队列中作业的状态。
+5. Submission support：服务器可以通过HTTP POST请求消息通道来接收JDF作业，在这种情况下通道应该支持MIME。
+
+### 1.3.3 Error and Event
+
+如果Acknowledge消息、Command消息、Query消息、Signal消息或者Registration消息没有被正确处理，程序应该有标准错误的响应，这种响应可能包含Notification元素。在Notification元素中包含的消息可用于用户界面提示错误。
+Response消息和Acknowledge消息包含一个ReturnCode属性，该属性默认值为0，表示响应成功。如果成功，在响应命令时可以提供一个Notification元素（Class属性=“information”）。如果出现警告或错误，ReturnCode属性会大于0。在这种情况下应该提供Notification元素。响应错误的程序应该填充Notification元素来详细描述错误。
+
+### 1.3.4 JMF Queue
+
+Command消息中的队列操作是JMF对JDF作业调整的核心功能，在JMF中队列成员被（作业）称为**QueueEntry**，使用属性*QueueEntryID*标识，并支持优先级（0[Low]~100[High]）。
+
+![Queue Life](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/QueueEntryLifeCycle.png) <br><center> <font color=gray> QueueEntry lifecycle </font> </center><br>
+
+> **[info] Note**
+>
+> Programming for Queue Entry: Mybe set an element Queue as a global variable, then you have an unique queue as JDF_1.5 demand. Append, set or delete QueueEntry element for your only one Queue upon to satisfy some stuff.
+
+![Queue Entry](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/QueueEntry.png) <br><center> <font color=gray> Queue and QueueEntry </font> </center><br>
 
 ## 1.4 <span id = "ICS"> ICS </span>
 
@@ -28,7 +166,7 @@ ICS - Interoperability Conformance Specification，协作互通性规范，定�
 
 Tips : ICS文档的使用方法 - ICS元素表格中可链接的表示该内容为子元素，否则是属性，属性下深色背景的是属性值，对于在ICS中没有说明的节点，可以在JDF文档中找到描述信息。
 
-## 1.5 MIS
+## 1.5 <span id = "MIS"> MIS </span>
 
 MIS - Management Information System，管理信息系统，由决策支持系统、工业控制系统、办公自动化系统以及数据库、模型库、方法库、知识库和与外界信息交换接口组成，主要作用是最大限度利用计算机和网络来**加强企业的信息管理**，提高整体效益和效率。集成JDF的MIS系统能够提供作业流程控制、生产控制等功能，可以实现从作业接收、估价、报价、作业安排、作业分派和打样，最后到印刷生产的全过程的信息管理。[Case : HP HIFLEX](http://www.hp.com/hpinfo/newsroom/press_kits/2012/HPdrupa12/HP_Hiflex_MIS.pdf).
 
@@ -146,97 +284,41 @@ MIS担任统一调度的重要角色，它可以控制全部的作业过程，�
 
 <br><center> <font color=gray> CIP4 Proj development framewrok  </font> </center><br>
 
-## 2.1 JDF-XML
-
-JDF的注释与XML注释不同，它不是<!--xxx-->形式，而是一个结点，如上表，其元素名为“comment\*”，在JDF文档中也会出现XML的注释方式。
-
-关于JDF提取与URL更新
-接收到MIME包后，如需提取JDF各部分内容并将其（分别）存储，则需要更新以下内容的URL为所存储路径的URL，这些内容包含：JMF中的QueueSubmissionParams或ResubmissionParams、JDF中的FileSpec。
-二．涉及到的XML技术
-JDF涉及到的XML技术有：XML、xmlns（命名空间）、XML Schema、Xpath（XML path Language）。
-
-三．JDF的解析与测试
-CIP4指出两点建议，即JDF产品需能够解析和测试JDF文档，对JDF文档的解析，其本质就是对XML文档的解析，除了做到增、删、改、查等基本功能外，还要做到JDF产品功能的初衷：消耗输入、产生输出；对于JDF的测试，是为了减少在运行中的失败，可以避免JDF设备驱动（与JDF接口、JDF产品同含义，下同）运行一个不完整的或畸形的JDF节点。
-1.JDF解析
-实现JDF文档的解析功能后，JDF接口还应该具备选择功能，即确定执行哪一个节点的能力。找到相关节点后，首先要根据与决策相关的元素及元素的各种状态属性等决定执行过程，然后根据节点的控制信息处理其相应的输入资源并产生输出资源。
-2.JDF测试
-在测试过程中，JDF设备驱动应对处理过程所规定的需求与目标设备的能力进行比较。此外，JDF设备驱动要明确地测试必须输入的资源是否存在、是否有效。如：一个输入资源可能是通过URL索引的，那么在测试式就要到指定位置查找该资源是否存在；这点对于费用昂贵或耗时的作业来首是特别有意义的。
-在检测到错误时，应该把错误信息写入AuditPool节点中，如果支持JMF，还需向相关接收者反馈错误信息。之后就可以修改该错误，在无错误后开始运行。
-
-四．JDF解析库
-CIP4项目组使用C++、Java、C#语言开发了JDF解析库，它们是对XML解析库的进一步封装，如JDFLibC++使用了Xerces-C++函数库，同时也调用了许多知名开源函数库，如libpng、zlib、curl等。
-注：curl是一种客户端操作URL的开源程序，更多知识请参看：jdf_docs\cURL技术。
-
-五．JDF VS XML
-1.JDF不具有XML中定义的文本节点，它把众多本应该在文本节点中出现的内容都定义在属性值当中。
-2.JDF的标准命名空间为：“xmlns="http://www.CIP4.org/JDFSchema_1_1"”，同时支持前缀形式的命名空间。以前缀形式的命名空间称为JDF扩展命名空间，其标准命名空间为：“xmlns:jdfx="http://www.CIP4.org/JDFSchema_1_1_X"”。使用前缀名为“xsi”的，表示其命名空间来自于“xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"”，xsi表示XMLSchema-instance。
-详细参看：jdf_link\JDF_Extend.txt。
-3.JDF Schema：命名空间地址是没有任何意义的，可以无效，也可以作为有意义的链接使用，如JDF标准命名空间使用了JDF模式链接，当需要使用JDF模式文件时，可以基于命名空间属性值进行扩展。另外，不同的JDF文档需要不同的验证文件验证，验证文件的路径称为“SchemaLocation”，验证文件名称为“\*.xsd”。
-4.JDF XPath：JDF使用狭义的XML XPath，即它仅表示结点树路径，而不具有复杂的语法格式。
-
-Building a system
-
-1.实施注意事项及指引
-(1)JDF分析
-JDF设备必须实现JDF分析功能，至少能够查找它能够执行其PROCESS类型的节点，搜索算法的细节依赖于实现，可以简单到只搜索JDF根节点。
-DEVICE必须能够对其所能执行的每个PROCESS类型的节点“消费输入和生产输出”：» 索引“确定可执行节点”。
-(2)测试运行
-为了减少运行时错误，建议各个设备或它们的控制器支持测试运行功能。这可以防止设备开始处理不完整或畸形的节点。
-
-2.JDF和JMF交换协议
-为了更好的互操作性，控制器和设备应该提供没有SSL层的不安全http。
-(1)基于文件的协议（JDF）
-基于文件的协议是JDF作业票据的解决方案，该协议可以基于热文件夹，实现热文件夹的设备必须为JDF定义一个输入热文件夹和输出热文件夹。此外，SubmitQueueEntry消息包含一个URL属性，该属性允许指定任意的JDF定位。
-注意，基于文件的协议不支持协议错误处理的确认收据，这就要求接收方轮询处理程序的输出热文件夹。最后，授予对热文件夹的读/写访问权限也降低了安全性。
-(2)基于HTTP的协议（JDF+JMF）
-①消息的实现
-JMF是HTTP（客户端）请求和（服务器）响应的主体。客户端使用post方法请求，JMF可以是Query或Registration或Command，也可以包含Signal和Acknowledge。
-对于Signal和Acknowledge请求：当Signal是可靠信号（» 索引“可靠信号”）时，服务器对其响应不能为空，否则可以为空，Acknowledge的响应可以是空的。
-②HTTP推送机制
-因为HTTP是无状态协议（对事务处理无记忆，每次通讯无上下文关联），所以服务器到客户端的推送机制非常重要（如定期的状态栏更新）。客户端也可以通过定期轮询服务器来获取相关消息。
-
-
-(3)基于HTTPS的协议 - SSL双向认证
-(4)管理持续通道（Persistent Channels）
-控制器可以通过向设备发送一个KnownSubscriptions查询来请求有关当前活动订阅的信息。
-A.如果设备中已经存在匹配的Subscription，则控制器不应发送新的Subscription。
-B.如果设备不支持KnownSubscriptions请求，则控制器可以创建一个新的Subscription，如果设备已经存在相同的Subscription，则替换为新的。
-C.通过StopPersistentChannel来删除持续通道
-
-3.JDF包
-JDF可以将消息组合成单个包：JMF、与该JMF相关的JDF、与该JDF相关的数字资产（附件）；对于数字资产，虽然可以引用任何有效的MIME文件类型，但以下外部数据文件类型是确定的：png格式的预览图片、ICC文件、预飞文件、PDL语言。
-JDF包基于MIME格式，目前支持Multipart/Related类型。包内使用统一格式：包可以包含一个或多个部分，至少包含一个JDF或JMF部分。JMF可以有0或1个部分，JDF可以有多个部分，混合包需要按：JMF、JDF、其它部分的顺序排列。
-
-Tips : 
-JDF包不能是空的，要么装JMF、要么装JDF、要么都装。如果装了JDF，还可以附加一些PDF和图片等信息
-
-JMF要么没有，如果有就只能有一个。如果有 且和JDF混合，则必须排在第一个。
-
-JDF可以没有（当有JMF时，因为JDF包不能空），也可以有多个。
-
-
-多个JDF以及其资产的排序应该是从前到后、从上到下的
-
 ![CIP4 Protocol Stack](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/CIP4_Stack.png) <br><center> <font color=gray> CIP4 Protocol Stack </font> </center><br>
 
+## 2.1 JDF-XML
 
-![Queue Entry](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/QueueEntry.png) <br><center> <font color=gray> Queue and QueueEntry </font> </center><br>
+1. 节点定义：JDF不具有XML中定义的文本节点，它把众多本应该在文本节点中出现的内容都定义在属性值当中。
+2. 命名空间：JDF的标准命名空间为：“xmlns="http://www.CIP4.org/JDFSchema_1_1"”，同时支持前缀形式的命名空间。以前缀形式的命名空间称为JDF扩展命名空间，其标准命名空间为：“xmlns:jdfx="http://www.CIP4.org/JDFSchema_1_1_X"”。使用前缀名为“xsi”的，表示其命名空间来自于“xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"”，xsi表示XMLSchema-instance。
+3. 模式验证：JDF Schema文件一般从命名空间指向的路径获取，不同的JDF文档需要不同的验证文件验证，验证文件的路径称为“SchemaLocation”，文件扩展名为“.xsd”。
+4. 索引路径：JDF使用狭义的XML XPath，即它仅表示结点树路径，而不具有复杂的语法格式。
+5. 注释方式：JDF使用两种注释方式，一是XML注释方式：`<!--xxx-->`; 二是使用节点comment。
 
+## 2.2 JDF Library
 
-4.作业提交一致性列表
+CIP4项目组使用C++、Java和C#语言开发了JDF解析库，它们是对XML解析库的进一步封装，如JDFLibC++使用了Xerces-C++函数库。
 
-当Manager经由JMF - SubmitQueueEntry 命令消息提交一个JDF实例时，Manager有如下选择（为了符合ICS一致性，下面两种方式，Manager和Worker都应该支持）：
-A：【官方推荐方式】JDF实例和JMF消息打包在MIME包中，JMF消息作为MIME包的第一部分，然后使用带有“cid”scheme的URL来关联该包中的JDF部分。(资产由JDF中的CID关联)
-B：JDF实例从JMF消息中分离，JMF消息使用URL来关联JDF实例。
+## 2.3 JDF System Building
 
-![JMF Communication by HTTP(s)](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JMF_HTTPs.png) <br><center> <font color=gray> JMF Communication by HTTP(s) </font> </center><br>
-HTTP(s) -> JMF
-`<JMF...> 
-	<SubmitQueueEntry URL="http://xxx.jdf"...>
-		...
-	</SubmitQueueEntry>
-</JMF>`
+### 2.3.1 实施注意事项及指引
 
+1. JDF分析
+JDF设备必须实现JDF分析功能，至少能够查找它能够执行其PROCESS类型的节点，搜索算法的细节依赖于实现，可以简单到只搜索JDF根节点。DEVICE必须能够对其所能执行的每个PROCESS类型的节点“消费输入和生产输出”。
+
+2. 测试运行
+为了减少运行时错误，建议各个设备或它们的控制器支持测试运行功能。这可以防止设备开始处理不完整或畸形的节点。
+
+### 2.3.2 MIME Package
+
+信息可以用URL引用或MIME包的形式进行传递，MIME包中可以只有JDF、或只有JMF、或混合使用（CIP4推荐），当只有JDF时MIME类型为“application/vnd.cip4-jdf+xml”，可以包含多个JDF，并且可以在所有JDF的后面附加数字资产（如png、pdf、ICC等文件，在JDF中以‘cid’方式引用）。当只有JMF时MIME类型为“application/vnd.cip4-jmf+xml"，当混合打包时JMF必须在第一位，JMF在两种情况下有且只能有一个。
+
+### 2.3.2 JDF和JMF交换协议
+
+为了更好的互操作性，控制器和设备应该提供没有SSL层的不安全HTTP。
+
+1. 基于文件的协议（JDF/.mjd）
+
+基于文件的协议是JDF作业票据的解决方案，该协议可以基于热文件夹，实现热文件夹的设备必须为JDF定义一个输入热文件夹和输出热文件夹。此外，SubmitQueueEntry消息包含一个URL属性，该属性允许指定任意的JDF定位。
 
 ![JMF Communication by HotFolder](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JMF_HotFolder.png) <br><center> <font color=gray> JMF Communication by HotFolder </font> </center><br>
 
@@ -246,30 +328,35 @@ HotFolder -> JDF
 	...
 </JDF>
 `
+Note: 基于文件的协议不支持协议错误处理的确认收据，这就要求接收方轮询处理程序的输出热文件夹。最后，授予对热文件夹的读/写访问权限也降低了安全性。
 
-Programming for Queue Entry:	Mybe set an element Queue as a global variable, then you have an unique queue as JDF_1.5 demand.
-	Append , set or delete QueueEntry element for your only one Queue upon to satisfy some stuff.
+2. 基于HTTP的协议（JMF/.mjm）
 
-(1)MIME基础
-(2)MIME类型和文件扩展
-对于基于文件的JDF，推荐扩展名“.jdf”和“.jmf”。当MIME包含JDF或JMF时，当第一个部分为jdf，则推荐扩展名为“mjd”，当第一个部分为jmf时，则推荐扩展名为“mjm”。
-使用MIME对JDF和JMF打包时，Content-Type、Content-ID、Content-Transfer-Encoding、Content-Disposition头部域常被使用。
-①Content-Type
-MIME包使用Multipart/Related类型，其中jdf部分和单独的jdf数据使用application/vnd.cip4-jdf+xml类型、jmf部分和单独的jmf消息使用application/vnd.cip4-jmf+xml类型。
-②Content-ID
-该域用于一个部分向另一个部分的索引，常表现为一个部分的内容中含有URL=“cid:....”信息，以使用URL的属性值匹配该域的域值。
-要求该域的域值以尖括号<>包含，并忽略大小写。
-③Content-Transfer-Encoding
-该域是可选的，域值与MIME标准重合，对于包含JDF或JMF的部分使用8bit编码，对于包含PDF和图片等文件的部分使用binary编码，另外使用Base64编码可将8bit、binary信息编码为7bit信息，反之亦然。
-支持MIME的Consumers应该8bit、binary编码，必须支持Base64编码，其它编码可选。
-④Content-Disposition
-该域是可选的，用于为其主体指定一个文件名，如使用该部分，则必须使用attachment属性。使用该域要注意文件名可能是被编码过的。
+	- 消息的实现：JMF是HTTP（客户端）请求和（服务器）响应的主体。客户端使用post方法请求，JMF可以是Query或Registration或Command，也可以包含Signal和Acknowledge。对于Signal和Acknowledge请求：当Signal是可靠信号（» 索引“可靠信号”）时，服务器对其响应不能为空，否则可以为空，Acknowledge的响应可以是空的。
+
+	- HTTP推送机制：因为HTTP是无状态协议（对事务处理无记忆，每次通讯无上下文关联），所以服务器到客户端的推送机制非常重要（如定期的状态栏更新）。客户端也可以通过定期轮询服务器来获取相关消息。
+
+![JMF Communication by HTTP(s)](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JMF_HTTPs.png) <br><center> <font color=gray> JMF Communication by HTTP(s) </font> </center><br>
+
+HTTP(s) -> JMF
+`<JMF...> 
+	<SubmitQueueEntry URL="http://xxx.jdf"...>
+		...
+	</SubmitQueueEntry>
+</JMF>`
+
+3. 基于HTTPS的协议 - SSL双向认证
+
+4. 管理持续通道（Persistent Channels）：控制器可以通过向设备发送一个KnownSubscriptions查询来请求有关当前活动订阅的信息。
+	- 如果设备中已经存在匹配的Subscription，则控制器不应发送新的Subscription。
+	- 如果设备不支持KnownSubscriptions请求，则控制器可以创建一个新的Subscription，如果设备已经存在相同的Subscription，则替换为新的。
+	- 通过StopPersistentChannel来删除持续通道
 
 ---
 
 # <span id = "Appendix-A"> Appendix-A：JDF future - XJDF </span>
 
-XJDF是JDF的全新升级协议，同样由CIP4维护，字母“X”表“Exchange”，仅用于区分JDF。XJDF可称之为“JDF2.0”，是更精简、高效的作业传票协议，同时JDF本身也在保持着自己的发展路线，目前最新版本为JDF1.6（2017.09.01日推出）。仍然保留JDF并保持JDF更新的原因有三点：一是XJDF是全新协议，不能做到向下兼容。二是许多厂商已经在JDF协议上花费太多时间和成本，虽然很复杂，但已开发出成熟的接口，在短时间内并不能及兼容XJDF。三是XJDF并未经过实际测试，在一些方面尚不成熟。
+XJDF是JDF的全新升级协议，同样由CIP4维护，字母“X”表“Exchange”，仅用于区分JDF。XJDF可称之为“JDF2.0”，是更精简、高效的作业传票协议，同时JDF本身也在保持着自己的发展路线，目前最新版本为JDF1.6（2017.09.01日推出）。仍然保留JDF并保持JDF更新的原因有三点：一是XJDF是全新协议，不能做到向下兼容。二是许多厂商已经在JDF协议上花费太多时间和成本，虽然很复杂，但已开发出成熟的接口，在短时间内并不能兼容XJDF。三是XJDF并未经过实际测试，在一些方面尚不成熟。
 
 ---
 
@@ -337,6 +424,8 @@ Client		| software/hardware	| -
 
 <br><center> <font color=gray> Workflow components role in JDF_1.5 and ICS_Base 1.5 </font> </center><br>
 
+![Interactions](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/Interactions.png) <br><center> <font color=gray> Role interactions </font> </center><br>
+
 ---
 
 # <span id = "Appendix-D"> Appendix-D：CIP4 software license </span>
@@ -396,264 +485,4 @@ CIP4 retains the right to modify the terms applicable to the CIP4 Software under
 This software consists of voluntary contributions made by many individuals on behalf of the The International Cooperation for the Integration of Processes in Prepress, Press and Postpress and was originally based on software copyright (c) 1999-2001, Heidelberger Druckmaschinen AG and copyright (c) 1999-2001, Agfa-Gevaert N.V.
 
 For more information on The International Cooperation for the Integration of Processes in Prepress, Press and Postpress, please see http://www.cip4.org.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### JMF消息家族
-
-消息在根节点中包含以下六个高级元素中的一个或多个：Query、Command、Signal、Response、Acknowledge and Registration
-
-#### Query
-Query用于从controller检索信息且不改变其状态，controller收到Query消息之后，返回Response响应。
-如果Query消息包含Subscription订阅，则controller在所订阅的事件发生时将向所订阅的URL发送Signal消息，直到controller收到 StopPersistentChannel的Command为止。
-
-在JMF-ICS-1.5中，Query包含的消息类型有：KnownDevices、KnownMessages、KnownSubscriptions、QueueStatus、SubmissionMethods
-
-#### Command
-
-Command用于向controller发送指令以改变其状态，controller收到Command消息后，立即返回Response响应。
-如果Command包含AcknowledgeURL属性，则Response消息需包含Acknowledge=true/false属性，如果Acknowledge=true表示controller支持Acknowledge，那么在指令执行完毕后将向AcknowledgeURL发送Acknowledge消息以汇报执行结果
-
-【附】管道资源（Pipe Resource）和管道推动（PipePush）：
-在印刷与印后折页两个邻近的处理过程中，折页处理过程通常并不需要等印刷处理过程把所有印张都生产完才开始，只要印刷的印张达到一定的数量，折页处理过程就可以启动生产，这就是一个重叠过程（Overlapping）。
-因此，为了在重叠过程中定义如例中的印张这类不仅被消耗又能被补充的资源，JDF使用“管道资源”来描述。
-
-#### Signal
-
-Signal是单向消息，用于controller自动广播状态变化。有三种获取Signal消息：使用包含Subscription订阅的Query消息、使用JDF节点（该节点的NodeInfo元素中包含‘含有Subscription订阅的Query消息’）和使用“硬连线”。
-前两种必须包含refID属性以标记Signal发送者，第三种方式不能包含refID属性，而必须包含响应的请求参数。
-Hard-Wired硬连线
-Hard-Wired的方式属于主动信号发送方式，实现方法如预设（通过文件或其它方式）一个URL列表，当设备开机或首次连接到网络时广播信号以告知设备信息。
-Signal单向/双向
-本质上Signal也是双向消息，属于HTTP - C/S模型，但Response消息可以被忽略。对于接收者来说，当Signal的ChannelMode属性值为Reliable时，必须返回Response消息
-
-Signal是在某些事件发生时发送给Manager（Client下同）的一种单向消息。可以通过三种方式获得信号消息：第一种方式是通过包含了一个Subscription元素的询问消息来发起初始的询问（如第1点图示）；第二种方式是在JDF结点中通过“NodeInfo”资源中的JMF元素来发起初始的询问，在JDF“NodeInfo”资源中的JMF元素是用来定义一个JMF询问消息的，因此同样可以在该JMF询问消息中包含一个“Subscription”。
-这两种方法都需要一个起始的询问消息来订阅（发起）信号消息，不同的是传递起始询问消息的路径不同。第一种方法是通过HTTP、第二种方法是通过JDF结点。这两种方法获得的信号消息都包含refID属性，以此来引用一个持久的信道（ID和refID属性是通道两端的联系（指针））。
-控制器可以接收信号的第三种方式是使信号通道硬连线。例如，当一个控制器在启动服务或者中断服务时就会产生一个信号消息，然后可根据一个初始化文件中列出的控制器的URL发送给各个控制器。又例如，当某控制器连入新的网络时也可以自动产生一个信号消息，然后发送给网络中的其它控制器，以此告诉大家它所能提供的服务。
-
-#### Response 
-
-Response用于（同步/直接）响应Query和command消息，以表明消息已接收并翻译。当Response的ReturnCode属性大于0时，Response应该包含Notification元素以描述返回状态。
-Response的refID属性值等同于Query或command中的ID属性值。当Signal消息的ChannelMode属性值为“Reliable”时，Signal将变为双向消息，此时必须对Signal返回Response
-
-#### Acknowledge
-
-Acknowledge是对Command或Query消息的异步（单向）应答，其refID属性值为发送方ID值。Acknowledge仅在Command消息指定AcknowledgeURL属性或AcknowledgeFormat和cknowledgeTemplate属性，且controller支持应答时才产生
-
-## JMF 握手
-
-JMF可以通过几种方式建立系统组件之间的通信。
-1.单一的Query/Command Response通信
-Query和Command方式的握手机制是相同的，控制器发送一个Query或Command消息，然后目标系统解析它们并立即产生一个合适的Response。如果发出的Command延时很长，则当命令被执行时，一个额外的Acknowledge消息可能被发送用以确认（第三章第5节图）。
-2.Signal和Acknowledge
-默认的，对Signal和Acknowledge消息控制器只发送而不保证是否成功，在成功的情况下只有带有空主体的标准HTTP协议响应从接收端返回。如果在接收端出现了错误，则接收端应该返回一个错误Response消息（详见第六章）。
-有关Signal和Acknowledge应答属性值应该设置为false，因为Signal和Acknowledge没有“AcknowledgeURL”属性来指明这些应答消息应该发送到哪里。
-3.可靠的信号
-如果在设置持续的信道时设置了可靠信号，则JMF信号的接收方应该使用设置了合适的“ReturnCode”属性值的Response来响应消息。如果接收方没有响应可靠信号，则发送方应该尝试重新发送（基于在Subscription元素中指定的RetryPolicy属性）。
-如果收到一个非零的ReturnCode属性值，则信号消息也要重试（依赖Error元素或Resend属性）。
-
-4.可持续通道
-使用Subscription元素可订阅Query和Command消息。
-Signal的可持续通道
-如第三章第1节。
-Command的可持续通道
-Command也可以在一个初始化的Registration中通过使用Subscription元素来订阅。Registration中的Subscription定义了初始注册消息接收者的请求，随后发送Command消息给接收端（定义在Subscription元素的URL或Format、Template属性中）。例如，MIS可能会将一个Registration发送到印前工作流系统，引导印前工作流系统在当生产板或预视图已经生产的时候向印刷系统发送Command消息。
-订阅的范围
-订阅应该尽可能的全局化，例如，最好为所有与作业相关的和与工作无关的消息创建一个全局状态订阅，而不是为每个单独的队列条目创建一个新的状态订阅。
-注：从JDF1.5开始，已经不支持对作业和队列项的特定订阅。
-可持续通道的删除
-通过StopPersistentChannel可删除一个可持续通道。
-
-
-## 消息等级
-五．JMF消息等级
-JDF整合控制器可选择由JMF提供的合适的消息等级：
-No messaging - 控制器可以不使用消息。JDF可以在每个过程结点包含Audit元素代替JMF消息机制。
-Notification - 大多数控制器还是选择使用JMF消息机制的，Notification是最基本的消息等级。支持Notification的设备通过发送Signal来提供单向消息。通知消息在开始和完成作业中的某个过程时通知控制器。它们可能还提供一些错误情况的通知。
-Query Support
-支持Query的控制器通过传递当前的JobID属性、排队的JobID属性或当前工作过程的状态来应答其它控制器的询问。
-Command support
-这种等级为控制器提供了处理命令的能力，控制器可以接收命令，例如中断当前的作业、重启作业或者改变队列中作业的状态。
-Submission support
-控制器可以通过HTTP POST请求消息通道来接收JDF作业，在这种情况下通道应该支持MIME
-
-## 六．Error和Event消息
-如果Acknowledge消息、Command消息、Query消息、Signal消息或者Registration消息没有被正确处理，程序应该有标准错误的响应，这种响应可能包含Notification元素。在Notification元素中包含的消息可用于用户界面提示错误。
-Response消息和Acknowledge消息包含一个ReturnCode属性，该属性默认值为0，表示响应成功。如果成功，在响应命令时，可以提供一个Notification元素（Class属性=“information”）。如果出现警告或错误，ReturnCode属性会大于0。在这种情况下应该提供Notification元素。响应错误的程序应该填充Notification元素来详细描述错误。
-
-## 八．JMF队列支持
-在JMF中，Controller假设有一个输入队列，它接收提交的作业，然后将该作业提交给低等级的Controller或Device。换句话说，作业通过Controller级联的方式到达Device，同理，“ReturnQueueEntry”消息以同样的方式返回。
-另外，Device只允许有一个队列，如果机器支持多种队列，则在JDF中它将用多种逻辑设备（Device）表示。没有队列的Device其JMF消息的Status属性有两种“Waiting”和“Full”。
-JMF支持具有优先级队列的简单处理，以下是一些可能情况：
-·队列支持优先级，但只有在“Wating”状态的作业才支持
-·优先级从0~100，拥有100优先级的作业将会停止其它作业并立即执行自己
-·一个Controller可以控制多个Device/队列
-·队列入口可以使用QueueEntryID属性标识
-·在提交或执行JDF期间，Controller或Device可能分析它，而队列可以视JDF为封闭的信封而避免检查。
-更多的消息及处理方式参看《JDF 1.5 Specification》5.13~5.15章节。
-
-## 九．JMF交换协议
-一个独立的系统应该定义一个基于JDF和JMF的信息交换协议。在JDF1.2版本中废除了传输层的约束。目前，在JDF系统中存在三种信息交换协议：基于文件的协议、HTTP和HTTPS协议。
-1.基于文件的协议
-基于文件的协议以热文件夹为基础，使用热文件夹必须为JDF定义一个输入热文件夹和输出热文件夹。对JDF和JMF来说，这是一种简单的解决方案。缺点是不支持错误处理协议的接收确认，处理的结果需要去查询输出热文件夹，热文件夹的读写授权也降低了其安全性。
-附：热文件夹就是在此文件夹中发现有进入的文件时，会自动触发相关操作。处理文件的软件会定时检查文件夹位置，并自动处理其中的文件。
-2.HTTP协议
-超文本传输协议HTTP，是一个稳定的与用户无关的协议，它具有很多有利的特征。它有一套完善的请求/响应机制（HTTP-post）。
-在消息的执行时，HTTP服务器只能完成“Query”和“Command”两种类型的消息。它们可以通过一个标准的HTTP的post请求来完成，JMF文件内容就是这个HTTP的post消息的body部分。“Response”类型的消息是响应之前的HTTP的post消息的响应消息的body部分。“Signal”和“Acknowledge”两种类型的消息同样是像HTTP的post消息一样来实现，只是响应（Response）这些消息的HTTP的body部分是空的。
-3.HTTPS协议
-HTTPS提供广泛的防火墙支持和安全套接字（Secure Sockets Layer，SSL）的安全连接。基于HTTPS的交换方法使JMF系统的用户简单的在不同的系统间安全地交换信息。该解决方案能够支持持续鉴定，而不用在每一次的访问中都交换用户名和密码。
-
-
-
----
-
-三．资源池ResourcePool与资源链接池ResourceLinkPool
-1.ResourcePool
-所有的资源都包含在ResourcePool元素的子元素中，或者说ResourcePool元素的子元素都是资源，而资源又只分为两种：输入资源和输出资源；所以ResourcePool元素的子元素要么是输入资源，要么是输出资源，由“Usage”属性决定。
-有两个特别的资源：NodeInfo元素和CustomerInfo元素；在JDF1.3版本之前他们是JDF元素的直接子结点，在其之后它们成为了ResourcePool中的资源。
-在JDF文档中，资源是核心，或者说JDF文档中要传递的信息就是资源。
-2.ResourceLinkPool
-ResourceLinkPool元素的每一个子元素（下称L子元素）都对应着ResourcePool元素的一个子元素（下称R子元素），如一个R子元素起名为“XXX”，则对应的L子元素起名为“XXXLink”
-L子元素至少有两个属性：“rRef”和“Usage”；rRef属性对应着R子元素的ID值，它用来形成整个JDF文档的链接网络。Usage有两个值-“Output”和“Input”，它决定着对应的R子元素是输入资源还是输出资源，通过检查过程组中资源的输入和输出，可以确定过程的依赖关系，从而确定作业路由（作业工作路径）。
-3.全局与局部资源和链接
-ResourcePool和ResourceLinkPool可出现在全局范围中，也可出现在局部范围中，全局的概念是指在JDF根结点下，可称为root Resource、root ResourceLink。局部的概念是指在JDF过程组结点或过程结点下。
-ResourceLinkPool中的\*Link元素使用“rRef”属性关联ResourcePool，ResourcePool的各资源之间还可以通过“Ref”的方式关联。
-
-
-JDF是基于XML语言的数据文件，其中包含了数据信息（印前、印刷、印后相关）、生产管理信息等多种数据内容，并以“树”型数据结构维护，主干分支节点维护着JDF的重要分支信息，如印后信息就是一个主干节点。
-
-----
-`JDF 框架
-
-
-每一个过程都是 ： 资源+资源连接池的组合
-<JDF Type = "Product" ...><!--产品节点-->
-...
-<JDF Type = "ProcessGroup" ...><!--过程组节点-->
-...
-<AuditPool><!--审计节点-->
-..
-</AuditPool>
-...
-<JDF Type = "xxx" ...><!--过程节点xxx-->
-...
-<ResourcePool><!--局部资源池节点-->
-...
-</ResourcePool>
-<RsourceLinkPool>
-...
-</RsourceLinkPool><!--局部资源链接池节点-->
-...
-</JDF>
-<JDF Type = "yyy" ...><!--过程节点yyy-->
-...
-<ResourcePool><!--局部资源池节点-->
-...
-</ResourcePool>
-<RsourceLinkPool><!--局部资源链接池节点-->
-...
-</RsourceLinkPool>
-...
-</JDF>
-...
-</JDF>
-
-...
-<ResourcePool><!--全局资源池节点-->
-...
-</ResourcePool>
-<RsourceLinkPool><!--全局资源链接池节点-->
-...
-</RsourceLinkPool>
-...
-
-<JDF Type = "ProcessGroup" ...><!--另一个过程组节点-->
-<JDF Type = "zzz" ...><!--过程节点zzz-->
-...
-<ResourcePool><!--局部资源池节点-->
-...
-</ResourcePool>
-<RsourceLinkPool><!--局部资源链接池节点-->
-...
-</RsourceLinkPool>
-...
-</JDF>
-<JDF Type = "qqq" ...><!--过程节点qqq-->
-...
-<ResourcePool><!--局部资源池节点-->
-...
-</ResourcePool>
-<RsourceLinkPool><!--局部资源链接池节点-->
-...
-</RsourceLinkPool>
-...
-</JDF>
-...
-</JDF>
-
-<JDF Type = "ProcessGroup" ...><!--另一个过程组节点-->
-<JDF Type = "www" ...><!--过程节点www-->
-...
-<ResourcePool><!--局部资源池节点-->
-...
-</ResourcePool>
-<RsourceLinkPool><!--局部资源链接池节点-->
-...
-</RsourceLinkPool>
-...
-</JDF>
-<JDF Type = "eee" ...><!--过程节点eee-->
-...
-<ResourcePool><!--局部资源池节点-->
-...
-</ResourcePool>
-<RsourceLinkPool><!--局部资源链接池节点-->
-...
-</RsourceLinkPool>
-...
-</JDF>
-...
-</JDF>
-...
-</JDF>
-`
-
-
-------
-
-
 

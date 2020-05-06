@@ -413,5 +413,79 @@ struct _mxml_node_s			/**** An XML node. ****/
 
 
 
+-------------
+
+
+# 1 Xerces-C++
+
+## 1.1 Introduction
+
+## 1.2 Programming
+
+### 1.2.1 Using DOM API
+
+DOM APIs start with the 'DOM' prefix, and header file is '<xercesc/dom/DOM.hpp>'. 
+
+#### 1.2.1.1 DOM writes
+
+1. Get implementation
+
+```
+static DOMImplementation \*	getDOMImplementation (const XMLCh \*features);
+static DOMImplementationList \*	getDOMImplementationList (const XMLCh \*features);
+
+static DOMImplementation \* getDOMImplementation();
+```
+
+Note : param 'features' MUST BE formatted with 'Feature [space] version' or 'Featrue', and 'Featrue' SHALL BE 'XML'/'Range'/'Traversal'/'Core' etc.
+
+2. Create document 
+
+```
+DOMDocument \*createDocument (const XMLCh \*namespaceURI, const XMLCh \*qualifiedName, DOMDocumentType \*doctype, MemoryManager \*const manager=XMLPlatformUtils::fgMemoryManager);
+DOMDocument \*createDocument (MemoryManager *const manager=XMLPlatformUtils::fgMemoryManager);
+```
+
+3. Create nodes(element/attribute/text/comment...) 
+
+```
+DOMElement \*createElement (const XMLCh \*tagName);
+DOMElement \* getDocumentElement(); //get root element 
+...
+```
+
+4. Construct DOM tree(append/remove/insert/...)
+
+```
+DOMNode \*appendChild (DOMNode *newChild);
+...
+```
+
+#### 1.2.1.2 DOM serializer
+
+DOMLSSerializer provides the "Save" interface for serializing (writing) a DOM document into XML data. The XML data can be written to various type of output stream.
+
+
+#### 1.2.1.3 DOM reads
+
+
+
+
+
+
+### 1.2.2 Using SAX API 
+### 1.2.3 Using utilities
+
+
+
+
+### Use string in Xerces-C++
+
+class XMLString and XMLStringTokenizer are used to handle string in xercesc
+
+#
+	#include <xercesc/util/XMLString.hpp>
+	#include <xercesc/util/XMLStringTokenizer.hpp>
+
 
 
