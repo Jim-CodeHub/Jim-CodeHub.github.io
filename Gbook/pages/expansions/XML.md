@@ -226,4 +226,4 @@ Xerces-C++是大型、功能丰富、开源的XML解析库，包含JAVA、C++、
 
 W3C XML规范声明：如果 XML 文档存在错误，那么程序就不应当继续处理这个文档。理由是，XML 软件应当轻巧，快速，具有良好的兼容性。目前XML最新版本为1.0第五版。XML规范和时间线参看https://www.w3school.com.cn/w3c/w3c_xml.asp和https://www.w3.org/TR/xml/。
 
-{% video src="https://haokan.baidu.com/v?vid=12486526363965818066&pd=bjh&fr=bjhauthor&type=video" %}{% endvideo %}
+`{% video src="https://haokan.baidu.com/v?vid=12486526363965818066&pd=bjh&fr=bjhauthor&type=video" %}{% endvideo %}`
