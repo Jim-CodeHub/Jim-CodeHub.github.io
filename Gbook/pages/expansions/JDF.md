@@ -3,14 +3,31 @@
 
 ## 1.1 Background 
 
-在印刷行业中，企业生产现状多为“信息孤岛”或“流程孤岛”形式，具体表现为：印前作业数据、印刷数据、印后数据没有流通和有效的对接，使得印前、印刷、印后产线形成三个“信息孤岛”；这些问题或是传统遗留的，或是市场遗留的，这种问题大大增加了印刷应用企业的生产成本、降低了企业的生产效率。
-为了解决印刷行业的“信息孤岛”难题，使印刷业信息集成化、全面自动化、高度智能化，以Adobe、HP、Agfa、Heidelberg、MAN Roland等为代表的的公司成立了**CIP4(International Cooperation for Integration of Processes in Prepress, Press and Postpress)**国际联盟，致力于促进印前、印刷、印后加工的垂直整合，并应用JDF作为信息载体标准。[CIP4 Official Website](https://www.cip4.org/).
+在印刷行业中，企业生产现状多为“信息孤岛”或“流程孤岛”形式，具体表现为：印前作业数据、印刷数据、印后数据独立处理而没有有效的对接，以使印前、印刷、印后产线形成三个“信息孤岛”。这些题传统或市场遗留的问题大大增加了印刷应用企业的生产成本、降低了生产效率。  
+为了解决印刷行业的“信息孤岛”难题，使印刷业信息集成化、全面自动化和高度智能化，以Adobe、HP、Agfa、Heidelberg、MAN Roland等为代表的的公司成立了**CIP4(International Cooperation for Integration of Processes in Prepress, Press and Postpress)**国际联盟，致力于促进印前、印刷、印后加工的垂直整合，并应用[JDF](#JDF)作为信息载体标准。[CIP4 Official Website](https://www.cip4.org/).
 
-Tips : CIMS - Computer Infomation Management System 计算机集成制造系统，利用计算机技术把分散在产品设计制造过程中多种孤立的自动化子系统集成以实现高效管理和制造。
+> **[info] CIMS**
+>
+> Computer Infomation Management System 计算机集成制造系统，利用计算机技术把分散在产品设计制造过程中多种孤立的自动化子系统集成以实现高效管理和制造。
 
 ## 1.2 <span id = "JDF"> JDF </span>
 
-JDF - Job Definition Format，作业定义格式，基于[XML](https://jim-codehub.github.io/pages/extension/XML.html)技术，是工作流节点的数据载体。JDF广义上包含了JDF、[JMF](#JMF)和[ICS](#ICS)标准。
+JDF - Job Definition Format，作业定义格式，基于[XML](https://jim-codehub.github.io/pages/extension/XML.html)技术，是印前、印中和印后工作流节点的数据载体。JDF广义上包含了JDF、[JMF](#JMF)和[ICS](#ICS)标准。
+
+## 1.2.1 JDF VS XML
+
+1. 节点定义：JDF不具有XML中定义的文本节点，它把众多本应该在文本节点中出现的内容都定义在属性值当中。
+2. 命名空间：JDF的标准命名空间为：“xmlns='http://www.CIP4.org/JDFSchema_1_1'”，同时支持前缀"xsi:schemaLocation"和"xsi:type"形式的扩展命名空间。
+3. 模式验证：JDF Schema文件一般从命名空间指向的路径获取，不同的JDF文档需要不同的验证文件验证，验证文件的路径称为“SchemaLocation”，文件扩展名为“.xsd”。
+4. 索引路径：JDF使用狭义的XML XPath，即它仅表示结点树路径，而不具有复杂的语法格式。
+5. 注释方式：JDF使用两种注释方式，一是XML注释方式：`<!--xxx-->`; 二是使用节点Comment。
+
+> **[info] xsi**
+>
+> xsi refer to XMLSchema-instance，powered by [W3C Schema](https://www.w3.org/TR/xmlschema-1/).
+
+
+
 
 ### 1.2.1 Structure
 
@@ -18,20 +35,18 @@ JDF作业由一组以倒立的树型结构组织的节点组成，根节点描�
 
 ![JDF Structure](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JDFSturctrue.png) <br><center> <font color=gray> JDF Structure </font> </center><br>
 
-上一级直接节点的输出是下一级节点的输入资源，因此一个产品可以有多种路由方案，[MIS](#MIS)会作出这些决策。
+上级直接节点的输出是下级节点的输入资源，因此一个产品可以有多种路由方案，[MIS](#MIS)会作出这些决策。
 
 ### 1.2.2 Coordinate Systems
 
 TBD
-
 
 ### 1.2.3 ResourcePool and ResourceLinkPool
 
 资源是JDF数据的核心，是描述产品和生产过程的主要信息，所有的资源都包含在**ResourcePool**（称为资源池）节点下，**ResourceLinkPool**（称为资源链接池）与ResourcePool中的资源节点一一对应，其*rRef*属性对应*ResourcePoll*下的*ID*属性，其*Usage*属性描述了所链接的资源是*Ouput*/*Input*。每一个JDF文档都必须包含*ResourcePool*和*ResourceLinkPool*节点。
 
 ```JDF 简约框架
-
-<JDF Type = "Product" ...><!--产品节点-->
+ <JDF Type = "Product" ...><!--产品节点-->
 
 	<!----------------------------过程组节点1------------------------------>
 
@@ -96,7 +111,7 @@ TBD
 			</RsourceLinkPool>
 		</JDF>
 	</JDF>
-</JDF>
+ </JDF>
 ```
 
 ## 1.3 <span id = "JMF"> JMF </span>
@@ -286,13 +301,9 @@ MIS担任统一调度的重要角色，它可以控制全部的作业过程，�
 
 ![CIP4 Protocol Stack](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/CIP4_Stack.png) <br><center> <font color=gray> CIP4 Protocol Stack </font> </center><br>
 
-## 2.1 JDF-XML
 
-1. 节点定义：JDF不具有XML中定义的文本节点，它把众多本应该在文本节点中出现的内容都定义在属性值当中。
-2. 命名空间：JDF的标准命名空间为：“xmlns="http://www.CIP4.org/JDFSchema_1_1"”，同时支持前缀形式的命名空间。以前缀形式的命名空间称为JDF扩展命名空间，其标准命名空间为：“xmlns:jdfx="http://www.CIP4.org/JDFSchema_1_1_X"”。使用前缀名为“xsi”的，表示其命名空间来自于“xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"”，xsi表示XMLSchema-instance。
-3. 模式验证：JDF Schema文件一般从命名空间指向的路径获取，不同的JDF文档需要不同的验证文件验证，验证文件的路径称为“SchemaLocation”，文件扩展名为“.xsd”。
-4. 索引路径：JDF使用狭义的XML XPath，即它仅表示结点树路径，而不具有复杂的语法格式。
-5. 注释方式：JDF使用两种注释方式，一是XML注释方式：`<!--xxx-->`; 二是使用节点comment。
+
+
 
 ## 2.2 JDF Library
 
@@ -428,7 +439,18 @@ Client		| software/hardware	| -
 
 ---
 
-# <span id = "Appendix-D"> Appendix-D：CIP4 software license </span>
+# <span id = "Appendix-D"> Appendix-D：Printing Industry Terminology </span>
+
+Terminology					| Chinese				| Description
+:-:							| :-:					| :-:
+Binding						| 装订					|
+Saddle Stitching			| 骑马钉				| 
+Soft Cover					| 软面封装				|
+Hard Cover					| 精装封装				|
+
+---
+
+# <span id = "Appendix-E"> Appendix-E：CIP4 software license </span>
 
 Copyright (c) 2001-2020 The International Cooperation for the Integration of Processes in Prepress, Press and Postpress (CIP4). All rights reserved.
 

@@ -15,7 +15,8 @@
 		"page-toc-button",
 		"pageview-count",
 		"tbfed-pagefooter",
-		"alerts"
+		"alerts",
+		"video"
 	],
 
 	"pluginsConfig": {
