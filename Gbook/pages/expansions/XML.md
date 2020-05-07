@@ -207,20 +207,49 @@ XML文档中所有的文本数据都会被解析器解析，只有CDATA（Charac
 
 XPath是使用**路径表达式遍历XML**文档的语言，内置函数库，Javascript、Python等都实现了XPath功能及其函数。
 
-### 3.1.2 路径表达式
+### 3.1.2 运算符
+
+运算符				| 描述							| 示例						| 返回值
+:-:					| :-:							| :-:						| :-:
+&#124;				| 计算两个节点集				| //book &#124; //cd		| 返回所有拥有 book 和 cd 元素的节点集
+\+					| 加法							| 6 + 4						| 10
+\-					| 减法							| 6 - 4						| 2
+\*					| 乘法							| 6 * 4						| 24
+div					| 除法							| 8 div 4					| 2
+=					| 等于							| price=9.80				| true/false
+!=					| 不等于						| price!=9.80				| true/false
+<					| 小于							| price<9.80				| true/false			
+<=					| 小于或等于					| price<=9.80				| true/false
+\>					| 大于							| price>9.80				| true/false
+>=					| 大于或等于					| price>=9.80				| true/false
+or					| 或							| price=9.80 or price=9.70	| true/false
+and					| 与							| price>9.00 and price<9.90	| true/false
+mod					| 计算除法的余数				| 5 mod 2					| 1
+
+### 3.1.3 路径表达式
 
 表达式				| 描述													| 示例
 :-:					| :-:													| :-:
 nodename			| 相对路径-选取此节点的所有子节点						| bookstore 
 /					| 绝对路径-选取根节点									| /bookstore
-//					| 无视路径-选择所有匹配节点								| book
+//					| 无视路径-选择根和所有后代节点							| book
 .					| 当前路径-选取当前节点									|
 ..					| 上级路径-选取当前节点的父节点							|
 @					| 选取属性												| /bookstore/book/@lang 
 \*					| 匹配任何元素节点										| /bookstore/\* 
 @\*					| 匹配任何属性节点										|	
 node()				| 匹配任何节点											|
-[X]					| 用于定位，X为不等式、数值和函数等						| /bookstroe/book[1]
+
+<br> <center> <font color=gray> Table 3.1.3.1 </font> </center> <br>
+
+谓语				| 描述													| 示例
+:-:					| :-:													| :-:
+[X]					| 用于定位，X为**等式、不等式、数值和函数**等谓语		| /bookstroe/book[1]
+
+<br> <center> <font color=gray> Table 3.1.3.2 </font> </center> <br>
+
+轴（Axis）			| 描述													| 示例
+:-:					| :-:													| :-:
 ancestor			| 选取当前节点的所有先辈（父、祖父等）					| ancestor::book 
 ancestor-or-self	| 选取当前节点的所有先辈（父、祖父等）以及当前节点本身	|
 attribute			| 选取当前节点的所有属性								| attribute::lang
@@ -234,17 +263,15 @@ preceding			| 选取文档中当前节点的开始标签之前的所有节点			
 preceding-sibling	| 选取当前节点之前的所有同级节点						|
 self				| 选取当前节点											|
 
-Tips : 示例 - /bookstore//book[2]/child::text()，选取bookstore节点下的所有book元素中的第二个下的所有子元素的文本，将该表达式作为Javascript、Python等XPath函数的形参即可返回结果。
+<br> <center> <font color=gray> Table 3.1.3.3 </font> </center> <br>
 
-### 3.1.3 运算符
+> **[info] Note**
+>
+> 完整的路径表达式是由“轴::节点[谓语]”组成的，但通常只使用“表达式”或“表达式” + “谓语”的方法。
 
-+/-/\*/div/=/!=/\</<=/\>/>=/or/and/mod/|(节点集合)
-
-### 3.1.4 [XPath内置函数](https://www.w3school.com.cn/xpath/xpath_functions.asp)
-
-### 3.1.5 路径表达式 - 步Step
-
-轴::节点[谓语]，节点是通过沿着路径 (path) 或者步 (steps) 来选取的。
+> **[info] Example**
+>
+> /bookstore//book[2]/child::title[text()]，选取根节点下的bookstore节点下的所有book元素中的第二个下的所有子元素中的title子元素的文本。
 
 ---
 

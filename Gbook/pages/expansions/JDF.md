@@ -14,12 +14,12 @@
 
 JDF - Job Definition Format，作业定义格式，基于[XML](https://jim-codehub.github.io/pages/extension/XML.html)技术，是印前、印中和印后工作流节点的数据载体。JDF广义上包含了JDF、[JMF](#JMF)和[ICS](#ICS)标准。
 
-## 1.2.1 JDF VS XML
+## 1.2.1 JDF with XML
 
 1. 节点定义：JDF不具有XML中定义的文本节点，它把众多本应该在文本节点中出现的内容都定义在属性值当中。
-2. 命名空间：JDF的标准命名空间为：“xmlns='http://www.CIP4.org/JDFSchema_1_1'”，同时支持前缀"xsi:schemaLocation"和"xsi:type"形式的扩展命名空间。
-3. 模式验证：JDF Schema文件一般从命名空间指向的路径获取，不同的JDF文档需要不同的验证文件验证，验证文件的路径称为“SchemaLocation”，文件扩展名为“.xsd”。
-4. 索引路径：JDF使用狭义的XML XPath，即它仅表示结点树路径，而不具有复杂的语法格式。
+2. 命名空间：JDF的标准命名空间为：“xmlns='http://www.CIP4.org/JDFSchema_1_1'”，同时支持[扩展命名空间](#Appendix-D)，以使用户可以合法使用自定义节点。
+3. 验证文档：通过W3C的xsi命名空间来支持[schemaLocation](#Appendix-D)属性以定位JDF验证文档。
+4. 内容索引：JDF使用XML XPath来遍历和查询JDF内容
 5. 注释方式：JDF使用两种注释方式，一是XML注释方式：`<!--xxx-->`; 二是使用节点Comment。
 
 > **[info] xsi**
@@ -441,7 +441,13 @@ Client		| software/hardware	| -
 
 ```
 	<?xml version="1.0" encoding="UTF-8"?>
-	<JDF xmlns="http://www.CIP4.org/JDFSchema_1_1" ID="RootID" Type="Product" Status="Waiting" Version="1.2">
+	<JDF ID="RootID" Type="Product" Status="Waiting" Version="1.2"
+		 xmlns="http://www.CIP4.org/JDFSchema_1_1"									<!-- namespace : CIP4 standard namespace		-->
+		 xmlns:myns="https://jim-codehub.github.io"									<!-- namespace : Extension namesapce			-->
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"						<!-- namespace : W3C extension namespace		-->
+		 xsi:schemaLocation="http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd"		<!-- schema lo : CIP4 standard schema location	-->
+							"https://jim-codehub.github.io/MYJDF.xsd">				<!-- schema lo : Extension schema location		--> 
+
 		<ResoucePoll>
 			<ComponentID="OutputComponent" Class="Quantity" Status="Unavailable" ComponentType="FinalProduct" />
 		</ResoucePoll>
@@ -449,6 +455,7 @@ Client		| software/hardware	| -
 		<ResourceLinkPool>
 			<ComponentLink rRef="OutputComponent" Usage="Output" />
 		</ResourceLinkPool>
+		<myns:info date="2020" />
 	</JDF>
 ```
 
