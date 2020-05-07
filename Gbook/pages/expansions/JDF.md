@@ -301,10 +301,6 @@ MIS担任统一调度的重要角色，它可以控制全部的作业过程，�
 
 ![CIP4 Protocol Stack](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/CIP4_Stack.png) <br><center> <font color=gray> CIP4 Protocol Stack </font> </center><br>
 
-
-
-
-
 ## 2.2 JDF Library
 
 CIP4项目组使用C++、Java和C#语言开发了JDF解析库，它们是对XML解析库的进一步封装，如JDFLibC++使用了Xerces-C++函数库。
@@ -439,7 +435,24 @@ Client		| software/hardware	| -
 
 ---
 
-# <span id = "Appendix-D"> Appendix-D：Printing Industry Terminology </span>
+# <span id = "Appendix-D"> Appendix-D：JDF Example </span>
+
+## D.1 ResourcePoll and ResourceLinkPoll
+
+```
+	<?xml version="1.0" encoding="UTF-8"?>
+	<JDF xmlns="http://www.CIP4.org/JDFSchema_1_1" ID="RootID" Type="Product" Status="Waiting" Version="1.2">
+		<ResoucePoll>
+			<ComponentID="OutputComponent" Class="Quantity" Status="Unavailable" ComponentType="FinalProduct" />
+		</ResoucePoll>
+
+		<ResourceLinkPool>
+			<ComponentLink rRef="OutputComponent" Usage="Output" />
+		</ResourceLinkPool>
+	</JDF>
+```
+
+# <span id = "Appendix-E"> Appendix-E：Printing Industry Terminology </span>
 
 Terminology					| Chinese				| Description
 :-:							| :-:					| :-:
@@ -450,7 +463,7 @@ Hard Cover					| 精装封装				|
 
 ---
 
-# <span id = "Appendix-E"> Appendix-E：CIP4 software license </span>
+# <span id = "Appendix-F"> Appendix-F：CIP4 software license </span>
 
 Copyright (c) 2001-2020 The International Cooperation for the Integration of Processes in Prepress, Press and Postpress (CIP4). All rights reserved.
 
