@@ -143,23 +143,23 @@ XML标签是自定义的，解析两个或多个具有相同标签的XML文档�
 扩展命名空间格式为“xmlns:namespace-prefix”，任何使用'namespace-prefix'的节点都共享所声明的同一命名空间。
 
 ``` 扩展命名空间（扩展为前缀同名）
-	<!--解决冲突：一个表格-->                           <!--解决冲突：一个桌子-->
-	<a:table xmlns:a =“http://www.w3.org”>              <b:table xmlns:b =“http://w3cschool.com”>
-	<tr>													<name>Coffee table</name>
-	<a:td>Apples</a:td>                                  	<width>90</width>
-	<td>Bnanas</td>                                      	<b:length>120</b:length>
-	</tr>                                                	<high>100</high>
-	</a:table>                                          </b:table>
+	<!--解决冲突：一个表格-->							<!--解决冲突：一个桌子-->
+	<a:table xmlns:a =“http://www.w3.org”>				<b:table xmlns:b =“http://w3cschool.com”>
+		<tr>												<name>Coffee table</name>
+		<a:td>Apples</a:td>									<width>90</width>
+		<td>Bnanas</td>										<b:length>120</b:length>
+		</tr>												<high>100</high>
+	</a:table>											</b:table>
 ```
 
 ``` 扩展命名空间（扩展为任意前缀）
-	<!--解决冲突：一个表格-->                           <!--解决冲突：一个桌子-->
+	<!--解决冲突：一个表格-->							<!--解决冲突：一个桌子-->
 	<table xmlns:x =“http://www.w3.org”>				<table xmlns:y =“http://w3cschool.com”>
-	<tr>													<name>Coffee table</name>
-	<x:td>Apples</x:td>                                  	<width>90</width>
-	<td>Bnanas</td>                                      	<y:length>120</y:length>
-	</tr>                                                	<high>100</high>
-	</table>                                            </table>
+		<tr>												<name>Coffee table</name>
+		<x:td>Apples</x:td>									<width>90</width>
+		<td>Bnanas</td>										<y:length>120</y:length>
+		</tr>												<high>100</high>
+	</table>											</table>
 ```
 
 ## 2.4 Validation 
@@ -189,10 +189,7 @@ XML文档中所有的文本数据都会被解析器解析，只有CDATA（Charac
 ``` Javascript
 	<script>
 		<![CDATA[
-			function fun()
-			{
-				if (a < b) {return 1;}
-			}
+			function fun(){ if (a < b) {return 1;} }
 		]]>
 	</script>
 ```
@@ -268,6 +265,7 @@ self				| 选取当前节点											|
 > **[info] Note**
 >
 > 完整的路径表达式是由“轴::节点[谓语]”组成的，但通常只使用“表达式”或“表达式” + “谓语”的方法。
+
 
 > **[info] Example**
 >
