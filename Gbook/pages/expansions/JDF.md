@@ -1,117 +1,169 @@
 
-# 1 JDF Component  
+# Section One - JDF
+
+# 1 JDF Basic 
 
 ## 1.1 Background 
 
-在印刷行业中，企业生产现状多为“信息孤岛”或“流程孤岛”形式，具体表现为：印前作业数据、印刷数据、印后数据独立处理而没有有效的对接，以使印前、印刷、印后产线形成三个“信息孤岛”。这些题传统或市场遗留的问题大大增加了印刷应用企业的生产成本、降低了生产效率。  
-为了解决印刷行业的“信息孤岛”难题，使印刷业信息集成化、全面自动化和高度智能化，以Adobe、HP、Agfa、Heidelberg、MAN Roland等为代表的的公司成立了**CIP4(International Cooperation for Integration of Processes in Prepress, Press and Postpress)**国际联盟，致力于促进印前、印刷、印后加工的垂直整合，并应用[JDF](#JDF)作为信息载体标准。[CIP4 Official Website](https://www.cip4.org/).
+在印刷行业中，企业生产现状多为“信息孤岛”或“流程孤岛”形式，具体表现为：印前作业数据、印刷数据、印后数据独立处理而没有有效的对接，以使印前、印刷、印后产线形成三个“信息孤岛”。这些题传统或市场遗留的问题大大增加了印刷应用企业的生产成本、降低了生产效率。
+
+为了解决印刷行业的“信息孤岛”难题，使印刷业信息集成化、全面自动化和高度智能化，以Adobe、HP、Agfa、Heidelberg、MAN Roland等为代表的的公司成立了**CIP4(International Cooperation for Integration of Processes in Prepress, Press and Postpress)**国际联盟，致力于促进印前、印刷、印后加工的垂直整合，并应用[JDF](#Introduction)作为信息载体标准。[CIP4 Official Website](https://www.cip4.org/).
 
 > **[info] CIMS**
 >
 > Computer Infomation Management System 计算机集成制造系统，利用计算机技术把分散在产品设计制造过程中多种孤立的自动化子系统集成以实现高效管理和制造。
 
-## 1.2 <span id = "JDF"> JDF </span>
+## 1.2 <span id = "Introduction"> Introduction </span>
 
-JDF - Job Definition Format，作业定义格式，基于[XML](https://jim-codehub.github.io/pages/extension/XML.html)技术，是印前、印中和印后工作流节点的数据载体。JDF广义上包含了JDF、[JMF](#JMF)和[ICS](#ICS)标准。
+JDF - Job Definition Format，作业定义格式，基于[XML](https://jim-codehub.github.io/pages/extension/XML.html)技术，是印前、印中和印后工作流节点的数据载体，描述了生产意图和生产所必需的资源、生产过程等信息，并提供审计功能。JDF广义上包含了JDF、[JMF](#JMF)和[ICS](#ICS)标准。
 
-## 1.2.1 JDF with XML
+## 1.3 XML Touch Upon 
 
-1. 节点定义：JDF不具有XML中定义的文本节点，它把众多本应该在文本节点中出现的内容都定义在属性值当中。
-2. 命名空间：JDF的标准命名空间为：“xmlns='http://www.CIP4.org/JDFSchema_1_1'”，同时支持[扩展命名空间](#Appendix-D)，以使用户可以合法使用自定义节点。
-3. 验证文档：通过W3C的xsi命名空间来支持[schemaLocation](#Appendix-D)属性以定位JDF验证文档。
-4. 内容索引：JDF使用XML XPath来遍历和查询JDF内容
-5. 注释方式：JDF使用两种注释方式，一是XML注释方式：`<!--xxx-->`; 二是使用节点Comment。
+涉及XML的技术有**DOM**模型、命名空间**xmlns**、路径表达式**XPath**和文档验证**Schema**。
 
-> **[info] xsi**
+> **[info] Note**
 >
-> xsi refer to XMLSchema-instance，powered by [W3C Schema](https://www.w3.org/TR/xmlschema-1/).
+> JDF不使用XML中定义的文本节点，只使用元素和属性节点。另外JDF提供以元节点&#60;Comment&#62;标记的文档注释方式。[More](https://jim-codehub.github.io/pages/extension/XML.html)
+
+## 1.4 JDF Node Constructure
+
+JDF文档的根元素节点为&#60;JDF&#62;&#60;/JDF&#62;，可以递归嵌套。其它所有元素节点是JDF根元素节点的子元素。
+
+![JDF Node](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JDFNode.png) <br><center> <font color=gray> JDF Node Diagram </font> </center><br>
+
+### 1.4.1 AncestorPool 
+
+**分布式处理机制**将子元素节点从原始JDF文档中分离（**Spawn**）以创建新的JDF文档来执行作业，*AncestorPool*中存储了关于祖先节点的上下文信息，当作业完成后通过该元素节点将JDF合并（**Merge**）到原始JDF文档。分离与合并机制允许递归运行。
+
+More refer to *JDF Spec 1.5 - 3.5*
+
+### 1.4.2 AuditPool
+
+审计元素节点存储了JDF过程处理的日志，事件包括JDF节点的创建与删除、JDF节点的修改、分离与合并、错误、设备事件、任务调度等。
+
+More refer to *JDF Spec 1.5 - 3.12*
+
+### 1.4.3 ResourcePool
+
+
+### 1.4.4 ResourceLinkPool
 
 
 
 
-### 1.2.1 Structure
 
-JDF作业由一组以倒立的树型结构组织的节点组成，根节点描述了作业的总体意图，靠近根节点的节点定义了产品的组成部分（与根节点一起被命名为**产品节点**），中间节点是描述产品节点的生产过程的过程组（称为**过程组节点**），叶节点是过程组节点的详细拆分（称为**过程节点**）。
+
+### 1.4.1 System Structure
+
+Job作业是JDF文档的核心内容，每个作业都组织在一个包含完成预期项目所需的所有信息的树结构中，树结构中的每个元素节点表示所执行作业的一部分。树的根描述作业的总体意图（**Indent**），中间节点描述作业的组成过程（称为**过程组节点**），叶节点是过程组节点的详细拆分（称为**过程节点 Process**）。
 
 ![JDF Structure](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JDFSturctrue.png) <br><center> <font color=gray> JDF Structure </font> </center><br>
 
-上级直接节点的输出是下级节点的输入资源，因此一个产品可以有多种路由方案，[MIS](#MIS)会作出这些决策。
+> **[info] Workflow**
+>
+> 上级直接节点的输出是下级节点的输入资源：Input resource --> JDF Node --> Output resource；一个产品可以有多种路由方案，[MIS](#MIS)会作出这些决策。
 
-### 1.2.2 Coordinate Systems
+### 1.4.2 Product Intent Nodes
+
+JDF产品意图节点以属性*Type="Product"*标记：`<JDF Type="Product" ...>...</JDF>`；
+
+### 1.4.2 Workflow Component Roles
+
+Roles		| Description 
+:-:			|:-:
+Machines	| 裸机，泛指欲集成JDF功能的物理设备
+Devices		| 软件，集成到Machines中，启动Machines并执行JDF指令 
+Agents		| 软件，创建、修改、读写和解析JDF，Devices和Controllers也是一种Agents
+Controllers | 软件，将Agents完成的JDF路由到Devices，工作流中通常有多级Controllers，路由到最低级的Controllers具有Devices功能
+MIS			| 软件，工作流中所有单元之间关系的监督者，宏观Controllers  
+
+![Interactions](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/Interactions.png) <br><center> <font color=gray> Roles interactions </font> </center><br>
+
+## 1.5 Coordinate Systems in JDF
 
 TBD
 
-### 1.2.3 ResourcePool and ResourceLinkPool
+# 2 xxx
 
-资源是JDF数据的核心，是描述产品和生产过程的主要信息，所有的资源都包含在**ResourcePool**（称为资源池）节点下，**ResourceLinkPool**（称为资源链接池）与ResourcePool中的资源节点一一对应，其*rRef*属性对应*ResourcePoll*下的*ID*属性，其*Usage*属性描述了所链接的资源是*Ouput*/*Input*。每一个JDF文档都必须包含*ResourcePool*和*ResourceLinkPool*节点。
 
-```JDF 简约框架
- <JDF Type = "Product" ...><!--产品节点-->
 
-	<!----------------------------过程组节点1------------------------------>
 
-	<JDF Type = "ProcessGroup" ...>
-		<AuditPool><!--审计节点-->
-			...
-		</AuditPool>
-		
-		<!------------------------过程节点1-1------------------------------>
 
-		<JDF Type = "1.1" ...>
-			<ResourcePool><!--局部资源池节点-->
-				...
-			</ResourcePool>
-			<RsourceLinkPool>
-				...
-			</RsourceLinkPool><!--局部资源链接池节点-->
-		</JDF>
 
-		<!------------------------过程节点1-2------------------------------>
 
-		<JDF Type = "1.2" ...>
-			<ResourcePool><!--局部资源池节点-->
-				...
-			</ResourcePool>
-			<RsourceLinkPool><!--局部资源链接池节点-->
-			...
-			</RsourceLinkPool>
-		</JDF>
-	</JDF>
 
-	<ResourcePool><!--全局资源池节点-->
-	...
+---
+
+# JMF
+
+---
+
+# ICS
+
+
+
+
+
+
+
+
+
+
+
+
+### 1.2.2 Structure
+
+JDF作业由一组以倒立的树型结构组织的节点组成，根节点描述了作业的总体意图，靠近根节点的节点定义了产品的组成部分（与根节点一起被命名为**产品节点**），中间节点是描述产品节点的生产过程的过程组（称为**过程组节点**），叶节点是过程组节点的详细拆分（称为**过程节点**）。
+
+
+### 1.2.3 Resource
+
+资源是JDF数据的核心内容，用于描述产品信息和生产过程，所有的资源元素节点都包含于**&#60;ResourcePool&#62;**（称为资源池）元素节点下。同一资源可能被多个[链接资源](#ResourceLink)链接。
+
+```
+	<ResourcePool>
+		<RESOURCE ID="R1" ... /> <!-- RESOURCE占位符，抽象资源示例 -->
+		<RESOURCE ID="R2" ... /> <!-- RESOURCE占位符，抽象资源示例 -->
+		<RESOURCE ID="R3" ... /> <!-- RESOURCE占位符，抽象资源示例 -->
+		...
 	</ResourcePool>
-	<RsourceLinkPool><!--全局资源链接池节点-->
-	...
-	</RsourceLinkPool>
+```
 
-	<!----------------------------过程组节点2------------------------------>
+JDF Resource | Description | Reside
+:-:			 | :-:		   | :-:
+Bundle		 | 			   | press and postpress
+Component	 |			   | press and postpress
+Device		 |			   | press and postpress
 
-	<JDF Type = "ProcessGroup" ...>
 
-		<!------------------------过程节点2-1------------------------------>
 
-		<JDF Type = "2.1" ...>
-			<ResourcePool><!--局部资源池节点-->
-			...
-			</ResourcePool>
-			<RsourceLinkPool><!--局部资源链接池节点-->
-			...
-			</RsourceLinkPool>
-		</JDF>
 
-		<!------------------------过程节点2-2------------------------------>
 
-		<JDF Type = "2.2" ...>
-			<ResourcePool><!--局部资源池节点-->
-			...
-			</ResourcePool>
-			<RsourceLinkPool><!--局部资源链接池节点-->
-			...
-			</RsourceLinkPool>
-		</JDF>
-	</JDF>
- </JDF>
+#### 1.2.3.1 <span id = "ResourceLink"> Resource link </span>
+
+*资源链接*元素节点与资源元素节点同名+'Link'结尾，并通过*rRef*属性节点关联*ID*属性节点相同的资源元素节点，用于描述资源的数量、利用方式（*Input* or *Output*）等信息。所有的资源链接元素节点都**&#60;ResourceLinkPool&#62;**（称为资源链接池）元素节点下。
+
+```
+	<ResourceLinkPool>
+		<RESOURCELink rRef="R1" ... /> <!-- RESOURCE占位符，抽象资源示例 -->
+		<RESOURCELink rRef="R2" ... /> <!-- RESOURCE占位符，抽象资源示例 -->
+		<RESOURCELink rRef="R3" ... /> <!-- RESOURCE占位符，抽象资源示例 -->
+		...
+	</ResourceLinkPool>
+```
+
+成对的ResourcePoll和ResourceLinkPoll节点为兄弟节点（但不限于），处于同一JDF元素节点或子JDF元素节点下。
+#### 1.2.3.2 Resource reference
+
+当某一节点下需要重新插入资源以重利用信息时，可以使用资源元素节点同名+'Ref'结尾的元素节点名，并通过*rRef*属性节点关联*ID*属性节点相同的资源元素节点，类似于编程语言中的"include"。
+
+```
+	<SOMEELEMENT ...>
+		<RESOURCERef rRef="R1" ... /> <!-- RESOURCE占位符，抽象资源示例 -->
+		<RESOURCERef rRef="R2" ... /> <!-- RESOURCE占位符，抽象资源示例 -->
+		<RESOURCERef rRef="R3" ... /> <!-- RESOURCE占位符，抽象资源示例 -->
+		...
+	</SOMEELEMENT>
 ```
 
 ## 1.3 <span id = "JMF"> JMF </span>
@@ -184,6 +236,8 @@ Tips : ICS文档的使用方法 - ICS元素表格中可链接的表示该内容�
 ## 1.5 <span id = "MIS"> MIS </span>
 
 MIS - Management Information System，管理信息系统，由决策支持系统、工业控制系统、办公自动化系统以及数据库、模型库、方法库、知识库和与外界信息交换接口组成，主要作用是最大限度利用计算机和网络来**加强企业的信息管理**，提高整体效益和效率。集成JDF的MIS系统能够提供作业流程控制、生产控制等功能，可以实现从作业接收、估价、报价、作业安排、作业分派和打样，最后到印刷生产的全过程的信息管理。[Case : HP HIFLEX](http://www.hp.com/hpinfo/newsroom/press_kits/2012/HPdrupa12/HP_Hiflex_MIS.pdf).
+
+JDF工作流中监督系统组件和系统控制之间的所有过程和通信
 
 ### 1.5.1 MIS-JDF联网结构
 
@@ -415,23 +469,7 @@ JDF consulting and training serve etc.
 
 ---
 
-# <span id = "Appendix-C"> Appendix-C：JDF workflow components role </span>
 
-Role		| Note				| Description 
-:-:			| :-:				| :-:
-Agent		| software			| 可以读取、增、删、改、查、验证、生成JDF文档的应用程序。Controller和Device通常具有修改JDF的功能，因此它们具有Agent属性。
-Controller	| software			| Agent操作JDF文档，Controller将其路由到合适的Device，Controller至少能在一个Device上或一个Slave Controller上启动Process。为了能够和其它Controller以及Device通讯，Controller要具备JDF文件交换协议，也可能要支持JMF。Controller也能决定Process的计划和时序数据，例如Process时间和计划生产数量。
-Device		| hardware			| 执行Agent和Controller信息
-Manager		| software			|发送JDF实例、JMF消息的一方
-Worker		| software			| 接收JDF实例、JMF消息的一方（接收后可以回应）
-Producer	| software			| Manager发送给worker消息时，Manger是Producer，Manger发送给worker消息后，worker响应，此时worker是producer
-Consumer	| software			| worker接收Manger的消息，worker是consumer，manager等待woker响应时，manager是consumer 
-Server		| software/hardware	| -
-Client		| software/hardware	| -
-
-<br><center> <font color=gray> Workflow components role in JDF_1.5 and ICS_Base 1.5 </font> </center><br>
-
-![Interactions](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/Interactions.png) <br><center> <font color=gray> Role interactions </font> </center><br>
 
 ---
 
@@ -442,9 +480,11 @@ Client		| software/hardware	| -
 ```
 	<?xml version="1.0" encoding="UTF-8"?>
 	<JDF ID="RootID" Type="Product" Status="Waiting" Version="1.2"
+
 		 xmlns="http://www.CIP4.org/JDFSchema_1_1"									<!-- namespace : CIP4 standard namespace		-->
 		 xmlns:myns="https://jim-codehub.github.io"									<!-- namespace : Extension namesapce			-->
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"						<!-- namespace : W3C extension namespace		-->
+
 		 xsi:schemaLocation="http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd"		<!-- schema lo : CIP4 standard schema location	-->
 							"https://jim-codehub.github.io/MYJDF.xsd">				<!-- schema lo : Extension schema location		--> 
 
@@ -467,6 +507,11 @@ Binding						| 装订					|
 Saddle Stitching			| 骑马钉				| 
 Soft Cover					| 软面封装				|
 Hard Cover					| 精装封装				|
+Bundle						| 集装					| 将成品堆叠或装箱等操作
+Palletzing					| 码垛					| Bundle的方式之一
+Ink							| 油墨					|
+Imposing					| 拼版					|
+Printing					| 印刷					|
 
 ---
 
@@ -527,4 +572,127 @@ CIP4 retains the right to modify the terms applicable to the CIP4 Software under
 This software consists of voluntary contributions made by many individuals on behalf of the The International Cooperation for the Integration of Processes in Prepress, Press and Postpress and was originally based on software copyright (c) 1999-2001, Heidelberger Druckmaschinen AG and copyright (c) 1999-2001, Agfa-Gevaert N.V.
 
 For more information on The International Cooperation for the Integration of Processes in Prepress, Press and Postpress, please see http://www.cip4.org.
+
+
+
+
+
+
+
+
+
+
+
+### 1.2.2 Coordinate Systems
+
+TBD
+
+
+
+JDF节点嵌套 以表达 完整的JDF作业组成
+
+<JDF ID="N1"  JobID="job1" JobPartID="Part1">
+	<JDF ID="N2"  JobPartID="Part2">
+	<JDF ID="N3"  JobPartID="Part3">
+	<JDF ID="N4"  JobPartID="Part4">
+</JDF>
+
+Elements of JDF Node
+
+# AuditPool
+
+审计池节点，类似于程序日志，用于记录工作流中的事件（如资源利用情况等）和发生的时间等信息。
+
+审计节点有：
+	ResourceAudit 
+
+	Created
+	Deleted
+	Modified
+
+	Notification
+
+	Merged
+	Spawned
+
+	ProcessesRun
+
+例子1:
+<AuditPool>
+	<ResourceAudit TimeStamp="2008-08-28T18:20:00Z">
+		<MediaLink ActualAmount="421" Amount="400" Usage="Input" rRef="RLink"/>
+		<MediaLink Amount="400" Usage="Input" rRef="RPrev"/>
+	</ResourceAudit>
+</AuditPool>
+
+
+# CustomerInfo 
+
+Custromer + delivery address
+
+用于描述用户信息，如用户ID、用户作业名、用户联系方式、所属公司等等
+
+# Node Info
+
+通用的，独立于process的信息，包含作业优先级、作业计划（开始时间、结束时间）等信息，也可以在该节点中包含JMF结点（注：在Base ICS中可以不包含JMF节点）
+
+Scheduling
+Administative data
+message recipients
+
+---
+
+JDF Nodes Combinations JDF节点的组合
+
+不要为已知Precesses的排列重新创建新的Process Type
+
+将多个定义的process组合成一个process，如：inline finishing = printing + folding + cutting
+
+两种类型的组合节点可选：
+1. combined node ： 所有内部接口被隐藏，如 智能多功能设备
+2. processGroup ： 内部节点可访问
+
+
+RunList资源
+定义一组文档、指定文件位置、定义拼版的物理页码
+
+、PageList资源
+
+定义页面的原数据，如可读的页码、颜色信息等，可能从Runlist中引用
+
+# JDF Spawning and merging
+
+将一个作业中的某个部分分离(spawn)以独立/并行处理，完成后再合并回去（Merge)
+
+分离的部分要优先（或并行）执行
+
+
+
+
+-------------
+
+# Structure of JDF Nodes and Jobs
+
+
+
+2. 命名空间：JDF的标准命名空间为：“xmlns='http://www.CIP4.org/JDFSchema_1_1'”，同时支持[扩展命名空间](#Appendix-D)，以使用户可以合法使用自定义节点。
+
+
+
+---
+
+1.4.2 Comformance requriments for JDF Entities
+
+JDF实体的一致性需求：属性Attributes、属性值Attribute values、资源Resources、过程Processes、组合资源Combined processes
+
+-PROCESSES
+
+所有的过程都是可选的，对于消费者来说，但对于Device，至少支持一个
+
+- Combined Processes
+
+所有的组合资源对于消费者Consumer来说都是可选的，如果要支持，则必须：
+1. 支持所有的输入资源，
+2. 支持所有的输出资源
+3. 
 

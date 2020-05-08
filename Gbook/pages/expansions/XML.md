@@ -46,7 +46,7 @@ XML标签大小写敏感，所有标签必须成对存在（大小写要对应�
 
 > **[info] Singal lable**
 >
-> 单标签是合法标签，如 \<Element x:y />
+> 单标签是合法标签，如 &#60;Element x:y&#62; 
 
 ### 1.4.3 Attribute 
 
