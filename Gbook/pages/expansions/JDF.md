@@ -1,3 +1,4 @@
+<script src="https://jim-codehub.github.io/script/ImgHover.js"></script> 
 
 # Section One - JDF
 
@@ -7,7 +8,7 @@
 
 在印刷行业中，企业生产现状多为“信息孤岛”或“流程孤岛”形式，具体表现为：印前作业数据、印刷数据、印后数据独立处理而没有有效的对接，以使印前、印刷、印后产线形成三个“信息孤岛”。这些题传统或市场遗留的问题大大增加了印刷应用企业的生产成本、降低了生产效率。
 
-为了解决印刷行业的“信息孤岛”难题，使印刷业信息集成化、全面自动化和高度智能化，以Adobe、HP、Agfa、Heidelberg、MAN Roland等为代表的的公司成立了**CIP4(International Cooperation for Integration of Processes in Prepress, Press and Postpress)**国际联盟，致力于促进印前、印刷、印后加工的垂直整合，并应用[JDF](#Introduction)作为信息载体标准。[CIP4 Official Website](https://www.cip4.org/).
+为了解决印刷行业的“信息孤岛”难题，使印刷业信息集成化、全面自动化和高度智能化，以Adobe、HP、Agfa、Heidelberg、MAN Roland等为代表的的公司成立了**CIP4（International Cooperation for Integration of Processes in Prepress, Press and Postpress）**国际联盟，致力于促进印前、印刷、印后加工的垂直整合，并应用[JDF](#Introduction)作为信息载体标准。[CIP4 Official Website](https://www.cip4.org/).
 
 > **[info] CIMS**
 >
@@ -15,7 +16,7 @@
 
 ## 1.2 <span id = "Introduction"> Introduction </span>
 
-JDF - Job Definition Format，作业定义格式，基于[XML](https://jim-codehub.github.io/pages/extension/XML.html)技术，是印前、印中和印后工作流节点的数据载体，描述了生产意图和生产所必需的资源、生产过程等信息，并提供审计功能。JDF广义上包含了JDF、[JMF](#JMF)和[ICS](#ICS)标准。
+JDF - Job Definition Format，作业定义格式，基于[XML](https://jim-codehub.github.io/pages/expansions/XML.html)技术，是印前、印中和印后工作流节点的数据载体，描述了生产意图、生产资源、生产过程和审计等信息，并提供作业分离与合并机制。JDF广义上包含了JDF（超集）、[JMF](#JMF)和[ICS](#ICS)标准。
 
 ## 1.3 XML Touch Upon 
 
@@ -23,13 +24,47 @@ JDF - Job Definition Format，作业定义格式，基于[XML](https://jim-codeh
 
 > **[info] Note**
 >
-> JDF不使用XML中定义的文本节点，只使用元素和属性节点。另外JDF提供以元节点&#60;Comment&#62;标记的文档注释方式。[More](https://jim-codehub.github.io/pages/extension/XML.html)
+> JDF只应用元素节点和属性节点，而不使用文本节点。另外JDF提供以元素节点&#60;Comment&#62;标记的文档注释方式。[More](https://jim-codehub.github.io/pages/expansions/XML.html)
 
 ## 1.4 JDF Node Constructure
 
-JDF文档的根元素节点为&#60;JDF&#62;&#60;/JDF&#62;，可以递归嵌套。其它所有元素节点是JDF根元素节点的子元素。
+JDF文档的根元素节点为&#60;JDF&#62;&#60;/JDF&#62;，可以递归嵌套。其它所有元素都是JDF根元素节点的子元素。
 
 ![JDF Node](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JDFNode.png) <br><center> <font color=gray> JDF Node Diagram </font> </center><br>
+
+### 1.4.1 *@Type* and Job hierarchy 
+
+JDF元素节点的**递归嵌套**构建了一个包含完成预期项目所需的所有信息的树，形成了抽象的作业**层次结构**，树的根描述作业的产品意图（**Product Indent**），中间节点描述作业的组成过程（**ProcessGroup**），叶节点是过程组节点的详细拆分（**Process**）。
+
+![Job Hierarchy](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JobHierarchy.png) <br><center> <font color=gray> Job Hierarchy </font> </center><br>
+
+> **[info] Note**
+>
+> 层次结构是作业生产的流程示意，不表示实际JDF文档中元素节点的嵌套关系。实际嵌套与JDF元素节点的*Type*和*Types*属性节点相关：当存在*Types*属性节点时或*Type*属性节点值是[预定义的Process](#Appendix-A)时不可嵌套。
+
+#### 1.4.1.1 Product Intent Nodes
+
+一个JDF元素节点的*Type*属性值为：*Type=Product*，表示该组节点为产品意图节点
+
+
+
+
+
+
+
+
+
+
+
+JDF元素节点的*Type*属性节点描述了每组JDF数据属于哪一层次结构：*Type=Product*、*Type=ProcessGroup*、*Type=Combined*、*Type=[PredefinedProcessType]*；并且当*Type=ProcessGroup*、*Type=Combined*时，必须通过*Types*属性确定具体过程的集合：*Types=[PredefinedProcessType1 PredefinedProcessType2 ...]*。
+
+
+
+### 1.4.2 Sub Elements
+
+
+
+
 
 ### 1.4.1 AncestorPool 
 
@@ -49,15 +84,89 @@ More refer to *JDF Spec 1.5 - 3.12*
 ### 1.4.4 ResourceLinkPool
 
 
+# <span id = "Appendix-A"> Appendix-A : Predefined Processes </span>
+
+## A.1 Gneral Processes
+
+## A.2 Prepress Processes
+
+Omit
+
+## A.3 Press Processes
+
+Omit
+
+## A.4 Postpress Processes
+
+Processes				| Translation	| Description
+:-:						| :-:			| :-:
+BlockPreparation		|				|
+BoxFolding				| -				| 定义了将坯料折叠并粘合到折叠的扁平盒中进行包装的过程 
+BoxPacking				| 装箱			| - 
+Bundling				| 捆绑			| 把书芯压紧并扎成捆 
+CaseMaking				| - 			| （硬）封面的制作过程
+CasingIn				| -				| 将书芯装入封面的过程
+ChannelBinding			| 螺旋装订		| -
+Collecting				| -				| -
+CoverApplication		| -				| 定义了将软封面应用到书芯的过程
+Creasing				| 压痕			| -
+Cutting					| 裁切			| -
+DieMaking				| 模具制造		| -
+Embossing				| 印花			| 使用浮雕模具压印图形的过程
+EndSheetGluing			|				|
+Feeding					|				|
+Folding					| 折叠			|
+Gathering				|				|
+Gluing					| 涂胶			| -
+HeadBandApplication		|				|
+HoleMaking				| 制孔			| -
+Inserting				|				|
+Jcketing				| 护套			| 书本外层的保护材料
+Labeling				| 标签			| 标签可以包含收件人、产品、产品数量等信息
+Laminating				| 层压			| 泛指**覆膜**的过程
+Plletizing				| 托盘			| - 
+Perforating				| 打孔			| 描述组件打孔的过程
+PlasticCombBinding		| 塑料梳齿装订	| -
+PrintRolling			| 				|
+RingBinding				| 圆环装订		| <span onmouseover="showImg('https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JobHierarchy.png');" onmouseout="hideImg();">TTTEST</span> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 ### 1.4.1 System Structure
 
-Job作业是JDF文档的核心内容，每个作业都组织在一个包含完成预期项目所需的所有信息的树结构中，树结构中的每个元素节点表示所执行作业的一部分。树的根描述作业的总体意图（**Indent**），中间节点描述作业的组成过程（称为**过程组节点**），叶节点是过程组节点的详细拆分（称为**过程节点 Process**）。
-
-![JDF Structure](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JDFSturctrue.png) <br><center> <font color=gray> JDF Structure </font> </center><br>
 
 > **[info] Workflow**
 >
@@ -414,6 +523,13 @@ HTTP(s) -> JMF
 	- 通过StopPersistentChannel来删除持续通道
 
 ---
+
+
+
+
+
+
+
 
 # <span id = "Appendix-A"> Appendix-A：JDF future - XJDF </span>
 

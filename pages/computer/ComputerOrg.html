@@ -1028,8 +1028,89 @@
 <hr>
 <h1 id="3-programming-with-character-coding-system">3 Programming with character coding system</h1>
 <p>//TBD</p>
-<footer class="page-footer"><span class="copyright">Copyright &#xA9; Jim 2019-2020 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Revision time: 
-2020-04-28 10:56:32
+<hr>
+<p>&#x5FEB;&#x7B97;&#xFF1A;&#xFF08; &#x4E00;&#x4E2A;2^10&#xFF08;1024&#xFF09;&#x5347;K&#xFF0C;&#x4E24;&#x4E2A;&#x5347;M&#xFF0C;&#x4E09;&#x4E2A;&#x5347;G&#xFF09;</p>
+<p>&#x968F;&#x4FBF;&#x4E00;&#x4E2A;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF0C;&#x5982;0XFFFF&#xFF0C;&#x9996;&#x5148;&#x9700;&#x5FEB;&#x901F;&#x7B97;&#x51FA;bit&#x6570;&#x4E3A;16bit&#xFF0C;&#x7136;&#x540E;&#x62C6;&#x5206;2^16 = 2^6 <em> 2^10 = 64Kbit&#xFF0C;&#x66F4;&#x5FEB;&#x7684;&#x7B97;&#x6CD5;&#x5C31;&#x662F;&#x4E00;
+&#x770B;&#x5230;16&#xFF0C;&#x5C31;&#x60F3;&#x5230;2^6</em>2^10&#xFF0C;&#x800C;2^10&#x4EE3;&#x8868;K&#xFF0C;&#x4E8E;&#x662F;&#x5C31;&#x662F;64Kbit</p>
+<p>0X0000 ~ 0XFFFF</p>
+<p>&#x591A;&#x5927;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF1F;</p>
+<p>0XFFFF &#x53EF;&#x4EE5;&#x5FEB;&#x901F;&#x770B;&#x51FA;&#x662F;16bit</p>
+<p>Max = 2^16 = 65536bit</p>
+<p>2^16 = 2^6 * 2^10 = 64Kbit</p>
+<p>65536 / 1024 = 64Kbit = 8KByte</p>
+<hr>
+<p>&#x5B9E;&#x9645;2^10 = 1024 &#xFF0C;&#x6240;&#x4EE5; &#x76F4;&#x63A5;&#x7528;2^16 /2^10 = 2^6 = 64Kbit</p>
+<p>&#x524D;&#x63D0;&#x662F;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#x5927;&#x4E8E;2^10&#x65F6;&#x8FD9;&#x6837;&#x7B97;</p>
+<p>0X000 ~ 0XFFF &#x591A;&#x5927;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF1F;</p>
+<p>2^12 / 2^10 = 2^2 = 4Kbit
+&#x6216;&#x8005; 2^12 = 2^2 * 2^10 = 4Kbit&#xFF08; &#x4E00;&#x4E2A;2^10&#xFF08;1024&#xFF09;&#x5347;K&#xFF0C;&#x4E24;&#x4E2A;&#x5347;M&#xFF0C;&#x4E09;&#x4E2A;&#x5347;G&#xFF09;</p>
+<p>0X00 ~ 0XFF &#x591A;&#x5927;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF1F;</p>
+<p>2^8 = 256bit</p>
+<p>0X00000000 ~ 0XFFFFFFFF &#x591A;&#x5927;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF1F;</p>
+<p>2^32 / 2^10 = 2^22 = 2^10 <em> 2^10 </em> 2^2 = 4<em>1024</em>1024 = 4G</p>
+<p>&#x542B;&#x6709;&#x4E00;&#x4E2A;1024&#x5347;&#x4E3A;K&#xFF0C;&#x4E24;&#x4E2A;&#x5347;&#x4E3A;M&#xFF0C;&#x4E09;&#x4E2A;&#x5347;&#x4E3A;G&#xFF0C;&#x56DB;&#x4E2A;&#x4E0A;&#x5347;&#x4E3A;T&#xFF0C;&#x4E94;&#x4E2A;&#x4E0A;&#x5347;&#x4E3A;P...&#x66F4;&#x591A;&#x89C1; &#x56FD;&#x9645;&#x5355;&#x4F4D;&#x5236;&#xFF08;SI&#xFF09;&#x8BCD;&#x5934;</p>
+<p>&#x6240;&#x4EE5;2^32&#x4E00;&#x770B;&#x5C31;&#x80FD;&#x770B;&#x51FA;&#x5305;&#x542B;&#x4E09;&#x4E2A;2^10&#xFF0C;&#x8FD8;&#x4F59;&#x4E0B;2^2&#x6240;&#x4EE5;&#x4E3A;4G</p>
+<p>0X0000000000 ~ 0XFFFFFFFFFF &#x591A;&#x5927;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF1F;</p>
+<p>2^40 &#x5305;&#x542B;4&#x4E2A;2^10&#xFF0C;&#x4E3A;1T</p>
+<p>0x0000000 ~ 0xFFFFFFF &#x591A;&#x5927;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF1F;</p>
+<p>2^28 &#x5305;&#x542B;2&#x4E2A;2^10&#xFF0C;&#x6240;&#x4EE5;&#x4E3A;256M</p>
+<p>0X0000000000000000 ~ 0XFFFFFFFFFFFFFFFF &#xFF1F;</p>
+<p>2^64 &#x5305;&#x542B;6&#x4E2A;1024&#xFF0C;&#x6240;&#x4EE5;&#x4E3A;16E</p>
+<p>&#x9644;&#xFF1A;SI&#x8BCD;&#x5934;</p>
+<p>10E24 &#x5C27;&#xFF08;&#x5B83;&#xFF09; Y Yotta 
+10E21 &#x6CFD;&#xFF08;&#x5B83;&#xFF09; Z Zetta 
+10E18 &#x827E;&#xFF08;&#x53EF;&#x8428;&#xFF09; E Exa 
+10E15 &#x62CD;&#xFF08;&#x5B83;&#xFF09; P Peta 
+10E12 &#x592A;&#xFF08;&#x62C9;&#xFF09; T Tera 
+10E9 &#x5409;&#xFF08;&#x5496;&#xFF09; G Giga 
+10E6 &#x5146; M Mega 
+10E3 &#x5343; k Kilo 
+10E2 &#x767E; h hecta 
+10E1 &#x5341; da deca 
+10E-1 &#x5206; d deci 
+10E-2 &#x5398; c centi 
+10E-3 &#x6BEB; m milli 
+10E-6 &#x5FAE; &#x3BC; micro 
+10E-9 &#x7EB3;&#xFF08;&#x8BFA;&#xFF09; n nano 
+10E-12 &#x76AE;&#xFF08;&#x53EF;&#xFF09; p pico 
+10E-15 &#x98DE;&#xFF08;&#x6BCD;&#x6258;&#xFF09; f femto 
+10E-18 &#x963F;&#xFF08;&#x6258;&#xFF09; a atto 
+10E-21 &#x4EC4;&#xFF08;&#x666E;&#x6258;&#xFF09; z zepto 
+10E-24 &#x5E7A;&#xFF08;&#x79D1;&#x6258;&#xFF09; y yocto </p>
+<hr>
+<p>I/O&#x5F15;&#x811A;&#x7684;&#x8BFB;&#x53D6;</p>
+<pre><code>&#x6BCF;&#x4E2A;I/O&#x7AEF;&#x53E3;&#x90FD;&#x6709;&#x4E09;&#x4E2A;&#x5BC4;&#x5B58;&#x5668;&#xFF1A;&#x6570;&#x636E;&#x5BC4;&#x5B58;&#x5668; PORTx&#x3001; &#x6570;&#x636E;&#x65B9;&#x5411;&#x5BC4;&#x5B58;&#x5668; DDRx&#x3001; &#x7AEF;&#x53E3;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x5F15;&#x811A;&#x5BC4;&#x5B58;&#x5668; PINx&#xFF0C;
+PORTx&#x548C;DDRx&#x4E3A;&#x8BFB;/&#x5199;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x800C;PINx&#x4E3A;&#x53EA;&#x8BFB;&#x5BC4;&#x5B58;&#x5668;&#x3002;
+    &#x65E0;&#x8BBA;&#x914D;&#x7F6E;DDRx&#x662F;&#x8F93;&#x5165;&#xFF08;0&#xFF09;&#x8FD8;&#x662F;&#x8F93;&#x51FA;&#xFF08;1&#xFF09;,PINx&#x7684;&#x6570;&#x636E;&#x90FD;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#xFF0C;PINx&#x5C31;&#x4EE3;&#x8868;&#x5F53;&#x524D;&#x5F15;&#x811A;&#x7684;&#x9AD8;&#x4F4E;&#x7535;&#x5E73;&#xFF0C;&#x8FD9;&#x53EF;&#x4EE5;
+    &#x7528;&#x7535;&#x538B;&#x8868;&#x6D4B;&#x91CF;&#x51FA;&#x6765;&#xFF0C;&#x5982;&#x8981;&#x8BFB;&#x53D6;PINx&#x7684;&#x67D0;&#x4E2A;&#x4F4D;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x5982;&#x4E0B;&#x64CD;&#x4F5C;&#xFF1A;
+        &#x8BBE;&#x8981;&#x8BFB;&#x53D6;PINA&#x7684;&#x7B2C;0&#x4F4D;,&#x5224;&#x65AD;&#x5176;&#x662F;&#x5426;&#x662F;&#x9AD8;&#x7535;&#x5E73;&#xFF1A;
+                uint8_t x = PINA;
+                        if(0x01 == (x&amp;=0x01))
+        {
+                        ...
+                                    }
+
+    &#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;PINx&#x662F;&#x53EA;&#x8BFB;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x7684;&#x64CD;&#x4F5C;&#x662F;&#x4E0D;&#x5BF9;&#x7684;&#xFF1A;
+            if(0x01 == (PINA&amp;=0x01))
+        {
+                        ...
+                                    }
+
+&#x5982;&#x679C;&#x9488;&#x811A;&#x4F5C;&#x4E3A;&#x8F93;&#x5165;&#x65F6;&#x8981;&#x8BFB;&#x53D6;&#x7AEF;&#x53E3;&#x6570;&#x636E;&#xFF0C;&#x5219;&#x8981;&#x4F7F;&#x80FD;&#x8BE5;&#x5F15;&#x811A;&#x7684;&#x4E0A;&#x62C9;&#x7535;&#x963B;&#xFF1A;
+        DDRA &amp;= 0XFE; //&#x8BBE;&#x7F6E;&#x4E3A;&#x8F93;&#x5165;
+                PORTA|= 0x01; //&#x4F7F;&#x80FD;&#x4E0A;&#x62C9;&#x7535;&#x963B;
+
+                        uint8_t x = PINA;
+                                if(0x01 == (x&amp;=0x01))
+        {
+                        ...
+                                    }
+    &#x4E0A;&#x62C9;&#x7535;&#x963B;&#x7684;&#x610F;&#x4E49;&#x5176;&#x4E00;&#x662F;&#x7ED9;&#x5B9A;&#x8BE5;&#x5F15;&#x811A;&#x786E;&#x5B9A;&#x7684;&#x7535;&#x5E73;&#xFF0C;&#x4EE5;&#x65B9;&#x4FBF;&#x7A0B;&#x5E8F;&#x5339;&#x914D;
+        &#x5224;&#x65AD;&#xFF0C;&#x5982;&#x4E0A;&#x8FF0;&#x7A0B;&#x5E8F;&#x4E2D;&#x5148;&#x4F7F;&#x80FD;&#x4E3A;&#x9AD8;&#x7535;&#x5E73;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x5224;&#x65AD;&#x662F;&#x5426;&#x8FD8;&#x662F;&#x9AD8;&#x7535;&#x5E73;&#xFF0C;&#x5982;
+            &#x679C;&#x662F;&#x5C31;&#x6CA1;&#x6709;&#x8BFB;&#x5230;&#x76F8;&#x5173;&#x4FE1;&#x53F7;&#x3002;&#x5176;&#x4E8C;&#x662F;&#x5F53;&#x5C06;&#x5916;&#x90E8;&#x7684;&#x7535;&#x8DEF;&#x62C9;&#x4F4E;&#x65F6;&#x8BE5;&#x5F15;&#x811A;&#x5C06;&#x8F93;&#x51FA;
+                &#x7535;&#x6D41;&#x3002;
+</code></pre><footer class="page-footer"><span class="copyright">Copyright &#xA9; Jim 2019-2020 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Revision time: 
+2020-05-08 18:33:26
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1086,7 +1167,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ComputerOrg","level":"1.5.2","depth":2,"next":{"title":"Hardware Design","level":"1.6","depth":1,"ref":"","articles":[{"title":"PCB","level":"1.6.1","depth":2,"path":"pages/hardware/PCB.md","ref":"pages/hardware/PCB.md","articles":[]},{"title":"Analog Elec","level":"1.6.2","depth":2,"path":"pages/hardware/Analog.md","ref":"pages/hardware/Analog.md","articles":[]},{"title":"Digital Elec","level":"1.6.3","depth":2,"path":"pages/hardware/Digital.md","ref":"pages/hardware/Digital.md","articles":[]},{"title":"Expansions","level":"1.6.4","depth":2,"ref":"","articles":[{"title":"FPGA","level":"1.6.4.1","depth":3,"ref":"","articles":[]},{"title":"CPLD","level":"1.6.4.2","depth":3,"ref":"","articles":[]}]}]},"previous":{"title":"Communication","level":"1.5.1","depth":2,"path":"pages/computer/Communication.md","ref":"pages/computer/Communication.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/computer/ComputerOrg.md","mtime":"2020-04-28T02:56:32.283Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-08T10:18:52.913Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ComputerOrg","level":"1.5.2","depth":2,"next":{"title":"Hardware Design","level":"1.6","depth":1,"ref":"","articles":[{"title":"PCB","level":"1.6.1","depth":2,"path":"pages/hardware/PCB.md","ref":"pages/hardware/PCB.md","articles":[]},{"title":"Analog Elec","level":"1.6.2","depth":2,"path":"pages/hardware/Analog.md","ref":"pages/hardware/Analog.md","articles":[]},{"title":"Digital Elec","level":"1.6.3","depth":2,"path":"pages/hardware/Digital.md","ref":"pages/hardware/Digital.md","articles":[]},{"title":"Expansions","level":"1.6.4","depth":2,"ref":"","articles":[{"title":"FPGA","level":"1.6.4.1","depth":3,"ref":"","articles":[]},{"title":"CPLD","level":"1.6.4.2","depth":3,"ref":"","articles":[]}]}]},"previous":{"title":"Communication","level":"1.5.1","depth":2,"path":"pages/computer/Communication.md","ref":"pages/computer/Communication.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/computer/ComputerOrg.md","mtime":"2020-05-08T10:33:26.439Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-09T08:47:30.489Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
