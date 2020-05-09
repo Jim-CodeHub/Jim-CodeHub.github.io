@@ -28,6 +28,7 @@ function showImg(src)
 
 	var IMGContainer = document.getElementById("ImgContainerID");
 	
+	IMGContainer.style.position = "absolute";
 	IMGContainer.style.left 	= posX;
 	IMGContainer.style.top 		= posY; 
 	IMGContainer.innerHTML 		= "<img src=\"" + src + "\" />";
