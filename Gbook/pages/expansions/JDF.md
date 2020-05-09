@@ -1,4 +1,4 @@
-<script src="https://jim-codehub.github.io/script/ImgHover.js"></script> 
+<script src="https://github.com/Jim-CodeHub/Skills-list/raw/master/script/ImgHover.js"></script> 
 
 # Section One - JDF
 
@@ -129,7 +129,6 @@ Perforating				| 打孔			| 描述组件打孔的过程
 PlasticCombBinding		| 塑料梳齿装订	| -
 PrintRolling			| 				|
 RingBinding				| 圆环装订		| <span onmouseover="showImg('https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JobHierarchy.png');" onmouseout="hideImg();">TTTEST</span> 
-
 
 
 
