@@ -32,19 +32,237 @@ JDF文档的根元素节点为&#60;JDF&#62;&#60;/JDF&#62;，可以递归嵌套�
 
 ![JDF Node](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JDFNode.png) <br><center> <font color=gray> JDF Node Diagram </font> </center><br>
 
-### 1.4.1 *@Type* and Job hierarchy 
+### 1.4.1 Job hierarchy 
 
-JDF元素节点的**递归嵌套**构建了一个包含完成预期项目所需的所有信息的树，形成了抽象的作业**层次结构**，树的根描述作业的产品意图（**Product Indent**），中间节点描述作业的组成过程（**ProcessGroup**），叶节点是过程组节点的详细拆分（**Process**）。
+JDF元素节点的**递归嵌套**构建了一个包含完成预期项目所需的所有信息的树，形成了**抽象**的**作业层次结构**，树的根描述作业的产品意图（**Product Indent**），中间节点描述作业的组成过程（**ProcessGroup**），叶节点是过程组节点的详细拆分（**Process**）。
 
 ![Job Hierarchy](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JobHierarchy.png) <br><center> <font color=gray> Job Hierarchy </font> </center><br>
 
 > **[info] Note**
 >
-> 层次结构是作业生产的流程示意，不表示实际JDF文档中元素节点的嵌套关系。实际嵌套与JDF元素节点的*Type*和*Types*属性节点相关：当存在*Types*属性节点时或*Type*属性节点值是[预定义的Process](#Appendix-A)时不可嵌套。
+> 层次结构是作业生产的流程示意，描述了输入输出资源的关系，不表示实际JDF文档中元素节点的嵌套。此外，JDF不定义作业的组织方式，因此一个作业可以有多种路由方案。
+
+### 1.4.2 JDF Document
+
+```XML
+	<?xml version="1.0" encoding="UTF-8" ?>											<!-- Optional attribute : standalone="yes"/"no" -->
+
+	<JDF Activation="" CommentURL="" DescriptiveName="" ICSVersions="" ID="" JobID="" JobPartID="" MaxVersion="" Status="" Type="" Version="" xmlns="http://www.CIP4.org/JDFSchema_1_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="" xsi:schemaLocation="http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd">
+
+		<AuditPool>
+			<Created  AgentName="" AgentVersion="" ID="" TimeStamp="" />
+			<Modified  AgentName="" AgentVersion="" ID="" TimeStamp="" />
+		</AuditPool>
+
+		<AncestorPool>
+			<Ancestor Activation="" CommentURL="" DescriptiveName="" ICSVersions="" ID="" JobID="" JobPartID="" MaxVersion="" Status="" Type="" Version="" xmlns="http://www.CIP4.org/JDFSchema_1_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="" xsi:schemaLocation="http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd" NodeID="">
+				<CustomerInfo...> ... </CustomerInfo>
+				<NodeInfo DescriptiveName="" NodeStatus="" TargetRoute="" />
+			</Ancestor>
+		</AncestorPool>
+
+		<ResoucePoll>
+			<Device Class="" ID="" Status="" />	<!-- Base-ICS-1.5 -->
+			<NodeInfo DescriptiveName="" NodeStatus="" TargetRoute="" /> <!-- Base-ICS-1.5 -->
+
+			<Component>	 <!-- Binding-ICS-1.5 -->
+			TBD
+		</ResoucePoll>
+
+		<ResourceLinkPool>
+			TBD	
+		</ResourceLinkPool>
+
+		<JDF Activation="" CommentURL="" DescriptiveName="" ICSVersions="" ID="" JobID="" JobPartID="" MaxVersion="" Status="" Type="" Version="" xmlns="http://www.CIP4.org/JDFSchema_1_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="" xsi:schemaLocation="http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd"> <!-- Nest JDF Node --> </JDF>
+
+	</JDF>
+```
+
+```XML
+	<?xml version="1.0" encoding="UTF-8" ?>											<!-- Optional attribute : standalone="yes"/"no" -->
+
+	<JDF Activation="" CommentURL="" DescriptiveName="" ICSVersions="" ID="" 
+		JobID="" JobPartID="" MaxVersion="" Status="" Type="" Version=""  
+
+		xmlns="http://www.CIP4.org/JDFSchema_1_1"									<!-- namespace : CIP4 standard namespace		-->
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"						<!-- namespace : W3C extension namespace		-->
+		xsi:type=""																	 
+
+		xmlns:xxx="https://jim-codehub.github.io"									<!-- Optional extension namesapce				-->
+
+		xsi:schemaLocation="http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd"		<!-- schema lo : CIP4 standard schema location	-->
+						   "https://jim-codehub.github.io/xxx.xsd">					<!-- Optional extension schema location			--> 
+
+		<ResoucePoll>
+		<ComponentID="OutputComponent" Class="Quantity" Status="Unavailable" ComponentType="FinalProduct" />
+		</ResoucePoll>
+
+		<ResourceLinkPool>
+		<ComponentLink rRef="OutputComponent" Usage="Output" />
+		</ResourceLinkPool>
+
+		<xxx:info date="2020" />														<!-- Optional extension element					--> 
+
+	</JDF>
+```
+
+### 1.4.2 JDF Node Attributes
+
+Attributes		| values											| Description 
+:-:				| :-:												| :-:
+Status			| -													| JDF元素节点状态
+ICSVersions		| &#60;类型&#62;\_L&#60;等级&#62;>-&#60;版本&#62;	| - 
+Type			| Product/ProcessGroup/ProcessGroup					| -
+Types			| [Predefined Processes](#Appendix-A)				| Processes set
+ID				| -													| -
+JobID			| -													| 作业ID 
+JobPartID		| -													| JobID的子ID
+xmlns			| http://www.CIP4.org/JDFSchema_1_1					| JDF命名空间
+xmlns:xsi		| http://www.w3.org/2001/XMLSchema-instance 		| 扩展命名空间（W3C)
+xsi:type		| -													| 扩展命名空间属性
+Activation		| Active											| 描述JDF元素节点的激活状态
+MaxVersion		| 1.5												| -
+Version			| 1.5												| -
+CommentURL		| file:/https:/http:/cid:/...						| 指向人类易读描述的注释
+DescriptiveName | -													| 人类易读的JDF节点描述
+
+<br><center> <font color=gray> JDF Node Attributes based on ICS-Base-1.5 </font> </center><br>
+
+#### 1.4.2.1 *@Status*
+
+values				| Description 
+:-:					| :-:
+Spawned				| 节点分离
+Setup				| 设置中
+Wating				| 可以运行，但未经测试运行
+TestRunInProgress	| 正在测试运行
+FailedTestRun		| 测试运行失败
+Ready				| 测试运行完成，等待运行
+InProgress			| 正在运行中
+Aborted				| 运行失败	
+Stopped				| 任何停止而未导致Aborted的情形
+Suspended			|  -  
+Completed			| 已完成
+Cleanup				| -
+Pool				| -
+Part				| -
+
+<br><center> <font color=gray> Status in JDF Node Attributes </font> </center><br>
+
+#### 1.4.2.2 *@ICSVersions*
+
+该属性的“等级”对应该ICS文档的*Interoperability of Levels*，根据不同的ICS等级可以有不同的ICS实现。
+
+#### 1.4.2.3 *@Type* and *@Types*
+
+
+
+```
+	<JDF Type="Product/ProcessGroup/Combined/[Process]" Types="[Process List]" >
+
+		<AncestorPool> ... </AncestorPool>
+
+		<AuditPool> ... </AuditPool>
+
+		<ResourcePool>
+			<[Resources1] />
+			<[Resources2] />
+			<[Resources3] />
+			...
+		</ResourcePool>
+
+		<ResourceLinkPool>
+			<xxxLink 1/>
+			<xxxLink 2/>
+			<xxxLink 3/>
+			...
+		</ResourceLinkPool>
+
+		<JDF>...</JDF>
+
+	<JDF>
+```
+
+Types属性值是过程Process列表，当Type=ProcessGroup后Combined时，由Types来指定具体的Process，过程Process是预定义的，参看Appendix-A
+
+Type为Product时，该节点为产品意图节点，仅表示意图，不描述具体生产过程，此时JDF允许嵌套，嵌套的子JDF元素描述了具体生产过程，Type类型为ProcessGroup/Combined/或[Process]。
+嵌套的子JDF元素节点Type属性不能再是Product，因此Product仅能出现在顶级JDF节点中，但顶级元素不必须使用该属性。
+
+Type为ProcessGroup表示该节点为 过程组节点，此时Types属性可选，如果有Types属性，则不能再有子JDF节点，如果没有，则该节点不能被执行.
+
+Type为Combined时，表示该节点为 合并节点， 类似过程组，但必须有Types属性，且不能再有子JDF节点.
+
+Type为[Process]时，表示该节点为 过程节点， 显然是叶节点，不能再嵌套JDF子节点，并且Types属性是被忽略的。
+
+
+资源池中的[Resource]，也是预定义的，（预定义资源），参看Appendix-B
+
+
+
+### 1.4.2 *@Type* and *@Types* Attributes
+
+JDF元素节点的*Type*属性描述了
+
+
+
+
 
 #### 1.4.1.1 Product Intent Nodes
 
-一个JDF元素节点的*Type*属性值为：*Type=Product*，表示该组节点为产品意图节点
+当JDF元素节点的*Type*属性值为：*Type=Product*；表示该节点为描述生产意图的产品意图节点，处理细节位于该节点的子元素节点中。
+
+#### 1.4.1.2 ProcessGroup Nodes
+
+当JDF元素节点的*Type*属性值为：*Type=ProcessGroup*；表示该节点为描述生产过程的过程组节点。
+
+#### 1.4.1.3 Combined Processes Nodes
+
+当JDF元素节点的*Type*属性值为：*Type=Combined*；表示该节点为描述生产过程的组合过程节点。
+
+许多设备能够组合多个单一用途设备的功能并执行多个进程。
+
+
+
+
+
+
+
+，实际嵌套与JDF元素节点的*Type*和*Types*属性节点相关
+
+---- 
+# TBD
+
+1. Workflow component roles
+2. Coordinate systems
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -86,17 +304,11 @@ More refer to *JDF Spec 1.5 - 3.12*
 
 # <span id = "Appendix-A"> Appendix-A : Predefined Processes </span>
 
-## A.1 Gneral Processes
+> **[info] Note**
+>
+> Prepress and Press processes are omitted.
 
-## A.2 Prepress Processes
-
-Omit
-
-## A.3 Press Processes
-
-Omit
-
-## A.4 Postpress Processes
+## A.1 Postpress Processes
 
 Processes				| Translation	| Description
 :-:						| :-:			| :-:
@@ -128,15 +340,67 @@ Plletizing				| 托盘			| -
 Perforating				| 打孔			| 描述组件打孔的过程
 PlasticCombBinding		| 塑料梳齿装订	| -
 PrintRolling			| 				|
-RingBinding				| 圆环装订		| <span onmouseover="showImg('https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JobHierarchy.png');" onmouseout="hideImg();">TTTEST</span> 
+RingBinding				| 圆环装订		| <span onmouseover="showImg('https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/RingBinding.png');" onmouseout="hideImg();">-</span> 
+SaddleStitching			| 骑马订		| 
+ShapeCutting			|				|
+ShapeDefProduction		|				|
+Shrinking				| 收缩			|
+SpinePreparation		| -				| 书芯脊柱的生产的准备过程
+SpineTaping				| -				| 书芯脊柱贴胶带（和牛皮纸等）的过程
+Stacking				| 堆叠			| -
+StaticBlocking			|				|
+Stitching				| 拼接			| -
+Strapping				|				|
+StripBinding			|				|
+ThreadSealing			|				| 
+ThreadSewing			|				|
+Trimming				| 修剪			| 尺寸修整过程
+WebInlineFinishing		|				|
+Winding					|				|
+WireCombBinding			| 线梳齿装订	| -
+Wrapping				| 包裹			| 将捆扎物、托盘等物体打包的过程
 
+## A.2 General Processes
 
+Processes				| Translation	| Description
+:-:						| :-:			| :-:
+Approval				|				|
+Buffer					| 缓冲			| 用于资源缓冲，如管道资源等
+Combine					| 合并			| 将多个物理资源（PhysicalResource）或逻辑资源（如RunList）合并
+Delivery				| 递送			| 描述物理资源（PhysicalResource）的传送过程
+ManualLabor				| -				| 描述任何情况下资源被手动处理的过程
+QualityControl			| 质量控制		| -
+ResourceDefinition		| 资源定义		| - 
+Split					| 分割			| 将多个物理资源（PhysicalResource）或逻辑资源（如RunList）分割
+Verification			| 验证			|
 
+---
 
+# <span id = "Appendix-B"> Appendix-B : Resources </span>
 
+## B.1 Intent Resources
 
+<br><center> <font color=gray> Resources/@Class="Intent" </font> </center><br>
 
+## B.2 Parameter Resources
 
+<br><center> <font color=gray> Resources/@Class="Parameter" </font> </center><br>
+
+## B.3 Consumable Resources
+
+<br><center> <font color=gray> Resources/@Class="Consumable" </font> </center><br>
+
+## B.4 Handling Resources
+
+<br><center> <font color=gray> Resources/@Class="Handling" </font> </center><br>
+
+## B.5 Implementation Resources
+
+<br><center> <font color=gray> Resources/@Class="Implementation" </font> </center><br>
+
+## B.6 Quantity Resources
+
+<br><center> <font color=gray> Resources/@Class="Quantity" </font> </center><br>
 
 
 
@@ -593,25 +857,6 @@ JDF consulting and training serve etc.
 ## D.1 ResourcePoll and ResourceLinkPoll
 
 ```
-	<?xml version="1.0" encoding="UTF-8"?>
-	<JDF ID="RootID" Type="Product" Status="Waiting" Version="1.2"
-
-		 xmlns="http://www.CIP4.org/JDFSchema_1_1"									<!-- namespace : CIP4 standard namespace		-->
-		 xmlns:myns="https://jim-codehub.github.io"									<!-- namespace : Extension namesapce			-->
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"						<!-- namespace : W3C extension namespace		-->
-
-		 xsi:schemaLocation="http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd"		<!-- schema lo : CIP4 standard schema location	-->
-							"https://jim-codehub.github.io/MYJDF.xsd">				<!-- schema lo : Extension schema location		--> 
-
-		<ResoucePoll>
-			<ComponentID="OutputComponent" Class="Quantity" Status="Unavailable" ComponentType="FinalProduct" />
-		</ResoucePoll>
-
-		<ResourceLinkPool>
-			<ComponentLink rRef="OutputComponent" Usage="Output" />
-		</ResourceLinkPool>
-		<myns:info date="2020" />
-	</JDF>
 ```
 
 # <span id = "Appendix-E"> Appendix-E：Printing Industry Terminology </span>
