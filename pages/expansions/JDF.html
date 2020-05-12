@@ -997,208 +997,6 @@
 <p>&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x662F;&#x4F5C;&#x4E1A;&#x751F;&#x4EA7;&#x7684;&#x6D41;&#x7A0B;&#x793A;&#x610F;&#xFF0C;&#x63CF;&#x8FF0;&#x4E86;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x8D44;&#x6E90;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x4E0D;&#x8868;&#x793A;&#x5B9E;&#x9645;JDF&#x6587;&#x6863;&#x4E2D;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x7684;&#x5D4C;&#x5957;&#x3002;&#x6B64;&#x5916;&#xFF0C;JDF&#x4E0D;&#x5B9A;&#x4E49;&#x4F5C;&#x4E1A;&#x7684;&#x7EC4;&#x7EC7;&#x65B9;&#x5F0F;&#xFF0C;&#x56E0;&#x6B64;&#x4E00;&#x4E2A;&#x4F5C;&#x4E1A;&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x79CD;&#x8DEF;&#x7531;&#x65B9;&#x6848;&#x3002;</p>
 </blockquote>
 <h3 id="142-jdf-document-template">1.4.2 JDF Document Template</h3>
-<pre><code class="lang-XML">    <span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span> <span class="hljs-meta">?&gt;</span></span> <span class="hljs-comment">&lt;!-- Optional attribute : standalone=&quot;yes&quot;/&quot;no&quot; --&gt;</span>
-
-    <span class="hljs-tag">&lt;<span class="hljs-name">JDF</span> <span class="hljs-attr">Activation</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">CommentURL</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">DescriptiveName</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ICSVersions</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">JobID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">JobPartID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MaxVersion</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Status</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Types</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.CIP4.org/JDFSchema_1_1&quot;</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="hljs-attr">xsi:type</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd&quot;</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">AuditPool</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">Created</span>  <span class="hljs-attr">AgentName</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">AgentVersion</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">TimeStamp</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">Modified</span>  <span class="hljs-attr">AgentName</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">AgentVersion</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">TimeStamp</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">AuditPool</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">AncestorPool</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">Ancestor</span> <span class="hljs-attr">Activation</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">CommentURL</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">DescriptiveName</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ICSVersions</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">JobID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">JobPartID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MaxVersion</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Status</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.CIP4.org/JDFSchema_1_1&quot;</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="hljs-attr">xsi:type</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd&quot;</span> <span class="hljs-attr">NodeID</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">CustomerInfo...</span>&gt;</span> ... <span class="hljs-tag">&lt;/<span class="hljs-name">CustomerInfo</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">NodeInfo</span> <span class="hljs-attr">DescriptiveName</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">NodeStatus</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">TargetRoute</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">Ancestor</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">AncestorPool</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">ResoucePool</span>&gt;</span>
-
-            <span class="hljs-comment">&lt;!-- --------------------------- Base-ICS-1.5 --------------------------- --&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">Device</span> <span class="hljs-attr">Class</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Status</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">NodeInfo</span> <span class="hljs-attr">DescriptiveName</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">NodeStatus</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">TargetRoute</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">xxxRef</span> <span class="hljs-attr">rRef</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">Part</span> <span class="hljs-attr">Condition</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">xxxRef</span>&gt;</span>
-
-            <span class="hljs-comment">&lt;!-- --------------------------- Binding-ICS-1.5 ------------------------ --&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">Component</span> <span class="hljs-attr">Dimensions</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Overfold</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">OverfoldSide</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">SurfaceCount</span>=<span class="hljs-string">&quot;&quot;</span> &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">Layout</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">Media</span> <span class="hljs-attr">Weight</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MediaType</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">Signature</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">Media</span> <span class="hljs-attr">Weight</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MediaType</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">Sheet</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">Media</span> <span class="hljs-attr">Weight</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MediaType</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">Sheet</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">Signature</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">Layout</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">Component</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">GlueApplication</span> <span class="hljs-attr">GluingTechnique</span>=<span class="hljs-string">&quot;&quot;</span> &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">GlueLine</span> <span class="hljs-attr">AreaGlue</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">GlueType</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">GlueApplication</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">Media</span> <span class="hljs-attr">Weight</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MediaType</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-
-            <span class="hljs-comment">&lt;!-- --------------------------- LayCrImp-ICS-1.4 ----------------------- --&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">BindingIntent</span> <span class="hljs-attr">BindingOrder</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">BindingSide</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">BindingType</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">DeviceMark</span> <span class="hljs-attr">Font</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">FontSize</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">FileSpec</span> <span class="hljs-attr">Compression</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MimeType</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">URL</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">JobField</span> <span class="hljs-attr">OperatorText</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ShowList</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">UserText</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">Layout</span> <span class="hljs-attr">Automated</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">PartIDKeys</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">SourceWorkStyle</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">SurfaceContentsBox</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span> 
-                <span class="hljs-tag">&lt;<span class="hljs-name">ContentObject</span> <span class="hljs-attr">DocOrd</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Ord</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">OrdExpression</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">SetOrd</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">MarkObject</span> <span class="hljs-attr">Ord</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">DynamicField</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span> 
-                    <span class="hljs-tag">&lt;<span class="hljs-name">DeviceMark</span> <span class="hljs-attr">Font</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">FontSize</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">JobField</span> <span class="hljs-attr">OperatorText</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ShowList</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">UserText</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">MarkObject</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">Media</span> <span class="hljs-attr">Dimension</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MediaType</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">SourceResource</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">BindingIntent</span> <span class="hljs-attr">BindingOrder</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">BindingSide</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">BindingType</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">SourceResource</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">TransferCurvePool</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">TransferCurveSet</span> <span class="hljs-attr">CTM</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">TransferCurvePool</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">Layout</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">LayoutElement</span> <span class="hljs-attr">ElementType</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">IsBlank</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span> 
-                <span class="hljs-tag">&lt;<span class="hljs-name">FileSpec</span> <span class="hljs-attr">Compression</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MimeType</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">URL</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">LayoutElement</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">Media</span> <span class="hljs-attr">Dimension</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MediaType</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">RunList</span> <span class="hljs-attr">NPage</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ByteMap</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">InsertSheet</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">InterpretedPDLData</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">LayoutElement</span> <span class="hljs-attr">ElementType</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">IsBlank</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span> 
-                    <span class="hljs-tag">&lt;<span class="hljs-name">FileSpec</span> <span class="hljs-attr">Compression</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MimeType</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">URL</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">LayoutElement</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">RunList</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">TransferCurvePool</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">TransferCurveSet</span> <span class="hljs-attr">CTM</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">TransferCurvePool</span>&gt;</span>
-
-            <span class="hljs-comment">&lt;!-- --------------------------- Other ICS List ------------------------- --&gt;</span>
-
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ResoucePool</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">ResourceLinkPool</span>&gt;</span>
-
-            <span class="hljs-comment">&lt;!-- --------------------------- Base-ICS-1.5 --------------------------- --&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">xxxLink</span> <span class="hljs-attr">ActualAmount</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Amount</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MaxAmount</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MinAmount</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MinStatus</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ProcessUsage</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">rRef</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Usage</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">AmountPool</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">PartAmount</span> <span class="hljs-attr">ActualAmount</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Amount</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MaxAmount</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MinAmount</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MinStatus</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ProcessUsage</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">rRef</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Usage</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>    
-                        <span class="hljs-tag">&lt;<span class="hljs-name">Part</span> <span class="hljs-attr">Condition</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">PartAmount</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">AmountPool</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">Part</span> <span class="hljs-attr">Condition</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">xxxLink</span>&gt;</span>
-
-            <span class="hljs-comment">&lt;!-- --------------------------- Binding-ICS-1.5 ------------------------ --&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">ComponentLink</span> <span class="hljs-attr">Usage</span>=<span class="hljs-string">&quot;Input&quot;</span> <span class="hljs-attr">Orientation</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Transformation</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ActualAmount</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Amount</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MaxAmount</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MinAmount</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MinStatus</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ProcessUsage</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">rRef</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">Part</span> <span class="hljs-attr">SignatureName</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">SheetName</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">BlockName</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Condition</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">ComponentLink</span>&gt;</span>
-
-            <span class="hljs-comment">&lt;!-- --------------------------- Other ICS List ------------------------- --&gt;</span>
-
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ResourceLinkPool</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">JDF</span> <span class="hljs-attr">Activation</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">CommentURL</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">DescriptiveName</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ICSVersions</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">JobID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">JobPartID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MaxVersion</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Status</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Types</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.CIP4.org/JDFSchema_1_1&quot;</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="hljs-attr">xsi:type</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd&quot;</span>&gt;</span> <span class="hljs-comment">&lt;!-- Nest JDF Node --&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">JDF</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;/<span class="hljs-name">JDF</span>&gt;</span>
-</code></pre>
-<p><br><center> <font color="gray"> JDF Document Template </font> </center><br></p>
-<h4 id="1421-jdf-element-node-attributes">1.4.2.1 JDF Element Node Attributes</h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Attributes</th>
-<th style="text-align:center">values</th>
-<th style="text-align:center">Description </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Status</td>
-<td style="text-align:center"><em>Spawned</em>/<em>Setup</em>/<em>Wating</em>/<em>TestRunInProgress</em>/<em>FailedTestRun</em>/<em>Ready</em>/<em>InProgress</em>/<em>Aborted</em>/<em>Stopped</em>/<em>Suspended</em>/<em>Completed</em>/<em>Cleanup</em>/<em>Pool</em>/<em>Part</em></td>
-<td style="text-align:center">- </td>
-</tr>
-<tr>
-<td style="text-align:center">ICSVersions</td>
-<td style="text-align:center">&lt;Name&gt;_L&lt;Level&gt;&gt;-&lt;Version&gt;</td>
-<td style="text-align:center">ICS version and level association with ICS Spec </td>
-</tr>
-<tr>
-<td style="text-align:center">Type</td>
-<td style="text-align:center"><em>Product</em>/<em>ProcessGroup</em>/<em>Combined</em>/<a href="#Appendix-A">Predefined Processes</a>&quot;</td>
-<td style="text-align:center">processes type </td>
-</tr>
-<tr>
-<td style="text-align:center">Types</td>
-<td style="text-align:center"><a href="#Appendix-A">Predefined Processes</a></td>
-<td style="text-align:center">processes type set&#xFF0C;used when <em>Type=ProcessGroup</em> or <em>Type=Combined</em></td>
-</tr>
-<tr>
-<td style="text-align:center">ID</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-</tr>
-<tr>
-<td style="text-align:center">JobID</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">- </td>
-</tr>
-<tr>
-<td style="text-align:center">JobPartID</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">- </td>
-</tr>
-<tr>
-<td style="text-align:center">xmlns</td>
-<td style="text-align:center"><em><a href="http://www.CIP4.org/JDFSchema_1_1" target="_blank">http://www.CIP4.org/JDFSchema_1_1</a></em></td>
-<td style="text-align:center">namespace </td>
-</tr>
-<tr>
-<td style="text-align:center">xmlns:xsi</td>
-<td style="text-align:center"><em><a href="http://www.w3.org/2001/XMLSchema-instance" target="_blank">http://www.w3.org/2001/XMLSchema-instance</a></em></td>
-<td style="text-align:center">extension namespace</td>
-</tr>
-<tr>
-<td style="text-align:center">xsi:type</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">extension namespace attribute </td>
-</tr>
-<tr>
-<td style="text-align:center">Activation</td>
-<td style="text-align:center"><em>Active</em></td>
-<td style="text-align:center">- </td>
-</tr>
-<tr>
-<td style="text-align:center">MaxVersion</td>
-<td style="text-align:center"><em>1.5</em></td>
-<td style="text-align:center">max version limited for all elements and attributes </td>
-</tr>
-<tr>
-<td style="text-align:center">Version</td>
-<td style="text-align:center"><em>1.5</em></td>
-<td style="text-align:center">-</td>
-</tr>
-<tr>
-<td style="text-align:center">CommentURL</td>
-<td style="text-align:center"><em>file:</em>/<em>https:</em>/<em>http:</em>/<em>cid:</em>/...</td>
-<td style="text-align:center">human-readable comment </td>
-</tr>
-<tr>
-<td style="text-align:center">DescriptiveName</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">human-readable description </td>
-</tr>
-<tr>
-<td style="text-align:center">Category</td>
-<td style="text-align:center"><em>Binding</em> (based on <em>Binding_L1-1.0</em>)</td>
-<td style="text-align:center">same as <em>Types</em> </td>
-</tr>
-</tbody>
-</table>
-<p><br><center> <font color="gray"> JDF Node Attributes based on Base-ICS-1.5 </font> </center><br></p>
-<blockquote>
-<p><strong>[info] Note</strong></p>
-<p>A Worker SHALL NOT execute Nodes whose <em>@Status</em> is &quot;Completed&quot; or &quot;Aborted&quot;.</p>
-</blockquote>
-<hr>
 <pre><code class="lang-XML"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span> <span class="hljs-meta">?&gt;</span></span> <span class="hljs-comment">&lt;!-- Optional attribute : standalone=&quot;yes&quot;/&quot;no&quot; --&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">JDF</span> <span class="hljs-attr">Activation</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">CommentURL</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">DescriptiveName</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ICSVersions</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">JobID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">JobPartID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MaxVersion</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Status</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Types</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.CIP4.org/JDFSchema_1_1&quot;</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="hljs-attr">xsi:type</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd&quot;</span>&gt;</span>
@@ -1209,7 +1007,7 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">AuditPool</span>&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">AncestorPool</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">Ancestor</span> <span class="hljs-attr">Activation</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">CommentURL</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">DescriptiveName</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ICSVersions</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">JobID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">JobPartID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MaxVersion</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Status</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.CIP4.org/JDFSchema_1_1&quot;</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="hljs-attr">xsi:type</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd&quot;</span> <span class="hljs-attr">NodeID</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Ancestor</span> <span class="hljs-attr">Activation</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">CommentURL</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">DescriptiveName</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ICSVersions</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">JobID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">JobPartID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MaxVersion</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Status</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.CIP4.org/JDFSchema_1_1&quot;</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="hljs-attr">xsi:type</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd&quot;</span> <span class="hljs-attr">NodeID</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">CustomerInfo...</span>&gt;</span> ... <span class="hljs-tag">&lt;/<span class="hljs-name">CustomerInfo</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">NodeInfo</span> <span class="hljs-attr">DescriptiveName</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">NodeStatus</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">TargetRoute</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">Ancestor</span>&gt;</span>
@@ -1299,45 +1097,167 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">ResourceLinkPool</span>&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">JDF</span> <span class="hljs-attr">Activation</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">CommentURL</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">DescriptiveName</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ICSVersions</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">ID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">JobID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">JobPartID</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">MaxVersion</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Status</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Types</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.CIP4.org/JDFSchema_1_1&quot;</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="hljs-attr">xsi:type</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd&quot;</span>&gt;</span> <span class="hljs-comment">&lt;!-- Nest JDF Node --&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">JDF</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">JDF</span> <span class="hljs-attr">...</span>&gt;</span><span class="hljs-comment">&lt;!-- Nest JDF Node --&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">JDF</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">JDF</span> <span class="hljs-attr">...</span>&gt;</span><span class="hljs-comment">&lt;!-- Nest JDF Node --&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">JDF</span>&gt;</span>
 
 <span class="hljs-tag">&lt;/<span class="hljs-name">JDF</span>&gt;</span>
 </code></pre>
-<h4 id="1421-type-and-types">1.4.2.1 <em>@Type</em> and <em>@Types</em></h4>
-<p>&#x5F53;<em>Types</em></p>
-<p>Types&#x5C5E;&#x6027;&#x503C;&#x662F;&#x8FC7;&#x7A0B;Process&#x5217;&#x8868;&#xFF0C;&#x5F53;Type=ProcessGroup&#x540E;Combined&#x65F6;&#xFF0C;&#x7531;Types&#x6765;&#x6307;&#x5B9A;&#x5177;&#x4F53;&#x7684;Process&#xFF0C;&#x8FC7;&#x7A0B;Process&#x662F;&#x9884;&#x5B9A;&#x4E49;&#x7684;&#xFF0C;&#x53C2;&#x770B;Appendix-A</p>
-<p>Type&#x4E3A;Product&#x65F6;&#xFF0C;&#x8BE5;&#x8282;&#x70B9;&#x4E3A;&#x4EA7;&#x54C1;&#x610F;&#x56FE;&#x8282;&#x70B9;&#xFF0C;&#x4EC5;&#x8868;&#x793A;&#x610F;&#x56FE;&#xFF0C;&#x4E0D;&#x63CF;&#x8FF0;&#x5177;&#x4F53;&#x751F;&#x4EA7;&#x8FC7;&#x7A0B;&#xFF0C;&#x6B64;&#x65F6;JDF&#x5141;&#x8BB8;&#x5D4C;&#x5957;&#xFF0C;&#x5D4C;&#x5957;&#x7684;&#x5B50;JDF&#x5143;&#x7D20;&#x63CF;&#x8FF0;&#x4E86;&#x5177;&#x4F53;&#x751F;&#x4EA7;&#x8FC7;&#x7A0B;&#xFF0C;Type&#x7C7B;&#x578B;&#x4E3A;ProcessGroup/Combined/&#x6216;[Process]&#x3002;
-&#x5D4C;&#x5957;&#x7684;&#x5B50;JDF&#x5143;&#x7D20;&#x8282;&#x70B9;Type&#x5C5E;&#x6027;&#x4E0D;&#x80FD;&#x518D;&#x662F;Product&#xFF0C;&#x56E0;&#x6B64;Product&#x4EC5;&#x80FD;&#x51FA;&#x73B0;&#x5728;&#x9876;&#x7EA7;JDF&#x8282;&#x70B9;&#x4E2D;&#xFF0C;&#x4F46;&#x9876;&#x7EA7;&#x5143;&#x7D20;&#x4E0D;&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x8BE5;&#x5C5E;&#x6027;&#x3002;</p>
-<p>Type&#x4E3A;ProcessGroup&#x8868;&#x793A;&#x8BE5;&#x8282;&#x70B9;&#x4E3A; &#x8FC7;&#x7A0B;&#x7EC4;&#x8282;&#x70B9;&#xFF0C;&#x6B64;&#x65F6;Types&#x5C5E;&#x6027;&#x53EF;&#x9009;&#xFF0C;&#x5982;&#x679C;&#x6709;Types&#x5C5E;&#x6027;&#xFF0C;&#x5219;&#x4E0D;&#x80FD;&#x518D;&#x6709;&#x5B50;JDF&#x8282;&#x70B9;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#xFF0C;&#x5219;&#x8BE5;&#x8282;&#x70B9;&#x4E0D;&#x80FD;&#x88AB;&#x6267;&#x884C;.</p>
-<p>Type&#x4E3A;Combined&#x65F6;&#xFF0C;&#x8868;&#x793A;&#x8BE5;&#x8282;&#x70B9;&#x4E3A; &#x5408;&#x5E76;&#x8282;&#x70B9;&#xFF0C; &#x7C7B;&#x4F3C;&#x8FC7;&#x7A0B;&#x7EC4;&#xFF0C;&#x4F46;&#x5FC5;&#x987B;&#x6709;Types&#x5C5E;&#x6027;&#xFF0C;&#x4E14;&#x4E0D;&#x80FD;&#x518D;&#x6709;&#x5B50;JDF&#x8282;&#x70B9;.</p>
-<p>Type&#x4E3A;[Process]&#x65F6;&#xFF0C;&#x8868;&#x793A;&#x8BE5;&#x8282;&#x70B9;&#x4E3A; &#x8FC7;&#x7A0B;&#x8282;&#x70B9;&#xFF0C; &#x663E;&#x7136;&#x662F;&#x53F6;&#x8282;&#x70B9;&#xFF0C;&#x4E0D;&#x80FD;&#x518D;&#x5D4C;&#x5957;JDF&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x5E76;&#x4E14;Types&#x5C5E;&#x6027;&#x662F;&#x88AB;&#x5FFD;&#x7565;&#x7684;&#x3002;</p>
-<h3 id="142-type-and-types-attributes">1.4.2 <em>@Type</em> and <em>@Types</em> Attributes</h3>
-<p>JDF&#x5143;&#x7D20;&#x8282;&#x70B9;&#x7684;<em>Type</em>&#x5C5E;&#x6027;&#x63CF;&#x8FF0;&#x4E86;</p>
-<h4 id="1411-product-intent-nodes">1.4.1.1 Product Intent Nodes</h4>
-<p>&#x5F53;JDF&#x5143;&#x7D20;&#x8282;&#x70B9;&#x7684;<em>Type</em>&#x5C5E;&#x6027;&#x503C;&#x4E3A;&#xFF1A;<em>Type=Product</em>&#xFF1B;&#x8868;&#x793A;&#x8BE5;&#x8282;&#x70B9;&#x4E3A;&#x63CF;&#x8FF0;&#x751F;&#x4EA7;&#x610F;&#x56FE;&#x7684;&#x4EA7;&#x54C1;&#x610F;&#x56FE;&#x8282;&#x70B9;&#xFF0C;&#x5904;&#x7406;&#x7EC6;&#x8282;&#x4F4D;&#x4E8E;&#x8BE5;&#x8282;&#x70B9;&#x7684;&#x5B50;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x4E2D;&#x3002;</p>
-<h4 id="1412-processgroup-nodes">1.4.1.2 ProcessGroup Nodes</h4>
-<p>&#x5F53;JDF&#x5143;&#x7D20;&#x8282;&#x70B9;&#x7684;<em>Type</em>&#x5C5E;&#x6027;&#x503C;&#x4E3A;&#xFF1A;<em>Type=ProcessGroup</em>&#xFF1B;&#x8868;&#x793A;&#x8BE5;&#x8282;&#x70B9;&#x4E3A;&#x63CF;&#x8FF0;&#x751F;&#x4EA7;&#x8FC7;&#x7A0B;&#x7684;&#x8FC7;&#x7A0B;&#x7EC4;&#x8282;&#x70B9;&#x3002;</p>
-<h4 id="1413-combined-processes-nodes">1.4.1.3 Combined Processes Nodes</h4>
-<p>&#x5F53;JDF&#x5143;&#x7D20;&#x8282;&#x70B9;&#x7684;<em>Type</em>&#x5C5E;&#x6027;&#x503C;&#x4E3A;&#xFF1A;<em>Type=Combined</em>&#xFF1B;&#x8868;&#x793A;&#x8BE5;&#x8282;&#x70B9;&#x4E3A;&#x63CF;&#x8FF0;&#x751F;&#x4EA7;&#x8FC7;&#x7A0B;&#x7684;&#x7EC4;&#x5408;&#x8FC7;&#x7A0B;&#x8282;&#x70B9;&#x3002;</p>
-<p>&#x8BB8;&#x591A;&#x8BBE;&#x5907;&#x80FD;&#x591F;&#x7EC4;&#x5408;&#x591A;&#x4E2A;&#x5355;&#x4E00;&#x7528;&#x9014;&#x8BBE;&#x5907;&#x7684;&#x529F;&#x80FD;&#x5E76;&#x6267;&#x884C;&#x591A;&#x4E2A;&#x8FDB;&#x7A0B;&#x3002;</p>
-<p>&#xFF0C;&#x5B9E;&#x9645;&#x5D4C;&#x5957;&#x4E0E;JDF&#x5143;&#x7D20;&#x8282;&#x70B9;&#x7684;<em>Type</em>&#x548C;<em>Types</em>&#x5C5E;&#x6027;&#x8282;&#x70B9;&#x76F8;&#x5173;</p>
+<p><br><center> <font color="gray"> JDF Document Template </font> </center><br></p>
+<blockquote>
+<p><strong>[info] Note</strong></p>
+<p>JDF&#x5143;&#x7D20;&#x8282;&#x70B9;&#x7684;&#x5D4C;&#x5957;&#x8FED;&#x4EE3;&#x63CF;&#x8FF0;&#x4E86;Job&#x7684; </p>
+</blockquote>
+<h3 id="143-jdf-element-node-attributes">1.4.3 JDF Element Node Attributes</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Attributes</th>
+<th style="text-align:center">values</th>
+<th style="text-align:center">Description </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Status</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">- </td>
+</tr>
+<tr>
+<td style="text-align:center">ICSVersions</td>
+<td style="text-align:center">&lt;Name&gt;_L&lt;Level&gt;&gt;-&lt;Version&gt;</td>
+<td style="text-align:center">ICS version and level association with ICS Spec </td>
+</tr>
+<tr>
+<td style="text-align:center">Type</td>
+<td style="text-align:center"><em>Product</em>/<em>ProcessGroup</em>/<em>Combined</em>/<a href="#Appendix-A">Predefined Processes</a>&quot;</td>
+<td style="text-align:center">processes type </td>
+</tr>
+<tr>
+<td style="text-align:center">Types</td>
+<td style="text-align:center"><a href="#Appendix-A">Predefined Processes</a></td>
+<td style="text-align:center">processes type set&#xFF0C;used when <em>Type=ProcessGroup</em> or <em>Type=Combined</em></td>
+</tr>
+<tr>
+<td style="text-align:center">ID</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">JobID</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">- </td>
+</tr>
+<tr>
+<td style="text-align:center">JobPartID</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">- </td>
+</tr>
+<tr>
+<td style="text-align:center">xmlns</td>
+<td style="text-align:center"><em><a href="http://www.CIP4.org/JDFSchema_1_1" target="_blank">http://www.CIP4.org/JDFSchema_1_1</a></em></td>
+<td style="text-align:center">namespace </td>
+</tr>
+<tr>
+<td style="text-align:center">xmlns:xsi</td>
+<td style="text-align:center"><em><a href="http://www.w3.org/2001/XMLSchema-instance" target="_blank">http://www.w3.org/2001/XMLSchema-instance</a></em></td>
+<td style="text-align:center">extension namespace</td>
+</tr>
+<tr>
+<td style="text-align:center">xsi:type</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">extension namespace attribute </td>
+</tr>
+<tr>
+<td style="text-align:center">Activation</td>
+<td style="text-align:center"><em>Active</em></td>
+<td style="text-align:center">- </td>
+</tr>
+<tr>
+<td style="text-align:center">MaxVersion</td>
+<td style="text-align:center"><em>1.5</em></td>
+<td style="text-align:center">max version limited for all elements and attributes </td>
+</tr>
+<tr>
+<td style="text-align:center">Version</td>
+<td style="text-align:center"><em>1.5</em></td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">CommentURL</td>
+<td style="text-align:center"><em>file:</em>/<em>https:</em>/<em>http:</em>/<em>cid:</em>/...</td>
+<td style="text-align:center">human-readable comment </td>
+</tr>
+<tr>
+<td style="text-align:center">DescriptiveName</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">human-readable description </td>
+</tr>
+<tr>
+<td style="text-align:center">Category</td>
+<td style="text-align:center"><em>Binding</em> (based on <em>Binding_L1-1.0</em>)</td>
+<td style="text-align:center">same as <em>Types</em> </td>
+</tr>
+</tbody>
+</table>
+<p><br><center> <font color="gray"> JDF Node Attributes based on Base-ICS-1.5 </font> </center><br></p>
+<blockquote>
+<p><strong>[info] Note</strong></p>
+<p>There SHALL NOT any JDF elements nested when specify attribute <em>Types</em> </p>
+</blockquote>
+<ul>
+<li><em>@Status</em></li>
+</ul>
+<p><em>Spawned</em>/<em>Setup</em>/<em>Wating</em>/<em>TestRunInProgress</em>/<em>FailedTestRun</em>/<em>Ready</em>/<em>InProgress</em>/<em>Aborted</em>/<em>Stopped</em>/<em>Suspended</em>/<em>Completed</em>/<em>Cleanup</em>/<em>Pool</em>/<em>Part</em>.</p>
+<blockquote>
+<p><strong>[info] Note</strong></p>
+<p>A Worker SHALL NOT execute Nodes whose <em>@Status</em> is &quot;Completed&quot; or &quot;Aborted&quot;.</p>
+</blockquote>
+<h3 id="144-ancestorpool">1.4.4 AncestorPool</h3>
+<p><strong>&#x5206;&#x5E03;&#x5F0F;&#x5904;&#x7406;&#x673A;&#x5236;</strong>&#x5C06;&#x5B50;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x4ECE;&#x539F;&#x59CB;JDF&#x6587;&#x6863;&#x4E2D;&#x5206;&#x79BB;&#xFF08;<strong>Spawn</strong>&#xFF09;&#x4EE5;&#x521B;&#x5EFA;&#x65B0;&#x7684;JDF&#x6587;&#x6863;&#x6765;&#x6267;&#x884C;&#x4F5C;&#x4E1A;&#xFF0C;<em>AncestorPool</em>&#x4E2D;&#x5B58;&#x50A8;&#x4E86;&#x5173;&#x4E8E;&#x7956;&#x5148;&#x8282;&#x70B9;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x4FE1;&#x606F;&#xFF0C;&#x5F53;&#x4F5C;&#x4E1A;&#x5B8C;&#x6210;&#x540E;&#x901A;&#x8FC7;&#x8BE5;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x5C06;JDF&#x5408;&#x5E76;&#xFF08;<strong>Merge</strong>&#xFF09;&#x5230;&#x539F;&#x59CB;JDF&#x6587;&#x6863;&#x3002;&#x5206;&#x79BB;&#x4E0E;&#x5408;&#x5E76;&#x673A;&#x5236;&#x5141;&#x8BB8;&#x9012;&#x5F52;&#x8FD0;&#x884C;&#x3002;&#x8BE5;&#x8282;&#x70B9;&#x4E0D;&#x80FD;&#x88AB;&#x5D4C;&#x5957;&#x3002;More refer to <em>JDF Spec 1.5 - 3.5</em>.</p>
+<h3 id="145-auditpool">1.4.5 AuditPool</h3>
+<p>&#x5BA1;&#x8BA1;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x5B58;&#x50A8;&#x4E86;JDF&#x8FC7;&#x7A0B;&#x5904;&#x7406;&#x7684;&#x65E5;&#x5FD7;&#xFF0C;&#x4E8B;&#x4EF6;&#x5305;&#x62EC;JDF&#x8282;&#x70B9;&#x7684;&#x521B;&#x5EFA;&#x4E0E;&#x5220;&#x9664;&#x3001;JDF&#x8282;&#x70B9;&#x7684;&#x4FEE;&#x6539;&#x3001;&#x5206;&#x79BB;&#x4E0E;&#x5408;&#x5E76;&#x3001;&#x9519;&#x8BEF;&#x3001;&#x8BBE;&#x5907;&#x4E8B;&#x4EF6;&#x3001;&#x4EFB;&#x52A1;&#x8C03;&#x5EA6;&#x7B49;&#x3002;&#x8BE5;&#x8282;&#x70B9;&#x4E0D;&#x80FD;&#x88AB;&#x5D4C;&#x5957;&#x3002;More refer to <em>JDF Spec 1.5 - 3.12</em>.</p>
+<h3 id="146-resourcepool-and-resourcelinkpool">1.4.6 ResourcePool and ResourceLinkPool</h3>
+<p>&#x8D44;&#x6E90;&#x662F;JDF&#x6587;&#x6863;&#x7684;&#x6838;&#x5FC3;&#x5185;&#x5BB9;&#xFF0C;<em>ResourcePool</em>&#x5143;&#x7D20;&#x8282;&#x70B9;&#x5305;&#x542B;&#x7684;&#x5B50;&#x5143;&#x7D20;&#x5168;&#x90E8;&#x90FD;&#x662F;<a href="#Appendix-B">&#x9884;&#x5B9A;&#x4E49;&#x7684;&#x8D44;&#x6E90;</a>&#xFF0C;<em>ResourceLinkPool</em>&#x5143;&#x7D20;&#x8282;&#x70B9;&#x5305;&#x542B;&#x7684;&#x5B50;&#x5143;&#x7D20;&#x662F;&#x5BF9;&#x5E94;<em>ResourcePool</em>&#x5B50;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x540C;&#x540D;&#x4E14;&#x4EE5;<em>Link</em>&#x4E3A;&#x540E;&#x7F00;&#x7684;&#x5143;&#x7D20;&#x8282;&#x70B9;&#xFF0C;&#x5176;&#x5C5E;&#x6027;&quot;@Usage&quot;&#x8868;&#x8FBE;&#x6240;&#x94FE;&#x63A5;&#x8D44;&#x6E90;&#x7684;&#x5229;&#x7528;&#x65B9;&#x5F0F;&#x3002;</p>
+<p><em>ResourcePool</em>&#x548C;<em>ResourceLinkPool</em>&#x4E00;&#x822C;&#x6210;&#x5BF9;&#x4F46;&#x5E76;&#x4E0D;&#x9650;&#x4E8E;&#x6210;&#x5BF9;&#x5B58;&#x5728;&#xFF0C;&#x5E76;&#x4E14;<em>ResourcePool</em>&#x7684;&#x8D44;&#x6E90;&#x53EF;&#x80FD;&#x88AB;&#x4E0D;&#x540C;&#x7684;<em>ResourceLinkPool</em>&#x94FE;&#x63A5;&#x3002;<em>ResourcePool</em>&#x548C;<em>ResourceLinkPool</em>&#x5143;&#x7D20;&#x8282;&#x70B9;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x591A;&#x4E2A;&#xFF0C;&#x4F46;&#x4F5C;&#x4E3A;JDF&#x5143;&#x7D20;&#x8282;&#x70B9;&#x7684;&#x76F4;&#x63A5;&#x5B50;&#x5143;&#x7D20;&#xFF0C;&#x4EC5;&#x80FD;&#x5728;&#x5F53;&#x524D;JDF&#x5143;&#x7D20;&#x8282;&#x70B9;&#x4E0B;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x3002;</p>
+<blockquote>
+<p><strong>[info] Note</strong></p>
+<p><em>ResourceRef</em>&#x662F;&#x5BF9;&#x5E94;<em>ResourcePool</em>&#x5B50;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x540C;&#x540D;&#x4E14;&#x4EE5;<em>Ref</em>&#x4E3A;&#x540E;&#x7F00;&#x7684;&#x5143;&#x7D20;&#x8282;&#x70B9;&#xFF0C;&#x7528;&#x4E8E;&#x5F15;&#x7528;&#x8D44;&#x6E90;&#xFF0C;&#x7C7B;&#x578B;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x4E2D;&#x7684;&quot;#include&quot;&#x3002;</p>
+</blockquote>
+<h2 id="15-jdf-workflow">1.5 JDF Workflow</h2>
+<h3 id="151-workflow-component-roles">1.5.1 Workflow Component Roles</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Roles</th>
+<th style="text-align:center">Description </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Machines</td>
+<td style="text-align:center">&#x88F8;&#x673A;&#xFF0C;&#x6CDB;&#x6307;&#x6B32;&#x96C6;&#x6210;JDF&#x529F;&#x80FD;&#x7684;&#x7269;&#x7406;&#x8BBE;&#x5907;</td>
+</tr>
+<tr>
+<td style="text-align:center">Devices</td>
+<td style="text-align:center">&#x8F6F;&#x4EF6;&#xFF0C;&#x96C6;&#x6210;&#x5230;Machines&#x4E2D;&#xFF0C;&#x542F;&#x52A8;Machines&#x5E76;&#x6267;&#x884C;JDF&#x6307;&#x4EE4; </td>
+</tr>
+<tr>
+<td style="text-align:center">Agents</td>
+<td style="text-align:center">&#x8F6F;&#x4EF6;&#xFF0C;&#x521B;&#x5EFA;&#x3001;&#x4FEE;&#x6539;&#x3001;&#x8BFB;&#x5199;&#x548C;&#x89E3;&#x6790;JDF&#xFF0C;Devices&#x548C;Controllers&#x4E5F;&#x662F;&#x4E00;&#x79CD;Agents</td>
+</tr>
+<tr>
+<td style="text-align:center">Controllers</td>
+<td style="text-align:center">&#x8F6F;&#x4EF6;&#xFF0C;&#x5C06;Agents&#x5B8C;&#x6210;&#x7684;JDF&#x8DEF;&#x7531;&#x5230;Devices&#xFF0C;&#x5DE5;&#x4F5C;&#x6D41;&#x4E2D;&#x901A;&#x5E38;&#x6709;&#x591A;&#x7EA7;Controllers&#xFF0C;&#x8DEF;&#x7531;&#x5230;&#x6700;&#x4F4E;&#x7EA7;&#x7684;Controllers&#x5177;&#x6709;Devices&#x529F;&#x80FD;</td>
+</tr>
+<tr>
+<td style="text-align:center">MIS</td>
+<td style="text-align:center">&#x8F6F;&#x4EF6;&#xFF0C;&#x5DE5;&#x4F5C;&#x6D41;&#x4E2D;&#x6240;&#x6709;&#x5355;&#x5143;&#x4E4B;&#x95F4;&#x5173;&#x7CFB;&#x7684;&#x76D1;&#x7763;&#x8005;&#xFF0C;&#x5B8F;&#x89C2;Controllers  </td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/Interactions.png" alt="Interactions"> <br><center> <font color="gray"> Roles interactions </font> </center><br></p>
+<h3 id="152-processes-routing">1.5.2 Processes Routing</h3>
 <hr>
-<h1 id="tbd">TBD</h1>
-<ol>
-<li>Workflow component roles</li>
-<li>Coordinate systems</li>
-</ol>
-<hr>
-<h2 id="jdf-&#x8BF4;&#x660E;&#x6587;&#x6863;&#x9605;&#x8BFB;&#xFF1A;ics-version-level-123&#xFF0C;&#x662F;&#x53EF;&#x4EE5;&#x5728;icsversoin&#x4E2D;&#x6307;&#x5B9A;&#x7684;&#xFF0C;&#x5728;&#x8BF4;&#x660E;&#x6587;&#x6863;&#x4E2D;&#x7ED9;&#x51FA;&#x4E86;manager&#x548C;worker&#x7684;&#x4E09;&#x4E2A;level&#xFF0C;&#x4E0D;&#x540C;&#x7684;level&#x4E0B;&#x5BF9;&#x5143;&#x7D20;&#x548C;&#x5C5E;&#x6027;&#x8282;&#x70B9;&#x662F;&#x5426;&#x88AB;&#x5E03;&#x7F6E;&#x548C;&#x8BFB;&#x5199;&#x7684;&#x6761;&#x4EF6;&#x4E0D;&#x540C;&#x3002;">+ JDF &#x8BF4;&#x660E;&#x6587;&#x6863;&#x9605;&#x8BFB;&#xFF1A;ICS version level 1/2/3&#xFF0C;&#x662F;&#x53EF;&#x4EE5;&#x5728;ICSVersoin&#x4E2D;&#x6307;&#x5B9A;&#x7684;&#xFF0C;&#x5728;&#x8BF4;&#x660E;&#x6587;&#x6863;&#x4E2D;&#x7ED9;&#x51FA;&#x4E86;Manager&#x548C;worker&#x7684;&#x4E09;&#x4E2A;level&#xFF0C;&#x4E0D;&#x540C;&#x7684;level&#x4E0B;&#x5BF9;&#x5143;&#x7D20;&#x548C;&#x5C5E;&#x6027;&#x8282;&#x70B9;&#x662F;&#x5426;&#x88AB;&#x5E03;&#x7F6E;&#x548C;&#x8BFB;&#x5199;&#x7684;&#x6761;&#x4EF6;&#x4E0D;&#x540C;&#x3002;</h2>
-<p>JDF&#x5143;&#x7D20;&#x8282;&#x70B9;&#x7684;<em>Type</em>&#x5C5E;&#x6027;&#x8282;&#x70B9;&#x63CF;&#x8FF0;&#x4E86;&#x6BCF;&#x7EC4;JDF&#x6570;&#x636E;&#x5C5E;&#x4E8E;&#x54EA;&#x4E00;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#xFF1A;<em>Type=Product</em>&#x3001;<em>Type=ProcessGroup</em>&#x3001;<em>Type=Combined</em>&#x3001;<em>Type=[PredefinedProcessType]</em>&#xFF1B;&#x5E76;&#x4E14;&#x5F53;<em>Type=ProcessGroup</em>&#x3001;<em>Type=Combined</em>&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x901A;&#x8FC7;<em>Types</em>&#x5C5E;&#x6027;&#x786E;&#x5B9A;&#x5177;&#x4F53;&#x8FC7;&#x7A0B;&#x7684;&#x96C6;&#x5408;&#xFF1A;<em>Types=[PredefinedProcessType1 PredefinedProcessType2 ...]</em>&#x3002;</p>
-<h3 id="142-sub-elements">1.4.2 Sub Elements</h3>
-<h3 id="141-ancestorpool">1.4.1 AncestorPool</h3>
-<p><strong>&#x5206;&#x5E03;&#x5F0F;&#x5904;&#x7406;&#x673A;&#x5236;</strong>&#x5C06;&#x5B50;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x4ECE;&#x539F;&#x59CB;JDF&#x6587;&#x6863;&#x4E2D;&#x5206;&#x79BB;&#xFF08;<strong>Spawn</strong>&#xFF09;&#x4EE5;&#x521B;&#x5EFA;&#x65B0;&#x7684;JDF&#x6587;&#x6863;&#x6765;&#x6267;&#x884C;&#x4F5C;&#x4E1A;&#xFF0C;<em>AncestorPool</em>&#x4E2D;&#x5B58;&#x50A8;&#x4E86;&#x5173;&#x4E8E;&#x7956;&#x5148;&#x8282;&#x70B9;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x4FE1;&#x606F;&#xFF0C;&#x5F53;&#x4F5C;&#x4E1A;&#x5B8C;&#x6210;&#x540E;&#x901A;&#x8FC7;&#x8BE5;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x5C06;JDF&#x5408;&#x5E76;&#xFF08;<strong>Merge</strong>&#xFF09;&#x5230;&#x539F;&#x59CB;JDF&#x6587;&#x6863;&#x3002;&#x5206;&#x79BB;&#x4E0E;&#x5408;&#x5E76;&#x673A;&#x5236;&#x5141;&#x8BB8;&#x9012;&#x5F52;&#x8FD0;&#x884C;&#x3002;</p>
-<p>More refer to <em>JDF Spec 1.5 - 3.5</em></p>
-<h3 id="142-auditpool">1.4.2 AuditPool</h3>
-<p>&#x5BA1;&#x8BA1;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x5B58;&#x50A8;&#x4E86;JDF&#x8FC7;&#x7A0B;&#x5904;&#x7406;&#x7684;&#x65E5;&#x5FD7;&#xFF0C;&#x4E8B;&#x4EF6;&#x5305;&#x62EC;JDF&#x8282;&#x70B9;&#x7684;&#x521B;&#x5EFA;&#x4E0E;&#x5220;&#x9664;&#x3001;JDF&#x8282;&#x70B9;&#x7684;&#x4FEE;&#x6539;&#x3001;&#x5206;&#x79BB;&#x4E0E;&#x5408;&#x5E76;&#x3001;&#x9519;&#x8BEF;&#x3001;&#x8BBE;&#x5907;&#x4E8B;&#x4EF6;&#x3001;&#x4EFB;&#x52A1;&#x8C03;&#x5EA6;&#x7B49;&#x3002;</p>
-<p>More refer to <em>JDF Spec 1.5 - 3.12</em></p>
-<h3 id="143-resourcepool">1.4.3 ResourcePool</h3>
-<h3 id="144-resourcelinkpool">1.4.4 ResourceLinkPool</h3>
 <h1 id="appendix-a--predefined-processes-"><span id="Appendix-A"> Appendix-A : Predefined Processes </span></h1>
 <blockquote>
 <p><strong>[info] Note</strong></p>
@@ -1661,162 +1581,102 @@
 <p><br><center> <font color="gray"> Resources/@Class=&quot;Implementation&quot; </font> </center><br></p>
 <h2 id="b6-quantity-resources">B.6 Quantity Resources</h2>
 <p><br><center> <font color="gray"> Resources/@Class=&quot;Quantity&quot; </font> </center><br></p>
-<h3 id="141-system-structure">1.4.1 System Structure</h3>
-<blockquote>
-<p><strong>[info] Workflow</strong></p>
-<p>&#x4E0A;&#x7EA7;&#x76F4;&#x63A5;&#x8282;&#x70B9;&#x7684;&#x8F93;&#x51FA;&#x662F;&#x4E0B;&#x7EA7;&#x8282;&#x70B9;&#x7684;&#x8F93;&#x5165;&#x8D44;&#x6E90;&#xFF1A;Input resource --&gt; JDF Node --&gt; Output resource&#xFF1B;&#x4E00;&#x4E2A;&#x4EA7;&#x54C1;&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x79CD;&#x8DEF;&#x7531;&#x65B9;&#x6848;&#xFF0C;<a href="#MIS">MIS</a>&#x4F1A;&#x4F5C;&#x51FA;&#x8FD9;&#x4E9B;&#x51B3;&#x7B56;&#x3002;</p>
-</blockquote>
-<h3 id="142-product-intent-nodes">1.4.2 Product Intent Nodes</h3>
-<p>JDF&#x4EA7;&#x54C1;&#x610F;&#x56FE;&#x8282;&#x70B9;&#x4EE5;&#x5C5E;&#x6027;<em>Type=&quot;Product&quot;</em>&#x6807;&#x8BB0;&#xFF1A;<code>&lt;JDF Type=&quot;Product&quot; ...&gt;...&lt;/JDF&gt;</code>&#xFF1B;</p>
-<h3 id="142-workflow-component-roles">1.4.2 Workflow Component Roles</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Roles</th>
-<th style="text-align:center">Description </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Machines</td>
-<td style="text-align:center">&#x88F8;&#x673A;&#xFF0C;&#x6CDB;&#x6307;&#x6B32;&#x96C6;&#x6210;JDF&#x529F;&#x80FD;&#x7684;&#x7269;&#x7406;&#x8BBE;&#x5907;</td>
-</tr>
-<tr>
-<td style="text-align:center">Devices</td>
-<td style="text-align:center">&#x8F6F;&#x4EF6;&#xFF0C;&#x96C6;&#x6210;&#x5230;Machines&#x4E2D;&#xFF0C;&#x542F;&#x52A8;Machines&#x5E76;&#x6267;&#x884C;JDF&#x6307;&#x4EE4; </td>
-</tr>
-<tr>
-<td style="text-align:center">Agents</td>
-<td style="text-align:center">&#x8F6F;&#x4EF6;&#xFF0C;&#x521B;&#x5EFA;&#x3001;&#x4FEE;&#x6539;&#x3001;&#x8BFB;&#x5199;&#x548C;&#x89E3;&#x6790;JDF&#xFF0C;Devices&#x548C;Controllers&#x4E5F;&#x662F;&#x4E00;&#x79CD;Agents</td>
-</tr>
-<tr>
-<td style="text-align:center">Controllers</td>
-<td style="text-align:center">&#x8F6F;&#x4EF6;&#xFF0C;&#x5C06;Agents&#x5B8C;&#x6210;&#x7684;JDF&#x8DEF;&#x7531;&#x5230;Devices&#xFF0C;&#x5DE5;&#x4F5C;&#x6D41;&#x4E2D;&#x901A;&#x5E38;&#x6709;&#x591A;&#x7EA7;Controllers&#xFF0C;&#x8DEF;&#x7531;&#x5230;&#x6700;&#x4F4E;&#x7EA7;&#x7684;Controllers&#x5177;&#x6709;Devices&#x529F;&#x80FD;</td>
-</tr>
-<tr>
-<td style="text-align:center">MIS</td>
-<td style="text-align:center">&#x8F6F;&#x4EF6;&#xFF0C;&#x5DE5;&#x4F5C;&#x6D41;&#x4E2D;&#x6240;&#x6709;&#x5355;&#x5143;&#x4E4B;&#x95F4;&#x5173;&#x7CFB;&#x7684;&#x76D1;&#x7763;&#x8005;&#xFF0C;&#x5B8F;&#x89C2;Controllers  </td>
-</tr>
-</tbody>
-</table>
-<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/Interactions.png" alt="Interactions"> <br><center> <font color="gray"> Roles interactions </font> </center><br></p>
-<h2 id="15-coordinate-systems-in-jdf">1.5 Coordinate Systems in JDF</h2>
-<p>TBD</p>
-<h1 id="2-xxx">2 xxx</h1>
 <hr>
-<h1 id="jmf">JMF</h1>
+<h1 id="appendix-x&#xFF1A;jdf-future---xjdf-"><span id="Appendix-X"> Appendix-X&#xFF1A;JDF future - XJDF </span></h1>
+<p>XJDF&#x662F;JDF&#x7684;&#x5168;&#x65B0;&#x5347;&#x7EA7;&#x534F;&#x8BAE;&#xFF0C;&#x540C;&#x6837;&#x7531;CIP4&#x7EF4;&#x62A4;&#xFF0C;&#x5B57;&#x6BCD;&#x201C;X&#x201D;&#x8868;&#x201C;Exchange&#x201D;&#xFF0C;&#x4EC5;&#x7528;&#x4E8E;&#x533A;&#x5206;JDF&#x3002;XJDF&#x53EF;&#x79F0;&#x4E4B;&#x4E3A;&#x201C;JDF2.0&#x201D;&#xFF0C;&#x662F;&#x66F4;&#x7CBE;&#x7B80;&#x3001;&#x9AD8;&#x6548;&#x7684;&#x4F5C;&#x4E1A;&#x4F20;&#x7968;&#x534F;&#x8BAE;&#xFF0C;&#x540C;&#x65F6;JDF&#x672C;&#x8EAB;&#x4E5F;&#x5728;&#x4FDD;&#x6301;&#x7740;&#x81EA;&#x5DF1;&#x7684;&#x53D1;&#x5C55;&#x8DEF;&#x7EBF;&#xFF0C;&#x76EE;&#x524D;&#x6700;&#x65B0;&#x7248;&#x672C;&#x4E3A;JDF1.6&#xFF08;2017.09.01&#x65E5;&#x63A8;&#x51FA;&#xFF09;&#x3002;&#x4ECD;&#x7136;&#x4FDD;&#x7559;JDF&#x5E76;&#x4FDD;&#x6301;JDF&#x66F4;&#x65B0;&#x7684;&#x539F;&#x56E0;&#x6709;&#x4E09;&#x70B9;&#xFF1A;&#x4E00;&#x662F;XJDF&#x662F;&#x5168;&#x65B0;&#x534F;&#x8BAE;&#xFF0C;&#x4E0D;&#x80FD;&#x505A;&#x5230;&#x5411;&#x4E0B;&#x517C;&#x5BB9;&#x3002;&#x4E8C;&#x662F;&#x8BB8;&#x591A;&#x5382;&#x5546;&#x5DF2;&#x7ECF;&#x5728;JDF&#x534F;&#x8BAE;&#x4E0A;&#x82B1;&#x8D39;&#x592A;&#x591A;&#x65F6;&#x95F4;&#x548C;&#x6210;&#x672C;&#xFF0C;&#x867D;&#x7136;&#x5F88;&#x590D;&#x6742;&#xFF0C;&#x4F46;&#x5DF2;&#x5F00;&#x53D1;&#x51FA;&#x6210;&#x719F;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x5728;&#x77ED;&#x65F6;&#x95F4;&#x5185;&#x5E76;&#x4E0D;&#x80FD;&#x517C;&#x5BB9;XJDF&#x3002;&#x4E09;&#x662F;XJDF&#x5E76;&#x672A;&#x7ECF;&#x8FC7;&#x5B9E;&#x9645;&#x6D4B;&#x8BD5;&#xFF0C;&#x5728;&#x4E00;&#x4E9B;&#x65B9;&#x9762;&#x5C1A;&#x4E0D;&#x6210;&#x719F;&#x3002;</p>
 <hr>
-<h1 id="ics">ICS</h1>
-<h3 id="122-structure">1.2.2 Structure</h3>
-<p>JDF&#x4F5C;&#x4E1A;&#x7531;&#x4E00;&#x7EC4;&#x4EE5;&#x5012;&#x7ACB;&#x7684;&#x6811;&#x578B;&#x7ED3;&#x6784;&#x7EC4;&#x7EC7;&#x7684;&#x8282;&#x70B9;&#x7EC4;&#x6210;&#xFF0C;&#x6839;&#x8282;&#x70B9;&#x63CF;&#x8FF0;&#x4E86;&#x4F5C;&#x4E1A;&#x7684;&#x603B;&#x4F53;&#x610F;&#x56FE;&#xFF0C;&#x9760;&#x8FD1;&#x6839;&#x8282;&#x70B9;&#x7684;&#x8282;&#x70B9;&#x5B9A;&#x4E49;&#x4E86;&#x4EA7;&#x54C1;&#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;&#xFF08;&#x4E0E;&#x6839;&#x8282;&#x70B9;&#x4E00;&#x8D77;&#x88AB;&#x547D;&#x540D;&#x4E3A;<strong>&#x4EA7;&#x54C1;&#x8282;&#x70B9;</strong>&#xFF09;&#xFF0C;&#x4E2D;&#x95F4;&#x8282;&#x70B9;&#x662F;&#x63CF;&#x8FF0;&#x4EA7;&#x54C1;&#x8282;&#x70B9;&#x7684;&#x751F;&#x4EA7;&#x8FC7;&#x7A0B;&#x7684;&#x8FC7;&#x7A0B;&#x7EC4;&#xFF08;&#x79F0;&#x4E3A;<strong>&#x8FC7;&#x7A0B;&#x7EC4;&#x8282;&#x70B9;</strong>&#xFF09;&#xFF0C;&#x53F6;&#x8282;&#x70B9;&#x662F;&#x8FC7;&#x7A0B;&#x7EC4;&#x8282;&#x70B9;&#x7684;&#x8BE6;&#x7EC6;&#x62C6;&#x5206;&#xFF08;&#x79F0;&#x4E3A;<strong>&#x8FC7;&#x7A0B;&#x8282;&#x70B9;</strong>&#xFF09;&#x3002;</p>
-<h3 id="123-resource">1.2.3 Resource</h3>
-<p>&#x8D44;&#x6E90;&#x662F;JDF&#x6570;&#x636E;&#x7684;&#x6838;&#x5FC3;&#x5185;&#x5BB9;&#xFF0C;&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x4EA7;&#x54C1;&#x4FE1;&#x606F;&#x548C;&#x751F;&#x4EA7;&#x8FC7;&#x7A0B;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x8D44;&#x6E90;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x90FD;&#x5305;&#x542B;&#x4E8E;<strong>&lt;ResourcePool&gt;</strong>&#xFF08;&#x79F0;&#x4E3A;&#x8D44;&#x6E90;&#x6C60;&#xFF09;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x4E0B;&#x3002;&#x540C;&#x4E00;&#x8D44;&#x6E90;&#x53EF;&#x80FD;&#x88AB;&#x591A;&#x4E2A;<a href="#ResourceLink">&#x94FE;&#x63A5;&#x8D44;&#x6E90;</a>&#x94FE;&#x63A5;&#x3002;</p>
-<pre><code>    &lt;ResourcePool&gt;
-        &lt;RESOURCE ID=&quot;R1&quot; ... /&gt; &lt;!-- RESOURCE&#x5360;&#x4F4D;&#x7B26;&#xFF0C;&#x62BD;&#x8C61;&#x8D44;&#x6E90;&#x793A;&#x4F8B; --&gt;
-        &lt;RESOURCE ID=&quot;R2&quot; ... /&gt; &lt;!-- RESOURCE&#x5360;&#x4F4D;&#x7B26;&#xFF0C;&#x62BD;&#x8C61;&#x8D44;&#x6E90;&#x793A;&#x4F8B; --&gt;
-        &lt;RESOURCE ID=&quot;R3&quot; ... /&gt; &lt;!-- RESOURCE&#x5360;&#x4F4D;&#x7B26;&#xFF0C;&#x62BD;&#x8C61;&#x8D44;&#x6E90;&#x793A;&#x4F8B; --&gt;
-        ...
-    &lt;/ResourcePool&gt;
-</code></pre><table>
-<thead>
-<tr>
-<th style="text-align:center">JDF Resource</th>
-<th style="text-align:center">Description</th>
-<th style="text-align:center">Reside</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Bundle</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">press and postpress</td>
-</tr>
-<tr>
-<td style="text-align:center">Component</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">press and postpress</td>
-</tr>
-<tr>
-<td style="text-align:center">Device</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">press and postpress</td>
-</tr>
-</tbody>
-</table>
-<h4 id="1231--resource-link-">1.2.3.1 <span id="ResourceLink"> Resource link </span></h4>
-<p><em>&#x8D44;&#x6E90;&#x94FE;&#x63A5;</em>&#x5143;&#x7D20;&#x8282;&#x70B9;&#x4E0E;&#x8D44;&#x6E90;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x540C;&#x540D;+&apos;Link&apos;&#x7ED3;&#x5C3E;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;<em>rRef</em>&#x5C5E;&#x6027;&#x8282;&#x70B9;&#x5173;&#x8054;<em>ID</em>&#x5C5E;&#x6027;&#x8282;&#x70B9;&#x76F8;&#x540C;&#x7684;&#x8D44;&#x6E90;&#x5143;&#x7D20;&#x8282;&#x70B9;&#xFF0C;&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x8D44;&#x6E90;&#x7684;&#x6570;&#x91CF;&#x3001;&#x5229;&#x7528;&#x65B9;&#x5F0F;&#xFF08;<em>Input</em> or <em>Output</em>&#xFF09;&#x7B49;&#x4FE1;&#x606F;&#x3002;&#x6240;&#x6709;&#x7684;&#x8D44;&#x6E90;&#x94FE;&#x63A5;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x90FD;<strong>&lt;ResourceLinkPool&gt;</strong>&#xFF08;&#x79F0;&#x4E3A;&#x8D44;&#x6E90;&#x94FE;&#x63A5;&#x6C60;&#xFF09;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x4E0B;&#x3002;</p>
-<pre><code>    &lt;ResourceLinkPool&gt;
-        &lt;RESOURCELink rRef=&quot;R1&quot; ... /&gt; &lt;!-- RESOURCE&#x5360;&#x4F4D;&#x7B26;&#xFF0C;&#x62BD;&#x8C61;&#x8D44;&#x6E90;&#x793A;&#x4F8B; --&gt;
-        &lt;RESOURCELink rRef=&quot;R2&quot; ... /&gt; &lt;!-- RESOURCE&#x5360;&#x4F4D;&#x7B26;&#xFF0C;&#x62BD;&#x8C61;&#x8D44;&#x6E90;&#x793A;&#x4F8B; --&gt;
-        &lt;RESOURCELink rRef=&quot;R3&quot; ... /&gt; &lt;!-- RESOURCE&#x5360;&#x4F4D;&#x7B26;&#xFF0C;&#x62BD;&#x8C61;&#x8D44;&#x6E90;&#x793A;&#x4F8B; --&gt;
-        ...
-    &lt;/ResourceLinkPool&gt;
-</code></pre><p>&#x6210;&#x5BF9;&#x7684;ResourcePoll&#x548C;ResourceLinkPoll&#x8282;&#x70B9;&#x4E3A;&#x5144;&#x5F1F;&#x8282;&#x70B9;&#xFF08;&#x4F46;&#x4E0D;&#x9650;&#x4E8E;&#xFF09;&#xFF0C;&#x5904;&#x4E8E;&#x540C;&#x4E00;JDF&#x5143;&#x7D20;&#x8282;&#x70B9;&#x6216;&#x5B50;JDF&#x5143;&#x7D20;&#x8282;&#x70B9;&#x4E0B;&#x3002;</p>
-<h4 id="1232-resource-reference">1.2.3.2 Resource reference</h4>
-<p>&#x5F53;&#x67D0;&#x4E00;&#x8282;&#x70B9;&#x4E0B;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x63D2;&#x5165;&#x8D44;&#x6E90;&#x4EE5;&#x91CD;&#x5229;&#x7528;&#x4FE1;&#x606F;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8D44;&#x6E90;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x540C;&#x540D;+&apos;Ref&apos;&#x7ED3;&#x5C3E;&#x7684;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x540D;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;<em>rRef</em>&#x5C5E;&#x6027;&#x8282;&#x70B9;&#x5173;&#x8054;<em>ID</em>&#x5C5E;&#x6027;&#x8282;&#x70B9;&#x76F8;&#x540C;&#x7684;&#x8D44;&#x6E90;&#x5143;&#x7D20;&#x8282;&#x70B9;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x4E2D;&#x7684;&quot;include&quot;&#x3002;</p>
-<pre><code>    &lt;SOMEELEMENT ...&gt;
-        &lt;RESOURCERef rRef=&quot;R1&quot; ... /&gt; &lt;!-- RESOURCE&#x5360;&#x4F4D;&#x7B26;&#xFF0C;&#x62BD;&#x8C61;&#x8D44;&#x6E90;&#x793A;&#x4F8B; --&gt;
-        &lt;RESOURCERef rRef=&quot;R2&quot; ... /&gt; &lt;!-- RESOURCE&#x5360;&#x4F4D;&#x7B26;&#xFF0C;&#x62BD;&#x8C61;&#x8D44;&#x6E90;&#x793A;&#x4F8B; --&gt;
-        &lt;RESOURCERef rRef=&quot;R3&quot; ... /&gt; &lt;!-- RESOURCE&#x5360;&#x4F4D;&#x7B26;&#xFF0C;&#x62BD;&#x8C61;&#x8D44;&#x6E90;&#x793A;&#x4F8B; --&gt;
-        ...
-    &lt;/SOMEELEMENT&gt;
-</code></pre><h2 id="13--jmf-">1.3 <span id="JMF"> JMF </span></h2>
-<p>JMF - Job Messaging Format&#xFF0C;&#x4F5C;&#x4E1A;&#x6D88;&#x606F;&#x683C;&#x5F0F;&#xFF0C;&#x57FA;&#x4E8E;XML&#x6280;&#x672F;&#xFF0C;&#x4EE5;HTTP(s)&#x4E3A;&#x901A;&#x4FE1;&#x8F7D;&#x4F53;&#xFF0C;&#x7528;&#x4E8E;&#x5DE5;&#x4F5C;&#x6D41;&#x8282;&#x70B9;&#x7684;&#x4FE1;&#x606F;&#x4EA4;&#x4E92;&#x3002;&#x8868;&#x73B0;&#x4E3A;&#x7CFB;&#x7EDF;&#x81EA;&#x4E3E;&#x548C;&#x8BBE;&#x7F6E;&#x3001;&#x4F5C;&#x4E1A;&#x548C;&#x8BBE;&#x5907;&#x7684;&#x52A8;&#x6001;&#x72B6;&#x6001;&#x3001;&#x8D44;&#x6E90;&#x5229;&#x7528;&#x548C;&#x9519;&#x8BEF;&#x8DDF;&#x8E2A;&#x3001;&#x7BA1;&#x9053;&#x63A7;&#x5236;&#x3001;&#x8BBE;&#x5907;&#x8BBE;&#x7F6E;&#x548C;&#x4F5C;&#x4E1A;&#x53D8;&#x66F4;&#x3001;&#x961F;&#x5217;&#x63A7;&#x5236;&#x548C;&#x4F5C;&#x4E1A;&#x63D0;&#x4EA4;&#x3001;&#x8BBE;&#x5907;&#x529F;&#x80FD;&#x63CF;&#x8FF0;&#x7B49;&#x3002;</p>
-<h3 id="131-jmf-family">1.3.1 JMF Family</h3>
-<h4 id="1311-query">1.3.1.1 Query</h4>
-<p>Query&#x7528;&#x4E8E;&#x5411;&#x670D;&#x52A1;&#x5668;&#xFF08;&#x6CDB;&#x6307;&#x6D88;&#x606F;&#x88AB;&#x52A8;&#x63A5;&#x6536;&#x65B9;&#xFF0C;&#x5982;Device&#xFF0C;&#x4E0B;&#x540C;&#xFF09;&#x67E5;&#x8BE2;&#x6D88;&#x606F;&#xFF0C;&#x5E76;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;Response&#x54CD;&#x5E94;&#x3002;&#x5982;&#x679C;Query&#x6D88;&#x606F;&#x5305;&#x542B;Subscription&#x8BA2;&#x9605;&#xFF08;&#x79F0;&#x4E4B;&#x4E3A;&#x53EF;&#x6301;&#x7EED;&#x901A;&#x9053;&#xFF09;&#xFF0C;&#x5219;&#x670D;&#x52A1;&#x5668;&#x5728;&#x6240;&#x8BA2;&#x9605;&#x7684;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x65F6;&#x5C06;&#x5411;&#x6240;&#x8BA2;&#x9605;&#x7684;URL&#x53D1;&#x9001;Signal&#x6D88;&#x606F;&#xFF0C;&#x76F4;&#x5230;&#x670D;&#x52A1;&#x5668;&#x6536;&#x5230;StopPersistentChannel&#x7684;Command&#x4E3A;&#x6B62;&#xFF08;&#x53EF;&#x6301;&#x7EED;&#x901A;&#x9053;&#x5173;&#x95ED;&#xFF09;&#x3002;</p>
-<p>&#x5728;JMF-ICS-1.5&#x4E2D;&#xFF0C;Query&#x5305;&#x542B;&#x7684;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x6709;&#xFF1A;KnownDevices&#x3001;KnownMessages&#x3001;KnownSubscriptions&#x3001;QueueStatus&#x3001;SubmissionMethods</p>
-<h4 id="1312-command">1.3.1.2 Command</h4>
-<p>Command&#x7528;&#x4E8E;&#x5411;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x9001;&#x6307;&#x4EE4;&#x4EE5;&#x6539;&#x53D8;&#x5176;&#x72B6;&#x6001;&#xFF0C;&#x5E76;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;Response&#x54CD;&#x5E94;&#x3002;&#x5982;&#x679C;Command&#x6D88;&#x606F;&#x5305;&#x542B;AcknowledgeURL&#x5C5E;&#x6027;&#xFF0C;&#x5219;Response&#x6D88;&#x606F;&#x9700;&#x5305;&#x542B;&apos;Acknowledge=true/false&apos;&#x5C5E;&#x6027;&#xFF0C;&#x5982;&#x679C;&apos;Acknowledge=true&apos;&#x8868;&#x793A;controller&#x652F;&#x6301;Acknowledge&#xFF0C;&#x5728;&#x6307;&#x4EE4;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x540E;&#x5C06;&#x5411;AcknowledgeURL&#x53D1;&#x9001;Acknowledge&#x6D88;&#x606F;&#x4EE5;&#x6C47;&#x62A5;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x3002;</p>
-<h4 id="1313-signal">1.3.1.3 Signal</h4>
-<p>Signal&#x662F;&#x5355;&#x5411;&#x6D88;&#x606F;&#xFF0C;&#x7528;&#x4E8E;&#x670D;&#x52A1;&#x5668;&#x81EA;&#x52A8;&#x5E7F;&#x64AD;&#x72B6;&#x6001;&#x53D8;&#x5316;&#x3002;&#x670D;&#x52A1;&#x5668;&#x4EA7;&#x751F;Signal&#x6D88;&#x606F;&#x7684;&#x6761;&#x4EF6;&#x6709;&#x4E09;&#x79CD;&#xFF1A;&#x5BA2;&#x6237;&#x7AEF;&#xFF08;&#x6CDB;&#x6307;&#x4E0A;&#x6E38;&#x63A7;&#x5236;&#x5668;&#xFF0C;&#x5982;Agent&#x3001;Controller&#xFF0C;&#x4E0B;&#x540C;&#xFF09;&#x4F7F;&#x7528;&#x5305;&#x542B;Subscription&#x7684;Query&#x6D88;&#x606F;&#x8FDB;&#x884C;&#x4E86;&#x67E5;&#x8BE2;&#x3001;&#x670D;&#x52A1;&#x5668;&#x63A5;&#x6536;&#x7684;JDF&#x8282;&#x70B9;&#x4E2D;&#x7684;NodeInfo&#x8282;&#x70B9;&#x4E2D;&#x5305;&#x542B;&#x542B;&#x6709;Subscription&#x7684;Query&#x6D88;&#x606F;&#x3001;Hard-Wired&#x3002;Hard-Wired&#x7684;&#x65B9;&#x5F0F;&#x5C5E;&#x4E8E;&#x4E3B;&#x52A8;&#x4FE1;&#x53F7;&#x53D1;&#x9001;&#x65B9;&#x5F0F;&#xFF0C;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#x5982;&#x9884;&#x8BBE;&#xFF08;&#x901A;&#x8FC7;&#x6587;&#x4EF6;&#x6216;&#x5176;&#x5B83;&#x65B9;&#x5F0F;&#xFF09;&#x4E00;&#x4E2A;URL&#x5217;&#x8868;&#xFF0C;&#x5F53;&#x8BBE;&#x5907;&#x5F00;&#x673A;&#x6216;&#x9996;&#x6B21;&#x8FDE;&#x63A5;&#x5230;&#x7F51;&#x7EDC;&#x65F6;&#x5E7F;&#x64AD;&#x4FE1;&#x53F7;&#x4EE5;&#x544A;&#x77E5;&#x8BBE;&#x5907;&#x4FE1;&#x606F;&#x548C;&#x6240;&#x80FD;&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;&#x7B49;&#x3002;</p>
-<blockquote>
-<p><strong>[info] Note</strong></p>
-<p>Signal&#x57FA;&#x4E8E;&#x5C5E;&#x4E8E;HTTP - C/S&#x6A21;&#x578B;&#xFF0C;&#x672C;&#x8D28;&#x4E0A;&#x4E5F;&#x662F;&#x53CC;&#x5411;&#x6D88;&#x606F;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x9001;&#x65F6;&#x53EF;&#x8BBE;&#x7F6E;ChannelMode&#x5C5E;&#x6027;&#x503C;&#x4E3A;Reliable&#xFF08;&#x5373;&#x53EF;&#x9760;&#x4FE1;&#x53F7;&#xFF09;&#xFF0C;&#x6B64;&#x65F6;&#x5BA2;&#x6237;&#x7AEF;&#x5FC5;&#x987B;&#x8FD4;&#x56DE;Response&#xFF0C;&#x4F46;&#x65E0;&#x8BBA;&#x5982;&#x4F55;&#x670D;&#x52A1;&#x5668;&#x90FD;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x5FFD;&#x7565;&#x54CD;&#x5E94;&#x3002;</p>
-</blockquote>
-<h4 id="1314-response">1.3.1.4 Response</h4>
-<p>Response&#x7528;&#x4E8E;&#x670D;&#x52A1;&#x5668;&#x540C;&#x6B65;&#x54CD;&#x5E94;Query&#x548C;Command&#x6D88;&#x606F;&#xFF0C;&#x6216;&#x7528;&#x4E8E;&#x5BA2;&#x6237;&#x7AEF;&#x54CD;&#x5E94;&#x670D;&#x52A1;&#x5668;&#x7684;Signal&#x6D88;&#x606F;&#xFF0C;&#x4EE5;&#x8868;&#x660E;&#x6D88;&#x606F;&#x5DF2;&#x63A5;&#x6536;&#x5E76;&#x7FFB;&#x8BD1;&#x3002;&#x5F53;Response&#x7684;ReturnCode&#x5C5E;&#x6027;&#x5927;&#x4E8E;0&#x65F6;&#xFF0C;Response&#x5E94;&#x8BE5;&#x5305;&#x542B;Notification&#x5143;&#x7D20;&#x4EE5;&#x63CF;&#x8FF0;&#x8FD4;&#x56DE;&#x72B6;&#x6001;&#x3002;Response&#x7684;refID&#x5C5E;&#x6027;&#x503C;&#x7B49;&#x540C;&#x4E8E;Query&#x6216;Command&#x4E2D;&#x7684;ID&#x5C5E;&#x6027;&#x503C;&#x3002;</p>
-<h4 id="1315-acknowledge">1.3.1.5 Acknowledge</h4>
-<p>Acknowledge&#x662F;&#x670D;&#x52A1;&#x5668;&#x5BF9;&#x5BA2;&#x6237;&#x7AEF;&#x7684;Command&#x6216;Query&#x6D88;&#x606F;&#x7684;&#x5F02;&#x6B65;&#x5355;&#x5411;&#x5E94;&#x7B54;&#xFF0C;&#x5176;refID&#x5C5E;&#x6027;&#x503C;&#x4E3A;&#x53D1;&#x9001;&#x65B9;ID&#x503C;&#x3002;Acknowledge&#x4EC5;&#x5728;Command&#x6D88;&#x606F;&#x6307;&#x5B9A;AcknowledgeURL&#x5C5E;&#x6027;&#x6216;AcknowledgeFormat&#x548C;AcknowledgeTemplate&#x5C5E;&#x6027;&#xFF0C;&#x4E14;&#x670D;&#x52A1;&#x5668;&#x652F;&#x6301;&#x5E94;&#x7B54;&#x65F6;&#x624D;&#x4EA7;&#x751F;&#x3002;&#x5F53;&#x670D;&#x52A1;&#x5668;&#x6267;&#x884C;&#x4E00;&#x4E2A;Command&#x9700;&#x8981;&#x8F83;&#x957F;&#x65F6;&#x95F4;&#x65F6;&#xFF0C;&#x5148;&#x8FD4;&#x56DE;Response&#x54CD;&#x5E94;&#xFF0C;&#x7B49;&#x5F85;Command&#x6267;&#x884C;&#x5B8C;&#x6210;&#x518D;&#x8FD4;&#x56DE;Acknowledge&#x3002;</p>
-<h3 id="132-jmf-message-level">1.3.2 JMF Message Level</h3>
+<h1 id="appendix-y&#xFF1A;jdf-market-"><span id="Appendix-Y"> Appendix-Y&#xFF1A;JDF market </span></h1>
+<h2 id="y1-jdf-job-ticket">Y.1 JDF Job Ticket</h2>
+<ul>
+<li><p>Job ticket standalone </p>
+<ul>
+<li>JDF&#x7F16;&#x8F91;&#x5668;&#x3002;&#x5355;&#x7EAF;&#x5730;&#x5177;&#x6709;&#x5BF9;JDF&#x4F5C;&#x4E1A;&#x4F20;&#x7968;&#x8FDB;&#x884C;&#x67E5;&#x770B;&#x3001;&#x68C0;&#x6D4B;&#x548C;&#x7F16;&#x5199;&#x529F;&#x80FD;</li>
+<li>&#x7535;&#x5B50;&#x5546;&#x52A1;&amp;Web&#x63A5;&#x53E3;&#x5DE5;&#x5177;&#x3002;&#x5177;&#x6709;&#x517C;&#x5BB9;JDF&#x7684;&#x7535;&#x5B50;&#x5546;&#x52A1;&#x529F;&#x80FD;</li>
+<li>&#x8D44;&#x4EA7;&#x8F6C;&#x79FB;&#x5DE5;&#x5177;&#x3002;&#x53EF;&#x5B9E;&#x73B0;PDF&#x6587;&#x4EF6;&#x540E;&#x989D;JDF&#x4F5C;&#x4E1A;&#x4F20;&#x7968;&#x7684;&#x7BA1;&#x7406;&#x5DE5;&#x4F5C;&#xFF0C;&#x5982;&#x6587;&#x4EF6;&#x7684;&#x8F93;&#x5165;&#x548C;&#x8F93;&#x51FA;&#x7BA1;&#x7406;&#x3002;</li>
+</ul>
+</li>
+<li><p>Job ticket embedded</p>
+<ul>
+<li>&#x6587;&#x6863;&#x521B;&#x5EFA;&amp;&#x7248;&#x9762;&#x8BBE;&#x8BA1;&#x8F6F;&#x4EF6;&#x3002;&#x53EF;&#x5B9E;&#x73B0;&#x4F5C;&#x4E1A;&#x6587;&#x6863;&#x7684;&#x5236;&#x4F5C;&#xFF08;&#x6216;&#x6587;&#x6863;&#x7684;&#x521B;&#x610F;&#x548C;&#x7F16;&#x8F91;&#x7B49;&#xFF09;&#xFF0C;&#x5E76;&#x5B58;&#x5728;&#x521B;&#x5EFA;&#x6587;&#x6863;&#x6216;&#x8F93;&#x51FA;&#x6587;&#x6863;&#x7684;&#x540C;&#x65F6;&#x521B;&#x5EFA;&#x76F8;&#x5173;&#x7684;JDF&#x4F5C;&#x4E1A;&#x4F20;&#x7968;</li>
+<li>&#x9884;&#x98DE;&#x5DE5;&#x5177;&#x3002;&#x80FD;&#x591F;&#x5BF9;PDF&#x6587;&#x4EF6;&#x505A;&#x5230;&#x9884;&#x98DE;&#x68C0;&#x67E5;&#xFF0C;&#x540C;&#x65F6;&#x80FD;&#x591F;&#x521B;&#x5EFA;&#x76F8;&#x5173;&#x7684;JDF&#x4F5C;&#x4E1A;&#x4F20;&#x7968;&#x3002;</li>
+<li>&#x8D44;&#x4EA7;&#x8F6C;&#x79FB;&#x670D;&#x52A1;&#x3002;&#x53EF;&#x5B9E;&#x73B0;PDF&#x6587;&#x4EF6;&#x548C;JDF&#x4F5C;&#x4E1A;&#x4F20;&#x7968;&#x7684;&#x7BA1;&#x7406;&#x5DE5;&#x4F5C;&#xFF0C;&#x5982;&#x6587;&#x4EF6;&#x7684;&#x8F93;&#x5165;&#x548C;&#x8F93;&#x51FA;&#x3002;</li>
+<li>&#x5176;&#x5B83;&#x7684;&#x4E00;&#x4E9B;&#x5185;&#x5D4C;&#x7684;&#x4F5C;&#x4E1A;&#x4F20;&#x7968;&#x8F6F;&#x4EF6;&#x3002;&#x5C06;&#x5C5E;&#x4E8E;JDF&#x4F5C;&#x4E1A;&#x4F20;&#x7968;&#x8F6F;&#x4EF6;&#x7684;&#x8303;&#x56F4;&#x53C8;&#x4E0D;&#x5177;&#x5907;&#x4EE5;&#x524D;&#x529F;&#x80FD;&#x7684;&#x8F6F;&#x4EF6;&#x90FD;&#x5F52;&#x5C5E;&#x5230;&#x8FD9;&#x4E00;&#x7C7B;&#x578B;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<h2 id="y2-mis-jdf-system">Y.2 MIS-JDF system</h2>
+<ul>
+<li>&#x96C6;&#x6210;&#x7684;JDF MIS&#x7CFB;&#x7EDF;&#x662F;&#x4E00;&#x79CD;&#x529F;&#x80FD;&#x5F3A;&#x5927;&#x7684;MIS&#x7CFB;&#x7EDF;&#xFF0C;&#x80FD;&#x591F;&#x63D0;&#x4F9B;&#x4F5C;&#x4E1A;&#x6D41;&#x7A0B;&#x63A7;&#x5236;&#x3001;&#x751F;&#x4EA7;&#x63A7;&#x5236;&#x548C;&#x5E38;&#x89C4;&#x63A7;&#x5236;&#x7684;MIS&#x529F;&#x80FD;&#x7B49;&#x4E30;&#x5BCC;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5177;&#x4F53;&#x6765;&#x8BF4;&#xFF0C;&#x4ED6;&#x53EF;&#x80FD;&#x5B9E;&#x73B0;&#x4ECE;&#x4F5C;&#x4E1A;&#x63A5;&#x6536;&#x3001;&#x4F30;&#x4EF7;&#x3001;&#x62A5;&#x4EF7;&#x3001;&#x4F5C;&#x4E1A;&#x5B89;&#x6392;&#x3001;&#x4F5C;&#x4E1A;&#x5206;&#x6D3E;&#x548C;&#x6253;&#x6837;&#xFF0C;&#x6700;&#x540E;&#x5230;&#x5370;&#x5237;&#x751F;&#x4EA7;&#x7684;&#x5168;&#x8FC7;&#x7A0B;&#x7684;&#x4FE1;&#x606F;&#x7BA1;&#x7406;&#x3002;&#x4F8B;&#x5982;HIFLEX MIS&#x3001;Prineet Prinance&#x3002;</li>
+<li>&#x7BA1;&#x7406;&#x65B9;&#x9762;&#x7684;JDF MIS&#x7CFB;&#x7EDF;&#x548C;&#x751F;&#x4EA7;&#x65B9;&#x9762;&#x7684;JDF MIS&#x7CFB;&#x7EDF;&#x548C;&#x751F;&#x4EA7;&#x65B9;&#x9762;&#x7684;JDF MIS&#x7CFB;&#x7EDF;&#x662F;&#x5206;&#x522B;&#x4ECE;&#x529F;&#x80FD;&#x7684;&#x4E24;&#x4E2A;&#x65B9;&#x9762;&#x6765;&#x5212;&#x5206;&#x5E02;&#x573A;&#x3002;&#x7BA1;&#x7406;&#x65B9;&#x9762;&#x7684;JDF MIS&#x7CFB;&#x7EDF;&#x4E3B;&#x8981;&#x662F;&#x80FD;&#x5B9E;&#x73B0;&#x5728;&#x4F5C;&#x4E1A;&#x7BA1;&#x7406;&#x6216;&#x5BA2;&#x6237;&#x5173;&#x7CFB;&#x7BA1;&#x7406;&#x65B9;&#x9762;&#x7684;&#x4FE1;&#x606F;&#x7BA1;&#x7406;&#x3002;&#x5B83;&#x4EEC;&#x53EF;&#x80FD;&#x5B9E;&#x73B0;&#x4E0B;&#x9762;&#x7684;&#x4E09;&#x79CD;&#x529F;&#x80FD;&#x7684;&#x4E00;&#x79CD;&#x3002;<ul>
+<li>&#x4F30;&#x4EF7;/&#x62A5;&#x4EF7;&#x80FD;&#x5B9E;&#x73B0;&#x5BF9;&#x8BA2;&#x5355;&#x8FDB;&#x884C;&#x4F30;&#x4EF7;&#x4E0E;&#x62A5;&#x4EF7;&#x5904;&#x7406;</li>
+<li>&#x8C03;&#x5EA6;&#x3002;&#x80FD;&#x6839;&#x636E;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x5B9E;&#x73B0;&#x5BF9;&#x4F5C;&#x4E1A;&#x7684;&#x826F;&#x597D;&#x751F;&#x4EA7;&#x8C03;&#x5EA6;</li>
+<li>&#x5BA2;&#x6237;&#x5173;&#x7CFB;&#x7BA1;&#x7406;&#xFF08;CRM&#xFF09;/&#x9500;&#x552E;&#x3002;&#x80FD;&#x5B9E;&#x73B0;&#x5BF9;&#x5BA2;&#x6237;&#x5173;&#x7CFB;&#x7BA1;&#x7406;&#x548C;&#x5546;&#x4E1A;&#x7BA1;&#x7406;&#xFF0C;&#x5982;&#x5BA2;&#x6237;&#x6570;&#x636E;&#x7BA1;&#x7406;&#x3001;&#x4F9B;&#x8D27;&#x5546;&#x6570;&#x636E;&#x7BA1;&#x7406;&#x548C;&#x4EA4;&#x8D27;&#x6E05;&#x5355;&#x7BA1;&#x7406;&#x7B49;&#x3002;</li>
+</ul>
+</li>
+<li>&#x751F;&#x4EA7;&#x65B9;&#x9762;&#x7684;JDF MIS&#x7CFB;&#x7EDF;&#x4E3B;&#x8981;&#x662F;&#x80FD;&#x5B9E;&#x73B0;&#x5BF9;&#x751F;&#x4EA7;&#x8FC7;&#x7A0B;&#x7684;&#x63A7;&#x5236;&#x4E0E;&#x8DDF;&#x8E2A;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x3002;&#x80FD;&#x5B9E;&#x73B0;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x94FE;&#x7684;&#x5B9A;&#x4E49;&#x4E0E;&#x8DDF;&#x8E2A;&#x751F;&#x4EA7;&#x63A7;&#x5236;/&#x4F5C;&#x4E1A;&#x8DDF;&#x8E2A;&#x3002;&#x80FD;&#x901A;&#x8FC7;JDF&#x4F5C;&#x4E1A;&#x4F20;&#x7968;&#x5BF9;&#x751F;&#x4EA7;&#x8FDB;&#x884C;&#x63A7;&#x5236;&#xFF0C;&#x5E76;&#x5B9E;&#x65F6;&#x53CD;&#x9988;&#x751F;&#x4EA7;&#x60C5;&#x51B5;&#x3002;</li>
+</ul>
+<h2 id="y3-jdf-compatible-devices">Y.3 JDF compatible devices</h2>
+<p>&#x8BE5;&#x5E02;&#x573A;&#x5206;&#x7C7B;&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x6240;&#x6709;&#x517C;&#x5BB9;JDF&#x7684;&#x751F;&#x4EA7;&#x8BBE;&#x5907;&#xFF0C;&#x76EE;&#x524D;&#x7684;JDF&#x4EA7;&#x54C1;&#x5DF2;&#x7ECF;&#x8986;&#x76D6;&#x4E86;&#x5370;&#x524D;&#x3001;&#x5370;&#x5237;&#x3001;&#x5370;&#x540E;&#x3002;&#x5BF9;&#x4E8E;&#x5370;&#x524D;&#xFF0C;&#x6839;&#x636E;&#x73B0;&#x6709;&#x7684;JDF&#x4EA7;&#x54C1;&#x5DF2;&#x7ECF;&#x80FD;&#x5B9E;&#x73B0;&#x4E0B;&#x9762;&#x7684;&#x529F;&#x80FD;&#x7C7B;&#x522B;&#xFF1A;
+&#x5370;&#x524D;&#x90E8;&#x95E8;&#x63A7;&#x5236;&#x3001;&#x6253;&#x6837;&#x3001;&#x5927;&#x5E45;&#x9762;&#x6253;&#x5370;&#x673A;&#x3001;&#x80F6;&#x7247;&#x8F93;&#x51FA;&#x3001;CTP&#x3001;&#x5370;&#x524D;&#x5DE5;&#x4F5C;&#x4E2D;&#x5FC3;&#x6216;&#x8F6F;&#x4EF6;&#x3001;&#x62FC;&#x5927;&#x7248;&#x3001;&#x7248;&#x9762;&#x8BBE;&#x8BA1;&#x3001;&#x9884;&#x98DE;&#x3001;RIP&#x3001;&#x6570;&#x5B57;&#x5370;&#x5237;&#x3001;&#x8F6F;&#x6253;&#x6837;&#x548C;&#x5176;&#x5B83;&#x517C;&#x5BB9;JDF&#x7684;&#x5370;&#x524D;&#x8BBE;&#x5907;&#x3002;
+&#x5BF9;&#x4E8E;&#x5370;&#x5237;&#xFF0C;&#x6839;&#x636E;&#x73B0;&#x6709;&#x7684;JDF&#x4EA7;&#x54C1;&#x5DF2;&#x7ECF;&#x80FD;&#x5B9E;&#x73B0;&#x4E0B;&#x9762;&#x7684;&#x529F;&#x80FD;&#x7C7B;&#x522B;&#xFF1A;
+&#x5370;&#x5237;&#x8F66;&#x95F4;&#x7684;&#x90E8;&#x95E8;&#x63A7;&#x5236;&#x3001;&#x6CB9;&#x58A8;&#x7CFB;&#x7EDF;&#x3001;&#x989C;&#x8272;&#x63A7;&#x5236;&#x3001;&#x6570;&#x5B57;&#x5370;&#x5237;&#x3001;&#x5377;&#x7B52;&#x80F6;&#x5370;&#x3001;&#x5355;&#x5F20;&#x7EB8;&#x80F6;&#x5370;&#x548C;&#x5176;&#x5B83;&#x517C;&#x5BB9;JDF&#x7684;&#x5370;&#x5237;&#x8BBE;&#x5907;&#x3002;
+&#x5BF9;&#x4E8E;&#x5370;&#x540E;&#xFF0C;&#x6839;&#x636E;&#x73B0;&#x6709;&#x7684;JDF&#x4EA7;&#x54C1;&#x5DF2;&#x7ECF;&#x80FD;&#x5B9E;&#x73B0;&#x4E0B;&#x9762;&#x7684;&#x529F;&#x80FD;&#x7C7B;&#x522B;&#xFF1A;
+&#x5370;&#x540E;&#x90E8;&#x95E8;&#x63A7;&#x5236;&#x3001;&#x88C1;&#x5207;&#x3001;&#x914D;&#x5E16;&#x3001;&#x6298;&#x9875;&#x3001;&#x88C5;&#x8BA2;&#x548C;&#x5176;&#x4ED6;&#x517C;&#x5BB9;JDF&#x7684;&#x5370;&#x540E;&#x8BBE;&#x5907;&#x3002;</p>
+<h2 id="y4-jdf-tools">Y.4 JDF tools</h2>
+<ul>
+<li>Development tools<ul>
+<li>IDE/SDK, Provide programming env for JDF development</li>
+<li>SOAP/HTTP, Provide JMF env for JDF production, such as JMF creation, JMF send and recive etc.</li>
+</ul>
+</li>
+<li>Test tools<ul>
+<li>Validity test, Provide validity test for JDF file under JDF scheme that provide by CIP4.</li>
+<li>ICS test, Provide ICS test for JDF file under CIP4 ICS</li>
+</ul>
+</li>
+</ul>
+<h2 id="y5-jdf-serve">Y.5 JDF Serve</h2>
+<p>JDF consulting and training serve etc.</p>
+<hr>
+<h1 id="appendix-z&#xFF1A;cip4-software-license-"><span id="Appendix-Z"> Appendix-Z&#xFF1A;CIP4 software license </span></h1>
+<p>Copyright (c) 2001-2020 The International Cooperation for the Integration of Processes in Prepress, Press and Postpress (CIP4). All rights reserved.</p>
+<p>PREAMBLE
+This software license applies to all source code and compiled software products made available by International Cooperation for the Integration of Process in Prepress, Press and Postpress (CIP4) association, to include, but not limited to the C++ and Java Application Programming Interfaces (APIs), CheckJDF application, JDF Schema, JDF Editor, Online Documentation for C++ API, the Alces application, the Elk application, and any part or component thereof (hereinafter &quot;CIP4 Software&quot;).</p>
+<p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
+<p>TERMS AND CONDITIONS FOR USE AND REDISTRIBUTIONS OF THE CIP4 SOFTWARE</p>
+<p>1 USE AND REDISTRIBUTION
+1.1 The CIP4 Software may only be copied, modified, sublicensed or distributed as expressly provided under this license. Any other use or attempt to otherwise copy, modify, sublicense or distribute the CIP4 Software is void and will automatically terminate licensee&apos;s rights under this license.</p>
+<p>1.2 Redistributions of source code must retain this CIP4 Software License and the following copyright notice:</p>
+<p>&quot;Copyright (c) 2001-2006 The International Cooperation for the Integration of Processes in Prepress, Press and Postpress (CIP4). All rights reserved.&quot;</p>
+<p>1.3 Redistributions in binary form, with or without modifications, including compiled applications, must reproduce this CIP4 Software License including the above copyright notice in the documentation and other materials provided with the distribution. Redistributions containing modifications must include a prominent modification notice stating that modifications have been made to the original CIP4 Software.</p>
+<p>1.4 Any company that sells, markets, or attempts to sell software development kits or any development tools that include the redistribution of CIP4 Software, in whole or in part, must make clear which files, applications or components are derived from CIP4 sources and the license provided by such companies to their customers, suppliers, and business partners must include this License in whole. Such customer, suppliers, and business partners must acknowledge the terms of this License to the company providing said software development kits or development tools and are subject to all terms herein, including the membership requirement in paragraph 4 below.</p>
+<p>2 DISCLAIMER OF WARRANTY
+Licensee of the CIP4 Software expressly acknowledges and agrees that any use of the CIP4 Software is at the sole and entire risk of the user. The CIP4 Software is provided &quot;as is&quot; without warranty, upgrades or support of any kind. CIP4 expressly disclaims any expressed or implied warranties, including, but not limited to, the implied warranties of merchantability, fitness for a particular purpose, and non-infringement of third party rights. CIP4 does not warrant that the operation of the CIP4 Software will be error-free or that defects in the CIP4 Software will be corrected.</p>
+<p>3 LIMITATION OF LIABILITY
+To the extent not prohibited by law, in no event shall CIP4, CIP4 trustees, directors, officers or employees, or contributors to the CIP4 Software be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of the CIP4 Software, even if advised of the possibility of such damage.</p>
+<p>4 CIP4 MEMBERSHIP REQUIREMENT</p>
+<p>4.1 Any company that sells, markets or attempts to sell redistributed CIP4 Software for profit or fee, or distributed as a free component of any commercial system or package, shall maintain either Full or Partner CIP4 membership status and be a member in good standing. Any such company that fails to maintain its Full or Partner membership status must cease selling, marketing, attempting to sell any products that redistribute CIP4 Software, in whole or in part, and may only provide fixes, updates, or upgrades to customers with installations if no portion of the updates, fixes or upgrades make use of the CIP4 Software.</p>
+<p>4.2 Any affiliate company using a different name than the member that participates in the selling, marketing or attempts to sell redistributed CIP4 Software for profit or fee must either maintain its own CIP4 Full or Partner status membership as provided under paragraph 4.1 above, or the parent company, if it holds majority ownership of both companies, shall maintain CIP4 Full or Partner status membership as provided under paragraph 4.1 above.</p>
+<p>4.3 Distributors, resellers, and integrators that sell products that include redistributed CIP4 Software, in whole or in part, that are produced by a third party are exempt from the membership requirement in paragraph 4.1 above, provided that they do not provide any value-added programming or modifications to said products. Any distributor, reseller, or integrator that sell products that include redistributed CIP4 Software, in whole or in part, that are produced by a third party are NOT exempt from the membership requirement in paragraph 4.1 above if they make any value-added modifications or alter the said products via programming or any method that changes the functionality of the CIP4 Software. Companies that are developing and testing products that make use of CIP4 Software, in whole or in part, to include beta and alpha testing where testing companies have not paid or committed to pay anything for the product being tested and under development are also exempt from the membership requirements in paragraph 4.1 above until they begin to sell, market or attempt to sell such products.</p>
+<p>5 END USER DOCUMENTATION
+The end-user documentation included with the redistribution containing CIP4 Software, if any, must include the following acknowledgment:</p>
+<p>&quot;This product includes software developed by the The International Cooperation for the Integration of Processes in Prepress, Press and Postpress (www.cip4.org)&quot;</p>
+<p>Alternately, this acknowledgment may appear in the software itself, if and wherever such third-party acknowledgments normally appear.</p>
+<p>6 USE OF CIP4 NAMES, TRADEMARKS, LOGOS, ICONS
+6.1 The names &quot;CIP4&quot; and &quot;The International Cooperation for the Integration of Processes in Prepress, Press and Postpress&quot; may be used by Full or Partner CIP4 members in good standing to promote products that are JDF-enabled.</p>
+<p>6.2 This license does not grant any rights to use CIP4 and JDF trademarks, trade names 
+logos, and icons. The use of and JDF trademarks, trade names logos, and icons must be in accordance with CIP4&apos;s Guidelines for Logo Usage as published on the CIP4 website.</p>
+<p>6.3 CIP4 may audit the use by any licensee of the CIP4 Software, trademarks, logos, and icons to determine compliance with these terms and conditions.</p>
+<p>7 LICENSE VERSIONS
+CIP4 retains the right to modify the terms applicable to the CIP4 Software under this CIP4 License. CIP4 may at any given time publish revised and/or new versions of this CIP4 License. Each version will be given a distinguishing version number and CIP4 Software that has been published under a particular version of this License may be used either under the terms of the original version or any subsequent version of this License.</p>
+<p>This software consists of voluntary contributions made by many individuals on behalf of the The International Cooperation for the Integration of Processes in Prepress, Press and Postpress and was originally based on software copyright (c) 1999-2001, Heidelberger Druckmaschinen AG and copyright (c) 1999-2001, Agfa-Gevaert N.V.</p>
+<p>For more information on The International Cooperation for the Integration of Processes in Prepress, Press and Postpress, please see <a href="http://www.cip4.org" target="_blank">http://www.cip4.org</a>.</p>
+<hr>
+<h1 id="tbd">TBD</h1>
 <ol>
-<li>No messaging&#xFF1A;&#x4E0D;&#x4F7F;&#x7528;JMF&#xFF0C;JDF&#x53EF;&#x4EE5;&#x5728;&#x6BCF;&#x4E2A;&#x8FC7;&#x7A0B;&#x7ED3;&#x70B9;&#x5305;&#x542B;Audit&#x5143;&#x7D20;&#x4EE3;&#x66FF;JMF&#x6D88;&#x606F;&#x673A;&#x5236;&#x3002;</li>
-<li>Notification&#xFF1A;&#x652F;&#x6301;Notification&#x7684;&#x670D;&#x52A1;&#x5668;&#x901A;&#x8FC7;&#x53D1;&#x9001;Signal&#x6765;&#x63D0;&#x4F9B;&#x5355;&#x5411;&#x6D88;&#x606F;&#xFF0C;&#x901A;&#x77E5;&#x6D88;&#x606F;&#x5728;&#x5F00;&#x59CB;&#x548C;&#x5B8C;&#x6210;&#x4F5C;&#x4E1A;&#x4E2D;&#x7684;&#x67D0;&#x4E2A;&#x8FC7;&#x7A0B;&#x65F6;&#x901A;&#x77E5;&#x5BA2;&#x6237;&#x7AEF;&#x3002;&#x8BE5;&#x670D;&#x52A1;&#x5668;&#x53EF;&#x80FD;&#x8FD8;&#x63D0;&#x4F9B;&#x4E00;&#x4E9B;&#x9519;&#x8BEF;&#x60C5;&#x51B5;&#x7684;&#x901A;&#x77E5;&#x3002;</li>
-<li>Query Support&#xFF1A;&#x652F;&#x6301;Query&#x7684;&#x670D;&#x52A1;&#x5668;&#x901A;&#x8FC7;&#x4F20;&#x9012;&#x5F53;&#x524D;&#x7684;JobID&#x5C5E;&#x6027;&#x3001;&#x6392;&#x961F;&#x7684;JobID&#x5C5E;&#x6027;&#x6216;&#x5F53;&#x524D;&#x5DE5;&#x4F5C;&#x8FC7;&#x7A0B;&#x7684;&#x72B6;&#x6001;&#x6765;&#x5E94;&#x7B54;&#x5176;&#x5B83;&#x63A7;&#x5236;&#x5668;&#x7684;&#x8BE2;&#x95EE;&#x3002;</li>
-<li>Command support&#xFF1A;&#x8FD9;&#x79CD;&#x7B49;&#x7EA7;&#x4E3A;&#x670D;&#x52A1;&#x5668;&#x63D0;&#x4F9B;&#x4E86;&#x5904;&#x7406;&#x547D;&#x4EE4;&#x7684;&#x80FD;&#x529B;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x53EF;&#x4EE5;&#x63A5;&#x6536;&#x547D;&#x4EE4;&#xFF0C;&#x4F8B;&#x5982;&#x4E2D;&#x65AD;&#x5F53;&#x524D;&#x7684;&#x4F5C;&#x4E1A;&#x3001;&#x91CD;&#x542F;&#x4F5C;&#x4E1A;&#x6216;&#x8005;&#x6539;&#x53D8;&#x961F;&#x5217;&#x4E2D;&#x4F5C;&#x4E1A;&#x7684;&#x72B6;&#x6001;&#x3002;</li>
-<li>Submission support&#xFF1A;&#x670D;&#x52A1;&#x5668;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;HTTP POST&#x8BF7;&#x6C42;&#x6D88;&#x606F;&#x901A;&#x9053;&#x6765;&#x63A5;&#x6536;JDF&#x4F5C;&#x4E1A;&#xFF0C;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x901A;&#x9053;&#x5E94;&#x8BE5;&#x652F;&#x6301;MIME&#x3002;</li>
+<li>Workflow component roles</li>
+<li>Coordinate systems</li>
 </ol>
-<h3 id="133-error-and-event">1.3.3 Error and Event</h3>
-<p>&#x5982;&#x679C;Acknowledge&#x6D88;&#x606F;&#x3001;Command&#x6D88;&#x606F;&#x3001;Query&#x6D88;&#x606F;&#x3001;Signal&#x6D88;&#x606F;&#x6216;&#x8005;Registration&#x6D88;&#x606F;&#x6CA1;&#x6709;&#x88AB;&#x6B63;&#x786E;&#x5904;&#x7406;&#xFF0C;&#x7A0B;&#x5E8F;&#x5E94;&#x8BE5;&#x6709;&#x6807;&#x51C6;&#x9519;&#x8BEF;&#x7684;&#x54CD;&#x5E94;&#xFF0C;&#x8FD9;&#x79CD;&#x54CD;&#x5E94;&#x53EF;&#x80FD;&#x5305;&#x542B;Notification&#x5143;&#x7D20;&#x3002;&#x5728;Notification&#x5143;&#x7D20;&#x4E2D;&#x5305;&#x542B;&#x7684;&#x6D88;&#x606F;&#x53EF;&#x7528;&#x4E8E;&#x7528;&#x6237;&#x754C;&#x9762;&#x63D0;&#x793A;&#x9519;&#x8BEF;&#x3002;
-Response&#x6D88;&#x606F;&#x548C;Acknowledge&#x6D88;&#x606F;&#x5305;&#x542B;&#x4E00;&#x4E2A;ReturnCode&#x5C5E;&#x6027;&#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;0&#xFF0C;&#x8868;&#x793A;&#x54CD;&#x5E94;&#x6210;&#x529F;&#x3002;&#x5982;&#x679C;&#x6210;&#x529F;&#xFF0C;&#x5728;&#x54CD;&#x5E94;&#x547D;&#x4EE4;&#x65F6;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;Notification&#x5143;&#x7D20;&#xFF08;Class&#x5C5E;&#x6027;=&#x201C;information&#x201D;&#xFF09;&#x3002;&#x5982;&#x679C;&#x51FA;&#x73B0;&#x8B66;&#x544A;&#x6216;&#x9519;&#x8BEF;&#xFF0C;ReturnCode&#x5C5E;&#x6027;&#x4F1A;&#x5927;&#x4E8E;0&#x3002;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x5E94;&#x8BE5;&#x63D0;&#x4F9B;Notification&#x5143;&#x7D20;&#x3002;&#x54CD;&#x5E94;&#x9519;&#x8BEF;&#x7684;&#x7A0B;&#x5E8F;&#x5E94;&#x8BE5;&#x586B;&#x5145;Notification&#x5143;&#x7D20;&#x6765;&#x8BE6;&#x7EC6;&#x63CF;&#x8FF0;&#x9519;&#x8BEF;&#x3002;</p>
-<h3 id="134-jmf-queue">1.3.4 JMF Queue</h3>
-<p>Command&#x6D88;&#x606F;&#x4E2D;&#x7684;&#x961F;&#x5217;&#x64CD;&#x4F5C;&#x662F;JMF&#x5BF9;JDF&#x4F5C;&#x4E1A;&#x8C03;&#x6574;&#x7684;&#x6838;&#x5FC3;&#x529F;&#x80FD;&#xFF0C;&#x5728;JMF&#x4E2D;&#x961F;&#x5217;&#x6210;&#x5458;&#x88AB;&#xFF08;&#x4F5C;&#x4E1A;&#xFF09;&#x79F0;&#x4E3A;<strong>QueueEntry</strong>&#xFF0C;&#x4F7F;&#x7528;&#x5C5E;&#x6027;<em>QueueEntryID</em>&#x6807;&#x8BC6;&#xFF0C;&#x5E76;&#x652F;&#x6301;&#x4F18;&#x5148;&#x7EA7;&#xFF08;0[Low]~100[High]&#xFF09;&#x3002;</p>
-<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/QueueEntryLifeCycle.png" alt="Queue Life"> <br><center> <font color="gray"> QueueEntry lifecycle </font> </center><br></p>
-<blockquote>
-<p><strong>[info] Note</strong></p>
-<p>Programming for Queue Entry: Mybe set an element Queue as a global variable, then you have an unique queue as JDF_1.5 demand. Append, set or delete QueueEntry element for your only one Queue upon to satisfy some stuff.</p>
-</blockquote>
-<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/QueueEntry.png" alt="Queue Entry"> <br><center> <font color="gray"> Queue and QueueEntry </font> </center><br></p>
-<h2 id="14--ics-">1.4 <span id="ICS"> ICS </span></h2>
-<p>ICS - Interoperability Conformance Specification&#xFF0C;&#x534F;&#x4F5C;&#x4E92;&#x901A;&#x6027;&#x89C4;&#x8303;&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x8BBE;&#x5907;&#x5E94;&#x8BE5;&#x652F;&#x6301;&#x7684;&#x6700;&#x5C0F;&#x7684;JDF&#x6307;&#x4EE4;&#x548C;&#x53C2;&#x6570;&#x96C6;&#x5408;&#xFF0C;&#x662F;&#x6CDB;&#x578B;JDF&#x6587;&#x6863;&#x7684;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#xFF0C;&#x4E5F;&#x662F;JDF&#x7A0B;&#x5E8F;&#x5F00;&#x53D1;&#x7684;&#x6307;&#x5BFC;&#x6587;&#x4EF6;&#x3002;&#x5982;&#x679C;&#x628A;JDF&#x6587;&#x6863;&#x6BD4;&#x4F5C;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x5219;ICS&#x662F;&#x8BE5;&#x62BD;&#x8C61;&#x7C7B;&#x7684;&#x6D3E;&#x751F;&#x5B50;&#x7C7B;&#x3002;ICS&#x5BF9;&#x4E0D;&#x540C;&#x90E8;&#x5206;&#x5B9A;&#x4E49;&#x4E86;&#x4E92;&#x901A;&#x6027;&#x89C4;&#x8303;&#xFF0C;&#x5176;&#x4E2D;Base ICS&#x5B9A;&#x4E49;&#x4E86;&#x4EFB;&#x4F55;JDF&#x4EA7;&#x54C1;&#x90FD;&#x5E94;&#x8BE5;&#x517C;&#x5BB9;&#x7684;JDF&#x5B50;&#x96C6;&#xFF0C;&#x5373;JDF&#x4EA7;&#x54C1;&#x6240;&#x5E94;&#x8BE5;&#x5B9E;&#x73B0;&#x7684;&#x6700;&#x57FA;&#x672C;&#x529F;&#x80FD;&#x3002;&#x5728;&#x6B64;&#x57FA;&#x7840;&#x4E0A;&#x5206;&#x522B;&#x5B9A;&#x4E49;&#x4E86;&#x82E5;&#x5E72;&#x4E0D;&#x540C;&#x90E8;&#x5206;&#x7684;ICS&#x89C4;&#x8303;&#xFF0C;&#x5728;&#x4E0A;&#x5C42;ICS&#x4E2D;&#x4E0D;&#x518D;&#x51FA;&#x73B0;&#x4E0B;&#x5C42;&#x5DF2;&#x7ECF;&#x51FA;&#x73B0;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x5B8C;&#x5168;&#x7684;ICS&#x6587;&#x6863;&#x7B49;&#x4E8E;&#x6240;&#x6709;&#x5C42;&#x5185;&#x5BB9;&#x7684;&#x76F8;&#x52A0;&#x3002;</p>
-<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/ICS_Classes.png" alt="ICS Classes"> <br><center> <font color="gray"> ICS Classes </font> </center><br></p>
-<p>&#x5176;&#x4E2D;Binding ICS&#x5B9A;&#x4E49;&#x4E86;&#x5177;&#x6709;&#x9A91;&#x9A6C;&#x9489;&#x3001;&#x88C5;&#x8BA2;&#x8F6F;&#x5C01;&#x9762;&#x6216;&#x786C;&#x5C01;&#x9762;&#x7684;JDF&#x5370;&#x540E;&#x8BBE;&#x5907;&#x6240;&#x5E94;&#x8BE5;&#x517C;&#x5BB9;&#x7684;JDF&#x5B50;&#x96C6;&#x3002;JMF ICS&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x5177;&#x6709;JMF&#x901A;&#x8BAF;&#x529F;&#x80FD;&#x7684;JDF&#x4EA7;&#x54C1;&#x6240;&#x5E94;&#x8BE5;&#x517C;&#x5BB9;&#x7684;JMF&#x5B50;&#x96C6;&#x3002;</p>
-<p>Tips : ICS&#x6587;&#x6863;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5; - ICS&#x5143;&#x7D20;&#x8868;&#x683C;&#x4E2D;&#x53EF;&#x94FE;&#x63A5;&#x7684;&#x8868;&#x793A;&#x8BE5;&#x5185;&#x5BB9;&#x4E3A;&#x5B50;&#x5143;&#x7D20;&#xFF0C;&#x5426;&#x5219;&#x662F;&#x5C5E;&#x6027;&#xFF0C;&#x5C5E;&#x6027;&#x4E0B;&#x6DF1;&#x8272;&#x80CC;&#x666F;&#x7684;&#x662F;&#x5C5E;&#x6027;&#x503C;&#xFF0C;&#x5BF9;&#x4E8E;&#x5728;ICS&#x4E2D;&#x6CA1;&#x6709;&#x8BF4;&#x660E;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;JDF&#x6587;&#x6863;&#x4E2D;&#x627E;&#x5230;&#x63CF;&#x8FF0;&#x4FE1;&#x606F;&#x3002;</p>
-<h2 id="15--mis-">1.5 <span id="MIS"> MIS </span></h2>
-<p>MIS - Management Information System&#xFF0C;&#x7BA1;&#x7406;&#x4FE1;&#x606F;&#x7CFB;&#x7EDF;&#xFF0C;&#x7531;&#x51B3;&#x7B56;&#x652F;&#x6301;&#x7CFB;&#x7EDF;&#x3001;&#x5DE5;&#x4E1A;&#x63A7;&#x5236;&#x7CFB;&#x7EDF;&#x3001;&#x529E;&#x516C;&#x81EA;&#x52A8;&#x5316;&#x7CFB;&#x7EDF;&#x4EE5;&#x53CA;&#x6570;&#x636E;&#x5E93;&#x3001;&#x6A21;&#x578B;&#x5E93;&#x3001;&#x65B9;&#x6CD5;&#x5E93;&#x3001;&#x77E5;&#x8BC6;&#x5E93;&#x548C;&#x4E0E;&#x5916;&#x754C;&#x4FE1;&#x606F;&#x4EA4;&#x6362;&#x63A5;&#x53E3;&#x7EC4;&#x6210;&#xFF0C;&#x4E3B;&#x8981;&#x4F5C;&#x7528;&#x662F;&#x6700;&#x5927;&#x9650;&#x5EA6;&#x5229;&#x7528;&#x8BA1;&#x7B97;&#x673A;&#x548C;&#x7F51;&#x7EDC;&#x6765;<strong>&#x52A0;&#x5F3A;&#x4F01;&#x4E1A;&#x7684;&#x4FE1;&#x606F;&#x7BA1;&#x7406;</strong>&#xFF0C;&#x63D0;&#x9AD8;&#x6574;&#x4F53;&#x6548;&#x76CA;&#x548C;&#x6548;&#x7387;&#x3002;&#x96C6;&#x6210;JDF&#x7684;MIS&#x7CFB;&#x7EDF;&#x80FD;&#x591F;&#x63D0;&#x4F9B;&#x4F5C;&#x4E1A;&#x6D41;&#x7A0B;&#x63A7;&#x5236;&#x3001;&#x751F;&#x4EA7;&#x63A7;&#x5236;&#x7B49;&#x529F;&#x80FD;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x4ECE;&#x4F5C;&#x4E1A;&#x63A5;&#x6536;&#x3001;&#x4F30;&#x4EF7;&#x3001;&#x62A5;&#x4EF7;&#x3001;&#x4F5C;&#x4E1A;&#x5B89;&#x6392;&#x3001;&#x4F5C;&#x4E1A;&#x5206;&#x6D3E;&#x548C;&#x6253;&#x6837;&#xFF0C;&#x6700;&#x540E;&#x5230;&#x5370;&#x5237;&#x751F;&#x4EA7;&#x7684;&#x5168;&#x8FC7;&#x7A0B;&#x7684;&#x4FE1;&#x606F;&#x7BA1;&#x7406;&#x3002;<a href="http://www.hp.com/hpinfo/newsroom/press_kits/2012/HPdrupa12/HP_Hiflex_MIS.pdf" target="_blank">Case : HP HIFLEX</a>.</p>
-<p>JDF&#x5DE5;&#x4F5C;&#x6D41;&#x4E2D;&#x76D1;&#x7763;&#x7CFB;&#x7EDF;&#x7EC4;&#x4EF6;&#x548C;&#x7CFB;&#x7EDF;&#x63A7;&#x5236;&#x4E4B;&#x95F4;&#x7684;&#x6240;&#x6709;&#x8FC7;&#x7A0B;&#x548C;&#x901A;&#x4FE1;</p>
-<h3 id="151-mis-jdf&#x8054;&#x7F51;&#x7ED3;&#x6784;">1.5.1 MIS-JDF&#x8054;&#x7F51;&#x7ED3;&#x6784;</h3>
-<h4 id="1511-&#x5206;&#x6563;&#x5F0F;&#x8054;&#x7F51;&#x67B6;&#x6784;">1.5.1.1 &#x5206;&#x6563;&#x5F0F;&#x8054;&#x7F51;&#x67B6;&#x6784;</h4>
-<p>JDF&#x6587;&#x4EF6;&#x4ECE;&#x4E00;&#x4E2A;&#x8BBE;&#x5907;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x53D1;&#x9001;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x8BBE;&#x5907;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;JDF&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7A0B;&#x5E8F;&#x4FDD;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E2D;&#x6216;&#x8005;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x3002;</p>
-<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/MIS_Distribute_Net.png" alt="MIS Distribute Net"> <br><center> <font color="gray"> MIS distribute net </font> </center><br></p>
-<h4 id="1521-&#x4E2D;&#x592E;&#x5F0F;&#x8054;&#x7F51;&#x67B6;&#x6784;">1.5.2.1 &#x4E2D;&#x592E;&#x5F0F;&#x8054;&#x7F51;&#x67B6;&#x6784;</h4>
-<h5 id="15211-&#x4EE5;jdf&#x4E3A;&#x4E2D;&#x5FC3;&#x7684;&#x8054;&#x7F51;&#x67B6;&#x6784;">1.5.2.1.1 &#x4EE5;JDF&#x4E3A;&#x4E2D;&#x5FC3;&#x7684;&#x8054;&#x7F51;&#x67B6;&#x6784;</h5>
-<p>&#x6240;&#x6709;&#x7684;JDF&#x4FE1;&#x606F;&#x5B58;&#x50A8;&#x4E8E;&#x4E2D;&#x592E;&#x670D;&#x52A1;&#x5668;&#x7684;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x8D1F;&#x8D23;&#x5404;&#x4E2A;&#x6D41;&#x7A0B;&#x7684;&#x7EDF;&#x4E00;&#x8C03;&#x5EA6;&#x7BA1;&#x7406;&#xFF0C;&#x8FD9;&#x53EF;&#x4EE5;&#x8BA9;JDF&#x6587;&#x4EF6;&#x53EF;&#x6301;&#x7EED;&#x7684;&#x53D7;&#x5230;&#x76D1;&#x89C6;&#xFF0C;&#x4EE5;&#x53CA;&#x9488;&#x5BF9;&#x54EA;&#x4E00;&#x6D41;&#x7A0B;&#x5728;&#x4F55;&#x65F6;&#x5BF9;JDF&#x6811;&#x67D0;&#x4E00;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x89C4;&#x5B9A;&#x89C4;&#x5219;&#x3002;</p>
-<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/MIS_JDF_Center_Net.png" alt="MIS JDF Center Net"> <br><center> <font color="gray"> MIS JDF center net </font> </center><br></p>
-<h5 id="15212-&#x4EE5;mis&#x4E3A;&#x4E2D;&#x5FC3;&#x7684;&#x8054;&#x7F51;&#x67B6;&#x6784;">1.5.2.1.2 &#x4EE5;MIS&#x4E3A;&#x4E2D;&#x5FC3;&#x7684;&#x8054;&#x7F51;&#x67B6;&#x6784;</h5>
-<p>MIS&#x62C5;&#x4EFB;&#x7EDF;&#x4E00;&#x8C03;&#x5EA6;&#x7684;&#x91CD;&#x8981;&#x89D2;&#x8272;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x63A7;&#x5236;&#x5168;&#x90E8;&#x7684;&#x4F5C;&#x4E1A;&#x8FC7;&#x7A0B;&#xFF0C;&#x5B8C;&#x6210;&#x63A7;&#x5236;&#x5668;&#x7684;&#x4EFB;&#x52A1;&#x3002;</p>
-<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/MIS_MIS_Center_Net.png" alt="MIS MIS Center Net"> <br><center> <font color="gray"> MIS center net </font> </center><br></p>
-<hr>
 <h1 id="2-jdf-development">2 JDF Development</h1>
 <table width="100%" align="center" text-align="center">
 <tr>
@@ -1962,238 +1822,69 @@ Note: &#x57FA;&#x4E8E;&#x6587;&#x4EF6;&#x7684;&#x534F;&#x8BAE;&#x4E0D;&#x652F;&#
 </li>
 </ol>
 <hr>
-<h1 id="appendix-a&#xFF1A;jdf-future---xjdf-"><span id="Appendix-A"> Appendix-A&#xFF1A;JDF future - XJDF </span></h1>
-<p>XJDF&#x662F;JDF&#x7684;&#x5168;&#x65B0;&#x5347;&#x7EA7;&#x534F;&#x8BAE;&#xFF0C;&#x540C;&#x6837;&#x7531;CIP4&#x7EF4;&#x62A4;&#xFF0C;&#x5B57;&#x6BCD;&#x201C;X&#x201D;&#x8868;&#x201C;Exchange&#x201D;&#xFF0C;&#x4EC5;&#x7528;&#x4E8E;&#x533A;&#x5206;JDF&#x3002;XJDF&#x53EF;&#x79F0;&#x4E4B;&#x4E3A;&#x201C;JDF2.0&#x201D;&#xFF0C;&#x662F;&#x66F4;&#x7CBE;&#x7B80;&#x3001;&#x9AD8;&#x6548;&#x7684;&#x4F5C;&#x4E1A;&#x4F20;&#x7968;&#x534F;&#x8BAE;&#xFF0C;&#x540C;&#x65F6;JDF&#x672C;&#x8EAB;&#x4E5F;&#x5728;&#x4FDD;&#x6301;&#x7740;&#x81EA;&#x5DF1;&#x7684;&#x53D1;&#x5C55;&#x8DEF;&#x7EBF;&#xFF0C;&#x76EE;&#x524D;&#x6700;&#x65B0;&#x7248;&#x672C;&#x4E3A;JDF1.6&#xFF08;2017.09.01&#x65E5;&#x63A8;&#x51FA;&#xFF09;&#x3002;&#x4ECD;&#x7136;&#x4FDD;&#x7559;JDF&#x5E76;&#x4FDD;&#x6301;JDF&#x66F4;&#x65B0;&#x7684;&#x539F;&#x56E0;&#x6709;&#x4E09;&#x70B9;&#xFF1A;&#x4E00;&#x662F;XJDF&#x662F;&#x5168;&#x65B0;&#x534F;&#x8BAE;&#xFF0C;&#x4E0D;&#x80FD;&#x505A;&#x5230;&#x5411;&#x4E0B;&#x517C;&#x5BB9;&#x3002;&#x4E8C;&#x662F;&#x8BB8;&#x591A;&#x5382;&#x5546;&#x5DF2;&#x7ECF;&#x5728;JDF&#x534F;&#x8BAE;&#x4E0A;&#x82B1;&#x8D39;&#x592A;&#x591A;&#x65F6;&#x95F4;&#x548C;&#x6210;&#x672C;&#xFF0C;&#x867D;&#x7136;&#x5F88;&#x590D;&#x6742;&#xFF0C;&#x4F46;&#x5DF2;&#x5F00;&#x53D1;&#x51FA;&#x6210;&#x719F;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x5728;&#x77ED;&#x65F6;&#x95F4;&#x5185;&#x5E76;&#x4E0D;&#x80FD;&#x517C;&#x5BB9;XJDF&#x3002;&#x4E09;&#x662F;XJDF&#x5E76;&#x672A;&#x7ECF;&#x8FC7;&#x5B9E;&#x9645;&#x6D4B;&#x8BD5;&#xFF0C;&#x5728;&#x4E00;&#x4E9B;&#x65B9;&#x9762;&#x5C1A;&#x4E0D;&#x6210;&#x719F;&#x3002;</p>
 <hr>
-<h1 id="appendix-b&#xFF1A;jdf-market-"><span id="Appendix-B"> Appendix-B&#xFF1A;JDF market </span></h1>
-<h2 id="b1-jdf-job-ticket">B.1 JDF Job Ticket</h2>
-<ul>
-<li><p>Job ticket standalone </p>
-<ul>
-<li>JDF&#x7F16;&#x8F91;&#x5668;&#x3002;&#x5355;&#x7EAF;&#x5730;&#x5177;&#x6709;&#x5BF9;JDF&#x4F5C;&#x4E1A;&#x4F20;&#x7968;&#x8FDB;&#x884C;&#x67E5;&#x770B;&#x3001;&#x68C0;&#x6D4B;&#x548C;&#x7F16;&#x5199;&#x529F;&#x80FD;</li>
-<li>&#x7535;&#x5B50;&#x5546;&#x52A1;&amp;Web&#x63A5;&#x53E3;&#x5DE5;&#x5177;&#x3002;&#x5177;&#x6709;&#x517C;&#x5BB9;JDF&#x7684;&#x7535;&#x5B50;&#x5546;&#x52A1;&#x529F;&#x80FD;</li>
-<li>&#x8D44;&#x4EA7;&#x8F6C;&#x79FB;&#x5DE5;&#x5177;&#x3002;&#x53EF;&#x5B9E;&#x73B0;PDF&#x6587;&#x4EF6;&#x540E;&#x989D;JDF&#x4F5C;&#x4E1A;&#x4F20;&#x7968;&#x7684;&#x7BA1;&#x7406;&#x5DE5;&#x4F5C;&#xFF0C;&#x5982;&#x6587;&#x4EF6;&#x7684;&#x8F93;&#x5165;&#x548C;&#x8F93;&#x51FA;&#x7BA1;&#x7406;&#x3002;</li>
-</ul>
-</li>
-<li><p>Job ticket embedded</p>
-<ul>
-<li>&#x6587;&#x6863;&#x521B;&#x5EFA;&amp;&#x7248;&#x9762;&#x8BBE;&#x8BA1;&#x8F6F;&#x4EF6;&#x3002;&#x53EF;&#x5B9E;&#x73B0;&#x4F5C;&#x4E1A;&#x6587;&#x6863;&#x7684;&#x5236;&#x4F5C;&#xFF08;&#x6216;&#x6587;&#x6863;&#x7684;&#x521B;&#x610F;&#x548C;&#x7F16;&#x8F91;&#x7B49;&#xFF09;&#xFF0C;&#x5E76;&#x5B58;&#x5728;&#x521B;&#x5EFA;&#x6587;&#x6863;&#x6216;&#x8F93;&#x51FA;&#x6587;&#x6863;&#x7684;&#x540C;&#x65F6;&#x521B;&#x5EFA;&#x76F8;&#x5173;&#x7684;JDF&#x4F5C;&#x4E1A;&#x4F20;&#x7968;</li>
-<li>&#x9884;&#x98DE;&#x5DE5;&#x5177;&#x3002;&#x80FD;&#x591F;&#x5BF9;PDF&#x6587;&#x4EF6;&#x505A;&#x5230;&#x9884;&#x98DE;&#x68C0;&#x67E5;&#xFF0C;&#x540C;&#x65F6;&#x80FD;&#x591F;&#x521B;&#x5EFA;&#x76F8;&#x5173;&#x7684;JDF&#x4F5C;&#x4E1A;&#x4F20;&#x7968;&#x3002;</li>
-<li>&#x8D44;&#x4EA7;&#x8F6C;&#x79FB;&#x670D;&#x52A1;&#x3002;&#x53EF;&#x5B9E;&#x73B0;PDF&#x6587;&#x4EF6;&#x548C;JDF&#x4F5C;&#x4E1A;&#x4F20;&#x7968;&#x7684;&#x7BA1;&#x7406;&#x5DE5;&#x4F5C;&#xFF0C;&#x5982;&#x6587;&#x4EF6;&#x7684;&#x8F93;&#x5165;&#x548C;&#x8F93;&#x51FA;&#x3002;</li>
-<li>&#x5176;&#x5B83;&#x7684;&#x4E00;&#x4E9B;&#x5185;&#x5D4C;&#x7684;&#x4F5C;&#x4E1A;&#x4F20;&#x7968;&#x8F6F;&#x4EF6;&#x3002;&#x5C06;&#x5C5E;&#x4E8E;JDF&#x4F5C;&#x4E1A;&#x4F20;&#x7968;&#x8F6F;&#x4EF6;&#x7684;&#x8303;&#x56F4;&#x53C8;&#x4E0D;&#x5177;&#x5907;&#x4EE5;&#x524D;&#x529F;&#x80FD;&#x7684;&#x8F6F;&#x4EF6;&#x90FD;&#x5F52;&#x5C5E;&#x5230;&#x8FD9;&#x4E00;&#x7C7B;&#x578B;&#x3002;</li>
-</ul>
-</li>
-</ul>
-<h2 id="b2-mis-jdf-system">B.2 MIS-JDF system</h2>
-<ul>
-<li>&#x96C6;&#x6210;&#x7684;JDF MIS&#x7CFB;&#x7EDF;&#x662F;&#x4E00;&#x79CD;&#x529F;&#x80FD;&#x5F3A;&#x5927;&#x7684;MIS&#x7CFB;&#x7EDF;&#xFF0C;&#x80FD;&#x591F;&#x63D0;&#x4F9B;&#x4F5C;&#x4E1A;&#x6D41;&#x7A0B;&#x63A7;&#x5236;&#x3001;&#x751F;&#x4EA7;&#x63A7;&#x5236;&#x548C;&#x5E38;&#x89C4;&#x63A7;&#x5236;&#x7684;MIS&#x529F;&#x80FD;&#x7B49;&#x4E30;&#x5BCC;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5177;&#x4F53;&#x6765;&#x8BF4;&#xFF0C;&#x4ED6;&#x53EF;&#x80FD;&#x5B9E;&#x73B0;&#x4ECE;&#x4F5C;&#x4E1A;&#x63A5;&#x6536;&#x3001;&#x4F30;&#x4EF7;&#x3001;&#x62A5;&#x4EF7;&#x3001;&#x4F5C;&#x4E1A;&#x5B89;&#x6392;&#x3001;&#x4F5C;&#x4E1A;&#x5206;&#x6D3E;&#x548C;&#x6253;&#x6837;&#xFF0C;&#x6700;&#x540E;&#x5230;&#x5370;&#x5237;&#x751F;&#x4EA7;&#x7684;&#x5168;&#x8FC7;&#x7A0B;&#x7684;&#x4FE1;&#x606F;&#x7BA1;&#x7406;&#x3002;&#x4F8B;&#x5982;HIFLEX MIS&#x3001;Prineet Prinance&#x3002;</li>
-<li>&#x7BA1;&#x7406;&#x65B9;&#x9762;&#x7684;JDF MIS&#x7CFB;&#x7EDF;&#x548C;&#x751F;&#x4EA7;&#x65B9;&#x9762;&#x7684;JDF MIS&#x7CFB;&#x7EDF;&#x548C;&#x751F;&#x4EA7;&#x65B9;&#x9762;&#x7684;JDF MIS&#x7CFB;&#x7EDF;&#x662F;&#x5206;&#x522B;&#x4ECE;&#x529F;&#x80FD;&#x7684;&#x4E24;&#x4E2A;&#x65B9;&#x9762;&#x6765;&#x5212;&#x5206;&#x5E02;&#x573A;&#x3002;&#x7BA1;&#x7406;&#x65B9;&#x9762;&#x7684;JDF MIS&#x7CFB;&#x7EDF;&#x4E3B;&#x8981;&#x662F;&#x80FD;&#x5B9E;&#x73B0;&#x5728;&#x4F5C;&#x4E1A;&#x7BA1;&#x7406;&#x6216;&#x5BA2;&#x6237;&#x5173;&#x7CFB;&#x7BA1;&#x7406;&#x65B9;&#x9762;&#x7684;&#x4FE1;&#x606F;&#x7BA1;&#x7406;&#x3002;&#x5B83;&#x4EEC;&#x53EF;&#x80FD;&#x5B9E;&#x73B0;&#x4E0B;&#x9762;&#x7684;&#x4E09;&#x79CD;&#x529F;&#x80FD;&#x7684;&#x4E00;&#x79CD;&#x3002;<ul>
-<li>&#x4F30;&#x4EF7;/&#x62A5;&#x4EF7;&#x80FD;&#x5B9E;&#x73B0;&#x5BF9;&#x8BA2;&#x5355;&#x8FDB;&#x884C;&#x4F30;&#x4EF7;&#x4E0E;&#x62A5;&#x4EF7;&#x5904;&#x7406;</li>
-<li>&#x8C03;&#x5EA6;&#x3002;&#x80FD;&#x6839;&#x636E;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x5B9E;&#x73B0;&#x5BF9;&#x4F5C;&#x4E1A;&#x7684;&#x826F;&#x597D;&#x751F;&#x4EA7;&#x8C03;&#x5EA6;</li>
-<li>&#x5BA2;&#x6237;&#x5173;&#x7CFB;&#x7BA1;&#x7406;&#xFF08;CRM&#xFF09;/&#x9500;&#x552E;&#x3002;&#x80FD;&#x5B9E;&#x73B0;&#x5BF9;&#x5BA2;&#x6237;&#x5173;&#x7CFB;&#x7BA1;&#x7406;&#x548C;&#x5546;&#x4E1A;&#x7BA1;&#x7406;&#xFF0C;&#x5982;&#x5BA2;&#x6237;&#x6570;&#x636E;&#x7BA1;&#x7406;&#x3001;&#x4F9B;&#x8D27;&#x5546;&#x6570;&#x636E;&#x7BA1;&#x7406;&#x548C;&#x4EA4;&#x8D27;&#x6E05;&#x5355;&#x7BA1;&#x7406;&#x7B49;&#x3002;</li>
-</ul>
-</li>
-<li>&#x751F;&#x4EA7;&#x65B9;&#x9762;&#x7684;JDF MIS&#x7CFB;&#x7EDF;&#x4E3B;&#x8981;&#x662F;&#x80FD;&#x5B9E;&#x73B0;&#x5BF9;&#x751F;&#x4EA7;&#x8FC7;&#x7A0B;&#x7684;&#x63A7;&#x5236;&#x4E0E;&#x8DDF;&#x8E2A;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x3002;&#x80FD;&#x5B9E;&#x73B0;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x94FE;&#x7684;&#x5B9A;&#x4E49;&#x4E0E;&#x8DDF;&#x8E2A;&#x751F;&#x4EA7;&#x63A7;&#x5236;/&#x4F5C;&#x4E1A;&#x8DDF;&#x8E2A;&#x3002;&#x80FD;&#x901A;&#x8FC7;JDF&#x4F5C;&#x4E1A;&#x4F20;&#x7968;&#x5BF9;&#x751F;&#x4EA7;&#x8FDB;&#x884C;&#x63A7;&#x5236;&#xFF0C;&#x5E76;&#x5B9E;&#x65F6;&#x53CD;&#x9988;&#x751F;&#x4EA7;&#x60C5;&#x51B5;&#x3002;</li>
-</ul>
-<h2 id="b3-jdf-compatible-devices">B.3 JDF compatible devices</h2>
-<p>&#x8BE5;&#x5E02;&#x573A;&#x5206;&#x7C7B;&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x6240;&#x6709;&#x517C;&#x5BB9;JDF&#x7684;&#x751F;&#x4EA7;&#x8BBE;&#x5907;&#xFF0C;&#x76EE;&#x524D;&#x7684;JDF&#x4EA7;&#x54C1;&#x5DF2;&#x7ECF;&#x8986;&#x76D6;&#x4E86;&#x5370;&#x524D;&#x3001;&#x5370;&#x5237;&#x3001;&#x5370;&#x540E;&#x3002;&#x5BF9;&#x4E8E;&#x5370;&#x524D;&#xFF0C;&#x6839;&#x636E;&#x73B0;&#x6709;&#x7684;JDF&#x4EA7;&#x54C1;&#x5DF2;&#x7ECF;&#x80FD;&#x5B9E;&#x73B0;&#x4E0B;&#x9762;&#x7684;&#x529F;&#x80FD;&#x7C7B;&#x522B;&#xFF1A;
-&#x5370;&#x524D;&#x90E8;&#x95E8;&#x63A7;&#x5236;&#x3001;&#x6253;&#x6837;&#x3001;&#x5927;&#x5E45;&#x9762;&#x6253;&#x5370;&#x673A;&#x3001;&#x80F6;&#x7247;&#x8F93;&#x51FA;&#x3001;CTP&#x3001;&#x5370;&#x524D;&#x5DE5;&#x4F5C;&#x4E2D;&#x5FC3;&#x6216;&#x8F6F;&#x4EF6;&#x3001;&#x62FC;&#x5927;&#x7248;&#x3001;&#x7248;&#x9762;&#x8BBE;&#x8BA1;&#x3001;&#x9884;&#x98DE;&#x3001;RIP&#x3001;&#x6570;&#x5B57;&#x5370;&#x5237;&#x3001;&#x8F6F;&#x6253;&#x6837;&#x548C;&#x5176;&#x5B83;&#x517C;&#x5BB9;JDF&#x7684;&#x5370;&#x524D;&#x8BBE;&#x5907;&#x3002;
-&#x5BF9;&#x4E8E;&#x5370;&#x5237;&#xFF0C;&#x6839;&#x636E;&#x73B0;&#x6709;&#x7684;JDF&#x4EA7;&#x54C1;&#x5DF2;&#x7ECF;&#x80FD;&#x5B9E;&#x73B0;&#x4E0B;&#x9762;&#x7684;&#x529F;&#x80FD;&#x7C7B;&#x522B;&#xFF1A;
-&#x5370;&#x5237;&#x8F66;&#x95F4;&#x7684;&#x90E8;&#x95E8;&#x63A7;&#x5236;&#x3001;&#x6CB9;&#x58A8;&#x7CFB;&#x7EDF;&#x3001;&#x989C;&#x8272;&#x63A7;&#x5236;&#x3001;&#x6570;&#x5B57;&#x5370;&#x5237;&#x3001;&#x5377;&#x7B52;&#x80F6;&#x5370;&#x3001;&#x5355;&#x5F20;&#x7EB8;&#x80F6;&#x5370;&#x548C;&#x5176;&#x5B83;&#x517C;&#x5BB9;JDF&#x7684;&#x5370;&#x5237;&#x8BBE;&#x5907;&#x3002;
-&#x5BF9;&#x4E8E;&#x5370;&#x540E;&#xFF0C;&#x6839;&#x636E;&#x73B0;&#x6709;&#x7684;JDF&#x4EA7;&#x54C1;&#x5DF2;&#x7ECF;&#x80FD;&#x5B9E;&#x73B0;&#x4E0B;&#x9762;&#x7684;&#x529F;&#x80FD;&#x7C7B;&#x522B;&#xFF1A;
-&#x5370;&#x540E;&#x90E8;&#x95E8;&#x63A7;&#x5236;&#x3001;&#x88C1;&#x5207;&#x3001;&#x914D;&#x5E16;&#x3001;&#x6298;&#x9875;&#x3001;&#x88C5;&#x8BA2;&#x548C;&#x5176;&#x4ED6;&#x517C;&#x5BB9;JDF&#x7684;&#x5370;&#x540E;&#x8BBE;&#x5907;&#x3002;</p>
-<h2 id="b4-jdf-tools">B.4 JDF tools</h2>
-<ul>
-<li>Development tools<ul>
-<li>IDE/SDK, Provide programming env for JDF development</li>
-<li>SOAP/HTTP, Provide JMF env for JDF production, such as JMF creation, JMF send and recive etc.</li>
-</ul>
-</li>
-<li>Test tools<ul>
-<li>Validity test, Provide validity test for JDF file under JDF scheme that provide by CIP4.</li>
-<li>ICS test, Provide ICS test for JDF file under CIP4 ICS</li>
-</ul>
-</li>
-</ul>
-<h2 id="b5-jdf-serve">B.5 JDF Serve</h2>
-<p>JDF consulting and training serve etc.</p>
-<hr>
-<hr>
-<h1 id="appendix-d&#xFF1A;jdf-example-"><span id="Appendix-D"> Appendix-D&#xFF1A;JDF Example </span></h1>
-<h2 id="d1-resourcepoll-and-resourcelinkpoll">D.1 ResourcePoll and ResourceLinkPoll</h2>
-<p><code>
-</code></p>
-<h1 id="appendix-e&#xFF1A;printing-industry-terminology-"><span id="Appendix-E"> Appendix-E&#xFF1A;Printing Industry Terminology </span></h1>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Terminology</th>
-<th style="text-align:center">Chinese</th>
-<th style="text-align:center">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Binding</td>
-<td style="text-align:center">&#x88C5;&#x8BA2;</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">Saddle Stitching</td>
-<td style="text-align:center">&#x9A91;&#x9A6C;&#x9489;</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">Soft Cover</td>
-<td style="text-align:center">&#x8F6F;&#x9762;&#x5C01;&#x88C5;</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">Hard Cover</td>
-<td style="text-align:center">&#x7CBE;&#x88C5;&#x5C01;&#x88C5;</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">Bundle</td>
-<td style="text-align:center">&#x96C6;&#x88C5;</td>
-<td style="text-align:center">&#x5C06;&#x6210;&#x54C1;&#x5806;&#x53E0;&#x6216;&#x88C5;&#x7BB1;&#x7B49;&#x64CD;&#x4F5C;</td>
-</tr>
-<tr>
-<td style="text-align:center">Palletzing</td>
-<td style="text-align:center">&#x7801;&#x579B;</td>
-<td style="text-align:center">Bundle&#x7684;&#x65B9;&#x5F0F;&#x4E4B;&#x4E00;</td>
-</tr>
-<tr>
-<td style="text-align:center">Ink</td>
-<td style="text-align:center">&#x6CB9;&#x58A8;</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">Imposing</td>
-<td style="text-align:center">&#x62FC;&#x7248;</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">Printing</td>
-<td style="text-align:center">&#x5370;&#x5237;</td>
-<td style="text-align:center"></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h1 id="appendix-f&#xFF1A;cip4-software-license-"><span id="Appendix-F"> Appendix-F&#xFF1A;CIP4 software license </span></h1>
-<p>Copyright (c) 2001-2020 The International Cooperation for the Integration of Processes in Prepress, Press and Postpress (CIP4). All rights reserved.</p>
-<p>PREAMBLE
-This software license applies to all source code and compiled software products made available by International Cooperation for the Integration of Process in Prepress, Press and Postpress (CIP4) association, to include, but not limited to the C++ and Java Application Programming Interfaces (APIs), CheckJDF application, JDF Schema, JDF Editor, Online Documentation for C++ API, the Alces application, the Elk application, and any part or component thereof (hereinafter &quot;CIP4 Software&quot;).</p>
-<p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
-<p>TERMS AND CONDITIONS FOR USE AND REDISTRIBUTIONS OF THE CIP4 SOFTWARE</p>
-<p>1 USE AND REDISTRIBUTION
-1.1 The CIP4 Software may only be copied, modified, sublicensed or distributed as expressly provided under this license. Any other use or attempt to otherwise copy, modify, sublicense or distribute the CIP4 Software is void and will automatically terminate licensee&apos;s rights under this license.</p>
-<p>1.2 Redistributions of source code must retain this CIP4 Software License and the following copyright notice:</p>
-<p>&quot;Copyright (c) 2001-2006 The International Cooperation for the Integration of Processes in Prepress, Press and Postpress (CIP4). All rights reserved.&quot;</p>
-<p>1.3 Redistributions in binary form, with or without modifications, including compiled applications, must reproduce this CIP4 Software License including the above copyright notice in the documentation and other materials provided with the distribution. Redistributions containing modifications must include a prominent modification notice stating that modifications have been made to the original CIP4 Software.</p>
-<p>1.4 Any company that sells, markets, or attempts to sell software development kits or any development tools that include the redistribution of CIP4 Software, in whole or in part, must make clear which files, applications or components are derived from CIP4 sources and the license provided by such companies to their customers, suppliers, and business partners must include this License in whole. Such customer, suppliers, and business partners must acknowledge the terms of this License to the company providing said software development kits or development tools and are subject to all terms herein, including the membership requirement in paragraph 4 below.</p>
-<p>2 DISCLAIMER OF WARRANTY
-Licensee of the CIP4 Software expressly acknowledges and agrees that any use of the CIP4 Software is at the sole and entire risk of the user. The CIP4 Software is provided &quot;as is&quot; without warranty, upgrades or support of any kind. CIP4 expressly disclaims any expressed or implied warranties, including, but not limited to, the implied warranties of merchantability, fitness for a particular purpose, and non-infringement of third party rights. CIP4 does not warrant that the operation of the CIP4 Software will be error-free or that defects in the CIP4 Software will be corrected.</p>
-<p>3 LIMITATION OF LIABILITY
-To the extent not prohibited by law, in no event shall CIP4, CIP4 trustees, directors, officers or employees, or contributors to the CIP4 Software be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of the CIP4 Software, even if advised of the possibility of such damage.</p>
-<p>4 CIP4 MEMBERSHIP REQUIREMENT</p>
-<p>4.1 Any company that sells, markets or attempts to sell redistributed CIP4 Software for profit or fee, or distributed as a free component of any commercial system or package, shall maintain either Full or Partner CIP4 membership status and be a member in good standing. Any such company that fails to maintain its Full or Partner membership status must cease selling, marketing, attempting to sell any products that redistribute CIP4 Software, in whole or in part, and may only provide fixes, updates, or upgrades to customers with installations if no portion of the updates, fixes or upgrades make use of the CIP4 Software.</p>
-<p>4.2 Any affiliate company using a different name than the member that participates in the selling, marketing or attempts to sell redistributed CIP4 Software for profit or fee must either maintain its own CIP4 Full or Partner status membership as provided under paragraph 4.1 above, or the parent company, if it holds majority ownership of both companies, shall maintain CIP4 Full or Partner status membership as provided under paragraph 4.1 above.</p>
-<p>4.3 Distributors, resellers, and integrators that sell products that include redistributed CIP4 Software, in whole or in part, that are produced by a third party are exempt from the membership requirement in paragraph 4.1 above, provided that they do not provide any value-added programming or modifications to said products. Any distributor, reseller, or integrator that sell products that include redistributed CIP4 Software, in whole or in part, that are produced by a third party are NOT exempt from the membership requirement in paragraph 4.1 above if they make any value-added modifications or alter the said products via programming or any method that changes the functionality of the CIP4 Software. Companies that are developing and testing products that make use of CIP4 Software, in whole or in part, to include beta and alpha testing where testing companies have not paid or committed to pay anything for the product being tested and under development are also exempt from the membership requirements in paragraph 4.1 above until they begin to sell, market or attempt to sell such products.</p>
-<p>5 END USER DOCUMENTATION
-The end-user documentation included with the redistribution containing CIP4 Software, if any, must include the following acknowledgment:</p>
-<p>&quot;This product includes software developed by the The International Cooperation for the Integration of Processes in Prepress, Press and Postpress (www.cip4.org)&quot;</p>
-<p>Alternately, this acknowledgment may appear in the software itself, if and wherever such third-party acknowledgments normally appear.</p>
-<p>6 USE OF CIP4 NAMES, TRADEMARKS, LOGOS, ICONS
-6.1 The names &quot;CIP4&quot; and &quot;The International Cooperation for the Integration of Processes in Prepress, Press and Postpress&quot; may be used by Full or Partner CIP4 members in good standing to promote products that are JDF-enabled.</p>
-<p>6.2 This license does not grant any rights to use CIP4 and JDF trademarks, trade names 
-logos, and icons. The use of and JDF trademarks, trade names logos, and icons must be in accordance with CIP4&apos;s Guidelines for Logo Usage as published on the CIP4 website.</p>
-<p>6.3 CIP4 may audit the use by any licensee of the CIP4 Software, trademarks, logos, and icons to determine compliance with these terms and conditions.</p>
-<p>7 LICENSE VERSIONS
-CIP4 retains the right to modify the terms applicable to the CIP4 Software under this CIP4 License. CIP4 may at any given time publish revised and/or new versions of this CIP4 License. Each version will be given a distinguishing version number and CIP4 Software that has been published under a particular version of this License may be used either under the terms of the original version or any subsequent version of this License.</p>
-<p>This software consists of voluntary contributions made by many individuals on behalf of the The International Cooperation for the Integration of Processes in Prepress, Press and Postpress and was originally based on software copyright (c) 1999-2001, Heidelberger Druckmaschinen AG and copyright (c) 1999-2001, Agfa-Gevaert N.V.</p>
-<p>For more information on The International Cooperation for the Integration of Processes in Prepress, Press and Postpress, please see <a href="http://www.cip4.org" target="_blank">http://www.cip4.org</a>.</p>
-<h3 id="122-coordinate-systems">1.2.2 Coordinate Systems</h3>
 <p>TBD</p>
-<p>JDF&#x8282;&#x70B9;&#x5D4C;&#x5957; &#x4EE5;&#x8868;&#x8FBE; &#x5B8C;&#x6574;&#x7684;JDF&#x4F5C;&#x4E1A;&#x7EC4;&#x6210;</p>
-<jdf id="N1" jobid="job1" jobpartid="Part1">
-    <jdf id="N2" jobpartid="Part2">
-    <jdf id="N3" jobpartid="Part3">
-    <jdf id="N4" jobpartid="Part4">
-</jdf>
-
-<p>Elements of JDF Node</p>
-<h1 id="auditpool">AuditPool</h1>
-<p>&#x5BA1;&#x8BA1;&#x6C60;&#x8282;&#x70B9;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;&#x7A0B;&#x5E8F;&#x65E5;&#x5FD7;&#xFF0C;&#x7528;&#x4E8E;&#x8BB0;&#x5F55;&#x5DE5;&#x4F5C;&#x6D41;&#x4E2D;&#x7684;&#x4E8B;&#x4EF6;&#xFF08;&#x5982;&#x8D44;&#x6E90;&#x5229;&#x7528;&#x60C5;&#x51B5;&#x7B49;&#xFF09;&#x548C;&#x53D1;&#x751F;&#x7684;&#x65F6;&#x95F4;&#x7B49;&#x4FE1;&#x606F;&#x3002;</p>
-<p>&#x5BA1;&#x8BA1;&#x8282;&#x70B9;&#x6709;&#xFF1A;
-    ResourceAudit </p>
-<pre><code>Created
-Deleted
-Modified
-
-Notification
-
-Merged
-Spawned
-
-ProcessesRun
-</code></pre><p>&#x4F8B;&#x5B50;1:</p>
-<auditpool>
-    <resourceaudit timestamp="2008-08-28T18:20:00Z">
-        <medialink actualamount="421" amount="400" usage="Input" rref="RLink">
-        <medialink amount="400" usage="Input" rref="RPrev">
-    </medialink></medialink></resourceaudit>
-</auditpool>
-
-
-<h1 id="customerinfo">CustomerInfo</h1>
-<p>Custromer + delivery address</p>
-<p>&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x7528;&#x6237;&#x4FE1;&#x606F;&#xFF0C;&#x5982;&#x7528;&#x6237;ID&#x3001;&#x7528;&#x6237;&#x4F5C;&#x4E1A;&#x540D;&#x3001;&#x7528;&#x6237;&#x8054;&#x7CFB;&#x65B9;&#x5F0F;&#x3001;&#x6240;&#x5C5E;&#x516C;&#x53F8;&#x7B49;&#x7B49;</p>
-<h1 id="node-info">Node Info</h1>
-<p>&#x901A;&#x7528;&#x7684;&#xFF0C;&#x72EC;&#x7ACB;&#x4E8E;process&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5305;&#x542B;&#x4F5C;&#x4E1A;&#x4F18;&#x5148;&#x7EA7;&#x3001;&#x4F5C;&#x4E1A;&#x8BA1;&#x5212;&#xFF08;&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#x3001;&#x7ED3;&#x675F;&#x65F6;&#x95F4;&#xFF09;&#x7B49;&#x4FE1;&#x606F;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x8BE5;&#x8282;&#x70B9;&#x4E2D;&#x5305;&#x542B;JMF&#x7ED3;&#x70B9;&#xFF08;&#x6CE8;&#xFF1A;&#x5728;Base ICS&#x4E2D;&#x53EF;&#x4EE5;&#x4E0D;&#x5305;&#x542B;JMF&#x8282;&#x70B9;&#xFF09;</p>
-<p>Scheduling
-Administative data
-message recipients</p>
-<hr>
-<p>JDF Nodes Combinations JDF&#x8282;&#x70B9;&#x7684;&#x7EC4;&#x5408;</p>
-<p>&#x4E0D;&#x8981;&#x4E3A;&#x5DF2;&#x77E5;Precesses&#x7684;&#x6392;&#x5217;&#x91CD;&#x65B0;&#x521B;&#x5EFA;&#x65B0;&#x7684;Process Type</p>
-<p>&#x5C06;&#x591A;&#x4E2A;&#x5B9A;&#x4E49;&#x7684;process&#x7EC4;&#x5408;&#x6210;&#x4E00;&#x4E2A;process&#xFF0C;&#x5982;&#xFF1A;inline finishing = printing + folding + cutting</p>
-<p>&#x4E24;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x7EC4;&#x5408;&#x8282;&#x70B9;&#x53EF;&#x9009;&#xFF1A;</p>
+<h2 id="13--jmf-">1.3 <span id="JMF"> JMF </span></h2>
+<p>JMF - Job Messaging Format&#xFF0C;&#x4F5C;&#x4E1A;&#x6D88;&#x606F;&#x683C;&#x5F0F;&#xFF0C;&#x57FA;&#x4E8E;XML&#x6280;&#x672F;&#xFF0C;&#x4EE5;HTTP(s)&#x4E3A;&#x901A;&#x4FE1;&#x8F7D;&#x4F53;&#xFF0C;&#x7528;&#x4E8E;&#x5DE5;&#x4F5C;&#x6D41;&#x8282;&#x70B9;&#x7684;&#x4FE1;&#x606F;&#x4EA4;&#x4E92;&#x3002;&#x8868;&#x73B0;&#x4E3A;&#x7CFB;&#x7EDF;&#x81EA;&#x4E3E;&#x548C;&#x8BBE;&#x7F6E;&#x3001;&#x4F5C;&#x4E1A;&#x548C;&#x8BBE;&#x5907;&#x7684;&#x52A8;&#x6001;&#x72B6;&#x6001;&#x3001;&#x8D44;&#x6E90;&#x5229;&#x7528;&#x548C;&#x9519;&#x8BEF;&#x8DDF;&#x8E2A;&#x3001;&#x7BA1;&#x9053;&#x63A7;&#x5236;&#x3001;&#x8BBE;&#x5907;&#x8BBE;&#x7F6E;&#x548C;&#x4F5C;&#x4E1A;&#x53D8;&#x66F4;&#x3001;&#x961F;&#x5217;&#x63A7;&#x5236;&#x548C;&#x4F5C;&#x4E1A;&#x63D0;&#x4EA4;&#x3001;&#x8BBE;&#x5907;&#x529F;&#x80FD;&#x63CF;&#x8FF0;&#x7B49;&#x3002;</p>
+<h3 id="131-jmf-family">1.3.1 JMF Family</h3>
+<h4 id="1311-query">1.3.1.1 Query</h4>
+<p>Query&#x7528;&#x4E8E;&#x5411;&#x670D;&#x52A1;&#x5668;&#xFF08;&#x6CDB;&#x6307;&#x6D88;&#x606F;&#x88AB;&#x52A8;&#x63A5;&#x6536;&#x65B9;&#xFF0C;&#x5982;Device&#xFF0C;&#x4E0B;&#x540C;&#xFF09;&#x67E5;&#x8BE2;&#x6D88;&#x606F;&#xFF0C;&#x5E76;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;Response&#x54CD;&#x5E94;&#x3002;&#x5982;&#x679C;Query&#x6D88;&#x606F;&#x5305;&#x542B;Subscription&#x8BA2;&#x9605;&#xFF08;&#x79F0;&#x4E4B;&#x4E3A;&#x53EF;&#x6301;&#x7EED;&#x901A;&#x9053;&#xFF09;&#xFF0C;&#x5219;&#x670D;&#x52A1;&#x5668;&#x5728;&#x6240;&#x8BA2;&#x9605;&#x7684;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x65F6;&#x5C06;&#x5411;&#x6240;&#x8BA2;&#x9605;&#x7684;URL&#x53D1;&#x9001;Signal&#x6D88;&#x606F;&#xFF0C;&#x76F4;&#x5230;&#x670D;&#x52A1;&#x5668;&#x6536;&#x5230;StopPersistentChannel&#x7684;Command&#x4E3A;&#x6B62;&#xFF08;&#x53EF;&#x6301;&#x7EED;&#x901A;&#x9053;&#x5173;&#x95ED;&#xFF09;&#x3002;</p>
+<p>&#x5728;JMF-ICS-1.5&#x4E2D;&#xFF0C;Query&#x5305;&#x542B;&#x7684;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x6709;&#xFF1A;KnownDevices&#x3001;KnownMessages&#x3001;KnownSubscriptions&#x3001;QueueStatus&#x3001;SubmissionMethods</p>
+<h4 id="1312-command">1.3.1.2 Command</h4>
+<p>Command&#x7528;&#x4E8E;&#x5411;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x9001;&#x6307;&#x4EE4;&#x4EE5;&#x6539;&#x53D8;&#x5176;&#x72B6;&#x6001;&#xFF0C;&#x5E76;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;Response&#x54CD;&#x5E94;&#x3002;&#x5982;&#x679C;Command&#x6D88;&#x606F;&#x5305;&#x542B;AcknowledgeURL&#x5C5E;&#x6027;&#xFF0C;&#x5219;Response&#x6D88;&#x606F;&#x9700;&#x5305;&#x542B;&apos;Acknowledge=true/false&apos;&#x5C5E;&#x6027;&#xFF0C;&#x5982;&#x679C;&apos;Acknowledge=true&apos;&#x8868;&#x793A;controller&#x652F;&#x6301;Acknowledge&#xFF0C;&#x5728;&#x6307;&#x4EE4;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x540E;&#x5C06;&#x5411;AcknowledgeURL&#x53D1;&#x9001;Acknowledge&#x6D88;&#x606F;&#x4EE5;&#x6C47;&#x62A5;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x3002;</p>
+<h4 id="1313-signal">1.3.1.3 Signal</h4>
+<p>Signal&#x662F;&#x5355;&#x5411;&#x6D88;&#x606F;&#xFF0C;&#x7528;&#x4E8E;&#x670D;&#x52A1;&#x5668;&#x81EA;&#x52A8;&#x5E7F;&#x64AD;&#x72B6;&#x6001;&#x53D8;&#x5316;&#x3002;&#x670D;&#x52A1;&#x5668;&#x4EA7;&#x751F;Signal&#x6D88;&#x606F;&#x7684;&#x6761;&#x4EF6;&#x6709;&#x4E09;&#x79CD;&#xFF1A;&#x5BA2;&#x6237;&#x7AEF;&#xFF08;&#x6CDB;&#x6307;&#x4E0A;&#x6E38;&#x63A7;&#x5236;&#x5668;&#xFF0C;&#x5982;Agent&#x3001;Controller&#xFF0C;&#x4E0B;&#x540C;&#xFF09;&#x4F7F;&#x7528;&#x5305;&#x542B;Subscription&#x7684;Query&#x6D88;&#x606F;&#x8FDB;&#x884C;&#x4E86;&#x67E5;&#x8BE2;&#x3001;&#x670D;&#x52A1;&#x5668;&#x63A5;&#x6536;&#x7684;JDF&#x8282;&#x70B9;&#x4E2D;&#x7684;NodeInfo&#x8282;&#x70B9;&#x4E2D;&#x5305;&#x542B;&#x542B;&#x6709;Subscription&#x7684;Query&#x6D88;&#x606F;&#x3001;Hard-Wired&#x3002;Hard-Wired&#x7684;&#x65B9;&#x5F0F;&#x5C5E;&#x4E8E;&#x4E3B;&#x52A8;&#x4FE1;&#x53F7;&#x53D1;&#x9001;&#x65B9;&#x5F0F;&#xFF0C;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#x5982;&#x9884;&#x8BBE;&#xFF08;&#x901A;&#x8FC7;&#x6587;&#x4EF6;&#x6216;&#x5176;&#x5B83;&#x65B9;&#x5F0F;&#xFF09;&#x4E00;&#x4E2A;URL&#x5217;&#x8868;&#xFF0C;&#x5F53;&#x8BBE;&#x5907;&#x5F00;&#x673A;&#x6216;&#x9996;&#x6B21;&#x8FDE;&#x63A5;&#x5230;&#x7F51;&#x7EDC;&#x65F6;&#x5E7F;&#x64AD;&#x4FE1;&#x53F7;&#x4EE5;&#x544A;&#x77E5;&#x8BBE;&#x5907;&#x4FE1;&#x606F;&#x548C;&#x6240;&#x80FD;&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;&#x7B49;&#x3002;</p>
+<blockquote>
+<p><strong>[info] Note</strong></p>
+<p>Signal&#x57FA;&#x4E8E;&#x5C5E;&#x4E8E;HTTP - C/S&#x6A21;&#x578B;&#xFF0C;&#x672C;&#x8D28;&#x4E0A;&#x4E5F;&#x662F;&#x53CC;&#x5411;&#x6D88;&#x606F;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x9001;&#x65F6;&#x53EF;&#x8BBE;&#x7F6E;ChannelMode&#x5C5E;&#x6027;&#x503C;&#x4E3A;Reliable&#xFF08;&#x5373;&#x53EF;&#x9760;&#x4FE1;&#x53F7;&#xFF09;&#xFF0C;&#x6B64;&#x65F6;&#x5BA2;&#x6237;&#x7AEF;&#x5FC5;&#x987B;&#x8FD4;&#x56DE;Response&#xFF0C;&#x4F46;&#x65E0;&#x8BBA;&#x5982;&#x4F55;&#x670D;&#x52A1;&#x5668;&#x90FD;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x5FFD;&#x7565;&#x54CD;&#x5E94;&#x3002;</p>
+</blockquote>
+<h4 id="1314-response">1.3.1.4 Response</h4>
+<p>Response&#x7528;&#x4E8E;&#x670D;&#x52A1;&#x5668;&#x540C;&#x6B65;&#x54CD;&#x5E94;Query&#x548C;Command&#x6D88;&#x606F;&#xFF0C;&#x6216;&#x7528;&#x4E8E;&#x5BA2;&#x6237;&#x7AEF;&#x54CD;&#x5E94;&#x670D;&#x52A1;&#x5668;&#x7684;Signal&#x6D88;&#x606F;&#xFF0C;&#x4EE5;&#x8868;&#x660E;&#x6D88;&#x606F;&#x5DF2;&#x63A5;&#x6536;&#x5E76;&#x7FFB;&#x8BD1;&#x3002;&#x5F53;Response&#x7684;ReturnCode&#x5C5E;&#x6027;&#x5927;&#x4E8E;0&#x65F6;&#xFF0C;Response&#x5E94;&#x8BE5;&#x5305;&#x542B;Notification&#x5143;&#x7D20;&#x4EE5;&#x63CF;&#x8FF0;&#x8FD4;&#x56DE;&#x72B6;&#x6001;&#x3002;Response&#x7684;refID&#x5C5E;&#x6027;&#x503C;&#x7B49;&#x540C;&#x4E8E;Query&#x6216;Command&#x4E2D;&#x7684;ID&#x5C5E;&#x6027;&#x503C;&#x3002;</p>
+<h4 id="1315-acknowledge">1.3.1.5 Acknowledge</h4>
+<p>Acknowledge&#x662F;&#x670D;&#x52A1;&#x5668;&#x5BF9;&#x5BA2;&#x6237;&#x7AEF;&#x7684;Command&#x6216;Query&#x6D88;&#x606F;&#x7684;&#x5F02;&#x6B65;&#x5355;&#x5411;&#x5E94;&#x7B54;&#xFF0C;&#x5176;refID&#x5C5E;&#x6027;&#x503C;&#x4E3A;&#x53D1;&#x9001;&#x65B9;ID&#x503C;&#x3002;Acknowledge&#x4EC5;&#x5728;Command&#x6D88;&#x606F;&#x6307;&#x5B9A;AcknowledgeURL&#x5C5E;&#x6027;&#x6216;AcknowledgeFormat&#x548C;AcknowledgeTemplate&#x5C5E;&#x6027;&#xFF0C;&#x4E14;&#x670D;&#x52A1;&#x5668;&#x652F;&#x6301;&#x5E94;&#x7B54;&#x65F6;&#x624D;&#x4EA7;&#x751F;&#x3002;&#x5F53;&#x670D;&#x52A1;&#x5668;&#x6267;&#x884C;&#x4E00;&#x4E2A;Command&#x9700;&#x8981;&#x8F83;&#x957F;&#x65F6;&#x95F4;&#x65F6;&#xFF0C;&#x5148;&#x8FD4;&#x56DE;Response&#x54CD;&#x5E94;&#xFF0C;&#x7B49;&#x5F85;Command&#x6267;&#x884C;&#x5B8C;&#x6210;&#x518D;&#x8FD4;&#x56DE;Acknowledge&#x3002;</p>
+<h3 id="132-jmf-message-level">1.3.2 JMF Message Level</h3>
 <ol>
-<li>combined node &#xFF1A; &#x6240;&#x6709;&#x5185;&#x90E8;&#x63A5;&#x53E3;&#x88AB;&#x9690;&#x85CF;&#xFF0C;&#x5982; &#x667A;&#x80FD;&#x591A;&#x529F;&#x80FD;&#x8BBE;&#x5907;</li>
-<li>processGroup &#xFF1A; &#x5185;&#x90E8;&#x8282;&#x70B9;&#x53EF;&#x8BBF;&#x95EE;</li>
+<li>No messaging&#xFF1A;&#x4E0D;&#x4F7F;&#x7528;JMF&#xFF0C;JDF&#x53EF;&#x4EE5;&#x5728;&#x6BCF;&#x4E2A;&#x8FC7;&#x7A0B;&#x7ED3;&#x70B9;&#x5305;&#x542B;Audit&#x5143;&#x7D20;&#x4EE3;&#x66FF;JMF&#x6D88;&#x606F;&#x673A;&#x5236;&#x3002;</li>
+<li>Notification&#xFF1A;&#x652F;&#x6301;Notification&#x7684;&#x670D;&#x52A1;&#x5668;&#x901A;&#x8FC7;&#x53D1;&#x9001;Signal&#x6765;&#x63D0;&#x4F9B;&#x5355;&#x5411;&#x6D88;&#x606F;&#xFF0C;&#x901A;&#x77E5;&#x6D88;&#x606F;&#x5728;&#x5F00;&#x59CB;&#x548C;&#x5B8C;&#x6210;&#x4F5C;&#x4E1A;&#x4E2D;&#x7684;&#x67D0;&#x4E2A;&#x8FC7;&#x7A0B;&#x65F6;&#x901A;&#x77E5;&#x5BA2;&#x6237;&#x7AEF;&#x3002;&#x8BE5;&#x670D;&#x52A1;&#x5668;&#x53EF;&#x80FD;&#x8FD8;&#x63D0;&#x4F9B;&#x4E00;&#x4E9B;&#x9519;&#x8BEF;&#x60C5;&#x51B5;&#x7684;&#x901A;&#x77E5;&#x3002;</li>
+<li>Query Support&#xFF1A;&#x652F;&#x6301;Query&#x7684;&#x670D;&#x52A1;&#x5668;&#x901A;&#x8FC7;&#x4F20;&#x9012;&#x5F53;&#x524D;&#x7684;JobID&#x5C5E;&#x6027;&#x3001;&#x6392;&#x961F;&#x7684;JobID&#x5C5E;&#x6027;&#x6216;&#x5F53;&#x524D;&#x5DE5;&#x4F5C;&#x8FC7;&#x7A0B;&#x7684;&#x72B6;&#x6001;&#x6765;&#x5E94;&#x7B54;&#x5176;&#x5B83;&#x63A7;&#x5236;&#x5668;&#x7684;&#x8BE2;&#x95EE;&#x3002;</li>
+<li>Command support&#xFF1A;&#x8FD9;&#x79CD;&#x7B49;&#x7EA7;&#x4E3A;&#x670D;&#x52A1;&#x5668;&#x63D0;&#x4F9B;&#x4E86;&#x5904;&#x7406;&#x547D;&#x4EE4;&#x7684;&#x80FD;&#x529B;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x53EF;&#x4EE5;&#x63A5;&#x6536;&#x547D;&#x4EE4;&#xFF0C;&#x4F8B;&#x5982;&#x4E2D;&#x65AD;&#x5F53;&#x524D;&#x7684;&#x4F5C;&#x4E1A;&#x3001;&#x91CD;&#x542F;&#x4F5C;&#x4E1A;&#x6216;&#x8005;&#x6539;&#x53D8;&#x961F;&#x5217;&#x4E2D;&#x4F5C;&#x4E1A;&#x7684;&#x72B6;&#x6001;&#x3002;</li>
+<li>Submission support&#xFF1A;&#x670D;&#x52A1;&#x5668;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;HTTP POST&#x8BF7;&#x6C42;&#x6D88;&#x606F;&#x901A;&#x9053;&#x6765;&#x63A5;&#x6536;JDF&#x4F5C;&#x4E1A;&#xFF0C;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x901A;&#x9053;&#x5E94;&#x8BE5;&#x652F;&#x6301;MIME&#x3002;</li>
 </ol>
-<p>RunList&#x8D44;&#x6E90;
-&#x5B9A;&#x4E49;&#x4E00;&#x7EC4;&#x6587;&#x6863;&#x3001;&#x6307;&#x5B9A;&#x6587;&#x4EF6;&#x4F4D;&#x7F6E;&#x3001;&#x5B9A;&#x4E49;&#x62FC;&#x7248;&#x7684;&#x7269;&#x7406;&#x9875;&#x7801;</p>
-<p>&#x3001;PageList&#x8D44;&#x6E90;</p>
-<p>&#x5B9A;&#x4E49;&#x9875;&#x9762;&#x7684;&#x539F;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x53EF;&#x8BFB;&#x7684;&#x9875;&#x7801;&#x3001;&#x989C;&#x8272;&#x4FE1;&#x606F;&#x7B49;&#xFF0C;&#x53EF;&#x80FD;&#x4ECE;Runlist&#x4E2D;&#x5F15;&#x7528;</p>
-<h1 id="jdf-spawning-and-merging">JDF Spawning and merging</h1>
-<p>&#x5C06;&#x4E00;&#x4E2A;&#x4F5C;&#x4E1A;&#x4E2D;&#x7684;&#x67D0;&#x4E2A;&#x90E8;&#x5206;&#x5206;&#x79BB;(spawn)&#x4EE5;&#x72EC;&#x7ACB;/&#x5E76;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x5B8C;&#x6210;&#x540E;&#x518D;&#x5408;&#x5E76;&#x56DE;&#x53BB;&#xFF08;Merge)</p>
-<p>&#x5206;&#x79BB;&#x7684;&#x90E8;&#x5206;&#x8981;&#x4F18;&#x5148;&#xFF08;&#x6216;&#x5E76;&#x884C;&#xFF09;&#x6267;&#x884C;</p>
+<h3 id="133-error-and-event">1.3.3 Error and Event</h3>
+<p>&#x5982;&#x679C;Acknowledge&#x6D88;&#x606F;&#x3001;Command&#x6D88;&#x606F;&#x3001;Query&#x6D88;&#x606F;&#x3001;Signal&#x6D88;&#x606F;&#x6216;&#x8005;Registration&#x6D88;&#x606F;&#x6CA1;&#x6709;&#x88AB;&#x6B63;&#x786E;&#x5904;&#x7406;&#xFF0C;&#x7A0B;&#x5E8F;&#x5E94;&#x8BE5;&#x6709;&#x6807;&#x51C6;&#x9519;&#x8BEF;&#x7684;&#x54CD;&#x5E94;&#xFF0C;&#x8FD9;&#x79CD;&#x54CD;&#x5E94;&#x53EF;&#x80FD;&#x5305;&#x542B;Notification&#x5143;&#x7D20;&#x3002;&#x5728;Notification&#x5143;&#x7D20;&#x4E2D;&#x5305;&#x542B;&#x7684;&#x6D88;&#x606F;&#x53EF;&#x7528;&#x4E8E;&#x7528;&#x6237;&#x754C;&#x9762;&#x63D0;&#x793A;&#x9519;&#x8BEF;&#x3002;
+Response&#x6D88;&#x606F;&#x548C;Acknowledge&#x6D88;&#x606F;&#x5305;&#x542B;&#x4E00;&#x4E2A;ReturnCode&#x5C5E;&#x6027;&#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;0&#xFF0C;&#x8868;&#x793A;&#x54CD;&#x5E94;&#x6210;&#x529F;&#x3002;&#x5982;&#x679C;&#x6210;&#x529F;&#xFF0C;&#x5728;&#x54CD;&#x5E94;&#x547D;&#x4EE4;&#x65F6;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;Notification&#x5143;&#x7D20;&#xFF08;Class&#x5C5E;&#x6027;=&#x201C;information&#x201D;&#xFF09;&#x3002;&#x5982;&#x679C;&#x51FA;&#x73B0;&#x8B66;&#x544A;&#x6216;&#x9519;&#x8BEF;&#xFF0C;ReturnCode&#x5C5E;&#x6027;&#x4F1A;&#x5927;&#x4E8E;0&#x3002;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x5E94;&#x8BE5;&#x63D0;&#x4F9B;Notification&#x5143;&#x7D20;&#x3002;&#x54CD;&#x5E94;&#x9519;&#x8BEF;&#x7684;&#x7A0B;&#x5E8F;&#x5E94;&#x8BE5;&#x586B;&#x5145;Notification&#x5143;&#x7D20;&#x6765;&#x8BE6;&#x7EC6;&#x63CF;&#x8FF0;&#x9519;&#x8BEF;&#x3002;</p>
+<h3 id="134-jmf-queue">1.3.4 JMF Queue</h3>
+<p>Command&#x6D88;&#x606F;&#x4E2D;&#x7684;&#x961F;&#x5217;&#x64CD;&#x4F5C;&#x662F;JMF&#x5BF9;JDF&#x4F5C;&#x4E1A;&#x8C03;&#x6574;&#x7684;&#x6838;&#x5FC3;&#x529F;&#x80FD;&#xFF0C;&#x5728;JMF&#x4E2D;&#x961F;&#x5217;&#x6210;&#x5458;&#x88AB;&#xFF08;&#x4F5C;&#x4E1A;&#xFF09;&#x79F0;&#x4E3A;<strong>QueueEntry</strong>&#xFF0C;&#x4F7F;&#x7528;&#x5C5E;&#x6027;<em>QueueEntryID</em>&#x6807;&#x8BC6;&#xFF0C;&#x5E76;&#x652F;&#x6301;&#x4F18;&#x5148;&#x7EA7;&#xFF08;0[Low]~100[High]&#xFF09;&#x3002;</p>
+<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/QueueEntryLifeCycle.png" alt="Queue Life"> <br><center> <font color="gray"> QueueEntry lifecycle </font> </center><br></p>
+<blockquote>
+<p><strong>[info] Note</strong></p>
+<p>Programming for Queue Entry: Mybe set an element Queue as a global variable, then you have an unique queue as JDF_1.5 demand. Append, set or delete QueueEntry element for your only one Queue upon to satisfy some stuff.</p>
+</blockquote>
+<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/QueueEntry.png" alt="Queue Entry"> <br><center> <font color="gray"> Queue and QueueEntry </font> </center><br></p>
+<h2 id="14--ics-">1.4 <span id="ICS"> ICS </span></h2>
+<p>ICS - Interoperability Conformance Specification&#xFF0C;&#x534F;&#x4F5C;&#x4E92;&#x901A;&#x6027;&#x89C4;&#x8303;&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x8BBE;&#x5907;&#x5E94;&#x8BE5;&#x652F;&#x6301;&#x7684;&#x6700;&#x5C0F;&#x7684;JDF&#x6307;&#x4EE4;&#x548C;&#x53C2;&#x6570;&#x96C6;&#x5408;&#xFF0C;&#x662F;&#x6CDB;&#x578B;JDF&#x6587;&#x6863;&#x7684;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#xFF0C;&#x4E5F;&#x662F;JDF&#x7A0B;&#x5E8F;&#x5F00;&#x53D1;&#x7684;&#x6307;&#x5BFC;&#x6587;&#x4EF6;&#x3002;&#x5982;&#x679C;&#x628A;JDF&#x6587;&#x6863;&#x6BD4;&#x4F5C;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x5219;ICS&#x662F;&#x8BE5;&#x62BD;&#x8C61;&#x7C7B;&#x7684;&#x6D3E;&#x751F;&#x5B50;&#x7C7B;&#x3002;ICS&#x5BF9;&#x4E0D;&#x540C;&#x90E8;&#x5206;&#x5B9A;&#x4E49;&#x4E86;&#x4E92;&#x901A;&#x6027;&#x89C4;&#x8303;&#xFF0C;&#x5176;&#x4E2D;Base ICS&#x5B9A;&#x4E49;&#x4E86;&#x4EFB;&#x4F55;JDF&#x4EA7;&#x54C1;&#x90FD;&#x5E94;&#x8BE5;&#x517C;&#x5BB9;&#x7684;JDF&#x5B50;&#x96C6;&#xFF0C;&#x5373;JDF&#x4EA7;&#x54C1;&#x6240;&#x5E94;&#x8BE5;&#x5B9E;&#x73B0;&#x7684;&#x6700;&#x57FA;&#x672C;&#x529F;&#x80FD;&#x3002;&#x5728;&#x6B64;&#x57FA;&#x7840;&#x4E0A;&#x5206;&#x522B;&#x5B9A;&#x4E49;&#x4E86;&#x82E5;&#x5E72;&#x4E0D;&#x540C;&#x90E8;&#x5206;&#x7684;ICS&#x89C4;&#x8303;&#xFF0C;&#x5728;&#x4E0A;&#x5C42;ICS&#x4E2D;&#x4E0D;&#x518D;&#x51FA;&#x73B0;&#x4E0B;&#x5C42;&#x5DF2;&#x7ECF;&#x51FA;&#x73B0;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x5B8C;&#x5168;&#x7684;ICS&#x6587;&#x6863;&#x7B49;&#x4E8E;&#x6240;&#x6709;&#x5C42;&#x5185;&#x5BB9;&#x7684;&#x76F8;&#x52A0;&#x3002;</p>
+<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/ICS_Classes.png" alt="ICS Classes"> <br><center> <font color="gray"> ICS Classes </font> </center><br></p>
+<p>&#x5176;&#x4E2D;Binding ICS&#x5B9A;&#x4E49;&#x4E86;&#x5177;&#x6709;&#x9A91;&#x9A6C;&#x9489;&#x3001;&#x88C5;&#x8BA2;&#x8F6F;&#x5C01;&#x9762;&#x6216;&#x786C;&#x5C01;&#x9762;&#x7684;JDF&#x5370;&#x540E;&#x8BBE;&#x5907;&#x6240;&#x5E94;&#x8BE5;&#x517C;&#x5BB9;&#x7684;JDF&#x5B50;&#x96C6;&#x3002;JMF ICS&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x5177;&#x6709;JMF&#x901A;&#x8BAF;&#x529F;&#x80FD;&#x7684;JDF&#x4EA7;&#x54C1;&#x6240;&#x5E94;&#x8BE5;&#x517C;&#x5BB9;&#x7684;JMF&#x5B50;&#x96C6;&#x3002;</p>
+<p>Tips : ICS&#x6587;&#x6863;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5; - ICS&#x5143;&#x7D20;&#x8868;&#x683C;&#x4E2D;&#x53EF;&#x94FE;&#x63A5;&#x7684;&#x8868;&#x793A;&#x8BE5;&#x5185;&#x5BB9;&#x4E3A;&#x5B50;&#x5143;&#x7D20;&#xFF0C;&#x5426;&#x5219;&#x662F;&#x5C5E;&#x6027;&#xFF0C;&#x5C5E;&#x6027;&#x4E0B;&#x6DF1;&#x8272;&#x80CC;&#x666F;&#x7684;&#x662F;&#x5C5E;&#x6027;&#x503C;&#xFF0C;&#x5BF9;&#x4E8E;&#x5728;ICS&#x4E2D;&#x6CA1;&#x6709;&#x8BF4;&#x660E;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;JDF&#x6587;&#x6863;&#x4E2D;&#x627E;&#x5230;&#x63CF;&#x8FF0;&#x4FE1;&#x606F;&#x3002;</p>
+<h2 id="15--mis-">1.5 <span id="MIS"> MIS </span></h2>
+<p>MIS - Management Information System&#xFF0C;&#x7BA1;&#x7406;&#x4FE1;&#x606F;&#x7CFB;&#x7EDF;&#xFF0C;&#x7531;&#x51B3;&#x7B56;&#x652F;&#x6301;&#x7CFB;&#x7EDF;&#x3001;&#x5DE5;&#x4E1A;&#x63A7;&#x5236;&#x7CFB;&#x7EDF;&#x3001;&#x529E;&#x516C;&#x81EA;&#x52A8;&#x5316;&#x7CFB;&#x7EDF;&#x4EE5;&#x53CA;&#x6570;&#x636E;&#x5E93;&#x3001;&#x6A21;&#x578B;&#x5E93;&#x3001;&#x65B9;&#x6CD5;&#x5E93;&#x3001;&#x77E5;&#x8BC6;&#x5E93;&#x548C;&#x4E0E;&#x5916;&#x754C;&#x4FE1;&#x606F;&#x4EA4;&#x6362;&#x63A5;&#x53E3;&#x7EC4;&#x6210;&#xFF0C;&#x4E3B;&#x8981;&#x4F5C;&#x7528;&#x662F;&#x6700;&#x5927;&#x9650;&#x5EA6;&#x5229;&#x7528;&#x8BA1;&#x7B97;&#x673A;&#x548C;&#x7F51;&#x7EDC;&#x6765;<strong>&#x52A0;&#x5F3A;&#x4F01;&#x4E1A;&#x7684;&#x4FE1;&#x606F;&#x7BA1;&#x7406;</strong>&#xFF0C;&#x63D0;&#x9AD8;&#x6574;&#x4F53;&#x6548;&#x76CA;&#x548C;&#x6548;&#x7387;&#x3002;&#x96C6;&#x6210;JDF&#x7684;MIS&#x7CFB;&#x7EDF;&#x80FD;&#x591F;&#x63D0;&#x4F9B;&#x4F5C;&#x4E1A;&#x6D41;&#x7A0B;&#x63A7;&#x5236;&#x3001;&#x751F;&#x4EA7;&#x63A7;&#x5236;&#x7B49;&#x529F;&#x80FD;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x4ECE;&#x4F5C;&#x4E1A;&#x63A5;&#x6536;&#x3001;&#x4F30;&#x4EF7;&#x3001;&#x62A5;&#x4EF7;&#x3001;&#x4F5C;&#x4E1A;&#x5B89;&#x6392;&#x3001;&#x4F5C;&#x4E1A;&#x5206;&#x6D3E;&#x548C;&#x6253;&#x6837;&#xFF0C;&#x6700;&#x540E;&#x5230;&#x5370;&#x5237;&#x751F;&#x4EA7;&#x7684;&#x5168;&#x8FC7;&#x7A0B;&#x7684;&#x4FE1;&#x606F;&#x7BA1;&#x7406;&#x3002;<a href="http://www.hp.com/hpinfo/newsroom/press_kits/2012/HPdrupa12/HP_Hiflex_MIS.pdf" target="_blank">Case : HP HIFLEX</a>.</p>
+<p>JDF&#x5DE5;&#x4F5C;&#x6D41;&#x4E2D;&#x76D1;&#x7763;&#x7CFB;&#x7EDF;&#x7EC4;&#x4EF6;&#x548C;&#x7CFB;&#x7EDF;&#x63A7;&#x5236;&#x4E4B;&#x95F4;&#x7684;&#x6240;&#x6709;&#x8FC7;&#x7A0B;&#x548C;&#x901A;&#x4FE1;</p>
+<h3 id="151-mis-jdf&#x8054;&#x7F51;&#x7ED3;&#x6784;">1.5.1 MIS-JDF&#x8054;&#x7F51;&#x7ED3;&#x6784;</h3>
+<h4 id="1511-&#x5206;&#x6563;&#x5F0F;&#x8054;&#x7F51;&#x67B6;&#x6784;">1.5.1.1 &#x5206;&#x6563;&#x5F0F;&#x8054;&#x7F51;&#x67B6;&#x6784;</h4>
+<p>JDF&#x6587;&#x4EF6;&#x4ECE;&#x4E00;&#x4E2A;&#x8BBE;&#x5907;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x53D1;&#x9001;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x8BBE;&#x5907;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;JDF&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7A0B;&#x5E8F;&#x4FDD;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E2D;&#x6216;&#x8005;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x3002;</p>
+<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/MIS_Distribute_Net.png" alt="MIS Distribute Net"> <br><center> <font color="gray"> MIS distribute net </font> </center><br></p>
+<h4 id="1521-&#x4E2D;&#x592E;&#x5F0F;&#x8054;&#x7F51;&#x67B6;&#x6784;">1.5.2.1 &#x4E2D;&#x592E;&#x5F0F;&#x8054;&#x7F51;&#x67B6;&#x6784;</h4>
+<h5 id="15211-&#x4EE5;jdf&#x4E3A;&#x4E2D;&#x5FC3;&#x7684;&#x8054;&#x7F51;&#x67B6;&#x6784;">1.5.2.1.1 &#x4EE5;JDF&#x4E3A;&#x4E2D;&#x5FC3;&#x7684;&#x8054;&#x7F51;&#x67B6;&#x6784;</h5>
+<p>&#x6240;&#x6709;&#x7684;JDF&#x4FE1;&#x606F;&#x5B58;&#x50A8;&#x4E8E;&#x4E2D;&#x592E;&#x670D;&#x52A1;&#x5668;&#x7684;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x8D1F;&#x8D23;&#x5404;&#x4E2A;&#x6D41;&#x7A0B;&#x7684;&#x7EDF;&#x4E00;&#x8C03;&#x5EA6;&#x7BA1;&#x7406;&#xFF0C;&#x8FD9;&#x53EF;&#x4EE5;&#x8BA9;JDF&#x6587;&#x4EF6;&#x53EF;&#x6301;&#x7EED;&#x7684;&#x53D7;&#x5230;&#x76D1;&#x89C6;&#xFF0C;&#x4EE5;&#x53CA;&#x9488;&#x5BF9;&#x54EA;&#x4E00;&#x6D41;&#x7A0B;&#x5728;&#x4F55;&#x65F6;&#x5BF9;JDF&#x6811;&#x67D0;&#x4E00;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x89C4;&#x5B9A;&#x89C4;&#x5219;&#x3002;</p>
+<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/MIS_JDF_Center_Net.png" alt="MIS JDF Center Net"> <br><center> <font color="gray"> MIS JDF center net </font> </center><br></p>
+<h5 id="15212-&#x4EE5;mis&#x4E3A;&#x4E2D;&#x5FC3;&#x7684;&#x8054;&#x7F51;&#x67B6;&#x6784;">1.5.2.1.2 &#x4EE5;MIS&#x4E3A;&#x4E2D;&#x5FC3;&#x7684;&#x8054;&#x7F51;&#x67B6;&#x6784;</h5>
+<p>MIS&#x62C5;&#x4EFB;&#x7EDF;&#x4E00;&#x8C03;&#x5EA6;&#x7684;&#x91CD;&#x8981;&#x89D2;&#x8272;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x63A7;&#x5236;&#x5168;&#x90E8;&#x7684;&#x4F5C;&#x4E1A;&#x8FC7;&#x7A0B;&#xFF0C;&#x5B8C;&#x6210;&#x63A7;&#x5236;&#x5668;&#x7684;&#x4EFB;&#x52A1;&#x3002;</p>
+<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/MIS_MIS_Center_Net.png" alt="MIS MIS Center Net"> <br><center> <font color="gray"> MIS center net </font> </center><br></p>
 <hr>
-<h1 id="structure-of-jdf-nodes-and-jobs">Structure of JDF Nodes and Jobs</h1>
-<ol>
-<li>&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF1A;JDF&#x7684;&#x6807;&#x51C6;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E3A;&#xFF1A;&#x201C;xmlns=&apos;<a href="http://www.CIP4.org/JDFSchema_1_1&apos;&#x201D;&#xFF0C;&#x540C;&#x65F6;&#x652F;&#x6301;[&#x6269;&#x5C55;&#x547D;&#x540D;&#x7A7A;&#x95F4;](#Appendix-D)&#xFF0C;&#x4EE5;&#x4F7F;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x5408;&#x6CD5;&#x4F7F;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x8282;&#x70B9;&#x3002;" target="_blank">http://www.CIP4.org/JDFSchema_1_1&apos;&#x201D;&#xFF0C;&#x540C;&#x65F6;&#x652F;&#x6301;[&#x6269;&#x5C55;&#x547D;&#x540D;&#x7A7A;&#x95F4;](#Appendix-D)&#xFF0C;&#x4EE5;&#x4F7F;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x5408;&#x6CD5;&#x4F7F;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x8282;&#x70B9;&#x3002;</a></li>
-</ol>
-<hr>
-<p>1.4.2 Comformance requriments for JDF Entities</p>
-<p>JDF&#x5B9E;&#x4F53;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x9700;&#x6C42;&#xFF1A;&#x5C5E;&#x6027;Attributes&#x3001;&#x5C5E;&#x6027;&#x503C;Attribute values&#x3001;&#x8D44;&#x6E90;Resources&#x3001;&#x8FC7;&#x7A0B;Processes&#x3001;&#x7EC4;&#x5408;&#x8D44;&#x6E90;Combined processes</p>
-<p>-PROCESSES</p>
-<p>&#x6240;&#x6709;&#x7684;&#x8FC7;&#x7A0B;&#x90FD;&#x662F;&#x53EF;&#x9009;&#x7684;&#xFF0C;&#x5BF9;&#x4E8E;&#x6D88;&#x8D39;&#x8005;&#x6765;&#x8BF4;&#xFF0C;&#x4F46;&#x5BF9;&#x4E8E;Device&#xFF0C;&#x81F3;&#x5C11;&#x652F;&#x6301;&#x4E00;&#x4E2A;</p>
-<ul>
-<li>Combined Processes</li>
-</ul>
-<p>&#x6240;&#x6709;&#x7684;&#x7EC4;&#x5408;&#x8D44;&#x6E90;&#x5BF9;&#x4E8E;&#x6D88;&#x8D39;&#x8005;Consumer&#x6765;&#x8BF4;&#x90FD;&#x662F;&#x53EF;&#x9009;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x652F;&#x6301;&#xFF0C;&#x5219;&#x5FC5;&#x987B;&#xFF1A;</p>
-<ol>
-<li>&#x652F;&#x6301;&#x6240;&#x6709;&#x7684;&#x8F93;&#x5165;&#x8D44;&#x6E90;&#xFF0C;</li>
-<li>&#x652F;&#x6301;&#x6240;&#x6709;&#x7684;&#x8F93;&#x51FA;&#x8D44;&#x6E90;</li>
-<li></li>
-</ol>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; Jim 2019-2020 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Revision time: 
-2020-05-12 11:06:54
+2020-05-12 20:47:29
 </span></footer>
-<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style></jdf></jdf></jdf>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
                                 </section>
                             
@@ -2248,7 +1939,7 @@ message recipients</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JDF","level":"1.8.5","depth":2,"previous":{"title":"English","level":"1.8.4","depth":2,"path":"pages/expansions/English.md","ref":"pages/expansions/English.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/expansions/JDF.md","mtime":"2020-05-12T03:06:54.896Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-12T03:06:58.666Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JDF","level":"1.8.5","depth":2,"previous":{"title":"English","level":"1.8.4","depth":2,"path":"pages/expansions/English.md","ref":"pages/expansions/English.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/expansions/JDF.md","mtime":"2020-05-12T12:47:29.962Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-12T12:47:35.147Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
