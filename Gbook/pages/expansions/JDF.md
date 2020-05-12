@@ -182,7 +182,110 @@ Category			| *Binding* (based on *Binding_L1-1.0*)												| same as *Types*
 
 
 
+```XML
+<?xml version="1.0" encoding="UTF-8" ?> <!-- Optional attribute : standalone="yes"/"no" -->
 
+<JDF Activation="" CommentURL="" DescriptiveName="" ICSVersions="" ID="" JobID="" JobPartID="" MaxVersion="" Status="" Type="" Types="" Version="" xmlns="http://www.CIP4.org/JDFSchema_1_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="" xsi:schemaLocation="http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd">
+
+	<AuditPool>
+		<Created  AgentName="" AgentVersion="" ID="" TimeStamp="" />
+		<Modified  AgentName="" AgentVersion="" ID="" TimeStamp="" />
+	</AuditPool>
+
+	<AncestorPool>
+	<Ancestor Activation="" CommentURL="" DescriptiveName="" ICSVersions="" ID="" JobID="" JobPartID="" MaxVersion="" Status="" Type="" Version="" xmlns="http://www.CIP4.org/JDFSchema_1_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="" xsi:schemaLocation="http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd" NodeID="">
+			<CustomerInfo...> ... </CustomerInfo>
+			<NodeInfo DescriptiveName="" NodeStatus="" TargetRoute="" />
+		</Ancestor>
+	</AncestorPool>
+
+	<ResoucePool>
+
+		<!-- --------------------------- Base-ICS-1.5 --------------------------- -->
+		<Device Class="" ID="" Status="" />
+		<NodeInfo DescriptiveName="" NodeStatus="" TargetRoute="" />
+		<xxxRef rRef="">
+			<Part Condition="" />
+		</xxxRef>
+
+		<!-- --------------------------- Binding-ICS-1.5 ------------------------ -->
+		<Component Dimensions="" Overfold="" OverfoldSide="" SurfaceCount="" >
+			<Layout>
+				<Media Weight="" MediaType="" />
+				<Signature>
+					<Media Weight="" MediaType="" />
+					<Sheet>
+						<Media Weight="" MediaType="" />
+					</Sheet>
+				</Signature>
+			</Layout>
+		</Component>
+		<GlueApplication GluingTechnique="" >
+			<GlueLine AreaGlue="" GlueType="" />
+		</GlueApplication>
+		<Media Weight="" MediaType="" />
+
+		<!-- --------------------------- LayCrImp-ICS-1.4 ----------------------- -->
+		<BindingIntent BindingOrder="" BindingSide="" BindingType="" />
+		<DeviceMark Font="" FontSize="" />
+		<FileSpec Compression="" MimeType="" URL="" />
+		<JobField OperatorText="" ShowList="" UserText="" />
+		<Layout Automated="" PartIDKeys="" SourceWorkStyle="" SurfaceContentsBox=""> 
+			<ContentObject DocOrd="" Ord="" OrdExpression="" SetOrd="" />
+			<MarkObject Ord="" DynamicField=""> 
+				<DeviceMark Font="" FontSize="" />
+				<JobField OperatorText="" ShowList="" UserText="" />
+			</MarkObject>
+			<Media Dimension="" MediaType="" />
+			<SourceResource>
+				<BindingIntent BindingOrder="" BindingSide="" BindingType="" />
+			</SourceResource>
+			<TransferCurvePool>
+				<TransferCurveSet CTM="" Name="" />
+			</TransferCurvePool>
+		</Layout>
+		<LayoutElement ElementType="" IsBlank=""> 
+			<FileSpec Compression="" MimeType="" URL="" />
+		</LayoutElement>
+		<Media Dimension="" MediaType="" />
+		<RunList NPage="" ByteMap="" InsertSheet="" InterpretedPDLData="">
+			<LayoutElement ElementType="" IsBlank=""> 
+				<FileSpec Compression="" MimeType="" URL="" />
+			</LayoutElement>
+		</RunList>
+		<TransferCurvePool>
+			<TransferCurveSet CTM="" Name="" />
+		</TransferCurvePool>
+
+		<!-- --------------------------- Other ICS List ------------------------- -->
+
+	</ResoucePool>
+
+	<ResourceLinkPool>
+
+		<!-- --------------------------- Base-ICS-1.5 --------------------------- -->
+		<xxxLink ActualAmount="" Amount="" MaxAmount="" MinAmount="" MinStatus="" ProcessUsage="" rRef="" Usage="">
+			<AmountPool>
+				<PartAmount ActualAmount="" Amount="" MaxAmount="" MinAmount="" MinStatus="" ProcessUsage="" rRef="" Usage="">	
+					<Part Condition="" />
+				</PartAmount>
+			</AmountPool>
+			<Part Condition="" />
+		</xxxLink>
+
+		<!-- --------------------------- Binding-ICS-1.5 ------------------------ -->
+		<ComponentLink Usage="Input" Orientation="" Transformation="" ActualAmount="" Amount="" MaxAmount="" MinAmount="" MinStatus="" ProcessUsage="" rRef="">
+			<Part SignatureName="" SheetName="" BlockName="" Condition="" />
+		</ComponentLink>
+
+		<!-- --------------------------- Other ICS List ------------------------- -->
+
+	</ResourceLinkPool>
+
+	<JDF Activation="" CommentURL="" DescriptiveName="" ICSVersions="" ID="" JobID="" JobPartID="" MaxVersion="" Status="" Type="" Types="" Version="" xmlns="http://www.CIP4.org/JDFSchema_1_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="" xsi:schemaLocation="http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd"> <!-- Nest JDF Node --> </JDF>
+
+</JDF>
+```
 
 
 
