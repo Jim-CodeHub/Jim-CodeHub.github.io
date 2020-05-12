@@ -42,12 +42,12 @@ JDF元素节点的**递归嵌套**构建了一个包含完成预期项目所需�
 >
 > 层次结构是作业生产的流程示意，描述了输入输出资源的关系，不表示实际JDF文档中元素节点的嵌套。此外，JDF不定义作业的组织方式，因此一个作业可以有多种路由方案。
 
-### 1.4.2 JDF Document
+### 1.4.2 JDF Document Template
 
 ```XML
-	<?xml version="1.0" encoding="UTF-8" ?>											<!-- Optional attribute : standalone="yes"/"no" -->
+	<?xml version="1.0" encoding="UTF-8" ?> <!-- Optional attribute : standalone="yes"/"no" -->
 
-	<JDF Activation="" CommentURL="" DescriptiveName="" ICSVersions="" ID="" JobID="" JobPartID="" MaxVersion="" Status="" Type="" Version="" xmlns="http://www.CIP4.org/JDFSchema_1_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="" xsi:schemaLocation="http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd">
+	<JDF Activation="" CommentURL="" DescriptiveName="" ICSVersions="" ID="" JobID="" JobPartID="" MaxVersion="" Status="" Type="" Types="" Version="" xmlns="http://www.CIP4.org/JDFSchema_1_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="" xsi:schemaLocation="http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd">
 
 		<AuditPool>
 			<Created  AgentName="" AgentVersion="" ID="" TimeStamp="" />
@@ -61,127 +61,149 @@ JDF元素节点的**递归嵌套**构建了一个包含完成预期项目所需�
 			</Ancestor>
 		</AncestorPool>
 
-		<ResoucePoll>
-			<Device Class="" ID="" Status="" />	<!-- Base-ICS-1.5 -->
-			<NodeInfo DescriptiveName="" NodeStatus="" TargetRoute="" /> <!-- Base-ICS-1.5 -->
+		<ResoucePool>
 
-			<Component>	 <!-- Binding-ICS-1.5 -->
-			TBD
-		</ResoucePoll>
+			<!-- --------------------------- Base-ICS-1.5 --------------------------- -->
+			<Device Class="" ID="" Status="" />
+			<NodeInfo DescriptiveName="" NodeStatus="" TargetRoute="" />
+			<xxxRef rRef="">
+				<Part Condition="" />
+			</xxxRef>
+
+			<!-- --------------------------- Binding-ICS-1.5 ------------------------ -->
+			<Component Dimensions="" Overfold="" OverfoldSide="" SurfaceCount="" >
+				<Layout>
+					<Media Weight="" MediaType="" />
+					<Signature>
+						<Media Weight="" MediaType="" />
+						<Sheet>
+							<Media Weight="" MediaType="" />
+						</Sheet>
+					</Signature>
+				</Layout>
+			</Component>
+			<GlueApplication GluingTechnique="" >
+				<GlueLine AreaGlue="" GlueType="" />
+			</GlueApplication>
+			<Media Weight="" MediaType="" />
+
+			<!-- --------------------------- LayCrImp-ICS-1.4 ----------------------- -->
+			<BindingIntent BindingOrder="" BindingSide="" BindingType="" />
+			<DeviceMark Font="" FontSize="" />
+			<FileSpec Compression="" MimeType="" URL="" />
+			<JobField OperatorText="" ShowList="" UserText="" />
+			<Layout Automated="" PartIDKeys="" SourceWorkStyle="" SurfaceContentsBox=""> 
+				<ContentObject DocOrd="" Ord="" OrdExpression="" SetOrd="" />
+				<MarkObject Ord="" DynamicField=""> 
+					<DeviceMark Font="" FontSize="" />
+					<JobField OperatorText="" ShowList="" UserText="" />
+				</MarkObject>
+				<Media Dimension="" MediaType="" />
+				<SourceResource>
+					<BindingIntent BindingOrder="" BindingSide="" BindingType="" />
+				</SourceResource>
+				<TransferCurvePool>
+					<TransferCurveSet CTM="" Name="" />
+				</TransferCurvePool>
+			</Layout>
+			<LayoutElement ElementType="" IsBlank=""> 
+				<FileSpec Compression="" MimeType="" URL="" />
+			</LayoutElement>
+			<Media Dimension="" MediaType="" />
+			<RunList NPage="" ByteMap="" InsertSheet="" InterpretedPDLData="">
+				<LayoutElement ElementType="" IsBlank=""> 
+					<FileSpec Compression="" MimeType="" URL="" />
+				</LayoutElement>
+			</RunList>
+			<TransferCurvePool>
+				<TransferCurveSet CTM="" Name="" />
+			</TransferCurvePool>
+
+			<!-- --------------------------- Other ICS List ------------------------- -->
+
+		</ResoucePool>
 
 		<ResourceLinkPool>
-			TBD	
+
+			<!-- --------------------------- Base-ICS-1.5 --------------------------- -->
+			<xxxLink ActualAmount="" Amount="" MaxAmount="" MinAmount="" MinStatus="" ProcessUsage="" rRef="" Usage="">
+				<AmountPool>
+					<PartAmount ActualAmount="" Amount="" MaxAmount="" MinAmount="" MinStatus="" ProcessUsage="" rRef="" Usage="">	
+						<Part Condition="" />
+					</PartAmount>
+				</AmountPool>
+				<Part Condition="" />
+			</xxxLink>
+
+			<!-- --------------------------- Binding-ICS-1.5 ------------------------ -->
+			<ComponentLink Usage="Input" Orientation="" Transformation="" ActualAmount="" Amount="" MaxAmount="" MinAmount="" MinStatus="" ProcessUsage="" rRef="">
+				<Part SignatureName="" SheetName="" BlockName="" Condition="" />
+			</ComponentLink>
+
+			<!-- --------------------------- Other ICS List ------------------------- -->
+
 		</ResourceLinkPool>
 
-		<JDF Activation="" CommentURL="" DescriptiveName="" ICSVersions="" ID="" JobID="" JobPartID="" MaxVersion="" Status="" Type="" Version="" xmlns="http://www.CIP4.org/JDFSchema_1_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="" xsi:schemaLocation="http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd"> <!-- Nest JDF Node --> </JDF>
+		<JDF Activation="" CommentURL="" DescriptiveName="" ICSVersions="" ID="" JobID="" JobPartID="" MaxVersion="" Status="" Type="" Types="" Version="" xmlns="http://www.CIP4.org/JDFSchema_1_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="" xsi:schemaLocation="http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd"> <!-- Nest JDF Node --> </JDF>
 
 	</JDF>
 ```
+<br><center> <font color=gray> JDF Document Template </font> </center><br>
 
-```XML
-	<?xml version="1.0" encoding="UTF-8" ?>											<!-- Optional attribute : standalone="yes"/"no" -->
+#### 1.4.2.1 JDF Element Node Attributes 
 
-	<JDF Activation="" CommentURL="" DescriptiveName="" ICSVersions="" ID="" 
-		JobID="" JobPartID="" MaxVersion="" Status="" Type="" Version=""  
+Attributes			| values																			| Description 
+:-:					| :-:																				| :-:
+Status				| *Spawned*/*Setup*/*Wating*/*TestRunInProgress*/*FailedTestRun*/*Ready*/*InProgress*/*Aborted*/*Stopped*/*Suspended*/*Completed*/*Cleanup*/*Pool*/*Part*| - 
+ICSVersions			| &#60;Name&#62;\_L&#60;Level&#62;>-&#60;Version&#62;								| ICS version and level association with ICS Spec 
+Type				| *Product*/*ProcessGroup*/*Combined*/[Predefined Processes](#Appendix-A)"			| processes type 
+Types				| [Predefined Processes](#Appendix-A)												| processes type set，used when *Type=ProcessGroup* or *Type=Combined*
+ID					| -																					| -
+JobID				| -																					| - 
+JobPartID			| -																					| - 
+xmlns				| *http://www.CIP4.org/JDFSchema_1_1*												| namespace 
+xmlns:xsi			| *http://www.w3.org/2001/XMLSchema-instance* 										| extension namespace
+xsi:type			| -																					| extension namespace attribute 
+Activation			| *Active*																			| - 
+MaxVersion			| *1.5*																				| max version limited for all elements and attributes 
+Version				| *1.5*																				| -
+CommentURL			| *file:*/*https:*/*http:*/*cid:*/...												| human-readable comment 
+DescriptiveName 	| -																					| human-readable description 
+Category			| *Binding* (based on *Binding_L1-1.0*)												| same as *Types* 
 
-		xmlns="http://www.CIP4.org/JDFSchema_1_1"									<!-- namespace : CIP4 standard namespace		-->
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"						<!-- namespace : W3C extension namespace		-->
-		xsi:type=""																	 
+<br><center> <font color=gray> JDF Node Attributes based on Base-ICS-1.5 </font> </center><br>
 
-		xmlns:xxx="https://jim-codehub.github.io"									<!-- Optional extension namesapce				-->
+> **[info] Note**
+>
+> A Worker SHALL NOT execute Nodes whose *@Status* is "Completed" or "Aborted".
 
-		xsi:schemaLocation="http://www.CIP4.org/Schema/JDFSchema_1_4/JDF.xsd"		<!-- schema lo : CIP4 standard schema location	-->
-						   "https://jim-codehub.github.io/xxx.xsd">					<!-- Optional extension schema location			--> 
-
-		<ResoucePoll>
-		<ComponentID="OutputComponent" Class="Quantity" Status="Unavailable" ComponentType="FinalProduct" />
-		</ResoucePoll>
-
-		<ResourceLinkPool>
-		<ComponentLink rRef="OutputComponent" Usage="Output" />
-		</ResourceLinkPool>
-
-		<xxx:info date="2020" />														<!-- Optional extension element					--> 
-
-	</JDF>
-```
-
-### 1.4.2 JDF Node Attributes
-
-Attributes		| values											| Description 
-:-:				| :-:												| :-:
-Status			| -													| JDF元素节点状态
-ICSVersions		| &#60;类型&#62;\_L&#60;等级&#62;>-&#60;版本&#62;	| - 
-Type			| Product/ProcessGroup/ProcessGroup					| -
-Types			| [Predefined Processes](#Appendix-A)				| Processes set
-ID				| -													| -
-JobID			| -													| 作业ID 
-JobPartID		| -													| JobID的子ID
-xmlns			| http://www.CIP4.org/JDFSchema_1_1					| JDF命名空间
-xmlns:xsi		| http://www.w3.org/2001/XMLSchema-instance 		| 扩展命名空间（W3C)
-xsi:type		| -													| 扩展命名空间属性
-Activation		| Active											| 描述JDF元素节点的激活状态
-MaxVersion		| 1.5												| -
-Version			| 1.5												| -
-CommentURL		| file:/https:/http:/cid:/...						| 指向人类易读描述的注释
-DescriptiveName | -													| 人类易读的JDF节点描述
-
-<br><center> <font color=gray> JDF Node Attributes based on ICS-Base-1.5 </font> </center><br>
-
-#### 1.4.2.1 *@Status*
-
-values				| Description 
-:-:					| :-:
-Spawned				| 节点分离
-Setup				| 设置中
-Wating				| 可以运行，但未经测试运行
-TestRunInProgress	| 正在测试运行
-FailedTestRun		| 测试运行失败
-Ready				| 测试运行完成，等待运行
-InProgress			| 正在运行中
-Aborted				| 运行失败	
-Stopped				| 任何停止而未导致Aborted的情形
-Suspended			|  -  
-Completed			| 已完成
-Cleanup				| -
-Pool				| -
-Part				| -
-
-<br><center> <font color=gray> Status in JDF Node Attributes </font> </center><br>
-
-#### 1.4.2.2 *@ICSVersions*
-
-该属性的“等级”对应该ICS文档的*Interoperability of Levels*，根据不同的ICS等级可以有不同的ICS实现。
-
-#### 1.4.2.3 *@Type* and *@Types*
+---
 
 
 
-```
-	<JDF Type="Product/ProcessGroup/Combined/[Process]" Types="[Process List]" >
 
-		<AncestorPool> ... </AncestorPool>
 
-		<AuditPool> ... </AuditPool>
 
-		<ResourcePool>
-			<[Resources1] />
-			<[Resources2] />
-			<[Resources3] />
-			...
-		</ResourcePool>
 
-		<ResourceLinkPool>
-			<xxxLink 1/>
-			<xxxLink 2/>
-			<xxxLink 3/>
-			...
-		</ResourceLinkPool>
 
-		<JDF>...</JDF>
 
-	<JDF>
-```
+
+
+
+
+
+
+
+
+
+
+
+#### 1.4.2.1 *@Type* and *@Types*
+
+当*Types*
+
+
+
 
 Types属性值是过程Process列表，当Type=ProcessGroup后Combined时，由Types来指定具体的Process，过程Process是预定义的，参看Appendix-A
 
@@ -193,9 +215,6 @@ Type为ProcessGroup表示该节点为 过程组节点，此时Types属性可选�
 Type为Combined时，表示该节点为 合并节点， 类似过程组，但必须有Types属性，且不能再有子JDF节点.
 
 Type为[Process]时，表示该节点为 过程节点， 显然是叶节点，不能再嵌套JDF子节点，并且Types属性是被忽略的。
-
-
-资源池中的[Resource]，也是预定义的，（预定义资源），参看Appendix-B
 
 
 
@@ -263,7 +282,9 @@ JDF元素节点的*Type*属性描述了
 
 
 
-
+---
++ JDF 说明文档阅读：ICS version level 1/2/3，是可以在ICSVersoin中指定的，在说明文档中给出了Manager和worker的三个level，不同的level下对元素和属性节点是否被布置和读写的条件不同。
+---
 
 
 
