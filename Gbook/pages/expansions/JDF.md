@@ -1,6 +1,6 @@
 <script src="https://github.com/Jim-CodeHub/Skills-list/raw/master/script/ImgHover.js"></script> 
 
-# Section One - JDF
+# Section 1 - JDF
 
 # 1 JDF Basic 
 
@@ -8,15 +8,15 @@
 
 在印刷行业中，企业生产现状多为“信息孤岛”或“流程孤岛”形式，具体表现为：印前作业数据、印刷数据、印后数据独立处理而没有有效的对接，以使印前、印刷、印后产线形成三个“信息孤岛”。这些题传统或市场遗留的问题大大增加了印刷应用企业的生产成本、降低了生产效率。
 
-为了解决印刷行业的“信息孤岛”难题，使印刷业信息集成化、全面自动化和高度智能化，以Adobe、HP、Agfa、Heidelberg、MAN Roland等为代表的的公司成立了**CIP4（International Cooperation for Integration of Processes in Prepress, Press and Postpress）**国际联盟，致力于促进印前、印刷、印后加工的垂直整合，并应用[JDF](#Introduction)作为信息载体标准。[CIP4 Official Website](https://www.cip4.org/).
+为了解决印刷行业的“信息孤岛”难题，使印刷业信息集成化、全面自动化和高度智能化，以Adobe、HP、Agfa、Heidelberg、MAN Roland等为代表的的公司成立了**CIP4（International Cooperation for Integration of Processes in Prepress, Press and Postpress）**国际联盟，致力于促进印前、印刷、印后加工的垂直整合，并应用[JDF](#JDF_Introduction)作为信息载体标准。[CIP4 Official Website](https://www.cip4.org/).
 
 > **[info] CIMS**
 >
 > Computer Infomation Management System 计算机集成制造系统，利用计算机技术把分散在产品设计制造过程中多种孤立的自动化子系统集成以实现高效管理和制造。
 
-## 1.2 <span id = "Introduction"> Introduction </span>
+## 1.2 <span id = "JDF_Introduction"> Introduction </span>
 
-JDF - Job Definition Format，作业定义格式，基于[XML](https://jim-codehub.github.io/pages/expansions/XML.html)技术，是印前、印中和印后工作流节点的数据载体，描述了生产意图、生产资源、生产过程和审计等信息，并提供作业分离与合并机制。JDF广义上包含了JDF（超集）、[JMF](#JMF)和[ICS](#ICS)标准。
+JDF - Job Definition Format，作业定义格式，基于[XML](https://jim-codehub.github.io/pages/expansions/XML.html)技术，是印前、印中和印后工作流节点的数据载体，描述了生产意图、生产资源、生产过程和审计等信息，并提供作业分离与合并机制。JDF广义上包含了JDF（超集）、[JMF](#JMF_Introduction)和[ICS](#ICS_Introduction)标准。
 
 ## 1.3 XML Touch Upon 
 
@@ -42,7 +42,7 @@ JDF元素节点的**递归嵌套**构建了一个包含完成预期项目所需�
 >
 > 层次结构是作业生产的流程示意，描述了输入输出资源的关系，不表示实际JDF文档中元素节点的嵌套。此外，JDF不定义作业的组织方式，因此一个作业可以有多种路由方案。
 
-### 1.4.2 JDF Document Template
+### 1.4.2 JDF Instance Template
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" ?> <!-- Optional attribute : standalone="yes"/"no" -->
@@ -136,7 +136,7 @@ JDF元素节点的**递归嵌套**构建了一个包含完成预期项目所需�
 		</xxxLink>
 
 		<!-- --------------------------- Binding-ICS-1.5 ------------------------ -->
-		<ComponentLink Usage="Input" Orientation="" Transformation="" ActualAmount="" Amount="" MaxAmount="" MinAmount="" MinStatus="" ProcessUsage="" rRef="">
+		<ComponentLink Usage="" Orientation="" Transformation="" ActualAmount="" Amount="" MaxAmount="" MinAmount="" MinStatus="" ProcessUsage="" rRef="">
 			<Part SignatureName="" SheetName="" BlockName="" Condition="" />
 		</ComponentLink>
 
@@ -155,7 +155,7 @@ JDF元素节点的**递归嵌套**构建了一个包含完成预期项目所需�
 
 > **[info] Note**
 >
-> JDF元素节点的嵌套迭代描述了Job的 
+> JDF元素节点的嵌套迭代描述了Job的组成结构，通过对JDF元素节点的属性判断和资源的利用以确定解决方案。
 
 ### 1.4.3 JDF Element Node Attributes 
 
@@ -163,8 +163,8 @@ Attributes			| values																			| Description
 :-:					| :-:																				| :-:
 Status				| -																					| - 
 ICSVersions			| &#60;Name&#62;\_L&#60;Level&#62;>-&#60;Version&#62;								| ICS version and level association with ICS Spec 
-Type				| *Product*/*ProcessGroup*/*Combined*/[Predefined Processes](#Appendix-A)"			| processes type 
-Types				| [Predefined Processes](#Appendix-A)												| processes type set，used when *Type=ProcessGroup* or *Type=Combined*
+Type				| *Product*/*ProcessGroup*/*Combined*/[Predefined Processes](#Appendix-A)			| processes type 
+Types				| [Predefined Processes](#Appendix-A)												| processes type set，used when *@Type=ProcessGroup* or *@Type=Combined*
 ID					| -																					| -
 JobID				| -																					| - 
 JobPartID			| -																					| - 
@@ -176,13 +176,13 @@ MaxVersion			| *1.5*																				| max version limited for all elements a
 Version				| *1.5*																				| -
 CommentURL			| *file:*/*https:*/*http:*/*cid:*/...												| human-readable comment 
 DescriptiveName 	| -																					| human-readable description 
-Category			| *Binding* (based on *Binding_L1-1.0*)												| same as *Types* 
+Category			| *Binding* (based on *Binding_L1-1.0*)												| same as *@Types* 
 
 <br><center> <font color=gray> JDF Node Attributes based on Base-ICS-1.5 </font> </center><br>
 
 > **[info] Note**
 >
-> There SHALL NOT any JDF elements nested when specify attribute *Types* 
+> There SHALL NOT any JDF elements nested when specify attribute *@Types*.
 
 - *@Status*
 
@@ -215,18 +215,268 @@ Category			| *Binding* (based on *Binding_L1-1.0*)												| same as *Types*
 ### 1.5.1 Workflow Component Roles
 
 Roles		| Description 
-:-:			|:-:
+:-:			| :-:
 Machines	| 裸机，泛指欲集成JDF功能的物理设备
 Devices		| 软件，集成到Machines中，启动Machines并执行JDF指令 
 Agents		| 软件，创建、修改、读写和解析JDF，Devices和Controllers也是一种Agents
 Controllers | 软件，将Agents完成的JDF路由到Devices，工作流中通常有多级Controllers，路由到最低级的Controllers具有Devices功能
-MIS			| 软件，工作流中所有单元之间关系的监督者，宏观Controllers  
+MIS			| 软件，工作流中所有组件的监督者，宏观Controllers  
 
 ![Interactions](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/Interactions.png) <br><center> <font color=gray> Roles interactions </font> </center><br>
 
 ### 1.5.2 Processes Routing 
 
+# 2 JDF Development
 
+<table width="100%" align="center" text-align="center">
+<tr>
+<th> Classes </th> 
+<th> Num </th> 
+<th colspan="2"> Process </th> 
+<th> Result</th> 
+<th> Note </th> 
+</tr>
+
+<tr>
+<td align="center", valign="center", rowspan="8"> Software </td>
+
+<td align="center", valign="center"> 11 </td>
+<td align="center", valign="center", colspan="2"> JDF&JMF </td>
+<td align="center", valign="center", rowspan="4"> CIP4-APP </td>
+<td align="center", valign="center"> - </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> 10 </td>
+<td align="center", valign="center", colspan="2"> Xerces-C </td>
+<td align="center", valign="center"> - </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> 9 </td>
+<td align="center", valign="center" > HTTP(s) </td>
+<td align="center", valign="center", rowspan="2"> HotFolder </td>
+<td align="center", valign="center"> - </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> 8 </td>
+<td align="center", valign="center" > Socket </td>
+<td align="center", valign="center"> - </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> 7 </td>
+<td align="center", valign="center", colspan="2"> Modbus </td>
+<td align="center", valign="center"> InterCom </td>
+<td align="center", valign="center"> Optional </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> 6 </td>
+<td align="center", valign="center", colspan="2"> Device drivers </td>
+<td align="center", valign="center", rowspan="3"> Linux </td>
+<td align="center", valign="center"> - </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> 5 </td>
+<td align="center", valign="center", colspan="2"> Linux kernel&File system </td>
+<td align="center", valign="center"> - </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> 4 </td>
+<td align="center", valign="center", colspan="2"> uboot </td>
+<td align="center", valign="center"> - </td>
+</tr>
+
+<tr>
+<td align="center", valign="center", rowspan="3"> Hardware </td>
+
+<td align="center", valign="center"> 3 </td>
+<td align="center", valign="center", colspan="2"> PCBA </td>
+<td align="center", valign="center", rowspan="3"> PCB </td>
+<td align="center", valign="center"> - </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> 2 </td>
+<td align="center", valign="center", colspan="2"> Layout </td>
+<td align="center", valign="center"> - </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> 1 </td>
+<td align="center", valign="center", colspan="2"> Schematic design </td>
+<td align="center", valign="center"> - </td>
+</tr>
+
+</table>
+
+<br><center> <font color=gray> CIP4 Proj development framewrok  </font> </center><br>
+
+![CIP4 Protocol Stack](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/CIP4_Stack.png) <br><center> <font color=gray> CIP4 Protocol Stack </font> </center><br>
+
+---
+
+# Section 2 - JMF
+
+# 1 <span id = "JMF_Introduction"> Introduction </span>
+
+Job Messaging Format, based on XML, take HTTP (s) as the communication carrier, used for communication between JDF workflow components.
+
+# 2 JMF Node Constructure
+
+JMF文档的根元素节点为&#60;JMF&#62;&#60;/JMF&#62;，不能递归嵌套。其它所有元素都是JMF根元素节点的子元素。
+
+![JMF Node](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JMFNode.png) <br><center> <font color=gray> JMF Node Diagram </font> </center><br>
+
+## 2.1 JMF Instance Template
+
+```XML
+<?xml version="1.0" encoding="UTF-8" ?> <!-- Optional attribute : standalone="yes"/"no" -->
+
+<JMF DeviceID="" ICSVersions="" MaxVersion="" ResponseURL="" SenderID="" TimeStamp="" Version="" xmlns="http://www.CIP4.org/JDFSchema_1_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<!-- ---------------------------------- For Query ---------------------------------- -->
+
+	<Query ID="" Time="" Type="" xsi:type="" AcknowledgeURL=""> 
+		<Subscription MinDelayTime="" RepeatTime="" URL="">
+			<ObservationTarget ObservationPath="" />
+		</Subscription>
+		<DeviceFilter DeviceDetails="" /> <!-- If Query/@Type="KnownDevices" -->
+		<KnownMsgQuParams ChannelMode="" Exact="" ListCommands="" ListQueries="" ListRegistrations="" ListSignals="" Persistent="" /> <!-- If Query/@Type="KnownMessages" -->
+		<SubscriptionFilter ChannelID="" DeviceID="" URL="" /> <!-- If Query/@Type="KnownSubscriptions" -->
+		<QueueFilter MaxEntries="" QueueEntryDetails="" /> <!-- If Query/@Type="QueueStatus" -->
+	</Query>
+
+	<!-- ---------------------------------- For Response ------------------------------- -->
+
+	<Response ID="" refID="" Type="" xsi:type=""  Acknowledged=""  ReturnCode="" Subscribed="">
+		<DeviceList> <!-- If Response/@Type="KnownDevices" -->
+			<DeviceInfo DeviceID="" DeviceStatus="">
+				<Device DescriptiveName="" DeviceID="" JDFVersions="" JMFSenderID="" JMFURL=""/>
+			</DeviceInfo>
+		</DeviceList>
+		<MessageService Acknowledge="" ChannelMode="" Command="" JMFRole="" Persistent="" Query="" Registration="" Signal="" Type="" URLSchemes="" /> <!-- If Response/@Type="KnownMessages" -->
+		<SubscriptionInfo ChannelID="" Family="" MessageType="" SenderID=""> <!-- If Response/@Type="KnownSubscriptions" -->
+			<Subscription RepeatTime="" URL="" />
+		</SubscriptionInfo>
+		<Queue DeviceID="" Status=""> <!-- If Response/@Type="QueueStatus" -->
+			<QueueEntry JobID="" JobPartID="" Priority="" QueueEntryID="" Status="" SubmissionTime="" Part="" />
+		</Queue>
+		<QueueEntry JobID="" JobPartID="" Priority="" QueueEntryID="" Status="" SubmissionTime="" Part="" /> <!-- If Response/@Type="ResourcePullQueueStatus" or "SubmitQueueEntry" -->
+		<SubmissionMethods Packaging="" URLSchemes="" /> <!-- If Response/@Type="SubmissionMethods" -->
+	</Response>
+
+	<!-- ---------------------------------- For Signal --------------------------------- -->
+
+	<Signal refID="" >
+		<!-- Corresponding subscription or hardwire configuration and MAY same with the Response/child -->
+	</Signal>
+
+	<!-- ---------------------------------- For Command -------------------------------- -->
+
+	<Command AcknowledgeURL="" ID="" Type="" xsi:type="">
+		<AbortQueueEntryParams EndStatus=""> <!-- If Command/@Type="AbortQueueEntry" -->
+			<QueueFilter>
+				<QueueEntryDef QueueEntryID="" />
+			</QueueFilter>
+		</AbortQueueEntryParams>
+		<HoldQueueEntryParams> <!-- If Command/@Type="HoldQueueEntry" -->
+			<QueueFilter>
+				<QueueEntryDef QueueEntryID="" />
+			</QueueFilter>
+		</HoldQueueEntryParams>
+		<RemoveQueueEntryParams> <!-- If Command/@Type="RemoveQueueEntry" -->
+			<QueueFilter>
+				<QueueEntryDef QueueEntryID="" />
+			</QueueFilter>
+		</RemoveQueueEntryParams>
+		<RequestQueueEntryParams JobID="" JobPartID="" QueueURL="" Part /> <!-- If Command/@Type="RequestQueueEntry" -->
+		<ResourcePullParams Amount="" JobID="" ResourceID="" Part="" /> <!-- If Command/@Type="ResourcePull" -->
+		<Comment Name=""><!-- content --></Comment> <!-- If Command/@Type="ResubmitQueueEntry" -->
+		<ReturnQueueEntryParams Aborted="" Completed="" QueueEntryID="" URL="" /> <!-- If Command/@Type="ReturnQueueEntry" -->
+		<QueueEntryPosParams NextQueueEntryID="" Position="" PrevQueueEntryID="" QueueEntryID="" /> <!-- If Command/@Type="SetQueueEntryPosition" -->
+		<QueueEntryPriParams Priority="" /> <!-- If Command/@Type="SetQueueEntryPriority" -->
+		<StopPersChParams ChannelID="" DeviceID="" URL="" /> <!-- If Command/@Type="StopPersistentChannel" -->
+		<QueueSubmissionParams Hold="" Priority="" ReturnJMF="" ReturnURL="" URL=""> <!-- If Command/@Type="SubmitQueueEntry" -->
+			<Comment Name=""><!-- content --></Comment>
+		</QueueSubmissionParams>
+		<SuspendQueueEntryParams> <!-- If Command/@Type="SuspendQueueEntry" -->
+			<QueueFilter>
+				<QueueEntryDef QueueEntryID="" />
+			</QueueFilter>
+		</SuspendQueueEntryParams>
+	</Command>
+
+	<!-- ---------------------------------- For Acknowledge ---------------------------- -->
+
+	<Acknowledge AcknowledgeType="" refID="" ReturnCode="">
+		<QueueEntry JobID="" JobPartID="" Priority="" QueueEntryID="" Status="" SubmissionTime="" Part="" /> <!-- If Acknowledge/@Type="SubmitQueueEntry" -->
+	</Acknowledge>
+
+</JMF>
+```
+
+> **[info] Note**
+>
+> 该模板是JMF实例可能存在的最大集合，Query/Response/Signal/Command/Acknowledge元素仅能存在一个，其属性和子元素节点也在不同的条件下存在。
+
+## 2.2 Query
+
+Query用于客户端向服务器查询消息，并从服务器返回Response响应。如果Query消息包含*Subscription*订阅（称为**可持续通道**），则服务器在所订阅的事件发生时将向所订阅的URL发送Signal消息，直到服务器收到客户端的Command消息（包含*StopPersistentChannel*元素节点）为止（可持续通道关闭）。
+
+## 2.3 Command
+
+Command用于客户端向服务器发送指令以改变其状态，并从服务器返回Response响应。如果Command消息包含*@AcknowledgeURL*属性，则Response消息需包含*@Acknowledge=[BOOL]"*属性，BOOL值为"true"，则服务器在指令执行完毕后将向客户端*@AcknowledgeURL*指定的地址发送Acknowledge消息以汇报执行结果。
+
+### 2.3.1 Command with Queue
+
+Command消息中的**队列**操作是JMF作业调度的核心，在JMF中队列成员（作业）被称为**QueueEntry**，使用属性*QueueEntryID*标识，并支持优先级（0[Low]~100[High]）调整。
+
+![Queue Entry](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/QueueEntry.png) <br><center> <font color=gray> Queue and QueueEntry </font> </center><br>
+
+![Queue Life](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/QueueEntryLifeCycle.png) <br><center> <font color=gray> QueueEntry Lifecycle </font> </center><br>
+
+> **[info] Note**
+>
+> 队列编程：程序可以提供一份与队列状态相同的内存映射，以同步队列的变化。
+
+## 2.4 Signal
+
+Signal是单向消息，用于服务器自动广播状态变化。服务器产生Signal消息的条件有三种：
+
+1. 客户端通过JMF申请建立可持续通道，即发送Query消息并包含*Subscription*元素节点。 
+2. 客户端通过JDF申请建立可持续通道，即在JDF实例中包含含有*Subscription*元素节点的*NodeInfo*元素节点。 
+3. Hard-Wired：入网广播，即当设备开机或首次连接到网络时主动（向预设的URLs）发送信号，以告知设备信息和所能提供的服务等。
+
+> **[info] Note**
+>
+> Signal基于属于HTTP-C/S模型，本质上也是双向消息，服务器发送时可设置*@ChannelMode="Reliable"*（即**可靠信号**），此时客户端必须返回Response，但无论如何服务器都可以选择忽略响应。
+
+## 2.4 Response 
+
+Response用于服务器同步响应客户端的Query和Command消息，或用于客户端响应服务器的Signal消息，以表明消息已被接收并翻译。当*Response/@ReturnCode*大于0时，Response应该包含*Notification*元素节点以描述返回状态。
+
+> **[info] Standard Error Response**
+>
+> 当来自客户端的消息不能被正确处理时，Response应包含*@ReturnCode*，属性值是大于零的错误码。
+
+## 2.5 Acknowledge
+
+Acknowledge是服务器对客户端的Command或Query消息的异步单向应答。当服务器执行一个Command需要较长时间时先返回Response响应，等待Command执行完成再返回Acknowledge。
+
+---
+
+# Section 3 - ICS 
+
+# 1 <span id = "ICS_Introduction"> Introduction </span>
+
+Interoperability Conformance Specification，协作互通性规范，定义了不同类型设备应该支持的最小的JDF指令和参数集合，是泛型JDF文档的具体实现。如果把JDF文档比作抽象类，则ICS是该抽象类的派生子类。ICS对不同部分定义了互通性规范，其中Base ICS定义了任何JDF产品都应该兼容的JDF子集，即JDF产品所应该实现的最基本功能。在此基础上分别定义了若干不同部分的ICS规范，在上层ICS中不再出现下层已经出现的内容，完全的ICS文档等于所有层内容的相加。
+
+![ICS Classes](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/ICS_Classes.png) <br><center> <font color=gray> ICS Classes </font> </center><br>
 
 ---
 
@@ -355,27 +605,26 @@ XJDF是JDF的全新升级协议，同样由CIP4维护，字母“X”表“Excha
 
 ## Y.2 MIS-JDF system
 
-- 集成的JDF MIS系统是一种功能强大的MIS系统，能够提供作业流程控制、生产控制和常规控制的MIS功能等丰富的功能，具体来说，他可能实现从作业接收、估价、报价、作业安排、作业分派和打样，最后到印刷生产的全过程的信息管理。例如HIFLEX MIS、Prineet Prinance。
-- 管理方面的JDF MIS系统和生产方面的JDF MIS系统和生产方面的JDF MIS系统是分别从功能的两个方面来划分市场。管理方面的JDF MIS系统主要是能实现在作业管理或客户关系管理方面的信息管理。它们可能实现下面的三种功能的一种。
-	- 估价/报价能实现对订单进行估价与报价处理
-	- 调度。能根据生产环境实现对作业的良好生产调度
-	- 客户关系管理（CRM）/销售。能实现对客户关系管理和商业管理，如客户数据管理、供货商数据管理和交货清单管理等。
-- 生产方面的JDF MIS系统主要是能实现对生产过程的控制与跟踪工作流程。能实现工作流程链的定义与跟踪生产控制/作业跟踪。能通过JDF作业传票对生产进行控制，并实时反馈生产情况。
+### Y.2.1 MIS
+
+Management Information System，管理信息系统，由决策支持系统、工业控制系统、办公自动化系统以及库与外界信息交换接口组成，主要作用是最大限度利用计算机和网络来**加强企业的信息管理**，提高整体效益和效率。
+
+### Y.2.2 MIS With JDF 
+
+集成JDF的MIS系统能够提供作业流程控制、生产控制等功能，可以实现从作业接收、估价、报价、作业安排、作业分派和打样，最后到印刷生产的全过程的信息管理。[Case : HP HIFLEX](http://www.hp.com/hpinfo/newsroom/press_kits/2012/HPdrupa12/HP_Hiflex_MIS.pdf).
 
 ## Y.3 JDF compatible devices
 
-该市场分类中包含了所有兼容JDF的生产设备，目前的JDF产品已经覆盖了印前、印刷、印后。对于印前，根据现有的JDF产品已经能实现下面的功能类别：
-印前部门控制、打样、大幅面打印机、胶片输出、CTP、印前工作中心或软件、拼大版、版面设计、预飞、RIP、数字印刷、软打样和其它兼容JDF的印前设备。
-对于印刷，根据现有的JDF产品已经能实现下面的功能类别：
-印刷车间的部门控制、油墨系统、颜色控制、数字印刷、卷筒胶印、单张纸胶印和其它兼容JDF的印刷设备。
-对于印后，根据现有的JDF产品已经能实现下面的功能类别：
-印后部门控制、裁切、配帖、折页、装订和其他兼容JDF的印后设备。
+- 印前设备：控制、打样、大幅面打印机、胶片输出、CTP、印前工作中心或软件、拼大版、版面设计、预飞、RIP、数字印刷等设备。
+- 印刷设备：油墨系统、颜色控制、数字印刷、卷筒胶印、单张纸胶印等设备。
+- 印后设备：裁切、配帖、折页、压痕、装订、覆膜等设备。
 
 ## Y.4 JDF tools
 
 - Development tools
 	- IDE/SDK, Provide programming env for JDF development
 	- SOAP/HTTP, Provide JMF env for JDF production, such as JMF creation, JMF send and recive etc.
+
 - Test tools
 	- Validity test, Provide validity test for JDF file under JDF scheme that provide by CIP4.
 	- ICS test, Provide ICS test for JDF file under CIP4 ICS
@@ -448,137 +697,6 @@ For more information on The International Cooperation for the Integration of Pro
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----- 
-# TBD
-
-1. Workflow component roles
-2. Coordinate systems
-
-
-
-
-# 2 JDF Development
-
-<table width="100%" align="center" text-align="center">
-<tr>
-<th> Classes </th> 
-<th> Num </th> 
-<th colspan="2"> Process </th> 
-<th> Result</th> 
-<th> Note </th> 
-</tr>
-
-<tr>
-<td align="center", valign="center", rowspan="8"> Software </td>
-
-<td align="center", valign="center"> 11 </td>
-<td align="center", valign="center", colspan="2"> JDF&JMF </td>
-<td align="center", valign="center", rowspan="4"> CIP4-APP </td>
-<td align="center", valign="center"> - </td>
-</tr>
-
-<tr>
-<td align="center", valign="center"> 10 </td>
-<td align="center", valign="center", colspan="2"> Xerces-C </td>
-<td align="center", valign="center"> - </td>
-</tr>
-
-<tr>
-<td align="center", valign="center"> 9 </td>
-<td align="center", valign="center" > HTTP(s) </td>
-<td align="center", valign="center", rowspan="2"> HotFolder </td>
-<td align="center", valign="center"> - </td>
-</tr>
-
-<tr>
-<td align="center", valign="center"> 8 </td>
-<td align="center", valign="center" > Socket </td>
-<td align="center", valign="center"> - </td>
-</tr>
-
-<tr>
-<td align="center", valign="center"> 7 </td>
-<td align="center", valign="center", colspan="2"> Modbus </td>
-<td align="center", valign="center"> InterCom </td>
-<td align="center", valign="center"> Optional </td>
-</tr>
-
-<tr>
-<td align="center", valign="center"> 6 </td>
-<td align="center", valign="center", colspan="2"> Device drivers </td>
-<td align="center", valign="center", rowspan="3"> Linux </td>
-<td align="center", valign="center"> - </td>
-</tr>
-
-<tr>
-<td align="center", valign="center"> 5 </td>
-<td align="center", valign="center", colspan="2"> Linux kernel&File system </td>
-<td align="center", valign="center"> - </td>
-</tr>
-
-<tr>
-<td align="center", valign="center"> 4 </td>
-<td align="center", valign="center", colspan="2"> uboot </td>
-<td align="center", valign="center"> - </td>
-</tr>
-
-<tr>
-<td align="center", valign="center", rowspan="3"> Hardware </td>
-
-<td align="center", valign="center"> 3 </td>
-<td align="center", valign="center", colspan="2"> PCBA </td>
-<td align="center", valign="center", rowspan="3"> PCB </td>
-<td align="center", valign="center"> - </td>
-</tr>
-
-<tr>
-<td align="center", valign="center"> 2 </td>
-<td align="center", valign="center", colspan="2"> Layout </td>
-<td align="center", valign="center"> - </td>
-</tr>
-
-<tr>
-<td align="center", valign="center"> 1 </td>
-<td align="center", valign="center", colspan="2"> Schematic design </td>
-<td align="center", valign="center"> - </td>
-</tr>
-
-</table>
-
-<br><center> <font color=gray> CIP4 Proj development framewrok  </font> </center><br>
-
-![CIP4 Protocol Stack](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/CIP4_Stack.png) <br><center> <font color=gray> CIP4 Protocol Stack </font> </center><br>
-
-## 2.2 JDF Library
-
-CIP4项目组使用C++、Java和C#语言开发了JDF解析库，它们是对XML解析库的进一步封装，如JDFLibC++使用了Xerces-C++函数库。
-
-## 2.3 JDF System Building
-
-### 2.3.1 实施注意事项及指引
-
-1. JDF分析
-JDF设备必须实现JDF分析功能，至少能够查找它能够执行其PROCESS类型的节点，搜索算法的细节依赖于实现，可以简单到只搜索JDF根节点。DEVICE必须能够对其所能执行的每个PROCESS类型的节点“消费输入和生产输出”。
-
-2. 测试运行
-为了减少运行时错误，建议各个设备或它们的控制器支持测试运行功能。这可以防止设备开始处理不完整或畸形的节点。
-
 ### 2.3.2 MIME Package
 
 信息可以用URL引用或MIME包的形式进行传递，MIME包中可以只有JDF、或只有JMF、或混合使用（CIP4推荐），当只有JDF时MIME类型为“application/vnd.cip4-jdf+xml”，可以包含多个JDF，并且可以在所有JDF的后面附加数字资产（如png、pdf、ICC等文件，在JDF中以‘cid’方式引用）。当只有JMF时MIME类型为“application/vnd.cip4-jmf+xml"，当混合打包时JMF必须在第一位，JMF在两种情况下有且只能有一个。
@@ -625,116 +743,3 @@ HTTP(s) -> JMF
 
 ---
 
-
-
-
-
-
-
-
-
-
-
-
-
--------
-TBD
-
-
-
-## 1.3 <span id = "JMF"> JMF </span>
-
-JMF - Job Messaging Format，作业消息格式，基于XML技术，以HTTP(s)为通信载体，用于工作流节点的信息交互。表现为系统自举和设置、作业和设备的动态状态、资源利用和错误跟踪、管道控制、设备设置和作业变更、队列控制和作业提交、设备功能描述等。
-
-### 1.3.1 JMF Family
-
-#### 1.3.1.1 Query
-
-Query用于向服务器（泛指消息被动接收方，如Device，下同）查询消息，并从服务器返回Response响应。如果Query消息包含Subscription订阅（称之为可持续通道），则服务器在所订阅的事件发生时将向所订阅的URL发送Signal消息，直到服务器收到StopPersistentChannel的Command为止（可持续通道关闭）。
-
-在JMF-ICS-1.5中，Query包含的消息类型有：KnownDevices、KnownMessages、KnownSubscriptions、QueueStatus、SubmissionMethods
-
-#### 1.3.1.2 Command
-
-Command用于向服务器发送指令以改变其状态，并从服务器返回Response响应。如果Command消息包含AcknowledgeURL属性，则Response消息需包含'Acknowledge=true/false'属性，如果'Acknowledge=true'表示controller支持Acknowledge，在指令执行完毕后将向AcknowledgeURL发送Acknowledge消息以汇报执行结果。
-
-#### 1.3.1.3 Signal
-
-Signal是单向消息，用于服务器自动广播状态变化。服务器产生Signal消息的条件有三种：客户端（泛指上游控制器，如Agent、Controller，下同）使用包含Subscription的Query消息进行了查询、服务器接收的JDF节点中的NodeInfo节点中包含含有Subscription的Query消息、Hard-Wired。Hard-Wired的方式属于主动信号发送方式，实现方法如预设（通过文件或其它方式）一个URL列表，当设备开机或首次连接到网络时广播信号以告知设备信息和所能提供的服务等。
-
-> **[info] Note**
->
-> Signal基于属于HTTP - C/S模型，本质上也是双向消息，服务器发送时可设置ChannelMode属性值为Reliable（即可靠信号），此时客户端必须返回Response，但无论如何服务器都可以选择忽略响应。
-
-#### 1.3.1.4 Response 
-
-Response用于服务器同步响应Query和Command消息，或用于客户端响应服务器的Signal消息，以表明消息已接收并翻译。当Response的ReturnCode属性大于0时，Response应该包含Notification元素以描述返回状态。Response的refID属性值等同于Query或Command中的ID属性值。
-
-#### 1.3.1.5 Acknowledge
-
-Acknowledge是服务器对客户端的Command或Query消息的异步单向应答，其refID属性值为发送方ID值。Acknowledge仅在Command消息指定AcknowledgeURL属性或AcknowledgeFormat和AcknowledgeTemplate属性，且服务器支持应答时才产生。当服务器执行一个Command需要较长时间时，先返回Response响应，等待Command执行完成再返回Acknowledge。
-
-### 1.3.2 JMF Message Level
-
-1. No messaging：不使用JMF，JDF可以在每个过程结点包含Audit元素代替JMF消息机制。
-2. Notification：支持Notification的服务器通过发送Signal来提供单向消息，通知消息在开始和完成作业中的某个过程时通知客户端。该服务器可能还提供一些错误情况的通知。
-3. Query Support：支持Query的服务器通过传递当前的JobID属性、排队的JobID属性或当前工作过程的状态来应答其它控制器的询问。
-4. Command support：这种等级为服务器提供了处理命令的能力，服务器可以接收命令，例如中断当前的作业、重启作业或者改变队列中作业的状态。
-5. Submission support：服务器可以通过HTTP POST请求消息通道来接收JDF作业，在这种情况下通道应该支持MIME。
-
-### 1.3.3 Error and Event
-
-如果Acknowledge消息、Command消息、Query消息、Signal消息或者Registration消息没有被正确处理，程序应该有标准错误的响应，这种响应可能包含Notification元素。在Notification元素中包含的消息可用于用户界面提示错误。
-Response消息和Acknowledge消息包含一个ReturnCode属性，该属性默认值为0，表示响应成功。如果成功，在响应命令时可以提供一个Notification元素（Class属性=“information”）。如果出现警告或错误，ReturnCode属性会大于0。在这种情况下应该提供Notification元素。响应错误的程序应该填充Notification元素来详细描述错误。
-
-### 1.3.4 JMF Queue
-
-Command消息中的队列操作是JMF对JDF作业调整的核心功能，在JMF中队列成员被（作业）称为**QueueEntry**，使用属性*QueueEntryID*标识，并支持优先级（0[Low]~100[High]）。
-
-![Queue Life](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/QueueEntryLifeCycle.png) <br><center> <font color=gray> QueueEntry lifecycle </font> </center><br>
-
-> **[info] Note**
->
-> Programming for Queue Entry: Mybe set an element Queue as a global variable, then you have an unique queue as JDF_1.5 demand. Append, set or delete QueueEntry element for your only one Queue upon to satisfy some stuff.
-
-![Queue Entry](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/QueueEntry.png) <br><center> <font color=gray> Queue and QueueEntry </font> </center><br>
-
-## 1.4 <span id = "ICS"> ICS </span>
-
-ICS - Interoperability Conformance Specification，协作互通性规范，定义了不同类型设备应该支持的最小的JDF指令和参数集合，是泛型JDF文档的具体实现，也是JDF程序开发的指导文件。如果把JDF文档比作抽象类，则ICS是该抽象类的派生子类。ICS对不同部分定义了互通性规范，其中Base ICS定义了任何JDF产品都应该兼容的JDF子集，即JDF产品所应该实现的最基本功能。在此基础上分别定义了若干不同部分的ICS规范，在上层ICS中不再出现下层已经出现的内容，完全的ICS文档等于所有层内容的相加。
-
-![ICS Classes](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/ICS_Classes.png) <br><center> <font color=gray> ICS Classes </font> </center><br>
-
-其中Binding ICS定义了具有骑马钉、装订软封面或硬封面的JDF印后设备所应该兼容的JDF子集。JMF ICS定义了一个具有JMF通讯功能的JDF产品所应该兼容的JMF子集。
-
-Tips : ICS文档的使用方法 - ICS元素表格中可链接的表示该内容为子元素，否则是属性，属性下深色背景的是属性值，对于在ICS中没有说明的节点，可以在JDF文档中找到描述信息。
-
-## 1.5 <span id = "MIS"> MIS </span>
-
-MIS - Management Information System，管理信息系统，由决策支持系统、工业控制系统、办公自动化系统以及数据库、模型库、方法库、知识库和与外界信息交换接口组成，主要作用是最大限度利用计算机和网络来**加强企业的信息管理**，提高整体效益和效率。集成JDF的MIS系统能够提供作业流程控制、生产控制等功能，可以实现从作业接收、估价、报价、作业安排、作业分派和打样，最后到印刷生产的全过程的信息管理。[Case : HP HIFLEX](http://www.hp.com/hpinfo/newsroom/press_kits/2012/HPdrupa12/HP_Hiflex_MIS.pdf).
-
-JDF工作流中监督系统组件和系统控制之间的所有过程和通信
-
-### 1.5.1 MIS-JDF联网结构
-
-#### 1.5.1.1 分散式联网架构
-
-JDF文件从一个设备的应用程序中发送到下一个设备的应用程序中，JDF可以通过程序保存在一个文件系统中或者数据库中。
-
-![MIS Distribute Net](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/MIS_Distribute_Net.png) <br><center> <font color=gray> MIS distribute net </font> </center><br>
-
-#### 1.5.2.1 中央式联网架构
-
-##### 1.5.2.1.1 以JDF为中心的联网架构
-
-所有的JDF信息存储于中央服务器的数据库中，数据库负责各个流程的统一调度管理，这可以让JDF文件可持续的受到监视，以及针对哪一流程在何时对JDF树某一节点进行操作规定规则。
-
-![MIS JDF Center Net](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/MIS_JDF_Center_Net.png) <br><center> <font color=gray> MIS JDF center net </font> </center><br>
-
-##### 1.5.2.1.2 以MIS为中心的联网架构
-
-MIS担任统一调度的重要角色，它可以控制全部的作业过程，完成控制器的任务。
-
-![MIS MIS Center Net](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/MIS_MIS_Center_Net.png) <br><center> <font color=gray> MIS center net </font> </center><br>
-
----
