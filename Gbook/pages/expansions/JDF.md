@@ -339,7 +339,7 @@ ICS defines the minimum set of JDF with multi parts. Base ICS defines the most b
 >
 > Prepress and Press processes are omitted.
 
-## A.1 Postpress Processes
+## B.1 Postpress Processes
 
 Processes				| Translation	| Description
 :-:						| :-:			| :-:
@@ -360,7 +360,7 @@ EndSheetGluing			|				|
 Feeding					|				|
 Folding					| 折叠			|
 Gathering				|				|
-Gluing					| 涂胶			| -
+Gluing					| 涂胶			| 在书皮贴紧书脊处涂胶 
 HeadBandApplication		|				|
 HoleMaking				| 制孔			| -
 Inserting				|				|
@@ -385,13 +385,13 @@ Strapping				|				|
 StripBinding			|				|
 ThreadSealing			|				| 
 ThreadSewing			|				|
-Trimming				| 裁切			| 尺寸修剪过程
+Trimming				| 三面裁切		| - 
 WebInlineFinishing		|				|
 Winding					|				|
 WireCombBinding			| 线梳齿装订	| -
 Wrapping				| 包裹			| 将捆扎物、托盘等物体打包的过程
 
-## A.2 General Processes
+## B.2 General Processes
 
 Processes				| Translation	| Description
 :-:						| :-:			| :-:
@@ -418,7 +418,7 @@ Verification			| 验证			|
 Resources				| Description
 :-:						| :-:
 BindingIntent			| -
-Component				| 组件，用于描述半成品，即各种成品的一部分
+Component				| 组件，用于描述（印前和印后）中间件或成品的组成部分
 DeliveryIntent			| 交付，物力资源、中间产品等交付
 EmbossingIntent			| 压花、烫金
 FoldingIntent			| -
@@ -440,7 +440,7 @@ Resources					| Description
 ApprovalParams				| -
 ApprovalSuccess				| -
 Assembly					| - 
-BinderySignature			| 代表多张折叠在一起的纸
+BinderySignature			| 代表多张折叠在一起的纸，是最终产品的一部分
 BoxFoldingParams			| -
 BoxPackingParams			| -
 BufferParams				| - 
@@ -549,9 +549,13 @@ Device						| 关于特定设备的信息，如功能
 Resources					| Description
 :-:							| :-:
 Bundle						| 用于描述各种Compnents的设置，该资源可被许多印前和印后过程创建 
-Component					| 用于描述印前和印后过程中的各种半成品，即组件；几乎每个印后流程都有组件资源
+Component					| - 
 
 <br><center> <font color=gray> JDF/ResoucePool/[Resources]/@Class="Quantity" </font> </center><br>
+
+> **[info] Component**
+>
+> Almost every post-press process contains one or more components resources (input and ouput).
 
 ---
 
