@@ -1,4 +1,5 @@
 <script src="https://github.com/Jim-CodeHub/Skills-list/raw/master/script/ImgHover.js"></script> 
+<link rel="stylesheet" href="https://github.com/Jim-CodeHub/Skills-list/raw/master/script/word.css" type="text/css" /> 
 
 # 1 Introduction
 
@@ -32,7 +33,7 @@ MIS (Management Information System)	| software	| master controller
 
 > **[info] Note**
 >
-> Components interactions by JDF as **Data Flow** and JMF as **Info Flow**, and JDF is created by top-level *Controller/Agent*, modified, **spwan** and **merged** by intermidiate *Controller/Agent*, and finally executed by *Device*.
+> Components interactions by JDF as **Data Flow** and JMF as **Info Flow**, and JDF is created by top-level *Controller/Agent*, modified, spwan and merged by intermidiate *Controller/Agent*, and finally executed by *Device*.
 
 ## 1.3 Components communication
 
@@ -76,7 +77,7 @@ TBD
 
 TBD
 
-### 2.2.1 *JDF/ResoucePool/NodeInfo*
+### 2.2.2 *JDF/ResoucePool/NodeInfo*
 
 TBD
 
@@ -95,6 +96,48 @@ TBD
 Job Messaging Format, based on XML, take HTTP(s) as the communication carrier, used for communication between JDF workflow components.
 
 ![JMF Node](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JMFNode.png) <br><center> <font color=gray> JMF Node Diagram </font> </center><br>
+
+Family		| Description
+:-:			| :-:
+Query		| client *Query* server for messages
+Command		| client sends *Command* to the server
+Response	| server sync *Response* for client *Query* or *Command*. Or client sync *Response* for server *Signal*
+Signal		| server push *Signal* to the client 
+Acknowledge	| server async *Response* for client *Query/@AcknowledgeURL='True'* or *Command/@AcknowledgeURL='True'*
+
+<br><center> <font color=gray> JMF Family </font> </center><br>
+
+> **[info] Acknowledge**
+>
+> When the server cannot output the result in time, return the *Response* first and then return the *Acknowledge*.
+
+## 3.1 Queue
+
+The sets of queue operation is core of *JMF/Command* to scheduling jobs, and each job is a **QueueEntry** identified by *JMF/Command/@QueueEntryID*, and supports priority (0[Low]~100[High]) adjustment.
+
+![Queue Entry](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/QueueEntry.png) <br><center> <font color=gray> Queue and QueueEntry </font> </center><br>
+
+![Queue Life](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/QueueEntryLifeCycle.png) <br><center> <font color=gray> QueueEntry Lifecycle </font> </center><br>
+
+> **[info] For Programming**
+>
+> The program can provide a memory map with the same status as the queue to synchronize the changes of the queue. 
+
+## 3.2 Persistent Channel 
+
+If the client sends *Query/Subscription/@URL*, the server will push *Signal* to the client when the subscribed event occurs, util the server recives the client's *Command/StopPersistentChannel*.   
+
+![Persistent Channel](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/PersChannel.png) <br><center> <font color=gray> Persistent Channel </font> </center><br>
+
+The server can send *Signal* to clients (Select from the list of configured URLs) actively without any subscription, to broadcast device functions. That is **Hard-Wired**.
+
+> **[info] Reliable Signal**
+>
+> If the server sends *Signal/@ChannelMode='Reliable'*, the client SHALL do *Response* with non-empty body. 
+
+## 3.3 Error handling
+
+When the JMF message family cannot be processed correctly by the server, *Response/@ReturnCode=[ERR CODE](#Appendix-D)* SHALL be returned. and *Response/Notification* SHOULD implement.
 
 ---
 
@@ -187,6 +230,98 @@ Job Messaging Format, based on XML, take HTTP(s) as the communication carrier, u
 </table>
 
 <br><center> <font color=gray> CIP4 Proj development framework  </font> </center><br>
+
+> **[info] Note**
+>
+> PCB (1/2/3), Linux (4/5/6) and InterCom (7) are omitted. 
+
+## 4.1 Packaging
+
+JDF (and digital assets which it refers) and/or JMF MAY be exist standalone or packaged as [MIME](#https://www.rfc-editor.org/info/rfc2045) and sent to *Device* from *Controller/Agent*.
+
+<table width="100%" align="center" text-align="center">
+<tr>
+<th> MIME Headers </th> 
+<th> Values </th> 
+<th> Description </th> 
+</tr>
+
+<tr>
+<td align="center", valign="center" rowspan="3"> Content-Type </td>
+<td align="center", valign="center"> application/vnd.cip4-jdf+xml </td>
+<td align="center", valign="center">  JDF entity </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> application/vnd.cip4-jmf+xml </td>
+<td align="center", valign="center"> JMF entity </td>
+</tr>
+<tr>
+<td align="center", valign="center"> multipart/related </td>
+<td align="center", valign="center"> mixed entity </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> Content-ID </td>
+<td align="center", valign="center"> US-ASCII character </td>
+<td align="center", valign="center"> refer to 'cid:' </td>
+</tr>
+
+<tr>
+<td align="center", valign="center" rowspan="2"> Content-Transfer-Encoding </td>
+<td align="center", valign="center"> 8bit </td>
+<td align="center", valign="center"> - </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> binary </td>
+<td align="center", valign="center"> - </td>
+</tr>
+
+<tr>
+<td align="center", valign="center"> base64 </td>
+<td align="center", valign="center"> - </td>
+</tr>
+
+</table>
+
+<br><center> <font color=gray> MIME entity used in CIP4 </font> </center><br>
+
+> **[info] Suffix**
+>
+> \*.mjd suffix is used when JDF is the first entity of MIME, and \*.mjm suffix is used when JMF is the first entity of MIME.   
+
+The first body part of the MIME 'Content-Type:multipart/related' message SHALL be the JMF Message. Internal links are defined using the cid URL (which corresponding Content-ID without '<' and '>'). Subsequent sections are the JDF Jobs followed by the linked entities.
+
+> **[info] Note**
+>
+> Only one JMF can exsit (if it must exist) and but multi JDF and digital assets can exsits in mixed entity. 
+
+## 4.2 Communication
+
+[**HotFolder**](#FileBP) and [**HTTP(s)**](#HTTPBP) are used to exchange data and info between *Controllers/Agents* and *Devices*. 
+
+### 4.2.1 <span id = "FileBP"> File Based Portocol (JDF) </span>
+
+HotFolder is a directory that is monitored by OS in real-time, once a file is entered, it will be processed immediately. An *Input HotFolder* and *Output HotFolder* (which provides for opposite system) SHALL be implemented. 
+
+![Communication by HotFolder](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/HotFolder.png) <br><center> <font color=gray> Communication by HotFolder </font> </center><br>
+
+JDF instance with element node *&#60;AuditPool&#62;&#60;/AuditPool&#62;* SHALL be written to *Output HotFolder* when *Devices* finishes processing, for *Controllers/Agents* polling. 
+
+> **[info] Note**
+>
+> \*.jdf/\*.mjd reference files MAY be written into a exsiting directory of the *Input HotFolder*, or a new directory '**D**' which created by *Controllers/Agents* in *Input HotFolder*.   
+
+### 4.2.2 <span id = "HTTPBP"> HTTP Based Protocol (JDF+JMF) </span>
+
+HTTP is a stable protocol with a well defined query-response mechanism, and only **post** method is used for CIP4, the content is MIME package.
+
+![Communication by HTTP(s)](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/HTTP.png) <br><center> <font color=gray> Communication by HTTP(s) </font> </center><br>
+
+> **[info] Note**
+>
+> *Controllers/Agents* implements HTTP Server and *Devices* implements HTTP Client. 
 
 ---
 
@@ -364,24 +499,129 @@ ShrinkingParams				| -
 SpinePreparationParams		| -
 SpineTapingParams			| -
 StackingParams				| -
+StaticBlockingParams		| -
+StitchingParams				| -
+StrappingParams				| -
+StripBindingParams			| -
+ThreadSealingParams			| -
+ThreadSewingParams			| -
+TrimmingParams				| -
+VarnishingParams			| -
+WebInlineFinishingParams	| -
+WindingParams				| -
+WireCombBindingParams		| -
+WrappingParams				| -
 
 <br><center> <font color=gray> JDF/ResoucePool/[Resources]/@Class="Parameter" </font> </center><br>
 
 ## C.3 Consumable Resources
 
+Resources					| Description
+:-:							| :-:
+Media						| 物理媒介
+MiscConsumable				| -
+Pallet						| 用于装货的托盘
+RegisterRibbon				| -
+Strap						| -
+
 <br><center> <font color=gray> JDF/ResoucePool/[Resources]/@Class="Consumable" </font> </center><br>
 
 ## C.4 Handling Resources
+
+Resources					| Description
+:-:							| :-:
+PrintRolling				| -
+Tool						| -
+UsageCounter				| 用于跟踪设备的使用情况	
 
 <br><center> <font color=gray> JDF/ResoucePool/[Resources]/@Class="Handling" </font> </center><br>
 
 ## C.5 Implementation Resources
 
+Resources					| Description
+:-:							| :-:
+Device						| 关于特定设备的信息，如功能 
+
 <br><center> <font color=gray> JDF/ResoucePool/[Resources]/@Class="Implementation" </font> </center><br>
 
 ## C.6 Quantity Resources
 
+Resources					| Description
+:-:							| :-:
+Bundle						| 用于描述各种Compnents的设置，该资源可被许多印前和印后过程创建 
+Component					| 用于描述印前和印后过程中的各种半成品，即组件；几乎每个印后流程都有组件资源
+
 <br><center> <font color=gray> JDF/ResoucePool/[Resources]/@Class="Quantity" </font> </center><br>
+
+---
+
+# <span id = "Appendix-D"> Appendix-D : Error Codes </span>
+
+ReturnCode	| Description
+:-:			| :-
+0			| Success
+
+ReturnCode	| Description
+:-:			| :-
+1			| General error
+2			| Internal error
+3			| XML parser error (e.g., if a MIME file is sent to an XML Controller).
+4			| XML validation error
+5			| Query Message/Command Message not implemented
+6			| Invalid parameters
+7			| Insufficient parameters
+8			| Device not available (Controller exists but not the Device or queue)
+9			| Message incomplete.
+10			| Message Service is busy.
+11 			| Synchronous mode not supported for message. No @ AcknowledgeURL is specified and the Message can only be processed asynchronously and was not processed. (Error)
+12 			| Asynchronous acknowledge not supported for message. No @ AcknowledgeURL is specified and the Message was processed. The resulting  Acknowledge can only be emitted asynchronously. (Warning)
+13			| Reliable Signals not supported. Subscription denied.
+
+<br><center> <font color=gray> Protocol errors </font> </center><br>
+
+ReturnCode	| Description
+:-:			| :-
+100			| Device not running
+101 		| Device incapable of fulfilling request (e.g., a RIP that has been asked to cut a Sheet).
+102 		| No executable Node exists in the JDF
+103 		| JobID not known by Controller
+104 		| JobPartID not known by Controller
+105 		| Queue entry not in queue
+106 		| Queue request failed because the queue entry is already executing
+107 		| The queue entry is already executing. Late change is not accepted
+108 		| Selection or applied filter results in an empty list
+109 		| Selection or applied filter results in an incomplete list. A buffer cannot provide the complete list queried for.
+110 		| Queue request of a Job submission failed because the requested completion time of the Job cannot be fulfilled.
+111 		| Subscription request denied.
+112 		| Queue request failed because the Queue is  "Closed" or  "Blocked" and does not accept new entries.
+113 		| Queue entry is already in the resulting status.
+114 		| QueueEntry /@ Status is already  "PendingReturn" , "Completed" or "Aborted" and therefore does not accept changes. Modification note: starting with JDF 1.4,  "PendingReturn" added.
+115 		| Queue entry is not running.
+116 		| Queue entry already exists. Used when a  QueueEntry with identical  JobID ,  JobPartID and  Part already exists.
+120 		| Cannot access referenced URL. URI Reference cannot be resolved. Used when a referenced entity (e.g., a  JDF in a  SubmitQueueEntry cannot be found).
+121 		| Unknown  DeviceID . No Device is known with the  DeviceID specified.
+130 		| Ganging is not supported. A gang Job has been submitted to a queue that does not support ganging.
+131 		| GangName not known. A Job has been submitted with an unknown  GangName .
+
+<br><center> <font color=gray> Device and Controller errors </font> </center><br>
+
+ReturnCode	| Description
+:-:			| :-
+200			| Invalid Resource parameters
+201 		| Insufficient Resource parameters
+202 		| PipeID unknown
+203 		| Unlinked  ResourceLink
+204 		| Could not create new  JDF Node.
+300 		| Authentication denied.
+301 		| Secure channel not supported - I don't support secure channel for this Message.
+302 		| Secure channel required - I require secure channel for this Message.
+303 		| Certificate expired (Some implementations might not be able to send this response because the SSL layer will reject the Message before passing it to the JMF implementation for parsing)
+304 		| Authentication pending.
+305 		| Authentication already established.
+306 		| No authentication request in process
+307 		| Certificate Invalid
+
+<br><center> <font color=gray> Job and pipe specific errors </font> </center><br>
 
 ---
 
@@ -650,7 +890,72 @@ TBD
 
 ## V.2 MJM Instance 
 
-TBD
+```MIME
+Message-ID: <3018287.1131706450069.JavaMail.clabu@Elvis.local>
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+boundary="----=_Part_0_2409003.1131706449797"
+
+------=_Part_0_2409003.1131706449797
+Content-Type: application/vnd.cip4-jmf+xml
+Content-Transfer-Encoding: 7bit
+
+<?xml version="1.0" encoding="UTF-8"?>
+<JMF SenderID="Alces" TimeStamp="2005-10-09T17:42:00+01:00" Version="1.2" xmlns="http://www.CIP4.org/JDFSchema_1_1">
+	<Command ID="M001" Type="SubmitQueueEntry">
+		<QueueSubmissionParams ReturnJMF="http://192.168.1.30:9090/alces/jmf" URL="cid:Alces-Approval.jdf"/>
+		<QueueFilter MaxEntries="4" QueueEntryDetails="Brief"/>
+	</Command>
+</JMF>
+
+------=_Part_0_2409003.1131706449797
+Content-Type: application/xml; name=Alces-Approval.jdf
+Content-Transfer-Encoding: 7bit
+Content-ID: <Alces-Approval.jdf>
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<JDF xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.CIP4.org/JDFSchema_1_1" Activation="Active" ID="elk-0001" JobID="0001" JobPartID="1" Status="Waiting" Template="false" Version="1.2" Type="Approval">
+	<AuditPool>
+		<Created TimeStamp="2004-09-07T13:49:00+01:00" ref="elk-0001"/>
+	</AuditPool>
+	<ResourcePool>
+		<RunList Class="Parameter" ID="RL001" Status="Available">
+			<LayoutElement>
+				<FileSpec URL="cid:Alces-Figures.pdf" MimeType="application/pdf"/>
+			</LayoutElement>
+		</RunList>
+		<ApprovalParams Class="Parameter" ID="AP001" MinApprovals="1" Status="Available">
+			<ApprovalPerson ApprovalRole="Obligated">
+				<ContactRef rRef="C001"/>
+			</ApprovalPerson>
+		</ApprovalParams>
+		<Contact Class="Parameter" ID="C001" ContactTypes="Approver" Status="Available">
+			<Person FamilyName="Buckwalter" FirstName="Claes">
+				<ComChannel ChannelType="Email" Locator="mailto:clabu@itn.liu.se"/>
+			</Person>
+		</Contact>
+		<ApprovalSuccess Class="Parameter" ID="AS001" Status="Unavailable"/>
+	</ResourcePool>
+	<ResourceLinkPool>
+		<RunListLink rRef="RL001" Usage="Input"/>
+		<ApprovalParamsLink rRef="AP001" Usage="Input"/>
+		<ApprovalSuccessLink rRef="AS001" Usage="Output"/> 
+	</ResourceLinkPool>
+</JDF>
+
+------=_Part_0_2409003.1131706449797
+Content-Type: application/pdf; name=Alces-Figures.pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=Alces-Figures.pdf
+Content-ID: <Alces-Figures.pdf>
+
+JVBERi0xLjYNJeLjz9MNCjkgMCBvYmogPDwvTGluZWFyaXplZCAxL0wgMTg4NDcvTyAxMS9FIDY4
+ODkvTiAyL1QgMTg2MjYvSCBbIDQ1NiAxNTldPj4NZW5kb2JqDSAgICAgICAgICAgICAgICAgICAg
+IA14cmVmDTkgOA0wMDAwMDAwMDE2IDAwMDAwIG4NCjAwMDAwMDA2MTUgMDAwMDAgbg0KMDAwMDAw
+MDY3NSAwMDAwMCBuDQowMDAwMDAwODkzIDAwMDAwIG4NCjAwMD...
+
+------=_Part_0_2409003.1131706449797--
+```
 
 ---
 
@@ -772,223 +1077,4 @@ CIP4 retains the right to modify the terms applicable to the CIP4 Software under
 This software consists of voluntary contributions made by many individuals on behalf of the The International Cooperation for the Integration of Processes in Prepress, Press and Postpress and was originally based on software copyright (c) 1999-2001, Heidelberger Druckmaschinen AG and copyright (c) 1999-2001, Agfa-Gevaert N.V.
 
 For more information on The International Cooperation for the Integration of Processes in Prepress, Press and Postpress, please see http://www.cip4.org.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```
-### 1.4.3 JDF Element Node Attributes 
-
-Attributes			| values																			| Description 
-:-:					| :-:																				| :-:
-Status				| -																					| - 
-ICSVersions			| &#60;Name&#62;\_L&#60;Level&#62;>-&#60;Version&#62;								| ICS version and level association with ICS Spec 
-Type				| *Product*/*ProcessGroup*/*Combined*/[Predefined Processes](#Appendix-A)			| processes type 
-Types				| [Predefined Processes](#Appendix-A)												| processes type set，used when *@Type=ProcessGroup* or *@Type=Combined*
-ID					| -																					| -
-JobID				| -																					| - 
-JobPartID			| -																					| - 
-xmlns				| *http://www.CIP4.org/JDFSchema_1_1*												| namespace 
-xmlns:xsi			| *http://www.w3.org/2001/XMLSchema-instance* 										| extension namespace
-xsi:type			| -																					| extension namespace attribute 
-Activation			| *Active*																			| - 
-MaxVersion			| *1.5*																				| max version limited for all elements and attributes 
-Version				| *1.5*																				| -
-CommentURL			| *file:*/*https:*/*http:*/*cid:*/...												| human-readable comment 
-DescriptiveName 	| -																					| human-readable description 
-Category			| *Binding* (based on *Binding_L1-1.0*)												| same as *@Types* 
-
-<br><center> <font color=gray> JDF Node Attributes based on Base-ICS-1.5 </font> </center><br>
-
-> **[info] Note**
->
-> There SHALL NOT any JDF elements nested when specify attribute *@Types*.
-
-- *@Status*
-
-*Spawned*/*Setup*/*Wating*/*TestRunInProgress*/*FailedTestRun*/*Ready*/*InProgress*/*Aborted*/*Stopped*/*Suspended*/*Completed*/*Cleanup*/*Pool*/*Part*.
-
-> **[info] Note**
->
-> A Worker SHALL NOT execute Nodes whose *@Status* is "Completed" or "Aborted".
-
----
-
-
-
-## 2.2 Query
-
-Query用于客户端向服务器查询消息，并从服务器返回Response响应。如果Query消息包含*Subscription*订阅（称为**可持续通道**），则服务器在所订阅的事件发生时将向所订阅的URL发送Signal消息，直到服务器收到客户端的Command消息（包含*StopPersistentChannel*元素节点）为止（可持续通道关闭）。
-
-## 2.3 Command
-
-Command用于客户端向服务器发送指令以改变其状态，并从服务器返回Response响应。如果Command消息包含*@AcknowledgeURL*属性，则Response消息需包含*@Acknowledge=[BOOL]"*属性，BOOL值为"true"，则服务器在指令执行完毕后将向客户端*@AcknowledgeURL*指定的地址发送Acknowledge消息以汇报执行结果。
-
-### 2.3.1 Command with Queue
-
-Command消息中的**队列**操作是JMF作业调度的核心，在JMF中队列成员（作业）被称为**QueueEntry**，使用属性*QueueEntryID*标识，并支持优先级（0[Low]~100[High]）调整。
-
-![Queue Entry](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/QueueEntry.png) <br><center> <font color=gray> Queue and QueueEntry </font> </center><br>
-
-![Queue Life](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/QueueEntryLifeCycle.png) <br><center> <font color=gray> QueueEntry Lifecycle </font> </center><br>
-
-> **[info] Note**
->
-> 队列编程：程序可以提供一份与队列状态相同的内存映射，以同步队列的变化。
-
-## 2.4 Signal
-
-Signal是单向消息，用于服务器自动广播状态变化。服务器产生Signal消息的条件有三种：
-
-1. 客户端通过JMF申请建立可持续通道，即发送Query消息并包含*Subscription*元素节点。 
-2. 客户端通过JDF申请建立可持续通道，即在JDF实例中包含含有*Subscription*元素节点的*NodeInfo*元素节点。 
-3. Hard-Wired：入网广播，即当设备开机或首次连接到网络时主动（向预设的URLs）发送信号，以告知设备信息和所能提供的服务等。
-
-> **[info] Note**
->
-> Signal基于属于HTTP-C/S模型，本质上也是双向消息，服务器发送时可设置*@ChannelMode="Reliable"*（即**可靠信号**），此时客户端必须返回Response，但无论如何服务器都可以选择忽略响应。
-
-## 2.4 Response 
-
-Response用于服务器同步响应客户端的Query和Command消息，或用于客户端响应服务器的Signal消息，以表明消息已被接收并翻译。当*Response/@ReturnCode*大于0时，Response应该包含*Notification*元素节点以描述返回状态。
-
-> **[info] Standard Error Response**
->
-> 当来自客户端的消息不能被正确处理时，Response应包含*@ReturnCode*，属性值是大于零的错误码。
-
-## 2.5 Acknowledge
-
-Acknowledge是服务器对客户端的Command或Query消息的异步单向应答。当服务器执行一个Command需要较长时间时先返回Response响应，等待Command执行完成再返回Acknowledge。
-
----
-
-
-
-
-----------------
-TBD
-
-### 2.3.2 MIME Package
-
-信息可以用URL引用或MIME包的形式进行传递，MIME包中可以只有JDF、或只有JMF、或混合使用（CIP4推荐），当只有JDF时MIME类型为“application/vnd.cip4-jdf+xml”，可以包含多个JDF，并且可以在所有JDF的后面附加数字资产（如png、pdf、ICC等文件，在JDF中以‘cid’方式引用）。当只有JMF时MIME类型为“application/vnd.cip4-jmf+xml"，当混合打包时JMF必须在第一位，JMF在两种情况下有且只能有一个。
-
-### 2.3.2 JDF和JMF交换协议
-
-为了更好的互操作性，控制器和设备应该提供没有SSL层的不安全HTTP。
-
-1. 基于文件的协议（JDF/.mjd）
-
-基于文件的协议是JDF作业票据的解决方案，该协议可以基于热文件夹，实现热文件夹的设备必须为JDF定义一个输入热文件夹和输出热文件夹。此外，SubmitQueueEntry消息包含一个URL属性，该属性允许指定任意的JDF定位。
-
-![JMF Communication by HotFolder](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JMF_HotFolder.png) <br><center> <font color=gray> JMF Communication by HotFolder </font> </center><br>
-
-HotFolder -> JDF
-`<JDF...>
-	<FileSpec URL="htt;//*" or "file://*" or "./*" />
-	...
-</JDF>
-`
-Note: 基于文件的协议不支持协议错误处理的确认收据，这就要求接收方轮询处理程序的输出热文件夹。最后，授予对热文件夹的读/写访问权限也降低了安全性。
-
-2. 基于HTTP的协议（JMF/.mjm）
-
-	- 消息的实现：JMF是HTTP（客户端）请求和（服务器）响应的主体。客户端使用post方法请求，JMF可以是Query或Registration或Command，也可以包含Signal和Acknowledge。对于Signal和Acknowledge请求：当Signal是可靠信号（» 索引“可靠信号”）时，服务器对其响应不能为空，否则可以为空，Acknowledge的响应可以是空的。
-
-	- HTTP推送机制：因为HTTP是无状态协议（对事务处理无记忆，每次通讯无上下文关联），所以服务器到客户端的推送机制非常重要（如定期的状态栏更新）。客户端也可以通过定期轮询服务器来获取相关消息。
-
-![JMF Communication by HTTP(s)](https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JMF_HTTPs.png) <br><center> <font color=gray> JMF Communication by HTTP(s) </font> </center><br>
-
-HTTP(s) -> JMF
-`<JMF...> 
-	<SubmitQueueEntry URL="http://xxx.jdf"...>
-		...
-	</SubmitQueueEntry>
-</JMF>`
-
-3. 基于HTTPS的协议 - SSL双向认证
-
-4. 管理持续通道（Persistent Channels）：控制器可以通过向设备发送一个KnownSubscriptions查询来请求有关当前活动订阅的信息。
-	- 如果设备中已经存在匹配的Subscription，则控制器不应发送新的Subscription。
-	- 如果设备不支持KnownSubscriptions请求，则控制器可以创建一个新的Subscription，如果设备已经存在相同的Subscription，则替换为新的。
-	- 通过StopPersistentChannel来删除持续通道
-
----
 

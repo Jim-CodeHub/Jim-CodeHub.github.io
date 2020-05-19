@@ -967,7 +967,8 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <script src="https://github.com/Jim-CodeHub/Skills-list/raw/master/script/ImgHover.js"></script> 
+                                <p><script src="https://github.com/Jim-CodeHub/Skills-list/raw/master/script/ImgHover.js"></script> </p>
+<link rel="stylesheet" href="https://github.com/Jim-CodeHub/Skills-list/raw/master/script/word.css" type="text/css"> 
 
 <h1 id="1-introduction">1 Introduction</h1>
 <p>CIP4 (International Cooperation for Integration of Processes in <strong>Prepress</strong>, <strong>Press</strong> and <strong>Postpress</strong>) is committed to building <strong>CIMS</strong> (Computer Information Management System) of printing industry for prepress, press and postpress. And JDF (used as data carrier) and JMF (used as info carrier) are applied. <a href="https://www.cip4.org/" target="_blank">CIP4 Official Website</a>.</p>
@@ -1022,7 +1023,7 @@
 <p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/Interactions.png" alt="Interactions"> <br><center> <font color="gray"> Components interactions </font> </center><br></p>
 <blockquote>
 <p><strong>[info] Note</strong></p>
-<p>Components interactions by JDF as <strong>Data Flow</strong> and JMF as <strong>Info Flow</strong>, and JDF is created by top-level <em>Controller/Agent</em>, modified, <strong>spwan</strong> and <strong>merged</strong> by intermidiate <em>Controller/Agent</em>, and finally executed by <em>Device</em>.</p>
+<p>Components interactions by JDF as <strong>Data Flow</strong> and JMF as <strong>Info Flow</strong>, and JDF is created by top-level <em>Controller/Agent</em>, modified, spwan and merged by intermidiate <em>Controller/Agent</em>, and finally executed by <em>Device</em>.</p>
 </blockquote>
 <h2 id="13-components-communication">1.3 Components communication</h2>
 <p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/CIP4_Stack.png" alt="CIP4 Stack"> <br><center> <font color="gray"> Components communication </font> </center><br></p>
@@ -1051,7 +1052,7 @@
 </blockquote>
 <h3 id="221-jdfresoucepoolresoucesstatus">2.2.1 <em>JDF/ResoucePool/[Resouces]/@Status</em></h3>
 <p>TBD</p>
-<h3 id="221-jdfresoucepoolnodeinfo">2.2.1 <em>JDF/ResoucePool/NodeInfo</em></h3>
+<h3 id="222-jdfresoucepoolnodeinfo">2.2.2 <em>JDF/ResoucePool/NodeInfo</em></h3>
 <p>TBD</p>
 <h2 id="23-jobs-history">2.3 Job&apos;s History</h2>
 <p><em>JDF/AuditPool</em> stores the Job&#x2019;s history and can support daily quality control and troubleshooting management reporting needs. And the history SHALL place in output folder after the job ends (when HotFolder communication method is used). </p>
@@ -1063,6 +1064,59 @@
 <h1 id="3-info-flow---jmf---"><span id="JMF"> 3 Info Flow - JMF   </span></h1>
 <p>Job Messaging Format, based on XML, take HTTP(s) as the communication carrier, used for communication between JDF workflow components.</p>
 <p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JMFNode.png" alt="JMF Node"> <br><center> <font color="gray"> JMF Node Diagram </font> </center><br></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Family</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Query</td>
+<td style="text-align:center">client <em>Query</em> server for messages</td>
+</tr>
+<tr>
+<td style="text-align:center">Command</td>
+<td style="text-align:center">client sends <em>Command</em> to the server</td>
+</tr>
+<tr>
+<td style="text-align:center">Response</td>
+<td style="text-align:center">server sync <em>Response</em> for client <em>Query</em> or <em>Command</em>. Or client sync <em>Response</em> for server <em>Signal</em></td>
+</tr>
+<tr>
+<td style="text-align:center">Signal</td>
+<td style="text-align:center">server push <em>Signal</em> to the client </td>
+</tr>
+<tr>
+<td style="text-align:center">Acknowledge</td>
+<td style="text-align:center">server async <em>Response</em> for client <em>Query/@AcknowledgeURL=&apos;True&apos;</em> or <em>Command/@AcknowledgeURL=&apos;True&apos;</em></td>
+</tr>
+</tbody>
+</table>
+<p><br><center> <font color="gray"> JMF Family </font> </center><br></p>
+<blockquote>
+<p><strong>[info] Acknowledge</strong></p>
+<p>When the server cannot output the result in time, return the <em>Response</em> first and then return the <em>Acknowledge</em>.</p>
+</blockquote>
+<h2 id="31-queue">3.1 Queue</h2>
+<p>The sets of queue operation is core of <em>JMF/Command</em> to scheduling jobs, and each job is a <strong>QueueEntry</strong> identified by <em>JMF/Command/@QueueEntryID</em>, and supports priority (0[Low]~100[High]) adjustment.</p>
+<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/QueueEntry.png" alt="Queue Entry"> <br><center> <font color="gray"> Queue and QueueEntry </font> </center><br></p>
+<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/QueueEntryLifeCycle.png" alt="Queue Life"> <br><center> <font color="gray"> QueueEntry Lifecycle </font> </center><br></p>
+<blockquote>
+<p><strong>[info] For Programming</strong></p>
+<p>The program can provide a memory map with the same status as the queue to synchronize the changes of the queue. </p>
+</blockquote>
+<h2 id="32-persistent-channel">3.2 Persistent Channel</h2>
+<p>If the client sends <em>Query/Subscription/@URL</em>, the server will push <em>Signal</em> to the client when the subscribed event occurs, util the server recives the client&apos;s <em>Command/StopPersistentChannel</em>.   </p>
+<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/PersChannel.png" alt="Persistent Channel"> <br><center> <font color="gray"> Persistent Channel </font> </center><br></p>
+<p>The server can send <em>Signal</em> to clients (Select from the list of configured URLs) actively without any subscription, to broadcast device functions. That is <strong>Hard-Wired</strong>.</p>
+<blockquote>
+<p><strong>[info] Reliable Signal</strong></p>
+<p>If the server sends <em>Signal/@ChannelMode=&apos;Reliable&apos;</em>, the client SHALL do <em>Response</em> with non-empty body. </p>
+</blockquote>
+<h2 id="33-error-handling">3.3 Error handling</h2>
+<p>When the JMF message family cannot be processed correctly by the server, <em>Response/@ReturnCode=<a href="#Appendix-D">ERR CODE</a></em> SHALL be returned. and <em>Response/Notification</em> SHOULD implement.</p>
 <hr>
 <h1 id="4-system-building">4 System Building</h1>
 <table width="100%" align="center" text-align="center">
@@ -1152,6 +1206,85 @@
 </table>
 
 <p><br><center> <font color="gray"> CIP4 Proj development framework  </font> </center><br></p>
+<blockquote>
+<p><strong>[info] Note</strong></p>
+<p>PCB (1/2/3), Linux (4/5/6) and InterCom (7) are omitted. </p>
+</blockquote>
+<h2 id="41-packaging">4.1 Packaging</h2>
+<p>JDF (and digital assets which it refers) and/or JMF MAY be exist standalone or packaged as <a href="#https://www.rfc-editor.org/info/rfc2045">MIME</a> and sent to <em>Device</em> from <em>Controller/Agent</em>.</p>
+<table width="100%" align="center" text-align="center">
+<tr>
+<th> MIME Headers </th> 
+<th> Values </th> 
+<th> Description </th> 
+</tr>
+
+<tr>
+<td align="center" ,="" valign="center" rowspan="3"> Content-Type </td>
+<td align="center" ,="" valign="center"> application/vnd.cip4-jdf+xml </td>
+<td align="center" ,="" valign="center">  JDF entity </td>
+</tr>
+
+<tr>
+<td align="center" ,="" valign="center"> application/vnd.cip4-jmf+xml </td>
+<td align="center" ,="" valign="center"> JMF entity </td>
+</tr>
+<tr>
+<td align="center" ,="" valign="center"> multipart/related </td>
+<td align="center" ,="" valign="center"> mixed entity </td>
+</tr>
+
+<tr>
+<td align="center" ,="" valign="center"> Content-ID </td>
+<td align="center" ,="" valign="center"> US-ASCII character </td>
+<td align="center" ,="" valign="center"> refer to &apos;cid:&apos; </td>
+</tr>
+
+<tr>
+<td align="center" ,="" valign="center" rowspan="2"> Content-Transfer-Encoding </td>
+<td align="center" ,="" valign="center"> 8bit </td>
+<td align="center" ,="" valign="center"> - </td>
+</tr>
+
+<tr>
+<td align="center" ,="" valign="center"> binary </td>
+<td align="center" ,="" valign="center"> - </td>
+</tr>
+
+<tr>
+<td align="center" ,="" valign="center"> base64 </td>
+<td align="center" ,="" valign="center"> - </td>
+</tr>
+
+</table>
+
+<p><br><center> <font color="gray"> MIME entity used in CIP4 </font> </center><br></p>
+<blockquote>
+<p><strong>[info] Suffix</strong></p>
+<p>*.mjd suffix is used when JDF is the first entity of MIME, and *.mjm suffix is used when JMF is the first entity of MIME.   </p>
+</blockquote>
+<p>The first body part of the MIME &apos;Content-Type:multipart/related&apos; message SHALL be the JMF Message. Internal links are defined using the cid URL (which corresponding Content-ID without &apos;&lt;&apos; and &apos;&gt;&apos;). Subsequent sections are the JDF Jobs followed by the linked entities.</p>
+<blockquote>
+<p><strong>[info] Note</strong></p>
+<p>Only one JMF can exsit (if it must exist) and but multi JDF and digital assets can exsits in mixed entity. </p>
+</blockquote>
+<h2 id="42-communication">4.2 Communication</h2>
+<p><a href="#FileBP"><strong>HotFolder</strong></a> and <a href="#HTTPBP"><strong>HTTP(s)</strong></a> are used to exchange data and info between <em>Controllers/Agents</em> and <em>Devices</em>. </p>
+<h3 id="421--file-based-portocol-jdf-">4.2.1 <span id="FileBP"> File Based Portocol (JDF) </span></h3>
+<p>HotFolder is a directory that is monitored by OS in real-time, once a file is entered, it will be processed immediately. An <em>Input HotFolder</em> and <em>Output HotFolder</em> (which provides for opposite system) SHALL be implemented. </p>
+<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/HotFolder.png" alt="Communication by HotFolder"> <br><center> <font color="gray"> Communication by HotFolder </font> </center><br></p>
+<p>JDF instance with element node <em>&lt;AuditPool&gt;&lt;/AuditPool&gt;</em> SHALL be written to <em>Output HotFolder</em> when <em>Devices</em> finishes processing, for <em>Controllers/Agents</em> polling. </p>
+<blockquote>
+<p><strong>[info] Note</strong></p>
+<p>*.jdf/*.mjd reference files MAY be written into a exsiting directory of the <em>Input HotFolder</em>, or a new directory &apos;<strong>D</strong>&apos; which created by <em>Controllers/Agents</em> in <em>Input HotFolder</em>.   </p>
+</blockquote>
+<h3 id="422--http-based-protocol-jdfjmf-">4.2.2 <span id="HTTPBP"> HTTP Based Protocol (JDF+JMF) </span></h3>
+<p>HTTP is a stable protocol with a well defined query-response mechanism, and only <strong>post</strong> method is used for CIP4, the content is MIME package.</p>
+<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/HTTP.png" alt="Communication by HTTP(s)"> <br><center> <font color="gray"> Communication by HTTP(s) </font> </center><br></p>
+<blockquote>
+<p><strong>[info] Note</strong></p>
+<p><em>Controllers/Agents</em> implements HTTP Server and <em>Devices</em> implements HTTP Client. </p>
+</blockquote>
 <hr>
 <h1 id="appendix-a--interoperability-conformance-specification-"><span id="Appendix-A"> Appendix-A : Interoperability Conformance Specification </span></h1>
 <p>ICS defines the minimum set of JDF with multi parts. Base ICS defines the most basic functions that any JDF products should implement. Other ICSs are based on the <em>Base ICS</em> and describes the minimum implementation in different aspects.</p>
@@ -1793,17 +1926,386 @@
 <td style="text-align:center">StackingParams</td>
 <td style="text-align:center">-</td>
 </tr>
+<tr>
+<td style="text-align:center">StaticBlockingParams</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">StitchingParams</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">StrappingParams</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">StripBindingParams</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">ThreadSealingParams</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">ThreadSewingParams</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">TrimmingParams</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">VarnishingParams</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">WebInlineFinishingParams</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">WindingParams</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">WireCombBindingParams</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">WrappingParams</td>
+<td style="text-align:center">-</td>
+</tr>
 </tbody>
 </table>
 <p><br><center> <font color="gray"> JDF/ResoucePool/[Resources]/@Class=&quot;Parameter&quot; </font> </center><br></p>
 <h2 id="c3-consumable-resources">C.3 Consumable Resources</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Resources</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Media</td>
+<td style="text-align:center">&#x7269;&#x7406;&#x5A92;&#x4ECB;</td>
+</tr>
+<tr>
+<td style="text-align:center">MiscConsumable</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">Pallet</td>
+<td style="text-align:center">&#x7528;&#x4E8E;&#x88C5;&#x8D27;&#x7684;&#x6258;&#x76D8;</td>
+</tr>
+<tr>
+<td style="text-align:center">RegisterRibbon</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">Strap</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
 <p><br><center> <font color="gray"> JDF/ResoucePool/[Resources]/@Class=&quot;Consumable&quot; </font> </center><br></p>
 <h2 id="c4-handling-resources">C.4 Handling Resources</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Resources</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">PrintRolling</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">Tool</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">UsageCounter</td>
+<td style="text-align:center">&#x7528;&#x4E8E;&#x8DDF;&#x8E2A;&#x8BBE;&#x5907;&#x7684;&#x4F7F;&#x7528;&#x60C5;&#x51B5;    </td>
+</tr>
+</tbody>
+</table>
 <p><br><center> <font color="gray"> JDF/ResoucePool/[Resources]/@Class=&quot;Handling&quot; </font> </center><br></p>
 <h2 id="c5-implementation-resources">C.5 Implementation Resources</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Resources</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Device</td>
+<td style="text-align:center">&#x5173;&#x4E8E;&#x7279;&#x5B9A;&#x8BBE;&#x5907;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5982;&#x529F;&#x80FD; </td>
+</tr>
+</tbody>
+</table>
 <p><br><center> <font color="gray"> JDF/ResoucePool/[Resources]/@Class=&quot;Implementation&quot; </font> </center><br></p>
 <h2 id="c6-quantity-resources">C.6 Quantity Resources</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Resources</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Bundle</td>
+<td style="text-align:center">&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x5404;&#x79CD;Compnents&#x7684;&#x8BBE;&#x7F6E;&#xFF0C;&#x8BE5;&#x8D44;&#x6E90;&#x53EF;&#x88AB;&#x8BB8;&#x591A;&#x5370;&#x524D;&#x548C;&#x5370;&#x540E;&#x8FC7;&#x7A0B;&#x521B;&#x5EFA; </td>
+</tr>
+<tr>
+<td style="text-align:center">Component</td>
+<td style="text-align:center">&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x5370;&#x524D;&#x548C;&#x5370;&#x540E;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x5404;&#x79CD;&#x534A;&#x6210;&#x54C1;&#xFF0C;&#x5373;&#x7EC4;&#x4EF6;&#xFF1B;&#x51E0;&#x4E4E;&#x6BCF;&#x4E2A;&#x5370;&#x540E;&#x6D41;&#x7A0B;&#x90FD;&#x6709;&#x7EC4;&#x4EF6;&#x8D44;&#x6E90;</td>
+</tr>
+</tbody>
+</table>
 <p><br><center> <font color="gray"> JDF/ResoucePool/[Resources]/@Class=&quot;Quantity&quot; </font> </center><br></p>
+<hr>
+<h1 id="appendix-d--error-codes-"><span id="Appendix-D"> Appendix-D : Error Codes </span></h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">ReturnCode</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:left">Success</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">ReturnCode</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:left">General error</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:left">Internal error</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:left">XML parser error (e.g., if a MIME file is sent to an XML Controller).</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:left">XML validation error</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:left">Query Message/Command Message not implemented</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:left">Invalid parameters</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:left">Insufficient parameters</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:left">Device not available (Controller exists but not the Device or queue)</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:left">Message incomplete.</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:left">Message Service is busy.</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:left">Synchronous mode not supported for message. No @ AcknowledgeURL is specified and the Message can only be processed asynchronously and was not processed. (Error)</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:left">Asynchronous acknowledge not supported for message. No @ AcknowledgeURL is specified and the Message was processed. The resulting  Acknowledge can only be emitted asynchronously. (Warning)</td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td style="text-align:left">Reliable Signals not supported. Subscription denied.</td>
+</tr>
+</tbody>
+</table>
+<p><br><center> <font color="gray"> Protocol errors </font> </center><br></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">ReturnCode</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">100</td>
+<td style="text-align:left">Device not running</td>
+</tr>
+<tr>
+<td style="text-align:center">101</td>
+<td style="text-align:left">Device incapable of fulfilling request (e.g., a RIP that has been asked to cut a Sheet).</td>
+</tr>
+<tr>
+<td style="text-align:center">102</td>
+<td style="text-align:left">No executable Node exists in the JDF</td>
+</tr>
+<tr>
+<td style="text-align:center">103</td>
+<td style="text-align:left">JobID not known by Controller</td>
+</tr>
+<tr>
+<td style="text-align:center">104</td>
+<td style="text-align:left">JobPartID not known by Controller</td>
+</tr>
+<tr>
+<td style="text-align:center">105</td>
+<td style="text-align:left">Queue entry not in queue</td>
+</tr>
+<tr>
+<td style="text-align:center">106</td>
+<td style="text-align:left">Queue request failed because the queue entry is already executing</td>
+</tr>
+<tr>
+<td style="text-align:center">107</td>
+<td style="text-align:left">The queue entry is already executing. Late change is not accepted</td>
+</tr>
+<tr>
+<td style="text-align:center">108</td>
+<td style="text-align:left">Selection or applied filter results in an empty list</td>
+</tr>
+<tr>
+<td style="text-align:center">109</td>
+<td style="text-align:left">Selection or applied filter results in an incomplete list. A buffer cannot provide the complete list queried for.</td>
+</tr>
+<tr>
+<td style="text-align:center">110</td>
+<td style="text-align:left">Queue request of a Job submission failed because the requested completion time of the Job cannot be fulfilled.</td>
+</tr>
+<tr>
+<td style="text-align:center">111</td>
+<td style="text-align:left">Subscription request denied.</td>
+</tr>
+<tr>
+<td style="text-align:center">112</td>
+<td style="text-align:left">Queue request failed because the Queue is  &quot;Closed&quot; or  &quot;Blocked&quot; and does not accept new entries.</td>
+</tr>
+<tr>
+<td style="text-align:center">113</td>
+<td style="text-align:left">Queue entry is already in the resulting status.</td>
+</tr>
+<tr>
+<td style="text-align:center">114</td>
+<td style="text-align:left">QueueEntry /@ Status is already  &quot;PendingReturn&quot; , &quot;Completed&quot; or &quot;Aborted&quot; and therefore does not accept changes. Modification note: starting with JDF 1.4,  &quot;PendingReturn&quot; added.</td>
+</tr>
+<tr>
+<td style="text-align:center">115</td>
+<td style="text-align:left">Queue entry is not running.</td>
+</tr>
+<tr>
+<td style="text-align:center">116</td>
+<td style="text-align:left">Queue entry already exists. Used when a  QueueEntry with identical  JobID ,  JobPartID and  Part already exists.</td>
+</tr>
+<tr>
+<td style="text-align:center">120</td>
+<td style="text-align:left">Cannot access referenced URL. URI Reference cannot be resolved. Used when a referenced entity (e.g., a  JDF in a  SubmitQueueEntry cannot be found).</td>
+</tr>
+<tr>
+<td style="text-align:center">121</td>
+<td style="text-align:left">Unknown  DeviceID . No Device is known with the  DeviceID specified.</td>
+</tr>
+<tr>
+<td style="text-align:center">130</td>
+<td style="text-align:left">Ganging is not supported. A gang Job has been submitted to a queue that does not support ganging.</td>
+</tr>
+<tr>
+<td style="text-align:center">131</td>
+<td style="text-align:left">GangName not known. A Job has been submitted with an unknown  GangName .</td>
+</tr>
+</tbody>
+</table>
+<p><br><center> <font color="gray"> Device and Controller errors </font> </center><br></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">ReturnCode</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">200</td>
+<td style="text-align:left">Invalid Resource parameters</td>
+</tr>
+<tr>
+<td style="text-align:center">201</td>
+<td style="text-align:left">Insufficient Resource parameters</td>
+</tr>
+<tr>
+<td style="text-align:center">202</td>
+<td style="text-align:left">PipeID unknown</td>
+</tr>
+<tr>
+<td style="text-align:center">203</td>
+<td style="text-align:left">Unlinked  ResourceLink</td>
+</tr>
+<tr>
+<td style="text-align:center">204</td>
+<td style="text-align:left">Could not create new  JDF Node.</td>
+</tr>
+<tr>
+<td style="text-align:center">300</td>
+<td style="text-align:left">Authentication denied.</td>
+</tr>
+<tr>
+<td style="text-align:center">301</td>
+<td style="text-align:left">Secure channel not supported - I don&apos;t support secure channel for this Message.</td>
+</tr>
+<tr>
+<td style="text-align:center">302</td>
+<td style="text-align:left">Secure channel required - I require secure channel for this Message.</td>
+</tr>
+<tr>
+<td style="text-align:center">303</td>
+<td style="text-align:left">Certificate expired (Some implementations might not be able to send this response because the SSL layer will reject the Message before passing it to the JMF implementation for parsing)</td>
+</tr>
+<tr>
+<td style="text-align:center">304</td>
+<td style="text-align:left">Authentication pending.</td>
+</tr>
+<tr>
+<td style="text-align:center">305</td>
+<td style="text-align:left">Authentication already established.</td>
+</tr>
+<tr>
+<td style="text-align:center">306</td>
+<td style="text-align:left">No authentication request in process</td>
+</tr>
+<tr>
+<td style="text-align:center">307</td>
+<td style="text-align:left">Certificate Invalid</td>
+</tr>
+</tbody>
+</table>
+<p><br><center> <font color="gray"> Job and pipe specific errors </font> </center><br></p>
 <hr>
 <h1 id="appendix-u--jdf-instance-template-"><span id="Appendix-U"> Appendix-U : JDF Instance Template </span></h1>
 <pre><code class="lang-XML"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span> <span class="hljs-meta">?&gt;</span></span> <span class="hljs-comment">&lt;!-- Optional attribute : standalone=&quot;yes&quot;/&quot;no&quot; --&gt;</span>
@@ -2045,7 +2547,71 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">JMF</span>&gt;</span>
 </code></pre>
 <h2 id="v2-mjm-instance">V.2 MJM Instance</h2>
-<p>TBD</p>
+<pre><code class="lang-MIME">Message-ID: &lt;3018287.1131706450069.JavaMail.clabu@Elvis.local&gt;
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+boundary=&quot;----=_Part_0_2409003.1131706449797&quot;
+
+------=_Part_0_2409003.1131706449797
+Content-Type: application/vnd.cip4-jmf+xml
+Content-Transfer-Encoding: 7bit
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;JMF SenderID=&quot;Alces&quot; TimeStamp=&quot;2005-10-09T17:42:00+01:00&quot; Version=&quot;1.2&quot; xmlns=&quot;http://www.CIP4.org/JDFSchema_1_1&quot;&gt;
+    &lt;Command ID=&quot;M001&quot; Type=&quot;SubmitQueueEntry&quot;&gt;
+        &lt;QueueSubmissionParams ReturnJMF=&quot;http://192.168.1.30:9090/alces/jmf&quot; URL=&quot;cid:Alces-Approval.jdf&quot;/&gt;
+        &lt;QueueFilter MaxEntries=&quot;4&quot; QueueEntryDetails=&quot;Brief&quot;/&gt;
+    &lt;/Command&gt;
+&lt;/JMF&gt;
+
+------=_Part_0_2409003.1131706449797
+Content-Type: application/xml; name=Alces-Approval.jdf
+Content-Transfer-Encoding: 7bit
+Content-ID: &lt;Alces-Approval.jdf&gt;
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;JDF xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://www.CIP4.org/JDFSchema_1_1&quot; Activation=&quot;Active&quot; ID=&quot;elk-0001&quot; JobID=&quot;0001&quot; JobPartID=&quot;1&quot; Status=&quot;Waiting&quot; Template=&quot;false&quot; Version=&quot;1.2&quot; Type=&quot;Approval&quot;&gt;
+    &lt;AuditPool&gt;
+        &lt;Created TimeStamp=&quot;2004-09-07T13:49:00+01:00&quot; ref=&quot;elk-0001&quot;/&gt;
+    &lt;/AuditPool&gt;
+    &lt;ResourcePool&gt;
+        &lt;RunList Class=&quot;Parameter&quot; ID=&quot;RL001&quot; Status=&quot;Available&quot;&gt;
+            &lt;LayoutElement&gt;
+                &lt;FileSpec URL=&quot;cid:Alces-Figures.pdf&quot; MimeType=&quot;application/pdf&quot;/&gt;
+            &lt;/LayoutElement&gt;
+        &lt;/RunList&gt;
+        &lt;ApprovalParams Class=&quot;Parameter&quot; ID=&quot;AP001&quot; MinApprovals=&quot;1&quot; Status=&quot;Available&quot;&gt;
+            &lt;ApprovalPerson ApprovalRole=&quot;Obligated&quot;&gt;
+                &lt;ContactRef rRef=&quot;C001&quot;/&gt;
+            &lt;/ApprovalPerson&gt;
+        &lt;/ApprovalParams&gt;
+        &lt;Contact Class=&quot;Parameter&quot; ID=&quot;C001&quot; ContactTypes=&quot;Approver&quot; Status=&quot;Available&quot;&gt;
+            &lt;Person FamilyName=&quot;Buckwalter&quot; FirstName=&quot;Claes&quot;&gt;
+                &lt;ComChannel ChannelType=&quot;Email&quot; Locator=&quot;mailto:clabu@itn.liu.se&quot;/&gt;
+            &lt;/Person&gt;
+        &lt;/Contact&gt;
+        &lt;ApprovalSuccess Class=&quot;Parameter&quot; ID=&quot;AS001&quot; Status=&quot;Unavailable&quot;/&gt;
+    &lt;/ResourcePool&gt;
+    &lt;ResourceLinkPool&gt;
+        &lt;RunListLink rRef=&quot;RL001&quot; Usage=&quot;Input&quot;/&gt;
+        &lt;ApprovalParamsLink rRef=&quot;AP001&quot; Usage=&quot;Input&quot;/&gt;
+        &lt;ApprovalSuccessLink rRef=&quot;AS001&quot; Usage=&quot;Output&quot;/&gt; 
+    &lt;/ResourceLinkPool&gt;
+&lt;/JDF&gt;
+
+------=_Part_0_2409003.1131706449797
+Content-Type: application/pdf; name=Alces-Figures.pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=Alces-Figures.pdf
+Content-ID: &lt;Alces-Figures.pdf&gt;
+
+JVBERi0xLjYNJeLjz9MNCjkgMCBvYmogPDwvTGluZWFyaXplZCAxL0wgMTg4NDcvTyAxMS9FIDY4
+ODkvTiAyL1QgMTg2MjYvSCBbIDQ1NiAxNTldPj4NZW5kb2JqDSAgICAgICAgICAgICAgICAgICAg
+IA14cmVmDTkgOA0wMDAwMDAwMDE2IDAwMDAwIG4NCjAwMDAwMDA2MTUgMDAwMDAgbg0KMDAwMDAw
+MDY3NSAwMDAwMCBuDQowMDAwMDAwODkzIDAwMDAwIG4NCjAwMD...
+
+------=_Part_0_2409003.1131706449797--
+</code></pre>
 <hr>
 <h1 id="appendix-w--gray-box-"><span id="Appendix-W"> Appendix-W : Gray Box </span></h1>
 <p>Process Group Nodes MAY contain an OPTIONAL <em>JDF/@Types</em> Attribute that allows a Controller (e.g., an MIS system) to specify a minimum set of Processes to be executed without specifying the complete list of Processes or the exact structure or grouping of these Processes into individual JDF Nodes when the Controller can not find the resources of the processes. Process Group Nodes that contain a <em>JDF/@Types</em> Attribute are commonly referred to as Gray Boxes.</p>
@@ -2135,193 +2701,8 @@ logos, and icons. The use of and JDF trademarks, trade names logos, and icons mu
 CIP4 retains the right to modify the terms applicable to the CIP4 Software under this CIP4 License. CIP4 may at any given time publish revised and/or new versions of this CIP4 License. Each version will be given a distinguishing version number and CIP4 Software that has been published under a particular version of this License may be used either under the terms of the original version or any subsequent version of this License.</p>
 <p>This software consists of voluntary contributions made by many individuals on behalf of the The International Cooperation for the Integration of Processes in Prepress, Press and Postpress and was originally based on software copyright (c) 1999-2001, Heidelberger Druckmaschinen AG and copyright (c) 1999-2001, Agfa-Gevaert N.V.</p>
 <p>For more information on The International Cooperation for the Integration of Processes in Prepress, Press and Postpress, please see <a href="http://www.cip4.org" target="_blank">http://www.cip4.org</a>.</p>
-<p>```</p>
-<h3 id="143-jdf-element-node-attributes">1.4.3 JDF Element Node Attributes</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Attributes</th>
-<th style="text-align:center">values</th>
-<th style="text-align:center">Description </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Status</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">- </td>
-</tr>
-<tr>
-<td style="text-align:center">ICSVersions</td>
-<td style="text-align:center">&lt;Name&gt;_L&lt;Level&gt;&gt;-&lt;Version&gt;</td>
-<td style="text-align:center">ICS version and level association with ICS Spec </td>
-</tr>
-<tr>
-<td style="text-align:center">Type</td>
-<td style="text-align:center"><em>Product</em>/<em>ProcessGroup</em>/<em>Combined</em>/<a href="#Appendix-A">Predefined Processes</a></td>
-<td style="text-align:center">processes type </td>
-</tr>
-<tr>
-<td style="text-align:center">Types</td>
-<td style="text-align:center"><a href="#Appendix-A">Predefined Processes</a></td>
-<td style="text-align:center">processes type set&#xFF0C;used when <em>@Type=ProcessGroup</em> or <em>@Type=Combined</em></td>
-</tr>
-<tr>
-<td style="text-align:center">ID</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-</tr>
-<tr>
-<td style="text-align:center">JobID</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">- </td>
-</tr>
-<tr>
-<td style="text-align:center">JobPartID</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">- </td>
-</tr>
-<tr>
-<td style="text-align:center">xmlns</td>
-<td style="text-align:center"><em><a href="http://www.CIP4.org/JDFSchema_1_1" target="_blank">http://www.CIP4.org/JDFSchema_1_1</a></em></td>
-<td style="text-align:center">namespace </td>
-</tr>
-<tr>
-<td style="text-align:center">xmlns:xsi</td>
-<td style="text-align:center"><em><a href="http://www.w3.org/2001/XMLSchema-instance" target="_blank">http://www.w3.org/2001/XMLSchema-instance</a></em></td>
-<td style="text-align:center">extension namespace</td>
-</tr>
-<tr>
-<td style="text-align:center">xsi:type</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">extension namespace attribute </td>
-</tr>
-<tr>
-<td style="text-align:center">Activation</td>
-<td style="text-align:center"><em>Active</em></td>
-<td style="text-align:center">- </td>
-</tr>
-<tr>
-<td style="text-align:center">MaxVersion</td>
-<td style="text-align:center"><em>1.5</em></td>
-<td style="text-align:center">max version limited for all elements and attributes </td>
-</tr>
-<tr>
-<td style="text-align:center">Version</td>
-<td style="text-align:center"><em>1.5</em></td>
-<td style="text-align:center">-</td>
-</tr>
-<tr>
-<td style="text-align:center">CommentURL</td>
-<td style="text-align:center"><em>file:</em>/<em>https:</em>/<em>http:</em>/<em>cid:</em>/...</td>
-<td style="text-align:center">human-readable comment </td>
-</tr>
-<tr>
-<td style="text-align:center">DescriptiveName</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">human-readable description </td>
-</tr>
-<tr>
-<td style="text-align:center">Category</td>
-<td style="text-align:center"><em>Binding</em> (based on <em>Binding_L1-1.0</em>)</td>
-<td style="text-align:center">same as <em>@Types</em> </td>
-</tr>
-</tbody>
-</table>
-<p><br><center> <font color="gray"> JDF Node Attributes based on Base-ICS-1.5 </font> </center><br></p>
-<blockquote>
-<p><strong>[info] Note</strong></p>
-<p>There SHALL NOT any JDF elements nested when specify attribute <em>@Types</em>.</p>
-</blockquote>
-<ul>
-<li><em>@Status</em></li>
-</ul>
-<p><em>Spawned</em>/<em>Setup</em>/<em>Wating</em>/<em>TestRunInProgress</em>/<em>FailedTestRun</em>/<em>Ready</em>/<em>InProgress</em>/<em>Aborted</em>/<em>Stopped</em>/<em>Suspended</em>/<em>Completed</em>/<em>Cleanup</em>/<em>Pool</em>/<em>Part</em>.</p>
-<blockquote>
-<p><strong>[info] Note</strong></p>
-<p>A Worker SHALL NOT execute Nodes whose <em>@Status</em> is &quot;Completed&quot; or &quot;Aborted&quot;.</p>
-</blockquote>
-<hr>
-<h2 id="22-query">2.2 Query</h2>
-<p>Query&#x7528;&#x4E8E;&#x5BA2;&#x6237;&#x7AEF;&#x5411;&#x670D;&#x52A1;&#x5668;&#x67E5;&#x8BE2;&#x6D88;&#x606F;&#xFF0C;&#x5E76;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;Response&#x54CD;&#x5E94;&#x3002;&#x5982;&#x679C;Query&#x6D88;&#x606F;&#x5305;&#x542B;<em>Subscription</em>&#x8BA2;&#x9605;&#xFF08;&#x79F0;&#x4E3A;<strong>&#x53EF;&#x6301;&#x7EED;&#x901A;&#x9053;</strong>&#xFF09;&#xFF0C;&#x5219;&#x670D;&#x52A1;&#x5668;&#x5728;&#x6240;&#x8BA2;&#x9605;&#x7684;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x65F6;&#x5C06;&#x5411;&#x6240;&#x8BA2;&#x9605;&#x7684;URL&#x53D1;&#x9001;Signal&#x6D88;&#x606F;&#xFF0C;&#x76F4;&#x5230;&#x670D;&#x52A1;&#x5668;&#x6536;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#x7684;Command&#x6D88;&#x606F;&#xFF08;&#x5305;&#x542B;<em>StopPersistentChannel</em>&#x5143;&#x7D20;&#x8282;&#x70B9;&#xFF09;&#x4E3A;&#x6B62;&#xFF08;&#x53EF;&#x6301;&#x7EED;&#x901A;&#x9053;&#x5173;&#x95ED;&#xFF09;&#x3002;</p>
-<h2 id="23-command">2.3 Command</h2>
-<p>Command&#x7528;&#x4E8E;&#x5BA2;&#x6237;&#x7AEF;&#x5411;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x9001;&#x6307;&#x4EE4;&#x4EE5;&#x6539;&#x53D8;&#x5176;&#x72B6;&#x6001;&#xFF0C;&#x5E76;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;Response&#x54CD;&#x5E94;&#x3002;&#x5982;&#x679C;Command&#x6D88;&#x606F;&#x5305;&#x542B;<em>@AcknowledgeURL</em>&#x5C5E;&#x6027;&#xFF0C;&#x5219;Response&#x6D88;&#x606F;&#x9700;&#x5305;&#x542B;<em>@Acknowledge=[BOOL]&quot;</em>&#x5C5E;&#x6027;&#xFF0C;BOOL&#x503C;&#x4E3A;&quot;true&quot;&#xFF0C;&#x5219;&#x670D;&#x52A1;&#x5668;&#x5728;&#x6307;&#x4EE4;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x540E;&#x5C06;&#x5411;&#x5BA2;&#x6237;&#x7AEF;<em>@AcknowledgeURL</em>&#x6307;&#x5B9A;&#x7684;&#x5730;&#x5740;&#x53D1;&#x9001;Acknowledge&#x6D88;&#x606F;&#x4EE5;&#x6C47;&#x62A5;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x3002;</p>
-<h3 id="231-command-with-queue">2.3.1 Command with Queue</h3>
-<p>Command&#x6D88;&#x606F;&#x4E2D;&#x7684;<strong>&#x961F;&#x5217;</strong>&#x64CD;&#x4F5C;&#x662F;JMF&#x4F5C;&#x4E1A;&#x8C03;&#x5EA6;&#x7684;&#x6838;&#x5FC3;&#xFF0C;&#x5728;JMF&#x4E2D;&#x961F;&#x5217;&#x6210;&#x5458;&#xFF08;&#x4F5C;&#x4E1A;&#xFF09;&#x88AB;&#x79F0;&#x4E3A;<strong>QueueEntry</strong>&#xFF0C;&#x4F7F;&#x7528;&#x5C5E;&#x6027;<em>QueueEntryID</em>&#x6807;&#x8BC6;&#xFF0C;&#x5E76;&#x652F;&#x6301;&#x4F18;&#x5148;&#x7EA7;&#xFF08;0[Low]~100[High]&#xFF09;&#x8C03;&#x6574;&#x3002;</p>
-<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/QueueEntry.png" alt="Queue Entry"> <br><center> <font color="gray"> Queue and QueueEntry </font> </center><br></p>
-<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/QueueEntryLifeCycle.png" alt="Queue Life"> <br><center> <font color="gray"> QueueEntry Lifecycle </font> </center><br></p>
-<blockquote>
-<p><strong>[info] Note</strong></p>
-<p>&#x961F;&#x5217;&#x7F16;&#x7A0B;&#xFF1A;&#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x4E00;&#x4EFD;&#x4E0E;&#x961F;&#x5217;&#x72B6;&#x6001;&#x76F8;&#x540C;&#x7684;&#x5185;&#x5B58;&#x6620;&#x5C04;&#xFF0C;&#x4EE5;&#x540C;&#x6B65;&#x961F;&#x5217;&#x7684;&#x53D8;&#x5316;&#x3002;</p>
-</blockquote>
-<h2 id="24-signal">2.4 Signal</h2>
-<p>Signal&#x662F;&#x5355;&#x5411;&#x6D88;&#x606F;&#xFF0C;&#x7528;&#x4E8E;&#x670D;&#x52A1;&#x5668;&#x81EA;&#x52A8;&#x5E7F;&#x64AD;&#x72B6;&#x6001;&#x53D8;&#x5316;&#x3002;&#x670D;&#x52A1;&#x5668;&#x4EA7;&#x751F;Signal&#x6D88;&#x606F;&#x7684;&#x6761;&#x4EF6;&#x6709;&#x4E09;&#x79CD;&#xFF1A;</p>
-<ol>
-<li>&#x5BA2;&#x6237;&#x7AEF;&#x901A;&#x8FC7;JMF&#x7533;&#x8BF7;&#x5EFA;&#x7ACB;&#x53EF;&#x6301;&#x7EED;&#x901A;&#x9053;&#xFF0C;&#x5373;&#x53D1;&#x9001;Query&#x6D88;&#x606F;&#x5E76;&#x5305;&#x542B;<em>Subscription</em>&#x5143;&#x7D20;&#x8282;&#x70B9;&#x3002; </li>
-<li>&#x5BA2;&#x6237;&#x7AEF;&#x901A;&#x8FC7;JDF&#x7533;&#x8BF7;&#x5EFA;&#x7ACB;&#x53EF;&#x6301;&#x7EED;&#x901A;&#x9053;&#xFF0C;&#x5373;&#x5728;JDF&#x5B9E;&#x4F8B;&#x4E2D;&#x5305;&#x542B;&#x542B;&#x6709;<em>Subscription</em>&#x5143;&#x7D20;&#x8282;&#x70B9;&#x7684;<em>NodeInfo</em>&#x5143;&#x7D20;&#x8282;&#x70B9;&#x3002; </li>
-<li>Hard-Wired&#xFF1A;&#x5165;&#x7F51;&#x5E7F;&#x64AD;&#xFF0C;&#x5373;&#x5F53;&#x8BBE;&#x5907;&#x5F00;&#x673A;&#x6216;&#x9996;&#x6B21;&#x8FDE;&#x63A5;&#x5230;&#x7F51;&#x7EDC;&#x65F6;&#x4E3B;&#x52A8;&#xFF08;&#x5411;&#x9884;&#x8BBE;&#x7684;URLs&#xFF09;&#x53D1;&#x9001;&#x4FE1;&#x53F7;&#xFF0C;&#x4EE5;&#x544A;&#x77E5;&#x8BBE;&#x5907;&#x4FE1;&#x606F;&#x548C;&#x6240;&#x80FD;&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;&#x7B49;&#x3002;</li>
-</ol>
-<blockquote>
-<p><strong>[info] Note</strong></p>
-<p>Signal&#x57FA;&#x4E8E;&#x5C5E;&#x4E8E;HTTP-C/S&#x6A21;&#x578B;&#xFF0C;&#x672C;&#x8D28;&#x4E0A;&#x4E5F;&#x662F;&#x53CC;&#x5411;&#x6D88;&#x606F;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x9001;&#x65F6;&#x53EF;&#x8BBE;&#x7F6E;<em>@ChannelMode=&quot;Reliable&quot;</em>&#xFF08;&#x5373;<strong>&#x53EF;&#x9760;&#x4FE1;&#x53F7;</strong>&#xFF09;&#xFF0C;&#x6B64;&#x65F6;&#x5BA2;&#x6237;&#x7AEF;&#x5FC5;&#x987B;&#x8FD4;&#x56DE;Response&#xFF0C;&#x4F46;&#x65E0;&#x8BBA;&#x5982;&#x4F55;&#x670D;&#x52A1;&#x5668;&#x90FD;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x5FFD;&#x7565;&#x54CD;&#x5E94;&#x3002;</p>
-</blockquote>
-<h2 id="24-response">2.4 Response</h2>
-<p>Response&#x7528;&#x4E8E;&#x670D;&#x52A1;&#x5668;&#x540C;&#x6B65;&#x54CD;&#x5E94;&#x5BA2;&#x6237;&#x7AEF;&#x7684;Query&#x548C;Command&#x6D88;&#x606F;&#xFF0C;&#x6216;&#x7528;&#x4E8E;&#x5BA2;&#x6237;&#x7AEF;&#x54CD;&#x5E94;&#x670D;&#x52A1;&#x5668;&#x7684;Signal&#x6D88;&#x606F;&#xFF0C;&#x4EE5;&#x8868;&#x660E;&#x6D88;&#x606F;&#x5DF2;&#x88AB;&#x63A5;&#x6536;&#x5E76;&#x7FFB;&#x8BD1;&#x3002;&#x5F53;<em>Response/@ReturnCode</em>&#x5927;&#x4E8E;0&#x65F6;&#xFF0C;Response&#x5E94;&#x8BE5;&#x5305;&#x542B;<em>Notification</em>&#x5143;&#x7D20;&#x8282;&#x70B9;&#x4EE5;&#x63CF;&#x8FF0;&#x8FD4;&#x56DE;&#x72B6;&#x6001;&#x3002;</p>
-<blockquote>
-<p><strong>[info] Standard Error Response</strong></p>
-<p>&#x5F53;&#x6765;&#x81EA;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x6D88;&#x606F;&#x4E0D;&#x80FD;&#x88AB;&#x6B63;&#x786E;&#x5904;&#x7406;&#x65F6;&#xFF0C;Response&#x5E94;&#x5305;&#x542B;<em>@ReturnCode</em>&#xFF0C;&#x5C5E;&#x6027;&#x503C;&#x662F;&#x5927;&#x4E8E;&#x96F6;&#x7684;&#x9519;&#x8BEF;&#x7801;&#x3002;</p>
-</blockquote>
-<h2 id="25-acknowledge">2.5 Acknowledge</h2>
-<p>Acknowledge&#x662F;&#x670D;&#x52A1;&#x5668;&#x5BF9;&#x5BA2;&#x6237;&#x7AEF;&#x7684;Command&#x6216;Query&#x6D88;&#x606F;&#x7684;&#x5F02;&#x6B65;&#x5355;&#x5411;&#x5E94;&#x7B54;&#x3002;&#x5F53;&#x670D;&#x52A1;&#x5668;&#x6267;&#x884C;&#x4E00;&#x4E2A;Command&#x9700;&#x8981;&#x8F83;&#x957F;&#x65F6;&#x95F4;&#x65F6;&#x5148;&#x8FD4;&#x56DE;Response&#x54CD;&#x5E94;&#xFF0C;&#x7B49;&#x5F85;Command&#x6267;&#x884C;&#x5B8C;&#x6210;&#x518D;&#x8FD4;&#x56DE;Acknowledge&#x3002;</p>
-<hr>
-<hr>
-<p>TBD</p>
-<h3 id="232-mime-package">2.3.2 MIME Package</h3>
-<p>&#x4FE1;&#x606F;&#x53EF;&#x4EE5;&#x7528;URL&#x5F15;&#x7528;&#x6216;MIME&#x5305;&#x7684;&#x5F62;&#x5F0F;&#x8FDB;&#x884C;&#x4F20;&#x9012;&#xFF0C;MIME&#x5305;&#x4E2D;&#x53EF;&#x4EE5;&#x53EA;&#x6709;JDF&#x3001;&#x6216;&#x53EA;&#x6709;JMF&#x3001;&#x6216;&#x6DF7;&#x5408;&#x4F7F;&#x7528;&#xFF08;CIP4&#x63A8;&#x8350;&#xFF09;&#xFF0C;&#x5F53;&#x53EA;&#x6709;JDF&#x65F6;MIME&#x7C7B;&#x578B;&#x4E3A;&#x201C;application/vnd.cip4-jdf+xml&#x201D;&#xFF0C;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x591A;&#x4E2A;JDF&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x5728;&#x6240;&#x6709;JDF&#x7684;&#x540E;&#x9762;&#x9644;&#x52A0;&#x6570;&#x5B57;&#x8D44;&#x4EA7;&#xFF08;&#x5982;png&#x3001;pdf&#x3001;ICC&#x7B49;&#x6587;&#x4EF6;&#xFF0C;&#x5728;JDF&#x4E2D;&#x4EE5;&#x2018;cid&#x2019;&#x65B9;&#x5F0F;&#x5F15;&#x7528;&#xFF09;&#x3002;&#x5F53;&#x53EA;&#x6709;JMF&#x65F6;MIME&#x7C7B;&#x578B;&#x4E3A;&#x201C;application/vnd.cip4-jmf+xml&quot;&#xFF0C;&#x5F53;&#x6DF7;&#x5408;&#x6253;&#x5305;&#x65F6;JMF&#x5FC5;&#x987B;&#x5728;&#x7B2C;&#x4E00;&#x4F4D;&#xFF0C;JMF&#x5728;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x6709;&#x4E14;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#x3002;</p>
-<h3 id="232-jdf&#x548C;jmf&#x4EA4;&#x6362;&#x534F;&#x8BAE;">2.3.2 JDF&#x548C;JMF&#x4EA4;&#x6362;&#x534F;&#x8BAE;</h3>
-<p>&#x4E3A;&#x4E86;&#x66F4;&#x597D;&#x7684;&#x4E92;&#x64CD;&#x4F5C;&#x6027;&#xFF0C;&#x63A7;&#x5236;&#x5668;&#x548C;&#x8BBE;&#x5907;&#x5E94;&#x8BE5;&#x63D0;&#x4F9B;&#x6CA1;&#x6709;SSL&#x5C42;&#x7684;&#x4E0D;&#x5B89;&#x5168;HTTP&#x3002;</p>
-<ol>
-<li>&#x57FA;&#x4E8E;&#x6587;&#x4EF6;&#x7684;&#x534F;&#x8BAE;&#xFF08;JDF/.mjd&#xFF09;</li>
-</ol>
-<p>&#x57FA;&#x4E8E;&#x6587;&#x4EF6;&#x7684;&#x534F;&#x8BAE;&#x662F;JDF&#x4F5C;&#x4E1A;&#x7968;&#x636E;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x8BE5;&#x534F;&#x8BAE;&#x53EF;&#x4EE5;&#x57FA;&#x4E8E;&#x70ED;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x5B9E;&#x73B0;&#x70ED;&#x6587;&#x4EF6;&#x5939;&#x7684;&#x8BBE;&#x5907;&#x5FC5;&#x987B;&#x4E3A;JDF&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x8F93;&#x5165;&#x70ED;&#x6587;&#x4EF6;&#x5939;&#x548C;&#x8F93;&#x51FA;&#x70ED;&#x6587;&#x4EF6;&#x5939;&#x3002;&#x6B64;&#x5916;&#xFF0C;SubmitQueueEntry&#x6D88;&#x606F;&#x5305;&#x542B;&#x4E00;&#x4E2A;URL&#x5C5E;&#x6027;&#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x5141;&#x8BB8;&#x6307;&#x5B9A;&#x4EFB;&#x610F;&#x7684;JDF&#x5B9A;&#x4F4D;&#x3002;</p>
-<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JMF_HotFolder.png" alt="JMF Communication by HotFolder"> <br><center> <font color="gray"> JMF Communication by HotFolder </font> </center><br></p>
-<p>HotFolder -&gt; JDF
-<code>&lt;JDF...&gt;
-    &lt;FileSpec URL=&quot;htt;//*&quot; or &quot;file://*&quot; or &quot;./*&quot; /&gt;
-    ...
-&lt;/JDF&gt;</code>
-Note: &#x57FA;&#x4E8E;&#x6587;&#x4EF6;&#x7684;&#x534F;&#x8BAE;&#x4E0D;&#x652F;&#x6301;&#x534F;&#x8BAE;&#x9519;&#x8BEF;&#x5904;&#x7406;&#x7684;&#x786E;&#x8BA4;&#x6536;&#x636E;&#xFF0C;&#x8FD9;&#x5C31;&#x8981;&#x6C42;&#x63A5;&#x6536;&#x65B9;&#x8F6E;&#x8BE2;&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#x7684;&#x8F93;&#x51FA;&#x70ED;&#x6587;&#x4EF6;&#x5939;&#x3002;&#x6700;&#x540E;&#xFF0C;&#x6388;&#x4E88;&#x5BF9;&#x70ED;&#x6587;&#x4EF6;&#x5939;&#x7684;&#x8BFB;/&#x5199;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x4E5F;&#x964D;&#x4F4E;&#x4E86;&#x5B89;&#x5168;&#x6027;&#x3002;</p>
-<ol>
-<li><p>&#x57FA;&#x4E8E;HTTP&#x7684;&#x534F;&#x8BAE;&#xFF08;JMF/.mjm&#xFF09;</p>
-<ul>
-<li><p>&#x6D88;&#x606F;&#x7684;&#x5B9E;&#x73B0;&#xFF1A;JMF&#x662F;HTTP&#xFF08;&#x5BA2;&#x6237;&#x7AEF;&#xFF09;&#x8BF7;&#x6C42;&#x548C;&#xFF08;&#x670D;&#x52A1;&#x5668;&#xFF09;&#x54CD;&#x5E94;&#x7684;&#x4E3B;&#x4F53;&#x3002;&#x5BA2;&#x6237;&#x7AEF;&#x4F7F;&#x7528;post&#x65B9;&#x6CD5;&#x8BF7;&#x6C42;&#xFF0C;JMF&#x53EF;&#x4EE5;&#x662F;Query&#x6216;Registration&#x6216;Command&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5305;&#x542B;Signal&#x548C;Acknowledge&#x3002;&#x5BF9;&#x4E8E;Signal&#x548C;Acknowledge&#x8BF7;&#x6C42;&#xFF1A;&#x5F53;Signal&#x662F;&#x53EF;&#x9760;&#x4FE1;&#x53F7;&#xFF08;&#xBB; &#x7D22;&#x5F15;&#x201C;&#x53EF;&#x9760;&#x4FE1;&#x53F7;&#x201D;&#xFF09;&#x65F6;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x5BF9;&#x5176;&#x54CD;&#x5E94;&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;&#xFF0C;&#x5426;&#x5219;&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;&#xFF0C;Acknowledge&#x7684;&#x54CD;&#x5E94;&#x53EF;&#x4EE5;&#x662F;&#x7A7A;&#x7684;&#x3002;</p>
-</li>
-<li><p>HTTP&#x63A8;&#x9001;&#x673A;&#x5236;&#xFF1A;&#x56E0;&#x4E3A;HTTP&#x662F;&#x65E0;&#x72B6;&#x6001;&#x534F;&#x8BAE;&#xFF08;&#x5BF9;&#x4E8B;&#x52A1;&#x5904;&#x7406;&#x65E0;&#x8BB0;&#x5FC6;&#xFF0C;&#x6BCF;&#x6B21;&#x901A;&#x8BAF;&#x65E0;&#x4E0A;&#x4E0B;&#x6587;&#x5173;&#x8054;&#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#x670D;&#x52A1;&#x5668;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x63A8;&#x9001;&#x673A;&#x5236;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF08;&#x5982;&#x5B9A;&#x671F;&#x7684;&#x72B6;&#x6001;&#x680F;&#x66F4;&#x65B0;&#xFF09;&#x3002;&#x5BA2;&#x6237;&#x7AEF;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5B9A;&#x671F;&#x8F6E;&#x8BE2;&#x670D;&#x52A1;&#x5668;&#x6765;&#x83B7;&#x53D6;&#x76F8;&#x5173;&#x6D88;&#x606F;&#x3002;</p>
-</li>
-</ul>
-</li>
-</ol>
-<p><img src="https://github.com/Jim-CodeHub/Skills-list/raw/master/image/JDF/JMF_HTTPs.png" alt="JMF Communication by HTTP(s)"> <br><center> <font color="gray"> JMF Communication by HTTP(s) </font> </center><br></p>
-<p>HTTP(s) -&gt; JMF
-<code>&lt;JMF...&gt; 
-    &lt;SubmitQueueEntry URL=&quot;http://xxx.jdf&quot;...&gt;
-        ...
-    &lt;/SubmitQueueEntry&gt;
-&lt;/JMF&gt;</code></p>
-<ol>
-<li><p>&#x57FA;&#x4E8E;HTTPS&#x7684;&#x534F;&#x8BAE; - SSL&#x53CC;&#x5411;&#x8BA4;&#x8BC1;</p>
-</li>
-<li><p>&#x7BA1;&#x7406;&#x6301;&#x7EED;&#x901A;&#x9053;&#xFF08;Persistent Channels&#xFF09;&#xFF1A;&#x63A7;&#x5236;&#x5668;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5411;&#x8BBE;&#x5907;&#x53D1;&#x9001;&#x4E00;&#x4E2A;KnownSubscriptions&#x67E5;&#x8BE2;&#x6765;&#x8BF7;&#x6C42;&#x6709;&#x5173;&#x5F53;&#x524D;&#x6D3B;&#x52A8;&#x8BA2;&#x9605;&#x7684;&#x4FE1;&#x606F;&#x3002;</p>
-<ul>
-<li>&#x5982;&#x679C;&#x8BBE;&#x5907;&#x4E2D;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x5339;&#x914D;&#x7684;Subscription&#xFF0C;&#x5219;&#x63A7;&#x5236;&#x5668;&#x4E0D;&#x5E94;&#x53D1;&#x9001;&#x65B0;&#x7684;Subscription&#x3002;</li>
-<li>&#x5982;&#x679C;&#x8BBE;&#x5907;&#x4E0D;&#x652F;&#x6301;KnownSubscriptions&#x8BF7;&#x6C42;&#xFF0C;&#x5219;&#x63A7;&#x5236;&#x5668;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;Subscription&#xFF0C;&#x5982;&#x679C;&#x8BBE;&#x5907;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x76F8;&#x540C;&#x7684;Subscription&#xFF0C;&#x5219;&#x66FF;&#x6362;&#x4E3A;&#x65B0;&#x7684;&#x3002;</li>
-<li>&#x901A;&#x8FC7;StopPersistentChannel&#x6765;&#x5220;&#x9664;&#x6301;&#x7EED;&#x901A;&#x9053;</li>
-</ul>
-</li>
-</ol>
-<hr>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; Jim 2019-2020 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Revision time: 
-2020-05-15 20:58:37
+2020-05-19 09:28:30
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -2378,7 +2759,7 @@ Note: &#x57FA;&#x4E8E;&#x6587;&#x4EF6;&#x7684;&#x534F;&#x8BAE;&#x4E0D;&#x652F;&#
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JDF","level":"1.8.5","depth":2,"previous":{"title":"English","level":"1.8.4","depth":2,"path":"pages/expansions/English.md","ref":"pages/expansions/English.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/expansions/JDF.md","mtime":"2020-05-15T12:58:37.421Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-15T12:58:45.270Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JDF","level":"1.8.5","depth":2,"previous":{"title":"English","level":"1.8.4","depth":2,"path":"pages/expansions/English.md","ref":"pages/expansions/English.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/expansions/JDF.md","mtime":"2020-05-19T01:28:30.305Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-19T01:28:37.503Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
