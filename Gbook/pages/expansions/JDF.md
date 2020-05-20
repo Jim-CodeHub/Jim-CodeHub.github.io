@@ -61,10 +61,10 @@ Product Nodes with *JDF/@Type="Product"* describes the job intent. Process Group
 <JDF Type="Product">
 	<!-- Global Resouces and Links Here ->
 	<JDF Type="ProcessGroup">
-		<JDF Type=[Predefined Process]>
+		<JDF Type="[Predefined Process]">
 			<!-- Local Resouces and Links Here ->
 		</JDF>
-		<JDF Type="Combined" Types=[Predefined Process List]>
+		<JDF Type="Combined" Types="[Predefined Process List]">
 			<!-- Local Resouces and Links Here ->
 		</JDF>
 	</JDF>
