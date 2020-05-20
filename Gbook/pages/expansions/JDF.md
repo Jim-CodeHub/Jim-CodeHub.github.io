@@ -1,5 +1,5 @@
 <script src="https://github.com/Jim-CodeHub/Skills-list/raw/master/script/ImgHover.js"></script> 
-<link rel="stylesheet" href="https://github.com/Jim-CodeHub/Skills-list/raw/master/script/word.css" type="text/css" /> 
+<style type="text/css" > p{word-wrap:break-word; word-break:break-all;} </style>
 
 # 1 Introduction
 
@@ -57,29 +57,59 @@ Jobs are organized in the XML DOM Tree (JDF Instance or Job Ticket) by JDF and r
 
 Product Nodes with *JDF/@Type="Product"* describes the job intent. Process Group Nodes with *JDF/@Type="ProcessGroup"* describes the job processes group. Process Nodes with *JDF/@Type="[Predefined Process]"* or *JDF/@Type="Combined"* with *JDF/@Types="[Predefined Process List]"* describes the specific job process.
 
+```XML
+<JDF Type="Product">
+	<!-- Global Resouces and Links Here ->
+	<JDF Type="ProcessGroup">
+		<JDF Type=[Predefined Process]>
+			<!-- Local Resouces and Links Here ->
+		</JDF>
+		<JDF Type="Combined" Types=[Predefined Process List]>
+			<!-- Local Resouces and Links Here ->
+		</JDF>
+	</JDF>
+</JDF>
+```
+
+<br><center> <font color=gray> Classic Processes Model </font> </center><br>
+
 > **[info] Note**
 >
 > Combined nodes are designed for multi-function devices that can excute multi processes.
-
-### 2.1.1 *JDF/@Status*
-
-TBD
 
 ## 2.2 Resouces
 
 *JDF/ResoucePool* contains various resources and implemented in **current or root process node** in each processes described upon. And *JDF/ResouceLinkPool* describes the usage (Input/Output) of resources and implemented in **current process node**. *JDF/ResoucePool/ResouceRef* is used to including resources from other resource pool.
 
+```XML
+<JDF>
+	<ResoucePool>
+		<!-- Resources List Here -->
+	</ResoucePool>
+	<ResouceLinkPool>
+		<!-- Resources Links List Here -->
+	</ResouceLinkPool>
+	<JDF>
+		<ResouceLinkPool>
+			<!-- Resources Links List Here (Link to global resources)-->
+		</ResouceLinkPool>
+	</JDF>
+	<JDF>
+		<ResoucePool>
+			<!-- Resources List Here -->
+		</ResoucePool>
+		<ResouceLinkPool>
+			<!-- Resources Links List Here (Link to local (and MAY link to global) resources)-->
+		</ResouceLinkPool>
+	</JDF>
+</JDF>
+```
+
+<br><center> <font color=gray> Classic Resouces Model </font> </center><br>
+
 > **[info] Gray Box**
 >
 > *JDF/@Type="ProcessGroup"* with *JDF/@Types=[Predefined Porcess List]* is deformed node that lacks resources and **SHALL NOT BE EXCUTED BY DEVICE**. [More](#Appendix-W).
-
-### 2.2.1 *JDF/ResoucePool/[Resouces]/@Status*
-
-TBD
-
-### 2.2.2 *JDF/ResoucePool/NodeInfo*
-
-TBD
 
 ## 2.3 Job's History 
 
@@ -440,7 +470,7 @@ Resources					| Description
 ApprovalParams				| -
 ApprovalSuccess				| -
 Assembly					| - 
-BinderySignature			| 代表多张折叠在一起的纸，是最终产品的一部分
+BinderySignature			| 一套印刷好的纸张
 BoxFoldingParams			| -
 BoxPackingParams			| -
 BufferParams				| - 
@@ -913,7 +943,7 @@ Content-Transfer-Encoding: 7bit
 </JMF>
 
 ------=_Part_0_2409003.1131706449797
-Content-Type: application/xml; name=Alces-Approval.jdf
+Content-Type: application/vnd.cip4-jdf+xml
 Content-Transfer-Encoding: 7bit
 Content-ID: <Alces-Approval.jdf>
 
