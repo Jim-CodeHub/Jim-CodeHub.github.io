@@ -152,6 +152,10 @@ C++允许在定义函数时指定形参默认值，顺序必须从右向左，�
 
 C++只检测形参的合法性，不检测函数内部实现机制，也不要求返回值，但重载的功能应该符合原运算符的语法规则、属性和优先级。合理的返回值设计也方便参与连续的链式运算。
 
+> **[info] Special operator**
+>
+> `operator double(){}` 类似的，为特殊操作符重载，当强制转换一个对象时时将返回重载类型，如 : (double)(a)，将调用该重载操作符，返回一个浮点数。 
+
 ## 5.2 动态联编
 动态联编是C++多态的主要实现方式，它通过<u>虚函数与虚类</u>、<u>纯虚函数与抽象类</u>在运行而非编译时确定接口的实现。  
 
@@ -286,32 +290,6 @@ ANSI 与ISO 于1998年通过C++98标准， 03年更新标准为C++03，该标准
 # <span id = "Appendix-J"> Appendix-J：C++ new与delete </span>
 C++使用new和delete开辟和销毁堆空间，与C中的malloc和free的使用方式类似，本质上是对malloc和free的封装。
 
-
-# 功能测试
-
-下面的功能是对一些提示的修饰
-
-使用：> [type]
-
- **[info] For info**
-
- Use this for infomation messages.
-
-> **[info] For info**
->
-> Use this for infomation messages.
-
-> **[warning] For warning**
->
-> Use this for warning messages.
-
-> **[danger] For danger**
->
-> Use this for danger messages.
-
-> **[success] For info**
->
-> Use this for success messages.
 
 
 --------

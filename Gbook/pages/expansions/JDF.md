@@ -163,7 +163,11 @@ The server can send *Signal* to clients (Select from the list of configured URLs
 
 > **[info] Reliable Signal**
 >
-> If the server sends *Signal/@ChannelMode='Reliable'*, the client SHALL do *Response* with non-empty body. 
+> If the server sends *Signal/@ChannelMode='Reliable'*, the client SHALL do *Response* with non-empty body. If the client do not response or *Response/@ReturnCode!=0*, the server SHALL retry until the client do response and *Response/@ReturnCode=0*.  
+
+> **[warning] Note**
+>
+> The *Signal* message a combination of *Query* and *Response* messages, and the *Query* part tells subscribers what to subscribe at that time, and the *Response* part tells the subscribers what specific events happened. 
 
 ## 3.3 Error handling
 

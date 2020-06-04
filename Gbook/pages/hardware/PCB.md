@@ -211,6 +211,11 @@ EMC (Electromagnetic compatibility) 电磁兼容性，用于描述设备或系�
 - 分布式电容 : 非电容态的形式电容，PCB上下层和同层导线可能产生的电容效应，影响高频电路。
 - 分布式电感 : 非电感态的形式电感，PCB导线和元件的分布可能产生的电感效应，影响高频电路。 
 
+干扰源：
+	1. I/O
+	2. 电源
+	3. 辐射
+
 ## 2.3 Tactics 
 Copper filling, GND separation (for signal layer), 3W wiring (for same layer) & 20H, Cross wiring (between layers), Open-loop check, Resonance rules, Short line rules (for special signal, such as clock signal), Power overlap rules, Angle rules (acute and right angle are not allowed), Same type - Same side, Same type - Same layer and Less drilling .etc. 
 

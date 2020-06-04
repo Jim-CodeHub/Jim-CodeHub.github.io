@@ -443,8 +443,8 @@ struct inotify_event{
 
 Object		| Macro				| Events description						| Note 
 :-:			| :-:				| :-:										| :-:
-file		| IN_ACCESS			| accesse									| +
-file		| IN_CLOSE_WRITE	| opene for writing was closed				| +
+file		| IN_ACCESS			| access									| +
+file		| IN_CLOSE_WRITE	| open for writing was closed				| +
 file		| IN_MODIFY			| modify									| +
 file		| IN_MOVED_FROM		| rename an old name						| +
 file		| IN_MOVED_TO		| rename a new name							| +

@@ -1,0 +1,1834 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Device driver · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="FileSys.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    GUI
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../gui/Qt.html">
+            
+                <a href="../../gui/Qt.html">
+            
+                    
+                    Qt
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../gui/emWin.html">
+            
+                <a href="../../gui/emWin.html">
+            
+                    
+                    emWin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" >
+            
+                <span>
+            
+                    
+                    Expansion
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.3.1" data-path="../../gui/MFC.html">
+            
+                <a href="../../gui/MFC.html">
+            
+                    
+                    MFC
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Operating system
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../OSPrinciple.html">
+            
+                <a href="../OSPrinciple.html">
+            
+                    
+                    OS Principle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" >
+            
+                <span>
+            
+                    
+                    Unix
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" >
+            
+                <span>
+            
+                    
+                    GNU Tools
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1.1" data-path="../GCC.html">
+            
+                <a href="../GCC.html">
+            
+                    
+                    GCC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.1.2" >
+            
+                <span>
+            
+                    
+                    Makefile
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.1.3" data-path="../Git.html">
+            
+                <a href="../Git.html">
+            
+                    
+                    Git
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.1.4" data-path="../Markdown.html">
+            
+                <a href="../Markdown.html">
+            
+                    
+                    Markdown
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.1.5" data-path="../doxygen.html">
+            
+                <a href="../doxygen.html">
+            
+                    
+                    doxygen
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.1.6" data-path="../Shell.html">
+            
+                <a href="../Shell.html">
+            
+                    
+                    Shell
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2" data-path="../Unix.html">
+            
+                <a href="../Unix.html">
+            
+                    
+                    Unix Programming
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3" >
+            
+                <span>
+            
+                    
+                    Linux BSP
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.3.2.3.1" data-path="DeviceDriver.html">
+            
+                <a href="DeviceDriver.html">
+            
+                    
+                    Device driver
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3.2" data-path="FileSys.html">
+            
+                <a href="FileSys.html">
+            
+                    
+                    FileSys
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3.3" data-path="Kernel.html">
+            
+                <a href="Kernel.html">
+            
+                    
+                    Kernel
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3.4" data-path="Bootloader.html">
+            
+                <a href="Bootloader.html">
+            
+                    
+                    Bootloader
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" >
+            
+                <span>
+            
+                    
+                    Expansion
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" >
+            
+                <span>
+            
+                    
+                    uCOS
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Programming
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" >
+            
+                <span>
+            
+                    
+                    Programming language
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="../../programming/RegExp.html">
+            
+                <a href="../../programming/RegExp.html">
+            
+                    
+                    RegExp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="../../programming/Python.html">
+            
+                <a href="../../programming/Python.html">
+            
+                    
+                    Python
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3" data-path="../../programming/C++.html">
+            
+                <a href="../../programming/C++.html">
+            
+                    
+                    C++
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.4" data-path="../../programming/C.html">
+            
+                <a href="../../programming/C.html">
+            
+                    
+                    C
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.5" >
+            
+                <span>
+            
+                    
+                    ASM
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" >
+            
+                <span>
+            
+                    
+                    Data structures and Algorithms
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" >
+            
+                <span>
+            
+                    
+                    Software engineering
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" >
+            
+                <span>
+            
+                    
+                    Expansions
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.4.1" data-path="../../programming/SoftwareCopyrights.html">
+            
+                <a href="../../programming/SoftwareCopyrights.html">
+            
+                    
+                    SoftwareCopyrights
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Principles of Computer Organization
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../computer/Communication.html">
+            
+                <a href="../../computer/Communication.html">
+            
+                    
+                    Communication
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../../computer/ComputerOrg.html">
+            
+                <a href="../../computer/ComputerOrg.html">
+            
+                    
+                    ComputerOrg
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Hardware Design
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../hardware/PCB.html">
+            
+                <a href="../../hardware/PCB.html">
+            
+                    
+                    PCB
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../hardware/Analog.html">
+            
+                <a href="../../hardware/Analog.html">
+            
+                    
+                    Analog Elec
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../../hardware/Digital.html">
+            
+                <a href="../../hardware/Digital.html">
+            
+                    
+                    Digital Elec
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" >
+            
+                <span>
+            
+                    
+                    Expansions
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.4.1" >
+            
+                <span>
+            
+                    
+                    FPGA
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.2" >
+            
+                <span>
+            
+                    
+                    CPLD
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Automation
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../automation/Motor.html">
+            
+                <a href="../../automation/Motor.html">
+            
+                    
+                    Motor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../automation/Sensor.html">
+            
+                <a href="../../automation/Sensor.html">
+            
+                    
+                    Sensor
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Expansions
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" >
+            
+                <span>
+            
+                    
+                    Database
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../../expansions/XML.html">
+            
+                <a href="../../expansions/XML.html">
+            
+                    
+                    XML
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../../expansions/matlab.html">
+            
+                <a href="../../expansions/matlab.html">
+            
+                    
+                    MatLab
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../../expansions/English.html">
+            
+                <a href="../../expansions/English.html">
+            
+                    
+                    English
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../../expansions/JDF.html">
+            
+                <a href="../../expansions/JDF.html">
+            
+                    
+                    JDF
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >Device driver</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x300A;&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x300B;">&#x300A;&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x300B;</h1>
+<h2 id="&#x7B80;&#x4ECB;">&#x7B80;&#x4ECB;</h2>
+<p>&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x662F;&#x8FDB;&#x5165;Linux&#x5185;&#x6838;&#x7684;&#x5927;&#x95E8;</p>
+<p>(&#x9664;&#x975E;&#x7279;&#x522B;&#x60C5;&#x51B5;) &#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x7F16;&#x5199;&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x65F6;&#xFF0C;&#x5E94;&#x8BE5;&#x6CE8;&#x91CD;&#x4E8E;&#x5982;&#x4F55;&#x4F7F;&#x786C;&#x4EF6;&#x53EF;&#x7528;&#xFF0C;&#x800C;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x786C;&#x4EF6;&#x7559;&#x7ED9;&#x4E0A;&#x5C42;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x8FD9;&#x6837;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x5C31;&#x6BD4;&#x8F83;&#x7075;&#x6D3B;&#x3002;</p>
+<p>&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#xFF0C;&#x5C31;&#x662F;&#x8BBE;&#x5907;&#x786C;&#x4EF6;&#x548C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E4B;&#x95F4;&#x7684;&#x8F6F;&#x4EF6;&#x5C42;&#x3002;&#x5BF9;&#x4E8E;&#x540C;&#x4E00;&#x4E2A;&#x8BBE;&#x5907;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x90FD;&#x53EF;&#x4EE5;&#x9A71;&#x52A8;&#x5176;&#x5DE5;&#x4F5C;&#xFF0C;&#x4F46;&#x6BCF;&#x4E2A;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x9A71;&#x52A8;&#x5B9E;&#x73B0;&#xFF0C;&#x56E0;&#x6B64;&#x6BCF;&#x79CD;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x90FD;&#x5448;&#x73B0;&#x4E00;&#x79CD;&#x7279;&#x6027;&#x3002;&#x603B;&#x7684;&#x6765;&#x8BF4;&#xFF0C;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x5E94;&#x8BE5;&#x7559;&#x7ED9;&#x7528;&#x6237;&#x66F4;&#x591A;&#x9009;&#x9879;&#xFF0C;&#x5E76;&#x5C3D;&#x91CF;&#x4FDD;&#x6301;&#x7B80;&#x5355;&#x3002;</p>
+<h2 id="&#x529F;&#x80FD;&#x5212;&#x5206;">&#x529F;&#x80FD;&#x5212;&#x5206;</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x529F;&#x80FD;</th>
+<th style="text-align:center">&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;</td>
+<td style="text-align:center">&#x8FDB;&#x7A0B;&#x521B;&#x5EFA;&#x3001;&#x9500;&#x6BC1;&#xFF0C;&#x8FDB;&#x7A0B;&#x95F4;&#x901A;&#x4FE1;&#xFF0C;&#x5916;&#x90E8;I/O&#xFF0C;&#x8FDB;&#x7A0B;&#x8C03;&#x5EA6;&#x7B49;</td>
+</tr>
+<tr>
+<td style="text-align:center">&#x5185;&#x5B58;&#x7BA1;&#x7406;</td>
+<td style="text-align:center">&#x865A;&#x62DF;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF0C;&#x5185;&#x5B58;&#x5206;&#x914D;&#x7B49;</td>
+</tr>
+<tr>
+<td style="text-align:center">&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</td>
+<td style="text-align:center"><strong>&#x5185;&#x6838;&#x5728;&#x6CA1;&#x6709;&#x7ED3;&#x6784;&#x7684;&#x786C;&#x4EF6;&#x4E0A;&#x6784;&#x9020;&#x7ED3;&#x6784;&#x5316;&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">&#x8BBE;&#x5907;&#x63A7;&#x5236;</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">&#x7F51;&#x7EDC;&#x529F;&#x80FD;</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="&#x53EF;&#x88C5;&#x8F7D;&#x6A21;&#x5757;---&#x8FD0;&#x884C;&#x65F6;&#x6269;&#x5C55;">&#x53EF;&#x88C5;&#x8F7D;&#x6A21;&#x5757; - &#x8FD0;&#x884C;&#x65F6;&#x6269;&#x5C55;</h2>
+<p>&#x5185;&#x6838;&#x6A21;&#x5757;&#x7684;&#x63D2;&#x62D4;&#x3001;&#x8FD0;&#x884C;&#x65F6;&#x6269;&#x5C55;&#x673A;&#x5236;&#xFF0C;&#x514B;&#x670D;&#x4E86;&#x805A;&#x5185;&#x6838;&#x7684;&#x7F3A;&#x70B9;</p>
+<h2 id="&#x8BBE;&#x5907;&#x548C;&#x6A21;&#x5757;&#x7684;&#x5206;&#x7C7B;">&#x8BBE;&#x5907;&#x548C;&#x6A21;&#x5757;&#x7684;&#x5206;&#x7C7B;</h2>
+<p>&#x5B57;&#x7B26;&#x6A21;&#x5757;&#xFF08;&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#xFF09;&#x3001;&#x5757;&#x6A21;&#x5757;&#xFF08;&#x5757;&#x8BBE;&#x5907;&#xFF09;&#x548C;&#x7F51;&#x7EDC;&#x6A21;&#x5757;&#xFF08;&#x7F51;&#x7EDC;&#x63A5;&#x53E3;&#xFF09;&#xFF0C;&#x6A21;&#x5757;&#x5212;&#x5206;&#x4E0D;&#x662F;&#x4E25;&#x683C;&#x7684;&#xFF0C;</p>
+<ul>
+<li>&#x5B57;&#x7B26;&#x8BBE;&#x5907;    &#xFF1A; &#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x662F;&#x53EF;&#x4EE5;&#x5411;&#x5B57;&#x8282;&#x6D41;&#x4E00;&#x6837;&#x88AB;&#x8BBF;&#x95EE;&#x7684;&#x8BBE;&#x5907;&#xFF0C;&#x5982;&#x5B57;&#x7B26;&#x7EC8;&#x7AEF;&#x3001;&#x4E32;&#x53E3;&#x7B49;</li>
+<li>&#x5757;&#x8BBE;&#x5907;    &#xFF1A; &#x5982;&#x78C1;&#x76D8;&#x7B49;</li>
+<li>&#x7F51;&#x7EDC;&#x63A5;&#x53E3;    &#xFF1A;</li>
+</ul>
+<h2 id="&#x5B89;&#x5168;&#x95EE;&#x9898;">&#x5B89;&#x5168;&#x95EE;&#x9898;</h2>
+<p>&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x4E2D;&#x5C3D;&#x91CF;&#x4E0D;&#x8981;&#x5B9E;&#x73B0;&#x5B89;&#x5168;&#x7B56;&#x7565;&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x5E94;&#x8BE5;&#x4EA4;&#x7ED9;&#x7CFB;&#x7EDF;&#x7BA1;&#x7406;&#x5458;&#x5B8C;&#x6210;&#x3002;</p>
+<p>&#x7F16;&#x5199;&#x7A0B;&#x5E8F;&#x65F6;&#x8981;&#x4E25;&#x683C;&#xFF0C;&#x5982;&#x53D8;&#x91CF;&#x6E05;&#x96F6;&#x3001;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#xFF08;&#x5982;&#x6570;&#x7EC4;&#x8D8A;&#x754C;&#xFF09;&#x7B49;&#x5904;&#x7406;&#x64CD;&#x4F5C;&#xFF0C;&#x5F88;&#x591A;&#x5728;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x7F16;&#x5199;&#x7A0B;&#x5E8F;&#x65F6;&#x53EF;&#x5FFD;&#x7565;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x5728;&#x5185;&#x6838;&#x9A71;&#x52A8;&#x4E2D;&#x90FD;&#x5FC5;&#x987B;&#x6CE8;&#x610F;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x5185;&#x6838;&#x63D2;&#x62D4;&#x529F;&#x80FD;&#xFF0C;&#x5728;&#x7F16;&#x8BD1;&#x5185;&#x6838;&#x65F6;&#x4E5F;&#x53EF;&#x9009;&#x62E9;&#x5F00;&#x5173;&#xFF0C;&#x5982;&#x679C;&#x5173;&#x95ED;&#x4E86;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4E0D;&#x80FD;&#x5B9E;&#x73B0;&#x8FD0;&#x884C;&#x65F6;&#x6269;&#x5C55;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x5185;&#x6838;&#x6A21;&#x5757;&#x90FD;&#x5FC5;&#x987B;&#x5728;&#x7F16;&#x8BD1;&#x5185;&#x6838;&#x65F6;&#x540C;&#x65F6;&#x7F16;&#x8BD1;&#x5230;&#x5185;&#x6838;&#x5F53;&#x4E2D;</p>
+<h2 id="&#x52A0;&#x5165;&#x5185;&#x6838;&#x5F00;&#x53D1;&#x56E2;">&#x52A0;&#x5165;&#x5185;&#x6838;&#x5F00;&#x53D1;&#x56E2;</h2>
+<p>&#x90AE;&#x4EF6;&#x662F;&#x4ECE;Linux&#x8BDE;&#x751F;&#x81F3;&#x4ECA;&#x4E00;&#x76F4;&#x88AB;Linux&#x5185;&#x6838;&#x5F00;&#x53D1;&#x8005;&#x4F7F;&#x7528;&#x7684;&#x901A;&#x4FE1;&#x3001;&#x4EA4;&#x6D41;&#x3001;&#x8BA8;&#x8BBA;&#x7684;&#x65B9;&#x5F0F;&#x3002;</p>
+<p>Linux&#x5185;&#x6838;&#x90AE;&#x4EF6;&#x5217;&#x8868;<a href="http://vger.kernel.org/vger-lists.html" target="_blank">LKML</a>&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x4E0D;&#x540C;&#x7684;&#x4E3B;&#x4F53;&#x5206;&#x7C7B;&#xFF0C;&#x901A;&#x8FC7;&#x90AE;&#x7BB1;&#x8BA2;&#x9605;&#x67D0;&#x4E00;&#x7C7B;&#x6765;&#x83B7;&#x53D6;&#x8BE5;&#x7C7B;&#x7684;&#x6D88;&#x606F;&#x63A8;&#x9001;&#x3002;</p>
+<p>LKML&#x662F;Linux&#x5185;&#x6838;&#x5F00;&#x53D1;&#x8005;&#x7684;&#x805A;&#x96C6;&#x4E2D;&#x5FC3;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x9876;&#x7EA7;&#x8D28;&#x91CF;&#x7684;&#x8D44;&#x6E90;&#x3002;</p>
+<p>&#x90AE;&#x4EF6;&#x8BA2;&#x9605;&#x683C;&#x5F0F;&#xFF1A;</p>
+<p>&#x63A5;&#x6536;&#x4EBA;&#xFF1A;majordomo@vger.kernel.org</p>
+<p>//TBD</p>
+<hr>
+<p>&#x5176;&#x5B83;&#x603B;&#x7ED3;&#x5185;&#x5BB9;</p>
+<h1 id="&#x6A21;&#x5757;">&#x6A21;&#x5757;</h1>
+<h2 id="&#x6E90;&#x7801;">&#x6E90;&#x7801;</h2>
+<p>&#x5185;&#x6838;&#x6A21;&#x5757;&#x7684;&#x7F16;&#x8BD1;&#x4F9D;&#x8D56;&#x4E8E;&#x5185;&#x6838;&#x6E90;&#x7801;&#xFF0C;&#x53EF;&#x4EE5;&#x628A;&#x5185;&#x6838;&#x6E90;&#x7801;&#x5206;&#x4E3A;&#x4E24;&#x79CD;&#xFF1A;PC&#x5BBF;&#x4E3B;&#x673A;Linux&#x7CFB;&#x7EDF;&#x4E0B;&#x7684;&#x5185;&#x6838;&#x6E90;&#x7801;&#x548C;&#x5355;&#x72EC;&#x4E0B;&#x8F7D;&#x7684;&#x5185;&#x6838;&#x6E90;&#x7801;&#x3002;</p>
+<ol>
+<li>&#x5BBF;&#x4E3B;&#x673A;&#x5185;&#x6838;&#x6E90;&#x7801;</li>
+</ol>
+<p>&#x4F60;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x7684;Linux&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E2D;&#x53EF;&#x80FD;&#x6CA1;&#x6709;&#x5185;&#x6838;&#x6E90;&#x7801;&#xFF0C;&#x67E5;&#x770B;&#x76EE;&#x5F55;/usr/src/kernels/xxx&#xFF08;&#x5728;kernels&#x76EE;&#x5F55;&#x4E0B;&#x53EF;&#x80FD;&#x6709;&#x66F4;&#x591A;&#x7684;&#x5185;&#x6838;&#x6E90;&#x7801;&#x76EE;&#x5F55;&#xFF0C;&#x8FD9;&#x662F;&#x7CFB;&#x7EDF;&#x81EA;&#x52A8;&#x66F4;&#x65B0;&#x7684;&#x7ED3;&#x679C;&#xFF09;&#xFF0C;&#x66F4;&#x591A;&#x88AB;&#x7528;&#x5230;&#x7684;&#x76EE;&#x5F55;&#x662F;/lib/modules/xxx/build&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x5B83;&#x662F;&#x6307;&#x5411;&#x524D;&#x8005;&#x7684;&#x8F6F;&#x94FE;&#x63A5;&#xFF0C;&#x8FD9;&#x4E9B;&#x76EE;&#x5F55;&#x4E0B;&#x7684;Linux&#x5185;&#x6838;&#x6E90;&#x7801;&#x4E0D;&#x662F;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x8FD0;&#x884C;&#x5FC5;&#x987B;&#x7684;&#xFF0C;&#x53EA;&#x662F;&#x5728;&#x6709;&#x4E9B;&#x8F6F;&#x4EF6;&#x8981;&#x7F16;&#x8BD1;&#x6210;&#x5728;&#x8BE5;&#x5E73;&#x53F0;&#x7684;&#x5185;&#x6838;&#x6A21;&#x5757;&#x65F6;&#x624D;&#x9700;&#x7528;&#x5230;&#xFF08;&#x6BD4;&#x5982;&#x8981;&#x7F16;&#x8BD1;&#x4E00;&#x4E2A;dnw&#x7A0B;&#x5E8F;&#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#x5B89;&#x88C5;&#x5B8C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x540E;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x53EF;&#x80FD;&#x4E3A;&#x7A7A;&#x3002;</p>
+<p>&#x53EF;&#x5728;&#x7EBF;&#x5B89;&#x88C5;&#x5185;&#x6838;&#x6E90;&#x7801;&#xFF0C;&#x5728;&#x6B64;&#x4E4B;&#x524D;&#x4E00;&#x5B9A;&#x8981;&#x786E;&#x5B9A;&#x5F53;&#x524D;&#x7CFB;&#x7EDF;&#x4F7F;&#x7528;&#x7684;&#x5185;&#x6838;&#x6E90;&#x7801;&#x7248;&#x672C;&#x201C;#uname -r&#x201D;&#xFF0C;&#x7136;&#x540E;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<a href="https://pkgs.org/download/kernel-devel&#x7B49;&#x7F51;&#x7AD9;&#x4E0B;&#x8F7D;&#x5B89;&#x88C5;&#xFF0C;&#x6216;&#x8005;&#x76F4;&#x63A5;&#x5728;&#x7EBF;&#x201C;#yum" target="_blank">https://pkgs.org/download/kernel-devel&#x7B49;&#x7F51;&#x7AD9;&#x4E0B;&#x8F7D;&#x5B89;&#x88C5;&#xFF0C;&#x6216;&#x8005;&#x76F4;&#x63A5;&#x5728;&#x7EBF;&#x201C;#yum</a> install kernel-devel&#x201D;&#x4E0B;&#x8F7D;&#xFF08;red&#x7CFB;&#x5217;&#xFF09;&#xFF0C;&#x540E;&#x8005;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x4E0E;&#x5F53;&#x524D;&#x7CFB;&#x7EDF;&#x4F7F;&#x7528;&#x5185;&#x6838;&#x5339;&#x914D;&#xFF0C;&#x4E0D;&#x5339;&#x914D;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x4F60;&#x6240;&#x7F16;&#x8BD1;&#x7684;&#x6A21;&#x5757;&#x4E0D;&#x80FD;&#x5728;&#x5F53;&#x524D;&#x7CFB;&#x7EDF;&#x8FD0;&#x884C;&#x3002;</p>
+<p>&#x5B89;&#x88C5;&#x7684;&#x8FC7;&#x7A0B;&#x5C31;&#x662F;&#x7B80;&#x5355;&#x7684;&#x89E3;&#x538B;&#x7F29;&#xFF0C;&#x4F60;&#x751A;&#x81F3;&#x53EF;&#x4EE5;&#x628A;&#x5185;&#x6838;&#x6E90;&#x7801;&#x89E3;&#x538B;&#x5230;&#x4EFB;&#x4F55;&#x76EE;&#x5F55;&#xFF0C;&#x6700;&#x597D;&#x89E3;&#x538B;&#x5230;&#x9ED8;&#x8BA4;&#x6807;&#x51C6;&#x76EE;&#x5F55;&#xFF1A;/usr/src/kernels/&#x3002;</p>
+<ol>
+<li>&#x76EE;&#x6807;&#x677F;&#x5185;&#x6838;&#x6E90;&#x7801;</li>
+</ol>
+<p>&#x76EE;&#x6807;&#x677F;Linux&#x5185;&#x6838;&#x6E90;&#x7801;&#x53EF;&#x4EE5;&#x5728;<a href="https://www.kernel.org/&#x4E0B;&#x8F7D;&#xFF0C;&#x4E0E;&#x5BBF;&#x4E3B;&#x673A;&#x5185;&#x6838;&#x6E90;&#x7801;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x5B83;&#x591A;&#x7528;&#x4E8E;&#x5D4C;&#x5165;&#x5F0F;&#x5DE5;&#x7A0B;&#xFF0C;&#x4E14;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x4F5C;&#x4E3A;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x4F7F;&#x7528;&#xFF0C;&#x5B83;&#x9700;&#x8981;&#x8FDB;&#x4E00;&#x6B65;&#x914D;&#x7F6E;&#x3002;&#x4ECE;&#x8FD9;&#x4E2A;&#x610F;&#x4E49;&#x4E0A;&#x8BB2;&#xFF0C;&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#x7684;&#x5185;&#x6838;&#x6E90;&#x7801;&#x66F4;&#x5E94;&#x8BE5;&#x79F0;&#x4E3A;&#x201C;&#x5185;&#x6838;&#x5F00;&#x53D1;&#x5305;&#x201D;&#xFF08;kernel_devel&#xFF09;&#xFF0C;&#x5B83;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x5185;&#x6838;&#x3002;&#x540C;&#x6837;&#x7684;&#xFF0C;&#x76EE;&#x6807;&#x677F;&#x5185;&#x6838;&#x6E90;&#x7801;&#x7248;&#x672C;&#x4E5F;&#x8981;&#x4E0E;&#x76EE;&#x6807;&#x677F;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x5185;&#x6838;&#x4E00;&#x81F4;&#xFF0C;&#x901A;&#x5E38;&#x8FD9;&#x4E2A;&#x6E90;&#x7801;&#x5E94;&#x8BE5;&#x662F;&#x79FB;&#x690D;&#x5185;&#x6838;&#x65F6;&#x4F7F;&#x7528;&#x7684;&#x3001;&#x5DF2;&#x7ECF;&#x914D;&#x7F6E;&#x597D;&#x7684;&#x90A3;&#x4E00;&#x4EFD;&#x3002;" target="_blank">https://www.kernel.org/&#x4E0B;&#x8F7D;&#xFF0C;&#x4E0E;&#x5BBF;&#x4E3B;&#x673A;&#x5185;&#x6838;&#x6E90;&#x7801;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x5B83;&#x591A;&#x7528;&#x4E8E;&#x5D4C;&#x5165;&#x5F0F;&#x5DE5;&#x7A0B;&#xFF0C;&#x4E14;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x4F5C;&#x4E3A;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x4F7F;&#x7528;&#xFF0C;&#x5B83;&#x9700;&#x8981;&#x8FDB;&#x4E00;&#x6B65;&#x914D;&#x7F6E;&#x3002;&#x4ECE;&#x8FD9;&#x4E2A;&#x610F;&#x4E49;&#x4E0A;&#x8BB2;&#xFF0C;&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#x7684;&#x5185;&#x6838;&#x6E90;&#x7801;&#x66F4;&#x5E94;&#x8BE5;&#x79F0;&#x4E3A;&#x201C;&#x5185;&#x6838;&#x5F00;&#x53D1;&#x5305;&#x201D;&#xFF08;kernel_devel&#xFF09;&#xFF0C;&#x5B83;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x5185;&#x6838;&#x3002;&#x540C;&#x6837;&#x7684;&#xFF0C;&#x76EE;&#x6807;&#x677F;&#x5185;&#x6838;&#x6E90;&#x7801;&#x7248;&#x672C;&#x4E5F;&#x8981;&#x4E0E;&#x76EE;&#x6807;&#x677F;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x5185;&#x6838;&#x4E00;&#x81F4;&#xFF0C;&#x901A;&#x5E38;&#x8FD9;&#x4E2A;&#x6E90;&#x7801;&#x5E94;&#x8BE5;&#x662F;&#x79FB;&#x690D;&#x5185;&#x6838;&#x65F6;&#x4F7F;&#x7528;&#x7684;&#x3001;&#x5DF2;&#x7ECF;&#x914D;&#x7F6E;&#x597D;&#x7684;&#x90A3;&#x4E00;&#x4EFD;&#x3002;</a></p>
+<h2 id="&#x6A21;&#x5757;">&#x6A21;&#x5757;</h2>
+<p>&#x628A;&#x7A0B;&#x5E8F;&#x5199;&#x5165;Linux&#x5185;&#x6838;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#xFF08;.o&#xFF09;<strong>&#x7F16;&#x8BD1;</strong>&#x8FDB;&#x5185;&#x6838;&#x955C;&#x50CF;&#x6216;&#x5728;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E2D;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x6587;&#x4EF6;(.ko)&#x5728;&#x5185;&#x6838;&#x4E0A;&#x8FDB;&#x884C;<strong>&#x63D2;&#x62D4;</strong>&#xFF0C;&#x524D;&#x8005;&#x901A;&#x5E38;&#x5728;&#x5185;&#x6838;&#x79FB;&#x690D;&#x65F6;&#x5B8C;&#x6210;&#x3002;</p>
+<ol>
+<li>&#x7B80;&#x5355;&#x7684;&#x5185;&#x6838;&#x6A21;&#x5757;&#x7A0B;&#x5E8F;&#xFF1A;first.c</li>
+</ol>
+<pre><code class="lang-C">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/init.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/kernel.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/module.h&gt;</span></span>
+
+MODULE_LICENSE(&#x201C;GPL&#x201D;);
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">init_module</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    printk(&#x201C;module init\n&#x201D;);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">cleanup_module</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    printk(&#x201C;cleanup module&#x201D;);
+}
+
+<span class="hljs-comment">/*
+   &#x6240;&#x5305;&#x542B;&#x7684;&#x5934;&#x6587;&#x4EF6;&#x5728;&#x5185;&#x6838;&#x6E90;&#x7801;&#x6811;&#x4E2D;&#xFF0C;init_module()&#x548C;cleanup_module&#x662F;&#x5185;&#x6838;&#x51FD;&#x6570;&#xFF0C;&#x7C7B;&#x4F3C;C++&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x548C;&#x6790;&#x6784;
+   &#x51FD;&#x6570;MODULE_LICENSE(&#x201C;GPL&#x201D;);&#x4F7F;&#x7528;&#x6B64;&#x5B8F;(&#x5728;linux/module.h&#x4E2D;)&#x6765;&#x4F7F;&#x81EA;&#x5DF1;&#x7684;&#x4EE3;&#x7801;&#x9075;&#x5FAA;GPL&#x534F;&#x8BAE;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x6709;&#x201C;&#x5783;&#x573E;&#x201D;&#x4FE1;&#x606F;
+   &#x63D0;&#x793A;&#xFF0C;&#x5728;module.h&#x4E2D;&#x8FD8;&#x6709;&#x7C7B;&#x4F3C;&#x7684;&#x534F;&#x8BAE;&#x53EF;&#x9009;&#xFF0C;&#x5982;MODULE_AUTHOR&#x3001;MODULE_DESCRIPTION&#x3001;MODULE_ALIAS(&#x201C;xxx&#x201D;)&#xFF0C;&#x4E0D;
+   &#x4F7F;&#x7528;&#x534F;&#x8BAE;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x53EF;&#x80FD;&#x7684;&#x540E;&#x679C;&#x662F;&#x4E0D;&#x80FD;&#x6B63;&#x786E;&#x8C03;&#x7528;&#x5185;&#x6838;&#x51FD;&#x6570;&#x3002;
+
+   printk()&#x662F;&#x5185;&#x6838;&#x6253;&#x5370;&#x51FD;&#x6570;&#xFF0C;&#x4E0D;&#x540C;&#x4E8E;C&#x5E93;&#x4E2D;&#x7684;printf()&#xFF0C;&#x524D;&#x8005;&#x5177;&#x6709;&#x7B49;&#x7EA7;&#x5212;&#x5206;&#xFF0C;&#x53EF;&#x8BBE;&#x7F6E;&#x5728;&#x4E0D;&#x540C;&#x5730;&#x70B9;&#x6253;&#x5370;&#x6D88;&#x606F;&#x3002;
+ */</span>
+</code></pre>
+<ol>
+<li><p>&#x7F16;&#x8BD1;&#x6210;&#x5185;&#x6838;&#x6A21;&#x5757;&#xFF1A;first.ko / test.ko</p>
+</li>
+<li><p>&#x547D;&#x4EE4;&#x884C;&#x7F16;&#x8BD1;&#x548C;&#x5B89;&#x88C5;</p>
+</li>
+</ol>
+<p>&#x7F16;&#x8BD1;&#xFF1A;&#x5185;&#x6838;&#x6E90;&#x7801;&#x76EE;&#x5F55;&#x4F7F;&#x7528;#make modules M=xxx&#xFF08;M&#x6307;&#x5411;&#x7684;&#x8DEF;&#x5F84;&#x4E3A;first.c&#x6240;&#x5728;&#x76EE;&#x5F55;&#xFF0C;&#x4E5F;&#x662F;fisrt.ko&#x751F;&#x6210;&#x7684;&#x4F4D;&#x7F6E;&#xFF09;&#x3002;
+&#x5B89;&#x88C5;&#xFF1A;&#x7F16;&#x8BD1;&#x6210;first.ko&#x540E;&#xFF0C;&#x53EF;&#x624B;&#x52A8;&#x62F7;&#x8D1D;&#x5230;/lib/modules/xxx/extra&#x76EE;&#x5F55;&#x4E0B;&#xFF08;&#x76EE;&#x6807;&#x677F;&#x7CFB;&#x7EDF;&#x7684;&#x8DEF;&#x5F84;&#x4E3A;&#xFF1A;/lib/modules/xxx/&#xFF0C;&#x5982;&#x76EE;&#x5F55;&#x4E0D;&#x5B58;&#x5728;&#x53EF;&#x81EA;&#x884C;&#x5EFA;&#x7ACB;&#xFF09;&#xFF0C;&#x5B89;&#x88C5;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x7684;&#xFF0C;&#x4F46;&#x8FD9;&#x6709;&#x52A9;&#x4E8E;&#x76F8;&#x5173;&#x6A21;&#x5757;&#x64CD;&#x4F5C;&#x547D;&#x4EE4;&#x7684;&#x4F7F;&#x7528;&#x3002;</p>
+<ul>
+<li>&#x4F7F;&#x7528;Makefile&#x7F16;&#x8BD1;&#x548C;&#x5B89;&#x88C5;</li>
+</ul>
+<pre><code class="lang-Makefile">
+obj-m = test.o
+test-objs = first.o
+
+KERNEL_DIR = /lib/modules/<span class="hljs-variable">$(shell uname -r)</span>/build #&#x5BBF;&#x4E3B;&#x673A;&#x5185;&#x6838;&#x8DEF;&#x5F84; 
+ROOTFS=
+
+<span class="hljs-section">all:</span>
+make -C  $(KERNEL_DIR) M=`pwd` modules 
+
+<span class="hljs-section">install:</span>
+make -C     $(KERNEL_DIR) M=`pwd` INSTALL_MOD_PATH=$(ROOTFS) modules_install
+
+<span class="hljs-section">clean:</span>
+make -C $(KERNEL_DIR) M=`pwd` clean
+</code></pre>
+<p>&#x201C;obj-m&#x201D;&#x6307;&#x5B9A;&#x4E86;&#x8981;&#x751F;&#x6210;&#x7684;&#x6A21;&#x5757;&#x540D;&#x79F0;&#xFF0C;&#x4EE5;&#x6A21;&#x5757;&#x540D;&#x79F0;&#x4E3A;&#x524D;&#x7F00;&#x7684;&#x201C;test-objs&#x201D;&#x6307;&#x5B9A;&#x4E86;&#x8981;&#x751F;&#x6210;&#x8BE5;&#x6A21;&#x5757;&#x4F9D;&#x8D56;&#x54EA;&#x4E9B;&#x76EE;&#x6807;&#x6587;&#x4EF6;.</p>
+<ol>
+<li>&#x591A;&#x4E2A;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x7F16;&#x8BD1;&#x6210;&#x6A21;&#x5757;&#xFF1B;test.ko</li>
+</ol>
+<pre><code>/*&#x589E;&#x52A0;&#x51FD;&#x6570;&#x58F0;&#x660E;&#x914D;&#x7F6E;&#x6587;&#x4EF6;*/
+#ifndef __CONFIG_H__
+#define __CONFIG_H__
+
+void sec(void);
+void thi(void);
+
+#endif
+
+----------
+
+/*&#x4FEE;&#x6539;first. c*/
+#include &lt;linux/init.h&gt;
+#include &lt;linux/kernel.h&gt;
+#include &lt;linux/module.h&gt;
+#include &quot;config.h&quot;
+
+MODULE_LICENSE(&quot;GPL&quot;);
+
+int init_module(void)
+
+{
+    printk(&quot;module init\n&quot;);
+
+    second();
+
+    return 0;
+}
+
+void cleanup_module(void)
+
+{
+    printk(&quot;module cleanup\n&quot;);
+
+    third();
+}
+
+--------
+
+/*&#x589E;&#x52A0;second. c*/
+#include &lt;linux/kernel.h&gt;
+
+void sec(void)
+{
+    printk(&#x201C;sec work\n&#x201D;);
+}
+
+--------
+
+/*&#x589E;&#x52A0;third. c*/
+#include &lt;linux/kernel.h&gt;
+
+void thi(void)
+{
+    printk(&#x201C;thi work\n&#x201D;);
+}
+
+--------
+
+/*&#x4FEE;&#x6539;Makefile*/
+obj-m = test.o
+test-objs = first.o second.o third.o
+
+KERNEL_DIR = /lib/modules/$(shell uname -r)/build #&#x5BBF;&#x4E3B;&#x673A;&#x5185;&#x6838;&#x8DEF;&#x5F84; 
+ROOTFS=
+
+all:
+make -C  $(KERNEL_DIR) M=`pwd` modules 
+
+install:
+make -C     $(KERNEL_DIR) M=`pwd` INSTALL_MOD_PATH=$(ROOTFS) modules_install
+
+clean:
+make -C $(KERNEL_DIR) M=`pwd` clean
+</code></pre><p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x591A;&#x4E2A;&#x6587;&#x4EF6;&#x7F16;&#x8BD1;&#x6210;&#x6A21;&#x5757;&#xFF0C;&#x53EA;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x6DFB;&#x52A0;&#x4E86;GPL&#x534F;&#x8BAE;&#x58F0;&#x660E;&#x5373;&#x53EF;&#x3002;Makefile&#x6587;&#x4EF6;&#x5728;test-objs&#x540E;&#x8FFD;&#x52A0;&#x4E86;seconed.o&#x3001;third.o&#xFF0C;&#x6307;&#x5B9A;test.ko&#x7531;&#x4E09;&#x4E2A;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x7EC4;&#x6210;</p>
+<ol>
+<li>&#x5185;&#x6838;&#x6A21;&#x5757;&#x64CD;&#x4F5C;&#x5DE5;&#x5177;
+-&gt;&#x6A21;&#x5757;&#x52A0;&#x8F7D;<h1 id="insmod-xxxko">insmod xxx.ko</h1>
+insmod &#x5FC5;&#x987B;&#x6307;&#x5B9A;&#x8DEF;&#x5F84;&#xFF0C;&#x4E0A;&#x9762;&#x547D;&#x4EE4;&#x662F;&#x5728;xxx.ko&#x6587;&#x4EF6;&#x6240;&#x5728;&#x76EE;&#x5F55;&#x6267;&#x884C;&#x7684;&#x3002;</li>
+</ol>
+<h1 id="depmod">depmod</h1>
+<h1 id="modprobe-xxx">modprobe xxx</h1>
+<p>&#x6267;&#x884C;&#x8FC7;depmod&#x4E4B;&#x540E;&#xFF0C;&#x5373;&#x66F4;&#x65B0;&#x4E86;&#x6A21;&#x5757;&#x4F9D;&#x8D56;&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x65F6;&#x547D;&#x4EE4;make install&#x5C31;&#x8D77;&#x4E86;&#x4F5C;&#x7528;&#xFF0C;Makefile&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x5B89;&#x88C5;&#x8DEF;&#x5F84;&#xFF0C;&#x5C31;&#x662F;depmod&#x547D;&#x4EE4;&#x9ED8;&#x8BA4;&#x7684;&#x6A21;&#x5757;&#x4F9D;&#x8D56;&#x4FE1;&#x606F;&#x66F4;&#x65B0;&#x8DEF;&#x5F84;&#xFF1B;modprobe&#x4E5F;&#x662F;&#x8FDB;&#x884C;&#x6A21;&#x5757;&#x63D2;&#x5165;&#x64CD;&#x4F5C;&#xFF0C;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x4F9D;&#x8D56;depmod&#x66F4;&#x65B0;&#x7684;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x5BFB;&#x627E;&#x6307;&#x5B9A;&#x6A21;&#x5757;&#xFF0C;&#x5E76;&#x4E14;&#x4E0D;&#x7528;.ko&#x540E;&#x7F00;&#x3002;
+&#x52A0;&#x8F7D;&#x6A21;&#x5757;&#x4E4B;&#x540E;&#x5728;&#x76EE;&#x6807;&#x677F;&#x4E0A;&#x53EF;&#x76F4;&#x63A5;&#x770B;&#x5230;&#xFF08;minicom&#x7B49;&#x4E32;&#x53E3;&#x4FE1;&#x606F;&#xFF09;&#xFF1A;&#x201C;module init&#x201D;&#xFF0C;&#x8FD9;&#x662F;fisrt.c&#x4E2D;&#x7684;&#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;&#x6253;&#x5370;&#x7684;&#x4FE1;&#x606F;&#xFF1B;&#x5728;&#x5BBF;&#x4E3B;&#x673A;&#x4E0A;&#x9700;&#x8981;&#x4F7F;&#x7528;#dmesg&#x547D;&#x4EE4;&#x624D;&#x80FD;&#x770B;&#x5230;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x3002;</p>
+<p>-&gt;&#x6A21;&#x5757;&#x4FE1;&#x606F;</p>
+<h1 id="modinfo-xxx">modinfo xxx</h1>
+<p>modinfo&#x540C;&#x6837;&#x4F9D;&#x8D56;depmod&#x66F4;&#x65B0;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x4E5F;&#x4E0D;&#x7528;&#x6307;&#x5B9A;&#x540E;&#x7F00;&#xFF0C;&#x5B83;&#x6253;&#x5370;&#x6307;&#x5B9A;&#x6A21;&#x5757;&#x7684;&#x6A21;&#x5757;&#x4FE1;&#x606F;&#xFF0C;&#x6BD4;&#x5982;&#x53EF;&#x4EE5;&#x5728;&#x4EC0;&#x4E48;&#x5E73;&#x53F0;&#x8FD0;&#x884C;&#x7B49;&#x3002;</p>
+<h1 id="modinfo-xxxko">modinfo xxx.ko</h1>
+<p>modinfo&#x8FD8;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x6307;&#x5B9A;&#x6A21;&#x5757;&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x4F7F;&#x5F97;&#x4E0D;&#x5FC5;&#x63D2;&#x5165;&#x5C31;&#x53EF;&#x67E5;&#x770B;&#x6A21;&#x5757;&#x4FE1;&#x606F;&#x3002;</p>
+<h1 id="lsmod">lsmod</h1>
+<p>&#x8DDF;ls&#x547D;&#x4EE4;&#x7C7B;&#x4F3C;&#xFF0C;&#x5B83;&#x5217;&#x51FA;&#x5F53;&#x524D;&#x5185;&#x6838;&#x5DF2;&#x63D2;&#x5165;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;lsmod | grep &#x201C;xxx&#x201D;&#x5BFB;&#x627E;&#x5DF2;&#x7ECF;&#x63D2;&#x5165;&#x7684;&#x6307;&#x5B9A;&#x6A21;&#x5757;&#x6765;&#x9A8C;&#x8BC1;&#x8BE5;&#x6A21;&#x5757;&#x662F;&#x5426;&#x5DF2;&#x6210;&#x529F;&#x63D2;&#x5165;&#xFF0C;lsmod&#x4E0D;&#x4F9D;&#x8D56;depmod&#xFF1B;&#x5B9E;&#x9645;lsmod&#x662F;&#x5BF9;/sys/module&#x7684;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>-&gt;&#x6A21;&#x5757;&#x5378;&#x8F7D;</p>
+<h1 id="rmmod-xxx">rmmod xxx</h1>
+<p>&#x62D4;&#x51FA;&#x6307;&#x5B9A;&#x6A21;&#x5757;&#xFF0C;&#x5B83;&#x4E0D;&#x4F9D;&#x8D56;depmod&#xFF0C;&#x53EF;&#x6307;&#x5B9A;&#x6216;&#x4E0D;&#x6307;&#x5B9A;.ko&#x540E;&#x7F00;&#x3002;</p>
+<h1 id="modprobe--r-xxx">modprobe -r xxx</h1>
+<p>&#x4F7F;&#x7528;modprobe&#x4E5F;&#x53EF;&#x5220;&#x9664;&#x6A21;&#x5757;&#x3002;</p>
+<p>&#x5378;&#x8F7D;&#x6A21;&#x5757;&#x4E4B;&#x540E;&#x5728;&#x76EE;&#x6807;&#x677F;&#x4E0A;&#x53EF;&#x76F4;&#x63A5;&#x770B;&#x5230;&#xFF08;minicom&#x7B49;&#x4E32;&#x53E3;&#x4FE1;&#x606F;&#xFF09;&#xFF1A;&#x201C;cleanup modules&#x201D;&#xFF0C;    &#x8FD9;&#x662F;fisrt.c&#x4E2D;&#x7684;&#x9000;&#x51FA;&#x51FD;&#x6570;&#x6253;&#x5370;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x540C;&#x6837;&#x5728;&#x5BBF;&#x4E3B;&#x673A;&#x4E2D;&#x8981;&#x4F7F;&#x7528;#dmesg&#x3002;</p>
+<p>&#x6CE8;&#xFF1A;
+a. &#x5728;&#x8FDB;&#x884C;&#x5185;&#x6838;&#x6A21;&#x5757;&#x63D2;&#x62D4;&#x65F6;&#x5F88;&#x6709;&#x53EF;&#x80FD;&#x4F1A;&#x4FEE;&#x6539;&#x5185;&#x6838;&#x5BF9;&#x6A21;&#x5757;&#x7684;&#x6821;&#x9A8C;&#x673A;&#x5236;&#xFF08;&#x7248;&#x672C;&#x63A7;&#x5236;&#x3001;CRC&#x6821;&#x9A8C;&#xFF09;&#xFF0C;&#x4F7F;&#x5F97;&#x67D0;&#x4E00;&#x65F6;&#x523B;&#x5728;&#x6B64;&#x63D2;&#x62D4;&#x6A21;&#x5757;&#x65F6;&#x65E0;&#x6548;&#xFF0C;&#x8BE6;&#x7EC6;&#x89E3;&#x51B3;&#x8FD9;&#x4E00;&#x95EE;&#x9898;&#x6709;&#x590D;&#x6742;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x8F83;&#x4E3A;&#x7B80;&#x5355;&#x7684;&#x662F;&#x91CD;&#x65B0;&#x5B89;&#x88C5;&#x5185;&#x6838;&#xFF0C;&#x6240;&#x4EE5;&#x5907;&#x4EFD;&#x5F88;&#x91CD;&#x8981;
+b. &#x4E00;&#x4E2A;&#x53EA;&#x6709;&#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;&#x6CA1;&#x6709;&#x5378;&#x8F7D;&#x9000;&#x51FA;&#x51FD;&#x6570;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x53EA;&#x80FD;&#x63D2;&#x5165;&#x4E0D;&#x80FD;&#x62D4;&#x51FA;&#xFF0C;&#x6240;&#x4EE5;&#x8981;&#x4E48;&#x90FD;&#x5199;&#xFF0C;&#x8981;&#x4E48;&#x90FD;&#x4E0D;&#x5199;</p>
+<ol>
+<li>&#x6A21;&#x5757;&#x4E2D;&#x7684;&#x522B;&#x540D;&#x673A;&#x5236;
+module_init(my_init);/module_exit(my_exit);
+&#x901A;&#x8FC7;&#x4E24;&#x4E2A;&#x5B8F;&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;&#x4E86;&#x6A21;&#x5757;&#x521D;&#x59CB;&#x5316;&#x548C;&#x9000;&#x51FA;&#x51FD;&#x6570;&#xFF0C;&#x5F88;&#x663E;&#x7136;&#x8FD9;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x7684;&#xFF0C;&#x4F46;&#x522B;&#x540D;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;static&#x4FEE;&#x9970;&#x3002;&#x8981;&#x6CE8;&#x610F;&#x8FD9;&#x4E24;&#x4E2A;&#x5B8F;&#x8981;&#x653E;&#x522B;&#x540D;&#x51FD;&#x6570;&#x4E4B;&#x4E0B;&#xFF0C;&#x5426;&#x5219;&#x5B8F;&#x627E;&#x4E0D;&#x5230;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x3002;
+C&#x8BED;&#x8A00;&#x4E0D;&#x8C61;C++&#x4E00;&#x6837;&#x6709;&#x540D;&#x5B57;&#x7A7A;&#x95F4;&#xFF0C;&#x90A3;&#x4E48;&#x4F60;&#x5199;&#x7684;&#x51FD;&#x6570;&#x540D;&#x548C;&#x53D8;&#x91CF;&#x540D;&#x5F88;&#x53EF;&#x80FD;&#x4E0E;&#x5185;&#x6838;&#x51B2;&#x7A81;&#xFF0C;&#x6240;&#x4EE5;&#x8981;&#x7528;static&#x5173;&#x952E;&#x5B57;&#x4FEE;&#x9970;&#x4F60;&#x7684;&#x51FD;&#x6570;(&#x524D;&#x63D0;&#x662F;&#x8BE5;&#x51FD;&#x6570;&#x4E0D;&#x4F1A;&#x5916;&#x90E8;&#x88AB;&#x8C03;&#x7528;)&#xFF0C;&#x5185;&#x6838;&#x4E5F;&#x662F;&#x8FD9;&#x4E48;&#x505A;&#x7684;&#x3002;</li>
+</ol>
+<pre><code class="lang-C"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/init.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/kernel.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/module.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;config.h&quot;</span></span>
+
+MODULE_LICENSE(<span class="hljs-string">&quot;GPL&quot;</span>);
+MODULE_AUTHOR(<span class="hljs-string">&quot;zhangji&quot;</span>);
+MODULE_DESCRIPTION(<span class="hljs-string">&quot;test moudule&quot;</span>);
+MODULE_ALIAS(<span class="hljs-string">&quot;1 module&quot;</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">my_init</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    printk(<span class="hljs-string">&quot;module init\n&quot;</span>);
+    second();
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">my_exit</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    printk(<span class="hljs-string">&quot;module cleanup\n&quot;</span>);
+    third();
+}
+
+module_init(my_init);
+module_exit(my_exit);
+</code></pre>
+<ol>
+<li>&#x6A21;&#x5757;&#x4E2D;&#x6781;&#x81F4;&#x7684;&#x5185;&#x5B58;&#x4F18;&#x5316;&#x673A;&#x5236;
+Linux&#x662F;&#x8282;&#x7EA6;&#x5185;&#x5B58;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5178;&#x8303;&#xFF0C;&#x4EFB;&#x4F55;&#x53EF;&#x80FD;&#x8282;&#x7EA6;&#x4E0B;&#x6765;&#x7684;&#x5185;&#x5B58;&#x90FD;&#x4E0D;&#x4F1A;&#x653E;&#x8FC7;&#xFF0C;&#x4EE5;&#x521D;&#x59CB;&#x51FD;&#x6570;&#x4E3A;&#x4F8B;&#xFF0C;&#x51FD;&#x6570;&#x8981;&#x88AB;&#x8C03;&#x7528;&#x5C31;&#x8981;&#x52A0;&#x8F7D;&#x5230;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#xFF0C;&#x4F46;&#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;&#x4E00;&#x822C;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF0C;&#x6240;&#x4EE5;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x4E4B;&#x540E;&#x5C31;&#x5E94;&#x8BE5;&#x628A;&#x8FD9;&#x6BB5;&#x7A7A;&#x95F4;&#x91CA;&#x653E;&#xFF0C;&#x9000;&#x51FA;&#x51FD;&#x6570;&#x4E5F;&#x662F;&#x4E00;&#x6837;&#x3002;</li>
+</ol>
+<pre><code class="lang-C"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/init.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/kernel.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/module.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;config.h&quot;</span></span>
+
+MODULE_LICENSE(<span class="hljs-string">&quot;GPL&quot;</span>);
+MODULE_AUTHOR(<span class="hljs-string">&quot;zhangji&quot;</span>);
+MODULE_DESCRIPTION(<span class="hljs-string">&quot;test moudule&quot;</span>);
+MODULE_ALIAS(<span class="hljs-string">&quot;1 module&quot;</span>);
+
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> __<span class="hljs-function">init <span class="hljs-title">my_init</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+        printk(<span class="hljs-string">&quot;module init\n&quot;</span>);
+            sec();
+                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> __<span class="hljs-function"><span class="hljs-built_in">exit</span> <span class="hljs-title">my_exit</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+        printk(<span class="hljs-string">&quot;module cleanup\n&quot;</span>);
+            thi();
+}
+
+module_init(my_init);
+module_exit(my_exit);
+</code></pre>
+<ol>
+<li>&#x5185;&#x6838;&#x6A21;&#x5757;&#x53C2;&#x6570;
+&#x50CF;main&#x51FD;&#x6570;&#x5728;Linux&#x547D;&#x4EE4;&#x884C;&#x73AF;&#x5883;&#x4E2D;&#x63A5;&#x53D7;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;&#x4E00;&#x6837;&#xFF0C;&#x5185;&#x6838;&#x6A21;&#x5757;&#x4E5F;&#x5141;&#x8BB8;&#x5728;&#x63D2;&#x5165;&#x65F6;&#x4F7F;&#x7528;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x673A;&#x5236;&#x901A;&#x8FC7;&#x5185;&#x6838;&#x5B8F;&#x5B9E;&#x73B0;&#xFF0C;&#x6A21;&#x5757;&#x63A5;&#x53D7;&#x53C2;&#x6570;&#x8981;&#x53D1;&#x751F;&#x5728;&#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;&#x4E4B;&#x524D;&#x3002;</li>
+</ol>
+<p>&#x5185;&#x6838;&#x652F;&#x6301;&#x7684;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x6709;&#xFF1A;bool&#x3001;invbool&#xFF08;&#x53CD;&#x8F6C;&#x503C;bool&#xFF09;&#x3001;charp&#xFF08;&#x5B57;&#x7B26;&#x4E32;&#x6307;&#x9488;&#xFF09;&#x3001;short&#x3001;int&#x3001;long&#x3001;ushort&#x3001;uint&#x3001;ulong</p>
+<pre><code class="lang-C"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/init.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/kernel.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/module.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/stat.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;config.h&quot;</span></span>
+
+MODULE_LICENSE(<span class="hljs-string">&quot;GPL&quot;</span>);
+MODULE_AUTHOR(<span class="hljs-string">&quot;zhangji&quot;</span>);
+MODULE_DESCRIPTION(<span class="hljs-string">&quot;test moudule&quot;</span>);
+MODULE_ALIAS(<span class="hljs-string">&quot;1 module&quot;</span>);
+
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> baudrate = <span class="hljs-number">9600</span>;
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> port[<span class="hljs-number">4</span>] = {<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>};
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">char</span> *name = <span class="hljs-string">&quot;vser&quot;</span>;
+
+module_param(baudrate, <span class="hljs-keyword">int</span>, S_IRUGO);
+module_param_array(port, <span class="hljs-keyword">int</span>, <span class="hljs-literal">NULL</span>, S_IRUGO);
+module_param(name, charp, S_IRUGO);
+
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> __<span class="hljs-function">init <span class="hljs-title">my_init</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    <span class="hljs-keyword">int</span> i;
+    printk(<span class="hljs-string">&quot;module init\n&quot;</span>);
+    printk(<span class="hljs-string">&quot;baudrate: %d\n&quot;</span>, baudrate);
+    printk(<span class="hljs-string">&quot;port:\n&quot;</span>);
+
+    <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; ARRAY_SIZE(port); i++)
+        printk(<span class="hljs-string">&quot;%d &quot;</span>, port[i]);
+
+    printk(<span class="hljs-string">&quot;\n&quot;</span>);
+    printk(<span class="hljs-string">&quot;name: %s\n&quot;</span>, name);
+
+    second();
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> __<span class="hljs-function"><span class="hljs-built_in">exit</span> <span class="hljs-title">my_exit</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    printk(<span class="hljs-string">&quot;module cleanup\n&quot;</span>);
+    third();
+}
+
+module_init(my_init);
+module_exit(my_exit);
+</code></pre>
+<p>&#x7A0B;&#x5E8F;&#x5B9A;&#x4E49;&#x4E86;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x53D8;&#x91CF;&#xFF0C;&#x8FD9;&#x4E9B;&#x521D;&#x59CB;&#x503C;&#x5C06;&#x662F;&#x6CA1;&#x6709;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x65F6;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#xFF0C;module_param()&#x662F;&#x666E;&#x901A;&#x53C2;&#x6570;&#x5B8F;&#xFF0C;&#x5176;&#x53C2;&#x6570;&#x5206;&#x522B;&#x4E3A;&#xFF1A;&#x53C2;&#x6570;&#x53D8;&#x91CF;&#x540D;&#x3001;&#x53C2;&#x6570;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3001;&#x53C2;&#x6570;&#x4FEE;&#x6539;&#x6743;&#x9650;&#xFF1B;module_param_array()&#x662F;&#x6570;&#x7EC4;&#x53C2;&#x6570;&#x5B8F;&#xFF0C;&#x5176;&#x53C2;&#x6570;&#x5206;&#x522B;&#x4E3A;&#xFF1A;&#x6570;&#x7EC4;&#x53C2;&#x6570;&#x540D;&#x3001;&#x6570;&#x7EC4;&#x53C2;&#x6570;&#x3001;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3001;&#x6570;&#x7EC4;&#x4E2D;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#x6307;&#x9488;/&#x53C2;&#x6570;&#x4FEE;&#x6539;&#x6743;&#x9650;
+&#x6743;&#x9650;&#x5728;linux/stat.h&#x4E2D;&#x5B9A;&#x4E49;&#xFF0C;&#x8DDF;&#x666E;&#x901A;&#x6587;&#x4EF6;&#x7684;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x4E00;&#x6837;&#xFF0C;S_IRUGO&#xFF0C;&#x5176;UGO&#x8868;&#x793A;    user/group/other&#xFF0C;R    &#x8868;&#x793A;&#x8BFB;&#xFF0C;&#x540C;&#x6837;&#x7684;&#x6709;S_IWUGO&#x3001;S_IXUGO&#x3001;...&#xFF0C;&#x4F46;&#x6A21;&#x5757;&#x53C2;&#x6570;&#x5E94;&#x5C3D;&#x91CF;&#x4FDD;&#x6301;&#x53EA;&#x8BFB;&#x6027;&#x3002;
+&#x901A;&#x8FC7;inmod test.ko baudrate=115200 port=1,2,3,4 name=&#x201D;mybaudrate&#x201D; &#x53EF;&#x5728;&#x63D2;&#x5165;&#x6A21;&#x5757;&#x65F6;&#x4F20;&#x5165;&#x53C2;&#x6570;&#xFF0C;&#x63D2;&#x5165;&#x7684;&#x6A21;&#x5757;&#x53CA;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;#ls /sys/module/test/parameters -l&#x67E5;&#x770B;&#x3002;</p>
+<ol>
+<li>&#x6A21;&#x5757;&#x4F9D;&#x8D56;&#x4E4B;&#x524D;&#x594F; &#x2013; nm&#x7B26;&#x53F7;&#x5217;&#x8868;&#x547D;&#x4EE4;</li>
+</ol>
+<p>&#x53EF;&#x4EE5;&#x5217;&#x51FA;&#x76EE;&#x6807;&#x6587;&#x4EF6;/&#x53EF;&#x6267;&#x884C;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;/.ko&#x6A21;&#x5757;&#x6587;&#x4EF6;&#x7684;&#x7B26;&#x53F7;&#x4FE1;&#x606F;&#xFF0C;&#x4E3B;&#x8981;&#x5BFC;&#x51FA;&#x51FD;&#x6570;&#x548C;&#x5168;    &#x5C40;&#x53D8;&#x91CF;&#xFF1B;&#x5171;&#x4E09;&#x5217;&#xFF0C;&#x5305;&#x62EC;&#xFF1A;&#x7B26;&#x53F7;&#x503C;&#x3001;&#x7B26;&#x53F7;&#x7C7B;&#x578B;&#x3001;&#x7B26;&#x53F7;&#x540D;&#x79F0;&#xFF0C;&#x5176;&#x4E2D;&#x7B26;&#x53F7;&#x7C7B;&#x578B;&#x7684;&#x542B;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;
+b&#x6216;B - bss&#x6BB5;/d&#x6216; D - data&#x6BB5;/r&#x6216; R &#x2013; &#x53EA;&#x8BFB;&#x6BB5;/ t&#x6216;T &#x2013; text&#x6BB5;/ U &#x2013; &#x672A;&#x51B3; &#x66F4;&#x591A;&#x4FE1;&#x606F;&#x53EF;&#x901A;&#x8FC7;#man nm&#x67E5;&#x770B;&#x3002;</p>
+<p>U&#x6240;&#x5728;&#x884C;&#x5BF9;&#x5E94;&#x7684;&#x4FE1;&#x606F;&#x8868;&#x793A;&#x6B64;&#x51FD;&#x6570;&#x5B58;&#x5728;&#x4E8E;&#x5176;&#x5B83;&#x6587;&#x4EF6;&#x5F53;&#x4E2D;&#xFF0C;&#x88AB;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x8C03;&#x7528;&#xFF0C;&#x5BF9;&#x4E8E;&#x8BE5;&#x51FD;    &#x6570;&#x6240;&#x5728;&#x6587;&#x4EF6;&#x6765;&#x8BF4;&#xFF0C;nm&#x5217;&#x51FA;&#x7684;&#x8BE5;&#x51FD;&#x6570;&#x7684;&#x7ED3;&#x679C;&#x662F;T&#xFF08;T&#x8868;&#x793A;&#x53EF;&#x4EE5;&#x88AB;&#x8C03;&#x7528;&#xFF0C;t&#x8868;&#x793A;&#x4E0D;&#x53EF;&#x4EE5;&#xFF09;&#x3002;U&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x672A;&#x51B3;&#x7B26;&#x53F7;&#xFF0C;&#x8868;&#x793A;&#x662F;&#x5728;&#x7F16;&#x8BD1;&#x9636;&#x6BB5;&#x4E0D;&#x77E5;&#x5230;&#x6B64;&#x7B26;&#x53F7;&#x5BF9;&#x5E94;&#x51FD;&#x6570;&#x5730;&#x5740;&#xFF0C;&#x5B9E;&#x9645;&#x8BE5;&#x51FD;&#x6570;&#x5730;&#x5740;&#x662F;&#x901A;&#x8FC7;EXPORT_SYMBOL()&#x5B8F;&#x5BFC;&#x51FA;&#xFF0C;&#x901A;&#x8FC7;&#x7C7B;&#x4F3C;&#x5171;&#x4EAB;&#x5E93;&#x51FD;&#x6570;&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#xFF0C;&#x5185;&#x6838;&#x6709;&#x5927;&#x91CF;&#x7684;&#x7B26;&#x53F7;&#x5BFC;&#x51FA;&#xFF0C;&#x8FD9;&#x4E3A;&#x6A21;&#x5757;&#x8BBE;&#x8BA1;&#x63D0;&#x4F9B;&#x4E86;&#x4E30;&#x5BCC;&#x7684;&#x57FA;&#x7840;&#x8BBE;&#x65BD;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x5BFC;&#x51FA;&#x7684;&#x5373;&#x662F;&#x5168;&#x5C40;&#x7684;&#xFF0C;&#x5168;&#x5C40;&#x7684;&#x7B26;&#x53F7;&#xFF08;&#x5168;&#x5C40;&#x53D8;&#x91CF;/&#x51FD;&#x6570;&#xFF09;&#x662F;&#x4E0D;&#x5141;&#x8BB8;&#x91CD;&#x590D;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x5982;    &#x679C;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x4F7F;&#x7528;&#x8FC7;&#x4E86;&#xFF0C;&#x4F60;&#x5C31;&#x5FC5;&#x987B;&#x8981;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x3002;</p>
+<ol>
+<li>&#x5185;&#x6838;&#x6A21;&#x5757;&#x4F9D;&#x8D56;</li>
+</ol>
+<p>&#x4E24;&#x4E2A;C&#x6587;&#x4EF6;&#x76F8;&#x4E92;&#x8C03;&#x7528;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x901A;&#x8FC7;&#x5305;&#x542B;&#x5934;&#x6587;&#x4EF6;&#x6216;&#x4F7F;&#x7528;extern&#x5B58;&#x50A8;&#x7C7B;&#x578B;&#x6307;&#x793A;&#x5373;&#x53EF;&#xFF0C;&#x4F46;&#x5F53;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x8C03;&#x7528;&#x53E6;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x4E2D;&#x7684;&#x51FD;&#x6570;&#x6216;&#x4F7F;&#x7528;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x65F6;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;/&#x53D8;&#x91CF;&#x5FC5;&#x987B;&#x662F;&#x5BFC;&#x51FA;&#x7684;&#x3002;&#x4F7F;&#x7528;EXPORT_SYMBOL(&#x53D8;&#x91CF;&#x540D;/&#x51FD;&#x6570;&#x540D;)&#x5BFC;&#x51FA;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x6216;&#x51FD;&#x6570;&#xFF0C;&#x4E14;&#x5FC5;&#x987B;&#x5728;&#x5168;&#x5C40;&#x73AF;&#x5883;&#x4E2D;&#x5BFC;&#x51FA;&#xFF0C;&#x4F7F;&#x7528;EXPORT_SYMBOL_GPL()&#x5BFC;&#x51FA;&#x7684;&#x6A21;&#x5757;&#x53EA;&#x80FD;&#x88AB;GPL&#x8BB8;&#x53EF;&#x8BC1;&#x4E0B;&#x7684;&#x6A21;&#x5757;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#x4E8B;&#x9879;&#xFF1A;</p>
+<ul>
+<li>&#x5728;&#x63D2;&#x5165;&#x6A21;&#x5757;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x5148;&#x63D2;&#x5165;&#x88AB;&#x4F9D;&#x8D56;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x518D;&#x63D2;&#x5165;&#x4F9D;&#x8D56;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x51FA;&#x9519;&#xFF0C;&#x56E0;&#x4E3A;&#x4F9D;&#x8D56;&#x7684;&#x6A21;&#x5757;&#x4F7F;&#x7528;&#x4E86;&#x88AB;&#x4F9D;&#x8D56;&#x6A21;&#x5757;&#x7684;&#x5BFC;&#x51FA;&#x7B26;&#x53F7;&#xFF1B;&#x5728;&#x8FD9;&#x4E00;&#x70B9;&#x4E0A;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x51FA;modprobe&#x63D2;&#x5165;&#x547D;&#x4EE4;&#x7684;&#x4F18;&#x52BF;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x81EA;&#x52A8;&#x5BFB;&#x627E;&#x4F9D;&#x8D56;&#x6A21;&#x5757;&#xFF0C;&#x800C;&#x8FD9;&#x53C8;&#x5F52;&#x529F;&#x4E8E;depmod&#x547D;&#x4EE4;&#xFF0C;&#x5B83;&#x4F1A;&#x5C06;&#x4F9D;&#x8D56;&#x6A21;&#x5757;&#x7684;&#x4FE1;&#x606F;&#x5728;/usr/src/kernel/xxxx/modules.dep&#x4E2D;&#x66F4;&#x65B0;&#xFF0C;&#x800C;modprobe&#x5C06;&#x4F1A;&#x6839;&#x636E;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x53BB;&#x4F9D;&#x6B21;&#x63D2;&#x5165;&#x6A21;&#x5757;&#x3002;</li>
+<li>&#x5B58;&#x5728;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x7684;&#x4E24;&#x4E2A;&#x6A21;&#x5757;&#x4E0D;&#x80FD;&#x5206;&#x522B;&#x7F16;&#x8BD1;&#xFF0C;&#x5426;&#x5219;&#x4E0D;&#x80FD;&#x6B63;&#x786E;&#x4F7F;&#x7528;&#xFF0C;&#x9664;&#x975E;&#x88AB;&#x4F9D;&#x8D56;&#x6A21;&#x5757;&#x96C6;&#x6210;&#x5230;&#x5185;&#x6838;&#x955C;&#x50CF;&#x4E2D;&#x3002;</li>
+<li>&#x5728;&#x62D4;&#x51FA;&#x6A21;&#x5757;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x5148;&#x62D4;&#x51FA;&#x4F9D;&#x8D56;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x518D;&#x62D4;&#x51FA;&#x88AB;&#x4F9D;&#x8D56;&#x7684;&#x6A21;&#x5757;&#xFF08;&#x8FD9;&#x91CC;&#x8981;&#x6CE8;&#x610F;&#xFF0C;modprobe -r &#x4E0D;&#x80FD;&#x89E3;&#x51B3;&#x5378;&#x8F7D;&#x4F9D;&#x8D56;&#xFF09;&#x3002;</li>
+</ul>
+<pre><code>//first.c&#x4E2D;&#x8C03;&#x7528;&#x4F9D;&#x8D56;&#x6A21;&#x5757;&#x4E2D;&#x7684;val&#x503C;&#x548C;&#x51FD;&#x6570;
+...
+extern int expval;
+extern void dep(void);
+...
+
+------
+
+//first_dep.c&#x5BFC;&#x51FA;val&#x548C;dep&#x51FD;&#x6570;&#x7684;&#x7B26;&#x53F7;
+...
+MODULE_LICENSE(&quot;GPL&quot;);
+
+static int expval23 = 10;
+EXPORT_SYMBOL(expval23);
+...
+static void dep(void)
+{
+        printk(&quot;dep work\n&quot;);
+}
+
+EXPORT_SYMBOL_GPL(dep23);
+...
+
+-------
+
+/*&#x540C;&#x65F6;&#x7F16;&#x8BD1;&#x4E24;&#x4E2A;&#x5185;&#x6838;&#x6A21;&#x5757;*/
+
+obj-m = test.o
+test-objs = first.o second.o third.o
+
+obj-m += dep.o
+dep-objs = first_dep.o
+.....
+</code></pre><p>&#x53EF;&#x4EE5;&#x770B;&#x5230;first_dep&#x4F5C;&#x4E3A;&#x5355;&#x72EC;&#x7684;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#xFF08;&#x5F53;&#x7136;&#xFF0C;&#x6700;&#x7EC8;&#x7684;&#x6A21;&#x5757;&#x8D77;&#x540D;&#x4E3A;dep.ko&#xFF09;&#x540C;&#x6837;&#x52A0;&#x5165;&#x4E86;GPL&#x534F;&#x8BAE;&#x58F0;&#x660E;&#xFF0C;&#x5728;Makefile&#x4E2D;&#x7F16;&#x8BD1;&#x4E86;&#x4E24;&#x4E2A;&#x6A21;&#x5757;&#xFF0C;&#x6CE8;&#x610F;&#x540E;&#x9762;&#x7684;&#x6A21;&#x5757;&#x8981;&#x4F7F;&#x7528;&#x201C;obj-m += &#x201D;</p>
+<p>&#x9644;&#xFF1A; $ uname -a  &#x67E5;&#x770B;&#x5185;&#x6838;&#x7248;&#x672C;</p>
+<hr>
+<h1 id="&#x5B57;&#x7B26;&#x8BBE;&#x5907;">&#x5B57;&#x7B26;&#x8BBE;&#x5907;</h1>
+<h2 id="&#x6982;&#x5FF5;">&#x6982;&#x5FF5;</h2>
+<p>Linux&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E00;&#x5207;&#x7686;&#x6587;&#x4EF6;&#xFF0C;&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x4E5F;&#x901A;&#x8FC7;&#x6587;&#x4EF6;&#x7EF4;&#x62A4;&#xFF0C;&#x4F4D;&#x4E8E;/dev&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x79F0;&#x4E4B;&#x4E3A;&#x201C;&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x6587;&#x4EF6;&#x201D;&#xFF0C;&#x901A;&#x8FC7;&#x201C;#ls -l /dev&#x201D;&#x53EF;&#x67E5;&#x770B;&#x5230;&#x4EE5;&#x201C;c&#x201D;&#x5F00;&#x5934;&#x6807;&#x8BC6;&#x7684;&#x6587;&#x4EF6;&#x90FD;&#x662F;&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x6587;&#x4EF6;&#x3002;</p>
+<h3 id="&#x4E3B;&#x6B21;&#x8BBE;&#x5907;&#x53F7;">&#x4E3B;&#x6B21;&#x8BBE;&#x5907;&#x53F7;</h3>
+<p>&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x6587;&#x4EF6;&#x7F16;&#x7801;&#x7531;&#x201C;&#x4E3B;&#x6B21;&#x8BBE;&#x5907;&#x53F7;&#x201D;&#x7EC4;&#x6210;&#xFF0C;&#x4E3B;&#x8BBE;&#x5907;&#x53F7;&#x6807;&#x8BC6;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x7F16;&#x53F7;&#x8868;&#x793A;&#x54EA;&#x4E00;&#x7C7B;&#x8BBE;&#x5907;&#xFF0C;&#x6B21;&#x8BBE;&#x5907;&#x53F7;&#x7531;&#x5185;&#x6838;&#x4F7F;&#x7528;&#x6765;&#x6807;&#x8BC6;&#x5177;&#x4F53;&#x8BBE;&#x5907;&#xFF0C;&#x591A;&#x4E2A;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x53EF;&#x5171;&#x4EAB;&#x4E3B;&#x8BBE;&#x5907;&#x53F7;&#xFF0C;&#x4F46;&#x901A;&#x5E38;&#x4E00;&#x4E2A;&#x4E3B;&#x8BBE;&#x5907;&#x53F7;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x3002;</p>
+<p><linux types.h="">&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;32&#x4F4D;&#x7684;dev_t&#xFF08;typedef unsigned int&#xFF09;&#xFF0C;&#x524D;12&#x4F4D;&#x4F5C;&#x4E3A;&#x4E3B;&#x8BBE;&#x5907;&#x53F7;&#xFF0C;&#x540E;20&#x4F4D;&#x4F5C;&#x4E3A;&#x6B21;&#x8BBE;&#x5907;&#x53F7;&#x3002;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<linux kdev_t.h="">&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x5B8F;&#x6765;&#x83B7;&#x53D6;&#x4E3B;&#x6B21;&#x8BBE;&#x5907;&#x53F7;&#xFF1A;MAJOR(dev)&#x3001;MINOR(dev);&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5B8F;&#x5C06;&#x4E3B;&#x6B21;&#x8BBE;&#x5907;&#x53F7;&#x5408;&#x5E76;&#x6210;dev_t&#x7C7B;&#x578B;&#xFF1A;MKDEV(major, minor)&#x3002;</linux></linux></p>
+<h3 id="&#x6CE8;&#x518C;&#x8BBE;&#x5907;&#x53F7;">&#x6CE8;&#x518C;&#x8BBE;&#x5907;&#x53F7;</h3>
+<p><linux fs.h="">&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x53F7;&#x6CE8;&#x518C;&#x51FD;&#x6570;&#xFF1A;int register_chrdev_region(dev_t first, unsigned int count, char *name);&#x201C;first&#x201D;&#x662F;&#x5206;&#x914D;&#x8BBE;&#x5907;&#x53F7;&#x7684;&#x8D77;&#x59CB;&#x503C;&#xFF0C;&#x8BE5;&#x503C;&#x901A;&#x5E38;&#x7531;MKDEV()&#x4EA7;&#x751F;&#xFF0C;&#x201C;count&#x201D;&#x662F;&#x8FDE;&#x7EED;&#x8BBE;&#x5907;&#x53F7;&#x7684;&#x4E2A;&#x6570;&#xFF0C;&#x201C;name&#x201D;&#x662F;&#x6240;&#x6CE8;&#x518C;&#x8BBE;&#x5907;&#x53F7;&#x5BF9;&#x5E94;&#x7684;&#x8BBE;&#x5907;&#x540D;&#x3002;&#x8BE5;&#x51FD;&#x6570;&#x6267;&#x884C;&#x6210;&#x529F;&#x8FD4;&#x56DE;0&#xFF0C;&#x9519;&#x8BEF;&#x8FD4;&#x56DE;&#x8D1F;&#x503C;&#x3002;
+&#x4EE5;&#x4E0A;&#x662F;&#x9759;&#x6001;&#x6CE8;&#x518C;&#x65B9;&#x5F0F;&#xFF0C;&#x7F3A;&#x70B9;&#x662F;&#x65E0;&#x6CD5;&#x63D0;&#x524D;&#x77E5;&#x9053;&#x54EA;&#x4E2A;&#x8BBE;&#x5907;&#x53F7;&#x53EF;&#x7528;&#xFF0C;&#x52A8;&#x6001;&#x6CE8;&#x518C;&#x65B9;&#x5F0F;&#x53EF;&#x968F;&#x673A;&#x5206;&#x914D;&#x53EF;&#x7528;&#x8BBE;&#x5907;&#x53F7;&#xFF1A;int alloc_chrdev_region(dev_t <em>dev, unsigned int firstmi
+        nor, unsigned int count, char </em>name);&#x201C;dev&#x201D;&#x662F;&#x51FA;&#x53C2;&#xFF0C;&#x4FDD;&#x5B58;&#x88AB;&#x5206;&#x914D;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x8BBE;&#x5907;&#x53F7;&#xFF0C;&#x201C;firstminor&#x201D;&#x4E3A;&#x7B2C;&#x4E00;&#x4E2A;&#x6B21;&#x8BBE;&#x5907;&#x7F16;&#x53F7;&#xFF0C;&#x201C;count&#x201D;&#x548C;&#x201C;name&#x201D;&#x4E0E;&#x9759;&#x6001;&#x6CE8;&#x518C;&#x51FD;&#x6570;&#x76F8;&#x540C;&#x3002; 
+&#x6CE8;&#x518C;&#x540E;&#x7684;&#x8BBE;&#x5907;&#x53F7;&#x53CA;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#x53EF;&#x4ECE;&#x201C;/proc/devices&#x201D;&#x4E2D;&#x83B7;&#x53D6;&#x3002;</linux></p>
+<h3 id="&#x6CE8;&#x9500;&#x8BBE;&#x5907;&#x53F7;">&#x6CE8;&#x9500;&#x8BBE;&#x5907;&#x53F7;</h3>
+<p>void unregister_chardev_region(dev_t first, unsigned int count);&#x6CE8;&#x9500;&#x548C;&#x6CE8;&#x518C;&#x52A8;&#x4F5C;&#x5E94;&#x8BE5;&#x5206;&#x522B;&#x5728;&#x6A21;&#x5757;&#x91CA;&#x653E;&#x548C;&#x6A21;&#x5757;&#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;&#x4E2D;&#x51FA;&#x73B0;&#x3002;</p>
+<h3 id="&#x521B;&#x5EFA;&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x6587;&#x4EF6;">&#x521B;&#x5EFA;&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x6587;&#x4EF6;</h3>
+<p>&#x8BBE;&#x5907;&#x6587;&#x4EF6;&#x901A;&#x5E38;&#x662F;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x7684;&#xFF0C;&#x4E5F;&#x53EF;&#x901A;&#x8FC7;&#x5DF2;&#x6709;&#x8BBE;&#x5907;&#x53F7;&#x624B;&#x52A8;&#x5EFA;&#x7ACB;&#x8BBE;&#x5907;&#x6587;&#x4EF6;&#xFF1A;&#x201C;#mknod /dev/abc c 256 0&#x201D;&#xFF0C;&#x8BE5;&#x547D;&#x4EE4;&#x521B;&#x5EFA;&#x4E86;&#x4E3B;&#x8BBE;&#x5907;&#x53F7;&#x4E3A;256&#x3001;&#x6B21;&#x8BBE;&#x5907;&#x53F7;&#x4E3A;0&#x7684;&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x6587;&#x4EF6;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x901A;&#x8FC7;&#x6709;&#x6548;&#x8BBE;&#x5907;&#x53F7;&#x4E0E;&#x8BBE;&#x5907;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x5173;&#x8054;&#xFF0C;&#x5BF9;&#x8BE5;&#x8BBE;&#x5907;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x8BFB;&#x5199;&#xFF0C;&#x5373;&#x662F;&#x5BF9;&#x5DF2;&#x6CE8;&#x518C;&#x7684;&#x8BBE;&#x5907;&#x53F7;&#x6307;&#x5411;&#x7684;&#x8BBE;&#x5907;&#x8FDB;&#x884C;&#x8BFB;&#x5199;&#x3002;
+&#x7B80;&#x800C;&#x8A00;&#x4E4B;&#xFF0C;mknod&#x547D;&#x4EE4;&#x5C31;&#x662F;&#x5C06;&#x6587;&#x4EF6;&#x540D;&#x3001;&#x6587;&#x4EF6;&#x7C7B;&#x578B;&#x3001;&#x4E3B;&#x6B21;&#x8BBE;&#x5907;&#x53F7;&#x7B49;&#x4FE1;&#x606F;&#x4FDD;&#x5B58;&#x5728;&#x78C1;&#x76D8;&#x4E0A;</p>
+<h3 id="&#x91CD;&#x8981;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;">&#x91CD;&#x8981;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;</h3>
+<p>file_operations&#x5B9A;&#x4E49;&#x5728;<linux fs.h="">&#x4E2D;&#xFF0C;&#x5305;&#x542B;&#x4E00;&#x7EC4;&#x51FD;&#x6570;&#x6307;&#x9488;&#x7528;&#x4E8E;&#x5173;&#x8054;&#x6307;&#x5B9A;&#x51FD;&#x6570;&#x6765;&#x5B9E;&#x73B0;&#x7528;&#x6237;&#x5C42;&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#xFF08;System API&#xFF09;&#xFF0C;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x7684;&#x51FD;&#x6570;&#x7531;&#x7528;&#x6237;&#x8C03;&#x7528;&#x65F6;&#x4F20;&#x53C2;&#x3002;&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#x6D89;&#x53CA;&#x5230;__user&#x7A7A;&#x5B8F;&#xFF0C;&#x76EE;&#x7684;&#x662F;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x6807;&#x8BC6;&#x65B9;&#x4FBF;&#x7EF4;&#x62A4;&#x7A0B;&#x5E8F;&#x3002;&#x4E0D;&#x4F7F;&#x7528;&#x6216;&#x5F53;&#x51FD;&#x6570;&#x6307;&#x9488;&#x88AB;&#x8D4B;&#x503C;&#x4E3A;NULL&#x65F6;&#x8868;&#x793A;&#x8BBE;&#x5907;&#x4E0D;&#x652F;&#x6301;&#x8BE5;&#x64CD;&#x4F5C;&#xFF0C;&#x5185;&#x6838;&#x5BF9;&#x4E0D;&#x540C;&#x51FD;&#x6570;&#x6307;&#x9488;&#x8D4B;&#x503C;&#x4E3A;NULL&#x7684;&#x5904;&#x7406;&#x884C;&#x4E3A;&#x4E0D;&#x540C;&#x3002;
+&#x901A;&#x5E38;&#x8BE5;&#x7ED3;&#x6784;&#x4F53;&#x6307;&#x9488;&#x540D;&#x5B9A;&#x4E49;&#x4E3A;&#xFF1A;struct file_operations *fops;</linux></p>
+<p>&#x4E0D;&#x540C;&#x4E8E;C&#x5E93;&#x4E2D;&#x7684;FILE&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x5185;&#x6838;file&#x7ED3;&#x6784;&#x4F53;&#x5B9A;&#x4E49;&#x5728;<linux fs.h="">&#x4E2D;&#xFF0C;file&#x7ED3;&#x6784;&#x4EE3;&#x8868;&#x4E00;&#x4E2A;&#x6253;&#x5F00;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x5B83;&#x4E0D;&#x9650;&#x4E8E;&#x8BBE;&#x5907;&#x6587;&#x4EF6;&#xFF0C;&#x6BCF;&#x4E2A;&#x6253;&#x5F00;&#x7684;&#x6587;&#x4EF6;&#x5728;&#x5185;&#x6838;&#x4E2D;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x5BF9;&#x5E94;&#x7684;&#x673A;&#x6784;&#x4F53;&#xFF0C;&#x5B83;&#x7531;&#x5185;&#x6838;&#x5728;open&#x65F6;&#x521B;&#x5EFA;&#xFF0C;&#x5728;close&#x65F6;&#x91CA;&#x653E;&#xFF0C;&#x5728;&#x521B;&#x5EFA;&#x65F6;&#x4F1A;&#x5C06;file&#x7ED3;&#x6784;&#x4F53;&#x4F20;&#x9012;&#x7ED9;&#x5728;&#x8BE5;&#x6587;&#x4EF6;&#x4E0A;&#x64CD;&#x4F5C;&#x7684;&#x6240;&#x6709;&#x51FD;&#x6570;&#x3002;<br>&#x901A;&#x5E38;&#x8BE5;&#x7ED3;&#x6784;&#x4F53;&#x6307;&#x9488;&#x540D;&#x5B9A;&#x4E49;&#x4E3A;&#xFF1A;struct file *filp;</linux></p>
+<p>inode&#x7ED3;&#x6784;&#x8868;&#x793A;&#x6587;&#x4EF6;&#xFF0C;&#x533A;&#x522B;&#x4E0E;file&#x7ED3;&#x6784;&#x662F;&#x8868;&#x793A;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#x7684;&#x63CF;&#x8FF0;&#x7B26;&#xFF0C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x53EF;&#x80FD;&#x88AB;&#x591A;&#x4E2A;&#x7A0B;&#x5E8F;&#x6253;&#x5F00;&#x5BF9;&#x5E94;&#x591A;&#x4E2A;file&#x7ED3;&#x6784;&#xFF0C;&#x800C;&#x6B64;&#x6587;&#x4EF6;&#x53EA;&#x6307;&#x5411;&#x4E00;&#x4E2A;inode&#x7ED3;&#x6784;&#x3002;inode&#x7ED3;&#x6784;&#x5305;&#x542B;&#x5927;&#x91CF;&#x6709;&#x5173;&#x6587;&#x4EF6;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x4F46;&#x53EA;&#x6709;&#x4E24;&#x4E2A;&#x6210;&#x5458;&#x5BF9;&#x9A71;&#x7A0B;&#x6709;&#x7528;&#xFF1A;dev_t i_rdev&#x548C;struct cdev *i_cdev;&#x524D;&#x8005;&#x5305;&#x542B;&#x4E86;&#x771F;&#x6B63;&#x7684;&#x786C;&#x4EF6;&#x5C42;&#x7684;&#x8BBE;&#x5907;&#x7F16;&#x53F7;&#xFF0C;&#x56E0;&#x5185;&#x6838;&#x7248;&#x672C;&#x53D8;&#x5316;&#x7684;&#x5386;&#x53F2;&#x539F;&#x56E0;&#xFF0C;&#x8BE5;&#x7ED3;&#x6784;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;&#x4E0B;&#x5217;&#x5B8F;&#x4EE3;&#x66FF;&#x6765;&#x4FDD;&#x8BC1;&#x6700;&#x9AD8;&#x517C;&#x5BB9;&#x6027;&#xFF1A;
+unsigned int imajor(struct inode *inode);
+unsigned int iminor(struct inode *inode);
+&#x540E;&#x8005;&#x8868;&#x793A;&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#xFF0C;&#x5B9A;&#x4E49;&#x5728;<linux cdev.h="">&#x3002;</linux></p>
+<h3 id="&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x7684;&#x6CE8;&#x518C;&#x6CE8;&#x9500;">&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x7684;&#x6CE8;&#x518C;/&#x6CE8;&#x9500;</h3>
+<p>&#x8FD9;&#x91CC;&#x662F;&#x8BBE;&#x5907;&#x6CE8;&#x518C;/&#x6CE8;&#x9500;&#xFF0C;&#x8981;&#x533A;&#x5206;&#x4E0E;&#x4E0A;&#x9762;&#x7684;&#x8BBE;&#x5907;&#x53F7;&#x6CE8;&#x518C;/&#x6CE8;&#x9500;&#xFF0C;&#x8001;&#x7684;&#x529E;&#x6CD5;&#xFF08;2.6&#x5185;&#x6838;&#x4E4B;&#x524D;&#xFF09;&#x73B0;&#x5728;&#x4ECD;&#x7136;&#x53EF;&#x7528;&#xFF1A;int register_chrdev(unsigned int major, const char *name,struct file_operations *fops); int unregister_chardev(unsigend int major, const char *name);&#x8FD9;&#x5957;&#x51FD;&#x6570;&#x7684;&#x9650;&#x5236;&#x662F;&#x4E3B;&#x6B21;&#x8BBE;&#x5907;&#x53F7;&#x4E0D;&#x80FD;&#x5927;&#x4E8E;255&#xFF0C;&#x6CE8;&#x518C;&#x51FD;&#x6570;&#x4F1A;&#x7ED9;&#x6307;&#x5B9A;&#x7684;&#x4E3B;&#x8BBE;&#x5907;&#x53F7;&#x5206;&#x914D;0~255&#x4E4B;&#x95F4;&#x7684;&#x6B21;&#x8BBE;&#x5907;&#x53F7;&#xFF0C;&#x5E76;&#x4E3A;&#x6BCF;&#x4E2A;&#x8BBE;&#x5907;&#x5EFA;&#x7ACB;cdev&#x7ED3;&#x6784;&#x3002;&#x6CE8;&#x518C;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x662F;major&#x503C;&#xFF0C;&#x8FD9;&#x8981;&#x6C42;&#x53C2;&#x6570;major&#x5E94;&#x8BE5;&#x662F;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x5728;&#x6CE8;&#x9500;&#x51FD;&#x6570;&#x65F6;&#x6B63;&#x786E;&#x91CA;&#x653E;&#x3002;&#x4F7F;&#x7528;&#x8FD9;&#x5957;&#x51FD;&#x6570;&#x7684;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x5FC5;&#x987B;&#x6709;&#x5904;&#x7406;256&#x4E2A;&#x6B21;&#x8BBE;&#x5907;&#x4E0A;open&#x8C03;&#x7528;&#x7684;&#x80FD;&#x529B;&#x3002;
+&#x65B0;&#x7684;&#x65B9;&#x6CD5;&#x4F7F;&#x7528;cdev&#x63A5;&#x53E3;&#xFF1A;
+void cdev_init(struct cdev <em>cdev, struct file_operations </em>fops); 
+int cdev_add(struct cdev <em>dev, dev_t num, unsigend int count);
+void cdev_del(struct cdev </em>cdev);
+&#x6CE8;&#x518C;&#x51FD;&#x6570;&#x7684;cdev&#x53C2;&#x6570;&#x662F;&#x51FA;&#x53C2;&#xFF0C;&#x8FD9;&#x8981;&#x6C42;&#x8BE5;&#x53C2;&#x6570;&#x5E94;&#x8BE5;&#x662F;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF0C;&#x4EE5;&#x65B9;&#x4FBF;&#x6CE8;&#x9500;&#x51FD;&#x6570;&#x83B7;&#x53D6;&#x4F7F;&#x7528;&#x3002;
+&#x6CE8;&#xFF1A;&#x8BBE;&#x5907;&#x53F7;&#x6CE8;&#x518C;&#x7528;&#x4E8E;&#x5185;&#x6838;&#x5BF9;&#x8BBE;&#x5907;&#x5EFA;&#x7ACB;&#x7D22;&#x5F15;&#xFF0C;&#x8BBE;&#x5907;&#x6CE8;&#x518C;&#x662F;&#x5C06;&#x8BBE;&#x5907;&#x4E0E;&#x6587;&#x4EF6;&#x5EFA;&#x7ACB;&#x5173;&#x8054;&#xFF0C;&#x8BBE;&#x5907;&#x6CE8;&#x518C;&#x4E0E;&#x6CE8;&#x9500;&#x51FD;&#x6570;&#x5E94;&#x8BE5;&#x4F4D;&#x4E8E;&#x8BBE;&#x5907;&#x53F7;&#x6CE8;&#x518C;&#x4E0E;&#x6CE8;&#x9500;&#x51FD;&#x6570;&#x4E4B;&#x95F4;</p>
+<ul>
+<li>open&#x548C;release&#x64CD;&#x4F5C;</li>
+</ul>
+<p>&#x6253;&#x5F00;&#x64CD;&#x4F5C;&#xFF1A;int (<em>open)(struct inode </em>inode, struct file <em>filp);&#x5173;&#x95ED;&#x64CD;&#x4F5C;&#xFF1A;int (</em>release)(struct inode <em>inode, struct file </em>filp);
+&#x5BF9;&#x4E8E;&#x6253;&#x5F00;&#x64CD;&#x4F5C;&#x5E94;&#x8BE5;&#x5B8C;&#x6210;&#x5982;&#x4E0B;&#x5185;&#x5BB9;&#xFF1A;&#x9996;&#x6B21;&#x6253;&#x5F00;&#x8FDB;&#x884C;&#x9519;&#x8BEF;&#x68C0;&#x67E5;&#x548C;&#x521D;&#x59CB;&#x5316;&#x3001;&#x5206;&#x914D;&#x5E76;&#x586B;&#x5199;filp-&gt;private_data&#xFF0C;&#x8BE5;&#x6210;&#x5458;&#x4E3A;void&#x7C7B;&#x578B;&#x6307;&#x9488;&#xFF0C;&#x7528;&#x6765;&#x4FDD;&#x5B58;&#x7528;&#x6237;&#x79C1;&#x6709;&#x6570;&#x636E;/&#x7ED3;&#x6784;&#x6307;&#x9488;&#x4EE5;&#x4FBF;&#x5728;&#x8BFB;&#x5199;&#x64CD;&#x4F5C;&#x4E2D;&#x5BF9;&#x5176;&#x64CD;&#x4F5C;&#x3002;
+&#x5BF9;&#x4E8E;&#x5173;&#x95ED;&#x64CD;&#x4F5C;&#x5E94;&#x8BE5;&#x5B8C;&#x6210;&#x5982;&#x4E0B;&#x5185;&#x5BB9;&#xFF1A;&#x91CA;&#x653E;&#x7531;open&#x5206;&#x914D;&#x7684;&#x4FDD;&#x5B58;&#x5728;filp-&gt;private_data&#x4E2D;&#x7684;&#x6240;&#x6709;&#x5185;&#x5BB9;&#x3001;&#x5728;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x5173;&#x95ED;&#x64CD;&#x4F5C;&#x65F6;&#x5173;&#x95ED;&#x8BBE;&#x5907;&#x3002;
+&#x901A;&#x5E38;&#xFF0C;&#x4FDD;&#x5B58;&#x5728;filp-&gt;private_data&#x6307;&#x9488;&#x53D8;&#x91CF;&#x4E2D;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x5730;&#x5740;&#xFF0C;&#x5373;&#x7528;&#x6237;&#x4F7F;&#x7528;&#x7ED3;&#x6784;&#x4F53;&#x7EF4;&#x62A4;&#x6570;&#x636E;&#xFF0C;&#x4E3A;&#x4E86;&#x83B7;&#x53D6;&#x8BE5;&#x7ED3;&#x6784;&#x4F53;&#x5730;&#x5740;&#x53EF;&#x80FD;&#x7528;&#x5230;&#x5B8F;&#xFF1A;container_of(ptr,struct_type,mem)&#xFF1B;struct_type&#x662F;&#x7ED3;&#x6784;&#x4F53;&#x7C7B;&#x578B;&#xFF0C;mem&#x662F;&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x6210;&#x5458;&#xFF0C;ptr&#x662F;&#x8BE5;&#x6210;&#x5458;&#x7684;&#x6307;&#x9488;(&#x5730;&#x5740;)&#x3002;</p>
+<ul>
+<li>read&#x548C;wirte&#x64CD;&#x4F5C;</li>
+</ul>
+<p>read&#x62F7;&#x8D1D;&#x6570;&#x636E;&#x5230;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#xFF08;&#x4ECE;&#x7528;&#x6237;&#x89D2;&#x5EA6;&#x7684;&#x8BFB;&#xFF09;&#xFF1A;ssize_t read(struct file <em>filp, char __user </em>buff, size_t count, loff_t offp);write&#x4ECE;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x62F7;&#x8D1D;&#x6570;&#x636E;&#xFF08;&#x4ECE;&#x7528;&#x6237;&#x89D2;&#x5EA6;&#x7684;&#x5199;&#xFF09;&#xFF1A;ssize_t write(struct file *filp, const char __user *buff, size_t count, loff_t offp);&#x53C2;&#x6570;buff&#x6307;&#x5411;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x7684;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x5185;&#x6838;&#x4EE3;&#x7801;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x5F15;&#x7528;&#x5176;&#x5185;&#x5BB9;&#xFF0C;&#x800C;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;&#x5185;&#x6838;&#x4E13;&#x7528;&#x51FD;&#x6570;&#xFF1A;unsigned long copy_to_user(void __user *to, const void *from, unsigned long count);unsigned long copy_from_user(void *to, const void __user *from, unsigned long count);&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x5728;<asm uaccess.h="">&#x4E2D;&#x5B9A;&#x4E49;&#x3002;</asm></p>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x6C38;&#x8FDC;&#x4E0D;&#x8981;&#x5F15;&#x7528;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x6307;&#x9488;&#x4EE5;&#x5371;&#x53CA;&#x7CFB;&#x7EDF;&#x5B89;&#x5168;&#x6027;&#x3002;&#x4EE5;&#x4E0A;&#x4E24;&#x4E2A;&#x5185;&#x6838;&#x4E13;&#x7528;&#x62F7;&#x8D1D;&#x51FD;&#x6570;&#x4E0D;&#x4EC5;&#x62F7;&#x8D1D;&#x6570;&#x636E;&#xFF0C;&#x8FD8;&#x540C;&#x65F6;&#x68C0;&#x67E5;&#x6307;&#x9488;&#x6709;&#x6548;&#x6027;&#x3002;read&#x4E0E;write&#x7684;&#x5B9E;&#x73B0;&#x5E94;&#x8BE5;&#x4E0E;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#xFF0C;&#x5982;&#x6B63;&#x786E;&#x6267;&#x884C;&#x8FD4;&#x56DE;&#x8BFB;&#x53D6;/&#x5199;&#x5165;&#x7684;&#x5B57;&#x7B26;&#x4E2A;&#x6570;&#x3001;&#x9519;&#x8BEF;&#x6267;&#x884C;&#x8FD4;&#x56DE;&#x8D1F;&#x503C;&#x3001;&#x8FD4;&#x56DE;0&#x5230;&#x8FBE;&#x7ED3;&#x5C3E;&#x7B49;&#x7B49;&#x3002;&#x5177;&#x4F53;&#x7684;&#x9519;&#x8BEF;&#x503C;&#x5728;<linux error.h="">&#x4E2D;&#x5B9A;&#x4E49;&#x3002;</linux></p>
+<ul>
+<li>readv&#x548C;writev&#x64CD;&#x4F5C;&#xFF08;&#x6682;&#x7565;&#xFF09;</li>
+</ul>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x5185;&#x6838;&#x4EE3;&#x7801;&#x5FC5;&#x987B;&#x62E5;&#x6709;&#x5F88;&#x9AD8;&#x7684;&#x8D28;&#x91CF;&#xFF0C;&#x4E3B;&#x8981;&#x53CD;&#x6620;&#x5728;&#x5185;&#x6838;&#x8FD0;&#x884C;&#x548C;&#x7528;&#x6237;&#x8C03;&#x7528;&#x4E24;&#x4E2A;&#x65B9;&#x9762;&#xFF0C;&#x5982;&#x679C;&#x8C03;&#x7528;&#x8005;&#x662F;&#x81EA;&#x5DF1;&#x5219;&#x628A;&#x5173;&#x6CE8;&#x70B9;&#x653E;&#x5728;&#x5185;&#x6838;&#x8FD0;&#x884C;&#x7684;&#x7A33;&#x5B9A;&#x6027;&#x4E0A;&#x5373;&#x53EF;</p>
+<p>&#x793A;&#x4F8B;&#xFF1A;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x6846;&#x67B6;</p>
+<pre><code>/*test.ko*/
+#include &lt;linux/init.h&gt;
+#include &lt;linux/kernel.h&gt;
+#include &lt;linux/module.h&gt;
+#include &lt;linux/fs.h&gt;
+#include &lt;linux/cdev.h&gt;
+#include &lt;asm/uaccess.h&gt;
+
+#define DEVICE_MINOR    0
+#define DEVICE_NAME     &quot;TEST&quot;
+#define DEVICE_COUNT    1 
+
+int m_open(struct inode *inode, struct file *filp)
+{
+    filp-&gt;private_data = xxx;
+
+    return 0;
+}
+
+ssize_t m_read(struct file *filp, char __user *buff, size_t count, loff_t offp)
+{
+    ssize_t copied;
+
+    copy_to_user(xxx);
+
+    return copied;
+}
+
+ssize_t m_write(struct file *filp, const char __user *buff, size_t count, loff_t offp)
+{
+    ssize_t copied;
+
+    copy_from_user(xxx);
+
+    return copied;
+}
+
+int m_release(struct inode *inode, struct file *filp)
+{
+    return 0;
+}
+
+static dev_t m_dev;
+static struct cdev m_cdev;
+static struct file_operations m_ops={
+    .owner   = THIS_MODULE,
+    .open    = m_open,
+    .read    = m_read,
+    .write   = m_write,
+    .release = m_release
+};
+
+static int m_init(void)
+{
+    alloc_chrdev_region(&amp;m_dev, DEVICE_MINOR, DEVICE_COUNT, DEVICE_NAME);
+
+    cdev_init(&amp;m_cdev, &amp;m_ops);
+    cdev_add(&amp;m_cdev, m_dev, DEVICE_COUNT);
+
+    return 0;
+}
+
+static void m_exit(void)
+{
+    cdev_del(&amp;m_cdev);
+    unregister_chrdev_region(m_dev, DEVICE_COUNT);
+}
+
+module_init(m_init);
+module_exit(m_exit);
+
+MODULE_LICENSE(&quot;GPL&quot;);
+MODULE_AUTHOR(&quot;Dumor&quot;);
+MODULE_DESCRIPTION(&quot;A test driver&quot;);
+</code></pre><p>&#x793A;&#x4F8B;&#xFF1A;&#x865A;&#x62DF;&#x4E00;&#x4E2A;&#x4E32;&#x53E3;&#x8BBE;&#x5907;</p>
+<pre><code>#include &lt;linux/init.h&gt;
+#include &lt;linux/kernel.h&gt;
+#include &lt;linux/module.h&gt;
+#include &lt;linux/fs.h&gt;
+#include &lt;linux/cdev.h&gt;
+#include &lt;linux/kfifo-new.h&gt;//2.6&#x7248;&#x672C;&#x5185;&#x6838;&#x7684;FIFO&#x5934;&#x6587;&#x4EF6;
+
+#define MY_MAJOR 256
+#define MY_MINOR 0
+#define MY_COUNT 1
+#define MY_NAME  &quot;ZJ&apos;S CDEV&quot;
+
+static struct cdev my_cdev;
+static DEFINE_KFIFO(myfifo, char, 32);//&#x4F7F;&#x7528;&#x5185;&#x6838;FIFO, &#x5EFA;&#x7ACB;32&#x4E2A;char&#x7A7A;&#x95F4;
+
+static int my_open(struct inode *inode, struct file *filp)
+{
+    return 0;
+}
+
+static int my_release(struct inode *inode , struct file *filp)
+{
+    return 0;
+}
+
+static ssize_t my_read(struct file *filp, char __user *buf, size_t count, loff_t *pos)
+{
+    unsigned  int  copied = 0;
+    kfifo_to_user(&amp;myfifo, buf, count, &amp;copied);
+
+    return copied;//&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7684;read&#x51FD;&#x6570;&#x8981;&#x6C42;&#x8FD4;&#x56DE;&#x8BFB;&#x5230;&#x7684;&#x5B57;&#x8282;&#x6570;
+}
+
+//&#x5BF9;&#x4E8E;&#x652F;&#x6301;&#x968F;&#x673A;&#x8BBF;&#x95EE;&#x7684;&#x8BBE;&#x5907;pos&#x503C;&#x624D;&#x6709;&#x4F5C;&#x7528;
+static ssize_t my_write(struct file *filp, const char __user *buf, size_t count, loff_t *pos)
+{
+    unsigned  int  copied = 0;
+    kfifo_from_user(&amp;myfifo, buf, count, &amp;copied);
+
+    return copied;
+}
+
+static struct file_operations my_ops={
+    .owner = THIS_MODULE,
+    .open = my_open,
+    .release = my_release,
+    .read = my_read,
+    .write = my_write
+};
+
+static int __init my_init(void)
+{
+    int ret;
+    dev_t dev;
+
+    dev = MKDEV(MY_MAJOR, MY_MINOR);
+    ret = register_chrdev_region(dev, MY_COUNT, MY_NAME);
+    if(ret)
+        return ret;
+
+    cdev_init(&amp;my_cdev, &amp;my_ops);
+    my_cdev.owner = THIS_MODULE;
+
+    ret = cdev_add(&amp;my_cdev, dev, MY_COUNT);
+    if(ret)
+        return ret;
+
+    return 0;
+}
+
+static void __exit my_exit(void)
+{
+    dev_t dev;
+    dev = MKDEV(MY_MAJOR, MY_MINOR);
+
+    cdev_del(&amp;my_cdev);
+    unregister_chrdev_region(dev, MY_COUNT);
+}
+
+module_init(my_init);
+module_exit(my_exit);
+MODULE_LICENSE(&quot;GPL&quot;);
+
+/*
+   &#x4E0A;&#x8FF0;&#x7A0B;&#x5E8F;&#x6CA1;&#x6709;&#x7528;&#x5230;&#x6253;&#x5F00;&#x5173;&#x95ED;&#x529F;&#x80FD;&#xFF0C;&#x8BFB;&#x5199;&#x529F;&#x80FD;&#x4E5F;&#x4EC5;&#x7528;&#x5230;&#x4E86;&#x5185;&#x6838;FIFO&#xFF0C;&#x5F88;&#x591A;&#x5F62;&#x53C2;&#x4E5F;&#x6682;&#x65F6;    &#x6CA1;&#x6709;&#x7528;&#x5230;&#xFF0C;&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x9A8C;&#x8BC1;&#xFF1A;
+#mknod /dev/abc c 256 0
+#make &amp;&amp; make install &amp;&amp; depmod &amp;&amp; modprobe cdev_fifo
+#echo &#x201C;hello fifo&#x201D; &gt; /dev/abc
+#cat /dev/abc
+hello fifo
+&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x901A;&#x8FC7;&#x7528;&#x6237;&#x5411;&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x5199;&#x5165;&#x6570;&#x636E;&#xFF0C;&#x901A;&#x8FC7;cat&#x547D;&#x4EE4;&#x67E5;&#x770B;&#x8BE5;&#x5185;&#x5BB9;&#xFF0C;&#x53EF;&#x4EE5;&#x8BC1;&#x660E;&#x5185;    &#x6838;FIFO&#x751F;&#x6548;
+ */
+</code></pre><p>&#x793A;&#x4F8B;&#xFF1A;&#x865A;&#x62DF;&#x4E24;&#x4E2A;&#x4E32;&#x53E3;&#x8BBE;&#x5907;</p>
+<pre><code class="lang-C"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/init.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/kernel.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/module.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/fs.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/cdev.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/kfifo-new.h&gt;</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MY_MAJOR 256</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MY_MINOR 0</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MY_COUNT 2</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MY_NAME  <span class="hljs-string">&quot;ZJ&apos;S TWO CDEVs&quot;</span></span>
+
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">struct</span> cdev my_dev;
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-title">DEFINE_KFIFO</span><span class="hljs-params">(myfifo0, <span class="hljs-keyword">char</span>, <span class="hljs-number">32</span>)</span></span>;
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-title">DEFINE_KFIFO</span><span class="hljs-params">(myfifo1, <span class="hljs-keyword">char</span>, <span class="hljs-number">32</span>)</span></span>;
+
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">my_open</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> inode *inode, <span class="hljs-keyword">struct</span> file *filp)</span>
+</span>{
+    <span class="hljs-keyword">switch</span> (MINOR(inode-&gt;i_rdev))
+    {
+        <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:
+            filp-&gt;private_data = &amp;myfifo0;
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+            filp-&gt;private_data = &amp;myfifo1;
+            <span class="hljs-keyword">break</span>;
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">my_release</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> inode *inode, <span class="hljs-keyword">struct</span> file *filp)</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">static</span> ssize_t <span class="hljs-title">my_read</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> file *filp, <span class="hljs-keyword">char</span> __user *buf, size_t count, loff_t *pos)</span>
+</span>{
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> copied = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">struct</span> kfifo *myfifo = filp-&gt;private_data;
+
+    kfifo_to_user(myfifo, buf, count, &amp;copied);
+
+    <span class="hljs-keyword">return</span> copied;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">static</span> ssize_t <span class="hljs-title">my_write</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> file *filp, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> __user *buf, size_t count, loff_t *pos)</span>
+</span>{
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> copied = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">struct</span> kfifo *myfifo = filp-&gt;private_data;
+
+    kfifo_from_user(myfifo, buf, count, &amp;copied);
+
+    <span class="hljs-keyword">return</span> copied;
+}
+
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">struct</span> file_operations my_ops = {
+    .owner = THIS_MODULE,
+    .open = my_open,
+    .release = my_release,
+    .read = my_read,
+    .write = my_write
+};
+
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> __<span class="hljs-function">init <span class="hljs-title">my_init</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    <span class="hljs-keyword">int</span> ret;
+    <span class="hljs-keyword">dev_t</span> dev;
+
+    dev = MKDEV(MY_MAJOR, MY_MINOR);
+    ret = register_chrdev_region(dev, MY_COUNT, MY_NAME);
+    <span class="hljs-keyword">if</span>(ret)
+        <span class="hljs-keyword">return</span> ret;
+
+    cdev_init(&amp;my_dev, &amp;my_ops);
+    my_dev.owner = THIS_MODULE;
+
+    ret = cdev_add(&amp;my_dev, dev, MY_COUNT);
+    <span class="hljs-keyword">if</span>(ret)
+        <span class="hljs-keyword">return</span> ret;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> __<span class="hljs-function"><span class="hljs-built_in">exit</span> <span class="hljs-title">my_exit</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    <span class="hljs-keyword">dev_t</span> dev;
+
+    dev = MKDEV(MY_MAJOR, MY_MINOR);
+    cdev_del(&amp;my_dev);
+    unregister_chrdev_region(dev, MY_COUNT);
+
+}
+
+module_init(my_init);
+module_exit(my_exit);
+
+MODULE_LICENSE(<span class="hljs-string">&quot;GPL&quot;</span>);
+
+<span class="hljs-comment">/*
+   &#x4E0A;&#x8FF0;&#x7A0B;&#x5E8F;&#x589E;&#x52A0;MY_COUNT&#x503C;&#x4E3A;2&#xFF0C;&#x5373;&#x6B21;&#x8BBE;&#x5907;&#x53F7;&#x4ECE;0~1&#xFF0C;&#x540C;&#x65F6;&#x521D;&#x59CB;&#x5316;&#x4E24;&#x4E2A;&#x5185;&#x6838;FIFO&#xFF1A;myfifo0&#x3001;myfifo1&#xFF0C;open&#x63A5;&#x53E3;&#x53D6;&#x51FA;&#x6B21;&#x8BBE;&#x5907;&#x53F7;&#x8FDB;&#x884C;&#x5224;&#x65AD;&#x6765;&#x51B3;&#x5B9A;&#x5C06;
+   &#x54EA;&#x4E2A;FIFO&#x7ED3;&#x6784;&#x4F53;&#x7684;&#x5730;&#x5740;&#x4FDD;&#x5B58;&#x5230;file&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#x7684;private_data&#xFF08;&#x9A71;&#x52A8;&#x79C1;&#x6709;&#x6570;&#x636E;&#x6307;&#x9488;&#xFF09;
+   &#x901A;&#x8FC7;#mknod /dev/abc c 256 0 &amp;&amp;mknod /dev/def c 256 1&#x5EFA;&#x7ACB;&#x4E24;&#x4E2A;&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x6587;&#x4EF6;&#xFF0C;&#x901A;&#x8FC7;&#x63D2;&#x62D4;&#x6A21;&#x5757;&#x3001;#echo &#x201C;hello 0 &#x201D; &gt; /dev/abc &amp;&amp; echo 
+   &#x201C;hello 1&#x201D; &gt; /dev/def&#x5411;&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x6587;&#x4EF6;&#x5199;&#x6570;&#x636E;&#xFF0C;&#x901A;&#x8FC7;#cat /dev/abc &amp;&amp; cat /dev/def&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6210;&#x529F;&#x5199;&#x5165;&#x7684;&#x6570;&#x636E;
+   &#x4E0A;&#x8FF0;&#x7A0B;&#x5E8F;&#x662F;1&#x4E2A;cdev&#x5BF9;&#x8C61;&#x4F7F;&#x7528;1&#x4E2A;&#x9A71;&#x52A8;&#x5BF9;&#x5E94;&#x591A;&#x4E2A;&#x540C;&#x7C7B;&#x8BBE;&#x5907;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x591A;&#x4E2A;cdev&#x5BF9;&#x8C61;&#x4F7F;&#x7528;1&#x4E2A;&#x9A71;&#x52A8;&#x5BF9;&#x5E94;&#x591A;&#x4E2A;&#x540C;&#x7C7B;&#x8BBE;&#x5907;
+ */</span>
+</code></pre>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; Jim 2019-2020 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Revision time: 
+2020-06-04 10:27:24
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="FileSys.html" class="navigation navigation-next navigation-unique" aria-label="Next page: FileSys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Device driver","level":"1.3.2.3.1","depth":4,"next":{"title":"FileSys","level":"1.3.2.3.2","depth":4,"path":"pages/os/BSP/FileSys.md","ref":"pages/os/BSP/FileSys.md","articles":[]},"previous":{"title":"Linux BSP","level":"1.3.2.3","depth":3,"ref":"","articles":[{"title":"Device driver","level":"1.3.2.3.1","depth":4,"path":"pages/os/BSP/DeviceDriver.md","ref":"pages/os/BSP/DeviceDriver.md","articles":[]},{"title":"FileSys","level":"1.3.2.3.2","depth":4,"path":"pages/os/BSP/FileSys.md","ref":"pages/os/BSP/FileSys.md","articles":[]},{"title":"Kernel","level":"1.3.2.3.3","depth":4,"path":"pages/os/BSP/Kernel.md","ref":"pages/os/BSP/Kernel.md","articles":[]},{"title":"Bootloader","level":"1.3.2.3.4","depth":4,"path":"pages/os/BSP/Bootloader.md","ref":"pages/os/BSP/Bootloader.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/os/BSP/DeviceDriver.md","mtime":"2020-06-04T02:27:24.050Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-04T02:27:31.222Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

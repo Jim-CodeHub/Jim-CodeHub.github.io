@@ -26,9 +26,9 @@ XML文档中一切皆**节点（Node）**，分为*元素节点（Element Node�
  	</book>
  </bookstore>
 ```
-> **[info] 文本节点**
+> **[info] 文档节点**
 >
-> 包含于元素节点中的文本不是该元素节点的值，文本总是存储在文本节点中。
+> 整个XML文档也被视作一个节点，称为“文档节点”。 
 
 ## 1.4 Grammer
 
@@ -40,6 +40,10 @@ XLM声明定义在文档首行，用于指示该文档版本、编码等信息�
  <?xml version=”1.0” encoding=”UTF-8” standalone="no"?> <!-- 版本信息1.0，编码UTF-8（默认），不引用外部文件 -->
 ```
 
+> **[info] standalone**
+>
+> 'yes' 表示该文档独立存在，即不引用外部Schema进行内容校验，'no' 表示不独立存在，即要引用外部Schema进行内容校验。
+
 ### 1.4.2 Lable
 
 XML标签大小写敏感，所有标签必须成对存在（大小写要对应），XML标签必须正确嵌套。
@@ -50,7 +54,7 @@ XML标签大小写敏感，所有标签必须成对存在（大小写要对应�
 
 ### 1.4.3 Attribute 
 
-XML中的属性用于提供关于元素的额外（附加）信息，XML标签的**属性值必须加引号**（单引号或双引号，当属性值中有双引号时需要用单引号，也可以使用[引用](#Quote)代替内部引号）。**为扩展和维护，应尽量使用元素来描述数据，而使用属性来提供与数据无关的信息**。
+XML中的属性用于提供关于元素的额外（附加）信息，XML标签的**属性值必须加引号**（单引号或双引号，当属性值中有双引号时需要用单引号，也可以使用[引用](#Quote)代替内部引号）。**为扩展和维护，应尽量使用元素来描述数据，而使用属性来提供与数据无关的信息**。多个属性值之间用空格分隔。
 
 ### 1.4.4 <span id = "Quote"> Quote </span>
 
@@ -282,6 +286,16 @@ Mini XML是一个小型、开源的XML解析库，采用C语言开发，支持 U
 ## 4.2 Xerces-C++
 
 Xerces-C++是大型、功能丰富、开源的XML解析库，包含JAVA、C++、PERL等多种版本，支持SAX和DOM，它对XML进行基本解析外还进行语法检查。[Official website](http://xerces.apache.org/xerces-c/)。
+
+### Xerces类与XML文档对象的对应：
+
+类					| 对应
+:-:					| :-:
+DOMNode				| 文档的所有节点
+DOMDocument			| 文档节点
+DOMElement			| 文档的元素节点
+DOMAttr				| 文档的属性节点
+
 
 # <span id = "Appendix-A"> Appendix-A：XML Version and Specification </span>
 
