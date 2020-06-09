@@ -96,6 +96,8 @@ www.kernel.org是Linux内核官网，是标准内核，与之相对应的就是�
 #include <linux/module.h>
 
 MODULE_LICENSE(“Dual BSD/GPL”); //表示该模块遵循BSD/GPL双协议，如果不指定，则在装载模块时会有“垃圾”信息的提示
+								//多个文件编译成模块，只要有一个文件添加了协议声明即可。
+								//协议可以只是GPL
 
 int init_module(void) //回调函数
 {
@@ -165,12 +167,78 @@ Unix系统设计时利用了这种硬件特性，当前所有的处理器多至�
 3. 内核代码不能实现浮点数运算，也不需要浮点数运算
 
 
+## 3 编译和装载
+
+注：编译需要合适的工具：内核文档目录中 Documentation/Changes 列出了编译当前版本内核需要的工具信息
+
+### 3.1 编译模块
+
+```Makefile
+
+# 要编译的模块
+obj-m		:= myModule.o
+
+# 该模块所依赖的文件
+module-objs := x.o y.o
+
+# 宿主机的内核源码树路径
+KERNEL_DIR = /lib/modules/$(shell uname -r)/build
+
+# -C -M 是make的搭配选项，-C表示进入并执行指定目录的Makefile，M表示返回到指定路径
+# 在这里就表示：进入内核源码树调用其Makefile，然后在构造modules之前返回当前目录
+# modules指代 obj-m 中的目标，实际modules是内核源码树Makefile中的make all的依赖项: `all : modules`
+all:
+	make -C  $(KERNEL_DIR) M=`pwd` modules 
+
+install:
+	make -C	 $(KERNEL_DIR) M=`pwd` INSTALL_MOD_PATH=$(ROOTFS) modules_install
+
+clean:
+	make -C $(KERNEL_DIR) M=`pwd` clean
+
+```
+
+可以看到这里的各种目标的实际编译都是依靠内核源码树来完成的。
+
+### 3.2 装载和卸载模块
+
+装载模块，可以用上述的make install，其本质也是调用**insmod**命令或**modprobe**命令。**rmmod**用于移除模块，**lsmod**用于列出当前装载到内核的所有模块。
+
+#### insmode vs modprobe
+
+modprobe会考虑要装载的模块是否依赖其他模块，如果是，并且找到了，将 将所依赖的一起装载到内核。在这种情况下insmode会失败，在日志文件中记录"unresolved symbols"消息。
+
+插入需要管理员权限: $sudo insmod x.ko
+
+注：printk没有打印到控制台的原因
+
+控制台和printk都有*日志级别*，当printk的日志级别小于控制台时就无法输出（但可以通过dmesg查看日志），printk(X "MSG");其中X可以用如下代替：
+
+```
+	 KERN_EMERG    0
+　　 KERN_ALERT     1
+　　 KERN_CRIT       2
+　　 KERN_ERR        3
+　　 KERN_WARNING  4
+　　 KERN_NOTICE    5
+　　 KERN_INFO       6
+　　 KERN_DEBUG     7
+```
+
+数字越小级别越高
+
+另外在纯终端是可以看到内核打印信息的，这也是为什么在开发板中的终端总能看到打印的信息的原因。
 
 
+#### rmmod 
 
+如果模块正在被使用，则可能卸载失败。在编译模块时使用特别选项可以强制卸载，但通常可以用重启操作系统来解决。
 
+删除需要管理员权限: $sudo rmmod x.ko
 
+#### lsmod
 
+lsmod读取/proc/modules虚拟文件来获取相关信息。
 
 
 
