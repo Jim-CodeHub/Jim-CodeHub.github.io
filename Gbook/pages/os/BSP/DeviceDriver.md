@@ -91,13 +91,15 @@ www.kernel.org是Linux内核官网，是标准内核，与之相对应的就是�
 
 ```C
 
+//最常用的头文件
 #include <linux/init.h>
 #include <linux/kernel.h>
 #include <linux/module.h>
 
 MODULE_LICENSE(“Dual BSD/GPL”); //表示该模块遵循BSD/GPL双协议，如果不指定，则在装载模块时会有“垃圾”信息的提示
 								//多个文件编译成模块，只要有一个文件添加了协议声明即可。
-								//协议可以只是GPL
+								//可选协议有：GPL, Dual BSD/GPL , Dual MPL/GPL , GPL v2, GPL and additional rights, Propreietary
+								//最后一个是未声明协议时的默认协议，即私有协议，私有协议是会有“垃圾”信息的提示的，内核开发者也不愿意帮助有私有模块协议的模块开发问题
 
 int init_module(void) //回调函数
 {
