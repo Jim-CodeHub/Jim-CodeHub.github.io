@@ -101,7 +101,7 @@ MODULE_LICENSE(“Dual BSD/GPL”); //表示该模块遵循BSD/GPL双协议，�
 								//可选协议有：GPL, Dual BSD/GPL , Dual MPL/GPL , GPL v2, GPL and additional rights, Propreietary
 								//最后一个是未声明协议时的默认协议，即私有协议，私有协议是会有“垃圾”信息的提示的，内核开发者也不愿意帮助有私有模块协议的模块开发问题
 
-int init_module(void) //回调函数
+int __init_module(void) //回调函数
 {
 	printk(KERN_ALERT "module init\n”);//内核打印函数，常用于内核调试
 										//该函数支持优先级设定(在格式化消息前加优先级)，优先级用字符串表示，KERN_ALTER就是代步这些字符串中的一个宏
@@ -109,13 +109,16 @@ int init_module(void) //回调函数
 	return 0;
 }
 
-void exit_module(void) //回调函数
+void __exit_module(void) //回调函数
 {
 	printk(KERN_ALERT “cleanup module”);
 }
 
-module_init(init_module); //装载到内核时调用
-module_exit(exit_module); //从内核移除时调用
+module_init(__init_module); //装载到内核时调用
+module_exit(__exit_module); //从内核移除时调用，如果未定义清除函数，则模块不允许卸载
+//类似的，内核中有许多注册函数，大多以register_为前缀
+
+//特别注意，__init和__exit前缀在内核中会被特别识别，要仅用在初始化和退出函数中。
 
 ```
 
