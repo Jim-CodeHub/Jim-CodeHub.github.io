@@ -649,4 +649,56 @@ DengJin # set bootargs "root=/dev/mmcblk0p2 console=ttySAC0,115200 lcd
 
 
 
+--------------
+
+NFS 网络文件系统 Fedora例
+
+
+任何一个存储设备，都有文件系统，如一个磁盘、一个U盘，网络文件系统也是如此，可以把网络文件系统类比成网络磁盘
+
+像普通磁盘一样，要使用该磁盘，就要挂载它
+
+---
+
+
+1. 下载服务器并配置
+
+Fedora中，网络文件系统服务器名为：nfs-server
+
+配置文件不变：/etc/exports
+
+同样设置一个目录，并添加到exports文件中，如：
+
+/home/jim/NFS \*(rw,subtree_check,no_root_squash,no_all_squash,sync)
+
+详看NFS服务器支持的配置语法，这里的意思就是/home/jim/NFS这个目录就是“网络磁盘”，后面是一系列权限和配置
+
+然后在给NFS赋予权限，777，理论上说不必777完全权限，但这样很省事
+
+所以，第一步其实很简单，就是” 下载、配置exports、建立文件夹并赋予权限”
+
+2. 测试
+
+本机也可以挂载，注意格式：sudo mount -t nfs 127.0.0.1:/home/jim/NFS /mnt；将127.0.0.1下的/hom/jim/NFS网络磁盘，挂载到/mnt下。
+
+如果挂载成功，shell不会有任何提示，然后在NFS中写任何文件，在/mnt中都会同步出现，即挂载成功。
+
+3. 上机
+
+要注意的是，既然是网络文件系统，就要联网线（网络磁盘所在机器和目标板）
+
+换个IP就可以了，要注意的是目标板的IP要么处于网络中（比如连接了路由器），要么与PC在同一网段（比如PC直接连接目标板），
+
+mount -t nfs -o nolock,rw,nfsvers=3,vers=3 192.168.1.121:/hom/jim/NFS /mnt 
+
+-o的含义如下：
+
+-o, --options <list>    comma-separated list of mount options
+
+即后面nolock,rw,nfsvers=3,vers=3都是命令列表，注意不能有空格
+
+详细内容可查看man文档
+
+
+
 

@@ -1,4 +1,12 @@
 
+# 1 Background 
+
+# 2 Introduction
+
+# 3 Open source License
+
+# 4 Open source Vs Free
+
 # 软件协议列表
 
 Apache License 2.0、GNU GPLv3.0、MIT License、BSD 2-clause、BSD 3-clause、Eclipse Public License 2.0、GNU AGPLv3.0、GNU GPLv2.0、GNU LGPLv2.1、GNU LGPLv3.0、Mazilla Public License 2.0
@@ -55,3 +63,5 @@ Apache 2.0、BSD和MIT是对商业友好的宽松许可协议，它们允许使�
 
 2008年FSF决定以违反FSF所持有的版权为由起诉思科，这些程序包括GCC、binutils、和GNU C Library。同年9月FSF诉讼思科源码案以和解收场，并未走上法庭。
 
+
+--------------------
