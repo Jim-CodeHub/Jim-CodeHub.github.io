@@ -153,6 +153,10 @@ The sets of queue operation is core of *JMF/Command* to scheduling jobs, and eac
 >
 > The program can provide a memory map with the same status as the queue to synchronize the changes of the queue. 
 
+> **[warning] About QueueEntry Sort**
+>
+> *QueueEntry/@Status="Running"*  sort before other status, and *QueueEntry/@Status="Waiting"* watting in Queue with priority sort (DSC 100~0). 
+
 ## 3.2 Persistent Channel 
 
 If the client sends *Query/Subscription/@URL*, the server will push *Signal* to the client when the subscribed event occurs, util the server recives the client's *Command/StopPersistentChannel*.   

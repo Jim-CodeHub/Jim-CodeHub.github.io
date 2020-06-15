@@ -18,6 +18,7 @@
 			* [Markdown](pages/os/Markdown.md)
 			* [doxygen](pages/os/doxygen.md)
 			* [Shell](pages/os/Shell.md)
+			* [License](pages/os/License.md)
 		* [Unix Programming](pages/os/Unix.md)
 		* [Linux BSP]()
 			* [Device driver](pages/os/BSP/DeviceDriver.md)
