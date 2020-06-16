@@ -739,6 +739,32 @@ ReturnCode	| Description
 
 ---
 
+# <span id = "Appendix-T"> Appendix-T : JDF Tools </span>
+
+CIP4 official JDF Tools, development by Java : Alces、Bambi、EasyXJDF、JDFEditor
+
+## T.1 Alces
+
+[Alces](https://confluence.cip4.org/display/PUB/Manual+Alces)的角色是Manager，包含Test、Client、Server三个模块，它向Worker（eg.RIP、印刷系统、装订机等Controller设备）发送JDF/JMF消息，并接收和处理Worker的返回消息，同时验证消息是否合法（是否为正确的JDF/JMF文档、是否符合ICS规范、是否符合当前上下文），验证的结果将形成XML Log文件。
+
+## T.2 Bambi
+
+[Bambi](https://confluence.cip4.org/display/PUB/Manual+Bambi)的角色是Controller，它被设计的初衷是为MIS系统开发提供测试框架，它有一个配置文件，通过配置文件可以将Bambi设定模拟为印刷、印后等设备。Bambi的另一个使用场景是“printing house”，同样通过适当的配置文件完成，这对高标准的生产线是非常有用的。
+
+> **[info] Note**
+>
+> Alces和Bambi的取名可能来自迪士尼著名动画片《小鹿斑比》. 
+
+## T.3 EasyXJDF
+
+[EsayXJDF](https://confluence.cip4.org/display/PUB/EasyXJDF)是生成XJDF文档的工具，目前它只能用于“WebToPrint”环境，以便于MIS对接。EsayXJDF同时提供HTTP发送接口，可以将XJDF文档发送给MIS.
+
+## T.4 JDFEditor
+
+[JDFEditor](https://confluence.cip4.org/display/PUB/JDFEditor)是JDF编辑器，它可以显示、修改和验证JDF文档和JMF消息，同时具有转换JDF文档和XJDF文档的功能。为操作遍历，JDFEditor提供HTTP接口，可以通过网络链接并操作JDF/JMF文档。
+
+---
+
 # <span id = "Appendix-U"> Appendix-U : JDF Instance Template </span>
 
 ```XML
