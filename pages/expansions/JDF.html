@@ -1335,15 +1335,59 @@
 <hr>
 <h1 id="5-development">5 Development</h1>
 <h2 id="51-library-building">5.1 Library Building</h2>
-<h3 id="511-environments">5.1.1 Environments</h3>
 <p>Linux based and <em>gcc</em> (including cross-compilation toolchains) and <em>cmake</em> SHALL BE up to date, </p>
-<h3 id="512-packages">5.1.2 Packages</h3>
+<h3 id="511-packages">5.1.1 Packages</h3>
 <p>JDFLibC-sources-b11.tar.gz (depend on : curl, xerces-c++), and syswatcher, superline, httpcd (depend on : libmime + socketcd).</p>
 <blockquote>
 <p><strong>[info] Note</strong></p>
 <p>In fact, <em>zlib</em> and <em>libpng</em> are also required, but are usually included in cross-compilation toolchains or system environments.</p>
 </blockquote>
-<h3 id="513-building">5.1.3 Building</h3>
+<h3 id="512-building">5.1.2 Building</h3>
+<h4 id="5121-xerces-c">5.1.2.1 xerces-c</h4>
+<pre><code class="lang-Shell">    $ tar -xvf xerces-c-3.2.2.tar.gz &amp;&amp; cd xerces-c-3.2.2 
+    $ ./configure --host=[HOST] CFLAGS=-fPIC CXXLAGS=-fPIC 
+
+    //Alter macro &apos;XERCES_XMLCH_T&apos; with value &apos;wchar_t&apos; for ./configure and ./src/xercesc/util/Xerces_autoconf_config.hpp.
+
+    $ make 
+    $ mkdir ./lib/[Linux]/[BITW]
+    $ cp ./src/.libs/* ./lib/Linux/[BITW]
+</code></pre>
+<blockquote>
+<p><strong>[info] Note</strong></p>
+<ol>
+<li>[HOST ] : if the format is A-B-C-XXX, then A-B-C is host name, such as &apos;arm-linux-gnueabihf&apos;. If it&apos;s the host, the --host option can be ignored.</li>
+<li>[BITW ] : x86 or x64.</li>
+<li>[Linux] : Windows, MacOS or Linux</li>
+</ol>
+</blockquote>
+<h4 id="5122-curl">5.1.2.2 curl</h4>
+<pre><code class="lang-Shell">    $ tar -xvf curl-7.55.1.tar.gz &amp;&amp; cd curl-7.55.1
+    $ mkdir ./install
+    $ ./configure --host=[HOST] --prefix=`pwd`/install 
+    $ make &amp;&amp; make install
+</code></pre>
+<blockquote>
+<p><strong>[info] Note</strong></p>
+<p>The library SHALL copy into somewhere where the compiler can be detected. </p>
+</blockquote>
+<h4 id="5123-jdf">5.1.2.3 JDF</h4>
+<pre><code class="lang-Shell">    $ mkdir JDFLibC
+    $ tar -xvf JDFLibC-sources-b11.tar.gz -C ./JDFLibC
+    $ cd JDFLibC
+    $ mkdir ./external/Xerces-C
+    $ cp -rf ../xerces-c-3.2.2/* ./external/Xerces-C
+    $ chmod +x build_[linux].sh &amp;&amp; ./build_[linux].sh
+    $ ls ./bin/[Linux]/[x64]
+
+    AddJDF  BookJDF  CheckJDF  libJDFTools.so  libJDFToolsWrapper.so  MergeJDF  SpawnJDF  SpecJDF
+</code></pre>
+<blockquote>
+<p><strong>[info] Note</strong></p>
+<p>libJDF*.so is dynamic library for development, and others is command line program for JDF test. </p>
+</blockquote>
+<h2 id="52-programming">5.2 Programming</h2>
+<p>IT INVOLVES COMPANY SECRETS, SO IGNORE.</p>
 <hr>
 <h1 id="appendix-a--interoperability-conformance-specification-"><span id="Appendix-A"> Appendix-A : Interoperability Conformance Specification </span></h1>
 <p>ICS defines the minimum set of JDF with multi parts. Base ICS defines the most basic functions that any JDF products should implement. Other ICSs are based on the <em>Base ICS</em> and describes the minimum implementation in different aspects.</p>
@@ -2765,7 +2809,7 @@ CIP4 retains the right to modify the terms applicable to the CIP4 Software under
 <p>This software consists of voluntary contributions made by many individuals on behalf of the The International Cooperation for the Integration of Processes in Prepress, Press and Postpress and was originally based on software copyright (c) 1999-2001, Heidelberger Druckmaschinen AG and copyright (c) 1999-2001, Agfa-Gevaert N.V.</p>
 <p>For more information on The International Cooperation for the Integration of Processes in Prepress, Press and Postpress, please see <a href="http://www.cip4.org" target="_blank">http://www.cip4.org</a>.</p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; Jim 2019-2020 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Revision time: 
-2020-06-16 08:54:59
+2020-06-16 20:54:45
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -2822,7 +2866,7 @@ CIP4 retains the right to modify the terms applicable to the CIP4 Software under
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JDF","level":"1.8.5","depth":2,"previous":{"title":"English","level":"1.8.4","depth":2,"path":"pages/expansions/English.md","ref":"pages/expansions/English.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/expansions/JDF.md","mtime":"2020-06-16T00:54:59.161Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-16T00:55:09.919Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JDF","level":"1.8.5","depth":2,"previous":{"title":"English","level":"1.8.4","depth":2,"path":"pages/expansions/English.md","ref":"pages/expansions/English.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/expansions/JDF.md","mtime":"2020-06-16T12:54:45.388Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-16T12:54:50.445Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

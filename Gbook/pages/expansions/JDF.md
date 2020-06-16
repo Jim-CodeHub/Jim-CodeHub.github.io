@@ -367,11 +367,9 @@ HTTP is a stable protocol with a well defined query-response mechanism, and only
 
 ## 5.1 Library Building
 
-### 5.1.1 Environments
-
 Linux based and *gcc* (including cross-compilation toolchains) and *cmake* SHALL BE up to date, 
 
-### 5.1.2 Packages
+### 5.1.1 Packages
 
 JDFLibC-sources-b11.tar.gz (depend on : curl, xerces-c++), and syswatcher, superline, httpcd (depend on : libmime + socketcd).
 
@@ -379,7 +377,61 @@ JDFLibC-sources-b11.tar.gz (depend on : curl, xerces-c++), and syswatcher, super
 >
 > In fact, *zlib* and *libpng* are also required, but are usually included in cross-compilation toolchains or system environments.
 
-### 5.1.3 Building 
+### 5.1.2 Building 
+
+#### 5.1.2.1 xerces-c 
+
+```Shell
+	$ tar -xvf xerces-c-3.2.2.tar.gz && cd xerces-c-3.2.2 
+	$ ./configure --host=[HOST] CFLAGS=-fPIC CXXLAGS=-fPIC 
+
+	//Alter macro 'XERCES_XMLCH_T' with value 'wchar_t' for ./configure and ./src/xercesc/util/Xerces_autoconf_config.hpp.
+
+	$ make 
+	$ mkdir ./lib/[Linux]/[BITW]
+	$ cp ./src/.libs/* ./lib/Linux/[BITW]
+```
+
+> **[info] Note**
+>
+> 1. [HOST ] : if the format is A-B-C-XXX, then A-B-C is host name, such as 'arm-linux-gnueabihf'. If it's the host, the --host option can be ignored.
+> 2. [BITW ] : x86 or x64.
+> 3. [Linux] : Windows, MacOS or Linux
+
+#### 5.1.2.2 curl 
+
+```Shell
+	$ tar -xvf curl-7.55.1.tar.gz && cd curl-7.55.1
+	$ mkdir ./install
+	$ ./configure --host=[HOST] --prefix=`pwd`/install 
+	$ make && make install
+```
+
+> **[info] Note**
+>
+> The library SHALL copy into somewhere where the compiler can be detected. 
+
+#### 5.1.2.3 JDF 
+
+```Shell
+	$ mkdir JDFLibC
+	$ tar -xvf JDFLibC-sources-b11.tar.gz -C ./JDFLibC
+	$ cd JDFLibC
+	$ mkdir ./external/Xerces-C
+	$ cp -rf ../xerces-c-3.2.2/* ./external/Xerces-C
+	$ chmod +x build_[linux].sh && ./build_[linux].sh
+	$ ls ./bin/[Linux]/[x64]
+
+	AddJDF  BookJDF  CheckJDF  libJDFTools.so  libJDFToolsWrapper.so  MergeJDF  SpawnJDF  SpecJDF
+```
+
+> **[info] Note**
+>
+> libJDF\*.so is dynamic library for development, and others is command line program for JDF test. 
+
+## 5.2 Programming 
+
+IT INVOLVES COMPANY SECRETS, SO IGNORE.
 
 ---
 
