@@ -363,6 +363,26 @@ HTTP is a stable protocol with a well defined query-response mechanism, and only
 
 ---
 
+# 5 Development
+
+## 5.1 Library Building
+
+### 5.1.1 Environments
+
+Linux based and *gcc* (including cross-compilation toolchains) and *cmake* SHALL BE up to date, 
+
+### 5.1.2 Packages
+
+JDFLibC-sources-b11.tar.gz (depend on : curl, xerces-c++), and syswatcher, superline, httpcd (depend on : libmime + socketcd).
+
+> **[info] Note**
+>
+> In fact, *zlib* and *libpng* are also required, but are usually included in cross-compilation toolchains or system environments.
+
+### 5.1.3 Building 
+
+---
+
 # <span id = "Appendix-A"> Appendix-A : Interoperability Conformance Specification </span>
 
 ICS defines the minimum set of JDF with multi parts. Base ICS defines the most basic functions that any JDF products should implement. Other ICSs are based on the *Base ICS* and describes the minimum implementation in different aspects.
