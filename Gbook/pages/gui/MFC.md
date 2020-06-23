@@ -374,3 +374,7 @@ void subClass::DoDataExchange(CDataExchange\* pDX)
 
 该函数由MFC自动调用。
 
+
+------------------------------
+
+关于VS2008打包安装包，不能覆盖
