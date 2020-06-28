@@ -326,3 +326,64 @@ class A{
 
 		class B b; 
 };
+
+-----------
+
+奇怪现象之：ASCII非'\0'字符，被认为是'\0'处理
+
+描述：欲构造一个产生唯一字符串的函数，生产的字符串包含到string，cout string可完整输出，但c_str()或data()却有时输出不完整，
+检查发现，会把非'\0'字符当成'\0'字符截断
+
+如 唯一字符串为：
+
+sWUhln0Qx
+
+检查str[2] = '\0'，竟然为真，实际c_str()也只是输出到sW就没有了
+
+于是将该字符串直接以string ss = "sWUhln0Q"的形式给出，但无论怎么输出都没有截断
+
+（类似的还有很多字符都被当成 ‘\0’处理，如9，b，\_，y，...等等）
+
+
+还有，string本身输出总是完整的，并且size和length值都是正常的，一旦转换为c_str()或者data()就有可能乱套了
+
+这是什么问题呢？？？？
+
+--再次描述：
+1. string本身输出总是完整的，并且size和length值都是正常的，一旦转换为c_str()或者data()就有可能错误（出错原因就是来自'\0'的错误判定）
+2. 将出错的字符串以string ss="出错字符串"的形式赋值，输出又没有错误了。
+
+
+string construct_uniq(uint8_t _size)
+{
+	static uint8_t seed_count = 0;
+
+	string uniq_string ="\0";
+
+	char   asciibet[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_-";
+
+	auto time_ms = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch());
+
+	default_random_engine e(time_ms.count() + (seed_count++));
+
+
+	for (int i = 0 ; i < _size; i++)
+	{
+		uniq_string += asciibet[e() % sizeof(asciibet)]; 
+	}
+
+
+	if ((uniq_string[0] >= '0') && (uniq_string[0] <= '9'))
+	{
+		uniq_string[0] = '_';
+	}
+
+	return uniq_string;
+}
+
+
+构建唯一字符串的为上述代码，
+
+
+解决：问题出现在 1. sizeof(asciibet) 是包含结尾的'\0'的，随机生成的时候不知哪次就将随机到的'\0'放到里面了
+				 2. string cout的时候，会把'\0'隐形掉，自己查看字符串数量sWUhln0Qx是9个，所以掺杂一个\0在中间，而string将其隐形掉了
