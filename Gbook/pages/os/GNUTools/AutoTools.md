@@ -115,4 +115,49 @@ configure.ac + config.h.in + configure + Makefile.am + Makefile.in + install-sh
 
 添加生成库的版本号
 
+Autotools系列工具本身不支持动态库的版本号添加，而libtool支持
+
+libtool是一个独立的工具，专门用于构建库文件（而Autotools可以构建可执行文件等其它文件），libtools可以与autotools配合使用，也可以单独使用
+
+
+1. 配合使用
+
+以生成动态库为例，
+
+``` Autotools 在Makefile.am下的动态库代码
+#表示要生成动态库，并且要为动态库指定默认安装路径
+libsocktecdlibdir=${prefix}
+#表示要生成的动态库
+libsocktecdlib_PROGRAMS=libsocketcd.so
+#表示要生成的动态库所以来的源文件
+libsocketcd_so_SOURCES=./socketcd/client/socketc.cpp ./socketcd/server/socketd.cpp
+#等同于CXXFLAGS，编译时将使用
+libsocketcd_so_CXXFLAGS= -fPIC -Werror -std=c++11 -Wall
+#等同于LDFLAGS，链接时将使用
+libsocketcd_so_LDFLAGS= -shared -fPIC 
+```
+
+``` libtools 在Makefile.am下的动态库代码
+lib_LTLIBRARIES=libsocketcd.la
+libsocketcd_la_SOURCES=./socketcd/client/socketc.cpp ./socketcd/server/socketd.cpp
+libsocketcd_la_CXXFLAGS= -fPIC -Werror -std=c++11 -Wall
+#这里支持了-release选项
+libsocketcd_la_LDFLAGS= -shared -fPIC -release 0.1 
+```
+
+为此要在configure.ac中添加LT_INIT宏，并重新aclocal,autoconf
+
+注意，可能出现ltmain相关的问题，则使用libtoolize工具即可（调用一次即可）
+
+
+
+2. 单独使用
+
+
+libtool引出了lo和la文件，是libtool可识别的，用于解决库依赖关系的文件，即，使用libtools生成了A库，同时生成了A.la文件，当其它程序使用A库时，可以通过libtools去找到A及A所依赖的库，以保证程序顺利执行。是否这样利用取决于库的调用者。调用者完全可以将la等文件丢弃，只使用so动态库文件，自己去解决相关依赖。
+
+下面讨论如何生成Makefile以生成库
+
+TBD
+
 
