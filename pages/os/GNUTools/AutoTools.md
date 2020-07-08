@@ -75,6 +75,7 @@ libsocketcd_so_LDFLAGS= -shared -fPIC
 
 ```
 注：如果执行automake的过程发现必要文件，可以通过automake --add_miss解决
+一旦修改了Makefile.am 就重新执行以下automake
 
 
 
@@ -91,6 +92,27 @@ configure.ac + config.h.in + configure + Makefile.am + Makefile.in + install-sh
 
 如果在make时又遇到missingxxx，则再运行一次automake --add-missing即可
 
+---------
 
+
+另一种快速的构建方式：
+
+1. autoscan -> configure.ac
+
+仍然首先调动autoscan扫描源码，生成configure.scan，然后重命名为configure.ac并修改内容
+
+2. 手动编写 Makefile.am
+
+3. autoreconf
+
+该命令按顺序解决了之前构建的若干步骤，直接生成了configure脚本，即直接可以执行构建三部曲
+
+
+***这种构建方式下，如果已经存在configure.ac和Makefile.am，那么拷贝并修改它们，然后只需调用一个命令autoreconf即可！！！***
+
+
+-----------------
+
+添加生成库的版本号
 
 
