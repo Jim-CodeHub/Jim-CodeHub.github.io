@@ -393,4 +393,123 @@ Hasp HL		| 阿拉丁/Aladdin（以色列）	| USB		| AES/RSA
 
 
 
+---------------
+
+
+HTTP 之TCP/IP 拆包与粘包
+
+
+在网络中的信息经常会被拆分路由，分片传送到接收端，特别是对于大文件传输。
+
+于是在接收端一次调用recv往往不能接收到完整的数据
+
+
+所以，一个循环的recv接收必须使用
+
+char buf[10000];
+char \*p = buff;
+while ( true)
+{
+	int recvBytes = recv(fd, p, sizeof(buff), 0);
+
+	p += recvBytes; //将包粘接
+}
+
+
+但是这里存在一个问题：如何知道对方发送结束？？？
+
+recv表现的行为是：返回值-1是错误，返回值0是对方关闭，返回值大于0是接收的数量，且默认是阻塞的，所以如果对方不关闭且我方不出错，
+那么将一直阻塞下去，不会退出循环。
+
+
+有一个好的解决办法就是预先知道对方一共要发多少，那么通过循环接收累计接收的字节数，接收到了就不循环了-退出
+
+
+char buf[10000];
+char \*p = buff;
+int size = 0;
+while ( true)
+{
+	int recvBytes = recv(fd, p, sizeof(buff), 0);
+
+	size += recvBytes;
+
+	if ( size >= 1234) //双方约定的本次发送的字节数
+	{
+		break;
+	}
+
+	p += recvBytes; //将包粘接
+}
+
+
+那么如何确定双方约定的发送字节数呢？
+
+HTTP头部信息有一个content_length，这个表示整个HTTP信息中body 的信息（即不包含line和所有header）
+
+一般情况下，HTTP头部信息很小，所以不会被分包，所以先收头部信息，再将剩余的收完
+
+如果担心HTTP头部也会被拆包，那么就一个一个字符读，一直读到\r\n\r\n，那么头部就读完了，然后将其content-length取出，循环读取剩下的信息即可
+
+
+char buf[10000];
+char \*p = buff;
+char c;
+while ( true)
+{
+	int cnt = 0;
+	while (true)
+	{
+		if ( 1 == recv(fd, &c, 1, 0))
+		{
+			*p = c; p++; //无论如何都要将读到的存储到buff
+
+			switch ( cnt )
+			{
+				case 0:
+					if ( '\r' == c)
+					{
+						cnt++;
+					}
+					break;
+				case 1:
+					if ( '\n' == c)
+					{
+						cnt++;
+					}
+					break;
+				case 2:
+					if ( '\r' == c)
+					{
+						cnt++;
+					}
+					else
+					{ 
+						cnt = 0;
+					}
+					break;
+				case 3:
+					if ( '\n' == c)
+					{
+						cnt++;
+					}
+					break;
+
+			}
+
+			if ( 4 == cnt ) break;
+		}
+	}
+
+	//略：解析buffer, 拿到content-length
+
+	while (true){
+		int recvBytes = recv(fd, p, sizeof(buff), 0);
+		p += recvBytes; //将包粘接
+		if ( recvBytes == length)
+		{
+			break;
+		}
+	}
+}
 
