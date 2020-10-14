@@ -1,11 +1,13 @@
 
 # Using LD - the GNU linker
 
- *Free Software Foundation, ld version 2, last updated : November 07,1998. Copyright(C) 1991~1998 Free Software Foundation.*
+*Free Software Foundation, ld version 2, last updated : November 07,1998. Copyright(C) 1991~1998 Free Software Foundation.*
 
 ## Overview
 
- LD 是编译工作的最后一步，用于将目标文件(*.o)、归档文件(*.a/*.so)整合在一起，以重新定位其数据和绑定其符号引用。
+LD是编译工作的最后一步，利用**BFD库**将目标文件(\*.o)、归档文件(\*.a/\*.so)整合，以**重定位数据(Relocates data)**和**绑定符号引用(Ties up symbol references)**。GNU LD提供**命令行**和**脚本**环境来配置运行参数，并提供尽可能多的调试信息。
+
+
 
 
 
@@ -41,7 +43,7 @@ https://ftp.gnu.org/old-gnu/Manuals/
 
 # Linke (ld)
 
-https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_mono/ld.html#SEC6
+https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_mono/ld.html
 
 
 

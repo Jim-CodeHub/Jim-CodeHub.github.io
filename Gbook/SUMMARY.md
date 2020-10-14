@@ -40,9 +40,7 @@
 	* [Expansions]()
 		* [SoftwareCopyrights](pages/programming/SoftwareCopyrights.md)
 
-* [Principles of Computer Organization]()
-	* [Communication](pages/computer/Communication.md)
-	* [ComputerOrg](pages/computer/ComputerOrg.md)
+* [Principles of Computer Organization](pages/computer/ComputerOrg.md)
 
 * [Hardware Design]()
 	* [PCB](pages/hardware/PCB.md)
@@ -52,14 +50,14 @@
 		* [FPGA]()
 		* [CPLD]()
 
-* [Automation]()
-	* [Motor](pages/automation/Motor.md)
-	* [Sensor](pages/automation/Sensor.md)
-
 * [Expansions]()
 	* [Database]()
-	* [XML](pages/expansions/XML.md)
+		* [XML](pages/expansions/XML.md)
+		* [JDF](pages/expansions/JDF.md)
 	* [MatLab](pages/expansions/matlab.md)
 	* [English](pages/expansions/English.md)
-	* [JDF](pages/expansions/JDF.md)
+	* [Automation]()
+		* [Motor](pages/automation/Motor.md)
+		* [Sensor](pages/automation/Sensor.md)
+
 
