@@ -954,10 +954,248 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="using-ld---the-gnu-linker">Using LD - the GNU linker</h1>
+                                <p>&#x7EC4;&#x6210;&#xFF1A;</p>
+<ol>
+<li><p>command </p>
+<p> ENTRY, MEMORY, SECTIONS, PHDRS</p>
+<p> SECTIONS {</p>
+<pre><code> secname : { //secname &#x4E0D;&#x662F;&#x968F;&#x610F;&#x7684;&#xFF0C;&#x5B83;&#x4E00;&#x5B9A;&#x662F;&#x8DDF;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x76F8;&#x5173;&#x7684;&#x683C;&#x5F0F;&#xFF0C;&#x6BD4;&#x5982;&#x5982;&#x679C;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x662F;a.out&#xFF0C;&#x90A3;&#x4E48;secname&#x53EA;&#x80FD;&#x9009;&#x62E9;.text&#xFF0C;.data&#xFF0C;.bss&#xFF0C;
+             &#x8FD9;&#x600E;&#x4E48;&#x786E;&#x5B9A;&#x5462;&#xFF1F;&#x5230;http://www.zap.org.au/elec2041-cdrom/gnutools/doc/gnu-assembler.pdf&#xFF08;gcc&#x6C47;&#x7F16;&#xFF09;&#x627E;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;
+
+             contents
+           }
+</code></pre><p> }</p>
+<p> &#x5728;SECTION&#x4E2D;&#x4F7F;&#x7528;&#x7684;command</p>
+<pre><code> PROVIDE:https://www.cnblogs.com/tureno/articles/3741291.html
+</code></pre></li>
+</ol>
+<ol>
+<li><p>symbol</p>
+<p> &#x53EF;&#x4EE5;&#x72EC;&#x7ACB;&#x5728;command&#x4E4B;&#x5916;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;command&#x4E4B;&#x5185;&#xFF0C;&#x7C7B;&#x4F3C;C&#x8BED;&#x8A00;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x6CA1;&#x6709;&#x7C7B;&#x578B;&#xFF0C;&#x8FD9;&#x7C7B;&#x4F3C;&#x4E8E;&#x811A;&#x672C;&#x8BED;&#x8A00;&#x7684;&#x53D8;&#x91CF;&#x3002;</p>
+</li>
+</ol>
+<h1 id="using-ld---the-gnu-linker">Using LD - the GNU linker</h1>
 <p><em>Free Software Foundation, ld version 2, last updated : November 07,1998. Copyright(C) 1991~1998 Free Software Foundation.</em></p>
-<h2 id="overview">Overview</h2>
-<p>LD&#x662F;&#x7F16;&#x8BD1;&#x5DE5;&#x4F5C;&#x7684;&#x6700;&#x540E;&#x4E00;&#x6B65;&#xFF0C;&#x5229;&#x7528;<strong>BFD&#x5E93;</strong>&#x5C06;&#x76EE;&#x6807;&#x6587;&#x4EF6;(*.o)&#x3001;&#x5F52;&#x6863;&#x6587;&#x4EF6;(*.a/*.so)&#x6574;&#x5408;&#xFF0C;&#x4EE5;<strong>&#x91CD;&#x5B9A;&#x4F4D;&#x6570;&#x636E;(Relocates data)</strong>&#x548C;<strong>&#x7ED1;&#x5B9A;&#x7B26;&#x53F7;&#x5F15;&#x7528;(Ties up symbol references)</strong>&#x3002;GNU LD&#x63D0;&#x4F9B;<strong>&#x547D;&#x4EE4;&#x884C;</strong>&#x548C;<strong>&#x811A;&#x672C;</strong>&#x73AF;&#x5883;&#x6765;&#x914D;&#x7F6E;&#x8FD0;&#x884C;&#x53C2;&#x6570;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x7684;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x3002;</p>
+<h2 id="1-overview">1 Overview</h2>
+<p>LD&#x662F;&#x7F16;&#x8BD1;&#x5DE5;&#x4F5C;&#x7684;&#x6700;&#x540E;&#x4E00;&#x6B65;&#xFF0C;&#x5229;&#x7528;<strong>BFD&#x5E93;</strong>&#x5C06;&#x76EE;&#x6807;&#x6587;&#x4EF6;(*.o)&#x3001;&#x5F52;&#x6863;&#x6587;&#x4EF6;(*.a/*.so)&#x6574;&#x5408;&#xFF0C;&#x4EE5;<strong>&#x91CD;&#x5B9A;&#x4F4D;&#x6570;&#x636E;(Relocates data)</strong>&#x548C;<strong>&#x7ED1;&#x5B9A;&#x7B26;&#x53F7;&#x5F15;&#x7528;(Ties up symbol references)</strong>&#x3002;GNU LD&#x63D0;&#x4F9B;<a href="#Command%20Line"><strong>&#x547D;&#x4EE4;&#x884C;</strong></a>&#x548C;<a href="#Linker%20Script"><strong>&#x811A;&#x672C;</strong></a>&#x73AF;&#x5883;&#x6765;&#x914D;&#x7F6E;&#x8FD0;&#x884C;&#x53C2;&#x6570;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x7684;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x3002;</p>
+<blockquote>
+<p><strong>[info] Note</strong></p>
+<p>&#x6574;&#x5408;&#x5206;&#x914D;&#x5C06;&#x8F93;&#x5165;&#x6587;&#x4EF6;&#x7684;&#x6240;&#x6709;&#x76F8;&#x540C;SECTION&#x96C6;&#x4E2D;&#x5F52;&#x7EB3;&#x5E76;&#x91CD;&#x5B9A;&#x4F4D;SYMBOL&#x5728;&#x5B58;&#x50A8;&#x5668;&#x7684;&#x4F4D;&#x7F6E;&#xFF08;&#x7ED1;&#x5B9A;&#x7B26;&#x53F7;&#x7684;&#x7EDD;&#x5BF9;&#x5F15;&#x7528;&#xFF09;&#xFF0C;&#x6700;&#x7EC8;&#x670D;&#x52A1;&#x4E8E;&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x6267;&#x884C;&#x51B3;&#x7B56;&#x3002;</p>
+</blockquote>
+<h2 id="2-command-line-"><span id="Command Line"> 2 Command Line </span></h2>
+<h2 id="3-linker-script-"><span id="Linker Script"> 3 Linker Script </span></h2>
+<p>&#x94FE;&#x63A5;&#x5668;&#x811A;&#x672C;&#xFF08;<em>.ld/</em>.lds&#xFF09;&#x7531;Command&#x3001;Symbol&#x548C;Keyword&#x7EC4;&#x6210;&#xFF0C;&#x652F;&#x6301;C&#x8BED;&#x8A00;&#x7684;&#x8FD0;&#x7B97;&#x7B26;&#x3001;&#x7B26;&#x53F7;&#x547D;&#x540D;&#x89C4;&#x5219;&#x3001;&#x8868;&#x8FBE;&#x5F0F;&#x3001;&#x8D4B;&#x503C;&#x548C;&#x6CE8;&#x91CA;&#xFF08;/*...*/&#xFF09;&#x7B49;&#xFF0C;&#x7531;&#x547D;&#x4EE4;&#x884C;<code>-T</code>&#x9009;&#x9879;&#x6307;&#x5B9A;&#x3002;&#x94FE;&#x63A5;&#x5668;&#x811A;&#x672C;&#x7684;&#x90E8;&#x5206;&#x529F;&#x80FD;&#x4E5F;&#x53EF;&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x884C;&#x5B9E;&#x73B0;&#x3002;</p>
+<h3 id="31-command">3.1 Command</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Command</th>
+<th style="text-align:center">Description</th>
+<th style="text-align:center">Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="#ENTRY">ENTRY</a></td>
+<td style="text-align:center">&#x5B9A;&#x4E49;&#x7A0B;&#x5E8F;&#x5165;&#x53E3;&#xFF0C;&#x5373;&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x4E2D;&#x8981;&#x6267;&#x884C;&#x7684;&#x7B2C;&#x4E00;&#x6761;&#x6307;&#x4EE4;</td>
+<td style="text-align:center">&#x53EF;&#x9009;&#x4E14;&#x552F;&#x4E00;</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="#MEMORY">MEMORY</a></td>
+<td style="text-align:center">&#x5B9A;&#x4E49;&#x5B58;&#x50A8;&#x5668;&#x8303;&#x56F4;&#xFF0C;&#x670D;&#x52A1;&#x4E8E;SECTIONS&#x5E76;&#x63D0;&#x4F9B;&#x6EA2;&#x51FA;&#x62A5;&#x9519;&#x673A;&#x5236;</td>
+<td style="text-align:center">&#x53EF;&#x9009;&#x4E14;&#x552F;&#x4E00;</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="#SECTIONS">SECTIONS</a></td>
+<td style="text-align:center">&#x6574;&#x5408;&#x5E76;&#x5B9A;&#x4F4D;&#x5404;&#x6BB5;</td>
+<td style="text-align:center">&#x5FC5;&#x9009;&#x4E14;&#x552F;&#x4E00;</td>
+</tr>
+<tr>
+<td style="text-align:center">PHDRS</td>
+<td style="text-align:center">&#x81EA;&#x5B9A;&#x4E49;ELF&#x5934;&#x90E8;&#x4FE1;&#x606F;</td>
+<td style="text-align:center">&#x53EF;&#x9009;&#x4E14;&#x5C11;&#x7528;</td>
+</tr>
+<tr>
+<td style="text-align:center">VERSION</td>
+<td style="text-align:center">&#x5B9A;&#x4E49;ELF&#x5171;&#x4EAB;&#x5E93;&#x7248;&#x672C;&#x4FE1;&#x606F;</td>
+<td style="text-align:center">&#x53EF;&#x9009;&#x4E14;&#x5C11;&#x7528;</td>
+</tr>
+<tr>
+<td style="text-align:center">CONSTRUCTORS</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">&#x53EF;&#x9009;&#x4E14;&#x5C11;&#x7528;             </td>
+</tr>
+<tr>
+<td style="text-align:center">CONSTRUCTORS</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">&#x53EF;&#x9009;&#x4E14;&#x5C11;&#x7528;             </td>
+</tr>
+<tr>
+<td style="text-align:center">FLOAT</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">&#x53EF;&#x9009;&#x4E14;&#x5C11;&#x7528;                 </td>
+</tr>
+<tr>
+<td style="text-align:center">NOFLOAT</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">&#x53EF;&#x9009;&#x4E14;&#x5C11;&#x7528;                 </td>
+</tr>
+<tr>
+<td style="text-align:center">FORCE_COMMON_ALLOCATION</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">&#x53EF;&#x9009;&#x4E14;&#x5C11;&#x7528;                 </td>
+</tr>
+<tr>
+<td style="text-align:center">INCLUDE <em>filename</em></td>
+<td style="text-align:center">&#x5305;&#x542B;&#x5176;&#x5B83;&#x94FE;&#x63A5;&#x5668;&#x811A;&#x672C;&#xFF0C;&#x5728;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x6216;<code>-L</code>&#x9009;&#x9879;&#x6307;&#x5B9A;&#x7684;&#x76EE;&#x5F55;&#x641C;&#x7D22;</td>
+<td style="text-align:center">&#x53EF;&#x9009;&#x4E14;&#x5C11;&#x7528;                 </td>
+</tr>
+<tr>
+<td style="text-align:center">INPUT</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">&#x53EF;&#x9009;&#x4E14;&#x5C11;&#x7528;                 </td>
+</tr>
+<tr>
+<td style="text-align:center">GROUP</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">&#x53EF;&#x9009;&#x4E14;&#x5C11;&#x7528;                         </td>
+</tr>
+<tr>
+<td style="text-align:center">OUTPUT</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">&#x53EF;&#x9009;&#x4E14;&#x5C11;&#x7528;                         </td>
+</tr>
+<tr>
+<td style="text-align:center">OUTPUT_ARCH</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">&#x53EF;&#x9009;&#x4E14;&#x5C11;&#x7528;                         </td>
+</tr>
+<tr>
+<td style="text-align:center">OUTPUT_FORMAT</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">&#x53EF;&#x9009;&#x4E14;&#x5C11;&#x7528;                         </td>
+</tr>
+<tr>
+<td style="text-align:center">SEARCH_DIR (<em>path</em>)</td>
+<td style="text-align:center">&#x5B9A;&#x4E49;&#x5F52;&#x6863;&#x6587;&#x4EF6;&#x7684;&#x641C;&#x7D20;&#x76EE;&#x5F55;&#xFF0C;&#x540C;<code>-L</code>&#x9009;&#x9879;</td>
+<td style="text-align:center">&#x53EF;&#x9009;&#x4E14;&#x5C11;&#x7528;                         </td>
+</tr>
+<tr>
+<td style="text-align:center">STARTUP</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">&#x53EF;&#x9009;&#x4E14;&#x5C11;&#x7528;                         </td>
+</tr>
+<tr>
+<td style="text-align:center">TARGET</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">&#x53EF;&#x9009;&#x4E14;&#x5C11;&#x7528;                                                 </td>
+</tr>
+<tr>
+<td style="text-align:center">NOCROSSREFS</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">&#x53EF;&#x9009;&#x4E14;&#x5C11;&#x7528;                         </td>
+</tr>
+</tbody>
+</table>
+<h4 id="311-entry-"><span id="ENTRY"> 3.1.1 ENTRY </span></h4>
+<pre><code>    ENTRY(*symbol*) /**&lt; &#x8FD9;&#x91CC;&#x7684;symbol&#x6765;&#x81EA;&#x8F93;&#x5165;&#x6587;&#x4EF6;&#xFF0C;&#x901A;&#x5E38;&#x662F;&#x51FD;&#x6570;&#x540D;&#xFF08;&#x5373;&#x5165;&#x53E3;&#x51FD;&#x6570;&#xFF09;. */
+</code></pre><blockquote>
+<p><strong>[info] Note</strong></p>
+<p>&#x5165;&#x53E3;&#x5730;&#x5740;&#x4F18;&#x5148;&#x7EA7;&#x4E3A;&#xFF08;&#x964D;&#x5E8F;&#xFF09;&#xFF1A;&#x547D;&#x4EE4;&#x884C;<code>-e</code>&#x9009;&#x9879;&#x3001;&#x94FE;&#x63A5;&#x811A;&#x672C;<code>ENTRY(*symbol*)</code>&#x547D;&#x4EE4;&#x3001;&#x94FE;&#x63A5;&#x811A;&#x672C;<code>start</code>&#x7B26;&#x53F7;&#x3001;<code>.text</code>&#x6BB5;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#x7684;&#x5730;&#x5740;&#x3001;&#x5730;&#x5740;0&#x3002;</p>
+</blockquote>
+<h4 id="312-memory-"><span id="MEMORY"> 3.1.2 MEMORY </span></h4>
+<pre><code>    MEMORY
+    {
+        *name [(attr)]* : ORIGIN = *origin*, LENGTH = *len* /**&lt; name&#x81EA;&#x5B9A;&#x4E49;&#xFF0C;attr&#x53EF;&#x9009;&#xFF08;&#x5185;&#x5BB9;&#x9009;&#x81EA;`ALIRWX`&#xFF09;&#xFF0C;ORIGIN&#x8868;&#x8D77;&#x59CB;&#x5730;&#x5740;&#x3002;*/
+        ...
+    }
+</code></pre><p>&#x94FE;&#x63A5;&#x5668;&#x9ED8;&#x8BA4;&#x5B58;&#x50A8;&#x5668;&#x7684;&#x6240;&#x6709;&#x8FDE;&#x7EED;&#x5730;&#x5740;&#x90FD;&#x53EF;&#x7528;&#xFF0C;&#x901A;&#x8FC7;<code>MEMORY</code>&#x547D;&#x4EE4;&#x53EF;&#x914D;&#x7F6E;&#x5B58;&#x50A8;&#x5668;&#x5B9E;&#x9645;&#x5229;&#x7528;&#x8303;&#x56F4;&#xFF0C;&#x6700;&#x7EC8;&#x901A;&#x8FC7;<em>name</em>&#x670D;&#x52A1;&#x4E8E;<code>SECTIONS</code>&#x3002;</p>
+<h4 id="313-sections-"><span id="SECTIONS"> 3.1.3 SECTIONS </span></h4>
+<h3 id="32-symbol">3.2 Symbol</h3>
+<p>&#x7B26;&#x53F7;&#x7C7B;&#x4F3C;&#x89E3;&#x91CA;&#x8BED;&#x8A00;&#x7684;&#x5F31;&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#xFF0C;&#x4F46;&#x9700;&#x76F4;&#x63A5;&#x5B9A;&#x4E49;&#x4F7F;&#x7528;&#xFF0C;&#x53EF;&#x5B9A;&#x4E49;&#x4E8E;SECTIONS&#x5185;&#x5916;&#x4F5C;&#x4E3A;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x88AB;&#x5176;&#x5B83;&#x94FE;&#x63A5;&#x5668;&#x811A;&#x672C;&#x5F15;&#x7528;&#x3002;&#x7B26;&#x53F7;&#x7531;&#x70B9;<code>.</code>&#x3001;&#x5B57;&#x6BCD;&#x3001;&#x4E0B;&#x5212;&#x7EBF;&#x3001;&#x6570;&#x5B57;&#x548C;&#x8FDE;&#x5B57;&#x7B26;<code>-</code>&#x7EC4;&#x6210;&#xFF0C;&#x5E76;&#x7531;&#x70B9;&#x3001;&#x5B57;&#x6BCD;&#x6216;&#x4E0B;&#x5212;&#x7EBF;&#x5F00;&#x5934;&#xFF0C;&#x7B26;&#x53F7;&#x540D;&#x4E0D;&#x80FD;&#x4E0E;&#x5173;&#x952E;&#x8BCD;&#x51B2;&#x7A81;&#x3002;</p>
+<p>&#x7B26;&#x53F7;&#x8D4B;&#x503C;&#x8868;&#x8FBE;&#x5F0F;&#x540C;C&#xFF08;&#x652F;&#x6301;&#x6240;&#x6709;C&#x7684;&#x8D4B;&#x503C;&#x8FD0;&#x7B97;&#x7B26;&#xFF0C;&#x8868;&#x8FBE;&#x5F0F;&#x4EE5;&#x5206;&#x53F7;&#x7ED3;&#x5C3E;&#xFF09;&#x3002;</p>
+<h3 id="33-keyword">3.3 Keyword</h3>
+<h2 id="2-invocation">2 Invocation</h2>
+<h3 id="21-command-line-options">2.1 Command Line Options</h3>
+<h3 id="22-environment-variables">2.2 Environment Variables</h3>
+<p>The behavior of ld can be changed with the environment variables <code>GNUTARGET</code> and <code>LDEMULATION</code>.</p>
+<p><code>GNUTARGET</code> determines the input-file object format if you don&apos;t use <code>-b</code> (or its synonym <code>--format</code>). Its value should be one of the BFD names for an input format (see section BFD). If there is no <code>GNUTARGET</code> in the environment, ld uses the natural format of the target. If <code>GNUTARGET</code> is set to <code>default</code> then BFD attempts to discover the input format by examining binary input files.</p>
+<p><code>LDEMULATION</code> determines the default emulation if you don&apos;t use the <code>-m</code> option. The emulation can affect various aspects of linker behaviour, particularly the default linker script. You can list the available emulations with the <code>--verbose</code> or <code>-V</code> options. If the <code>-m</code> option is not used, and the <code>LDEMULATION</code> environment variable is not defined, the default emulation depends upon how the linker was configured</p>
+<h2 id="3-command-language">3 Command Language</h2>
+<p>The command language provides explicit control over the link process, describing the mapping between the linker&apos;s input files and its output. It controls : input files, file formats, output file layout, address of sections, placement of common blocks.</p>
+<p>A command file (also known as a linker script) SHOULD be supplied to linker through the <code>-T</code> option.</p>
+<h3 id="31-linker-scripts">3.1 Linker Scripts</h3>
+<p>Every meaningful command script must have a <code>SECTIONS</code> command, it specifies a &quot;picture&quot; of the output file&apos;s layout, in varying degrees of detail. No other command is required in all cases.</p>
+<p>The optional command <code>MEMORY</code> complements SECTIONS by describing the available memory in the target architecture. if a MEMORY command is not used, ld assumes sufficient memory is available in a contiguous block for all output </p>
+<p>Comments <code>/* */</code> can be used as in C/C++ programming language.</p>
+<h3 id="32-expressions">3.2 Expressions</h3>
+<p>The syntax for expressions in the command language is identical to that of C expressions, with the features: </p>
+<ul>
+<li>All expressions evaluated as integers and are of &quot;<strong>long</strong>&quot; or &quot;<strong>unsigned long</strong>&quot; type.</li>
+<li>All constants are integers.</li>
+<li>All of the C arithmetic operators are provided.</li>
+<li>Global variables can be referenced, defined and created.</li>
+<li>Special purpose built-in functions can be called.</li>
+</ul>
+<h4 id="321-integers">3.2.1 Integers</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Octol</th>
+<th style="text-align:center">Decimal</th>
+<th style="text-align:center">Hexadecimal</th>
+<th style="text-align:center">Suffixes K&amp;M</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">010000</td>
+<td style="text-align:center">4096</td>
+<td style="text-align:center">0x1000/0X1000</td>
+<td style="text-align:center">4K </td>
+</tr>
+</tbody>
+</table>
+<p>The table refer to the same quantity.</p>
+<h4 id="322-symbol-names">3.2.2 Symbol Names</h4>
+<p>Symbol names start with a letter, underscore or point and may include any letters, underscore, digits, points and hyphens. Unquoted symbol names must not conflict with any keywords.</p>
+<h4 id="323-the-location-counter">3.2.3 The Location Counter</h4>
+<p>The special linker dot <code>.</code> (NOT .xxx) refers to the current output location counter, and MUST always appear in an expression within a SECTIONS command. Assigning a value to the <code>.</code> symbol will cause the location counter to be moved, and a holes is created in the output section. The location counter may never be moved backwards.</p>
+<pre><code>    SECTIONS
+    {
+        output:
+        {
+            fileA(.text)
+            . =. + 1000    /**&lt; Offset 1000 Bytes.            */
+            fileB(.text)
+            . =. + 1000    /**&lt; Offset 1000 Bytes.            */
+            fileC(.text)
+
+        } = 0X1234;        /**&lt; Fill 0x1234 in two gaps.    */
+    }
+</code></pre><h4 id="324-operators">3.2.4 Operators</h4>
+<p>The linker recognizes the standard C set of arithmetic operators, with the standard bindings and precedence levels.</p>
+<h4 id="325-evaluation">3.2.5 Evaluation</h4>
+<p>The linker uses &quot;lazy evaluation&quot; for expressions, it only calculates an expression when absolutely necessary. The linker needs the value of the start address, and the lengths of memory regions, in order to do any linking at all, these values are computed as soon as possible when the linker reads in the command file. However, other values (such as symbol values) are not known or needed until after storage allocation. Such values are evaluated later, when other information (such as the sizes of output sections) is available for use in the symbol assignment expression.</p>
+<h4 id="326-assignment-defining-symbols-"><span id="Assignment"> 3.2.6 Assignment: Defining Symbols </span></h4>
+<h4 id="327-arithmetic-functions">3.2.7 Arithmetic Functions</h4>
+<h4 id="328-semicolons">3.2.8 Semicolons</h4>
+<p>Semicolons <code>;</code> must appear at the end of <a href="#Assignment">assignment</a> expressions and <a href="#PHDRS">PHDRS</a> statement.</p>
+<h3 id="33-memory-layout">3.3 Memory Layout</h3>
+<h3 id="34-specifying-output-sections">3.4 Specifying Output Sections</h3>
+<h4 id="341-section-definitions">3.4.1 Section Definitions</h4>
+<h4 id="342-section-placement">3.4.2 Section Placement</h4>
+<h4 id="343-section-data-expressions">3.4.3 Section Data Expressions</h4>
+<h4 id="344-optional-section-attributes">3.4.4 Optional Section Attributes</h4>
+<h4 id="345-overlays">3.4.5 Overlays</h4>
+<h3 id="35-elf-program-headers">3.5 ELF Program Headers</h3>
+<h3 id="36-the-entry-point">3.6 The Entry Point</h3>
+<h3 id="37-version-script">3.7 Version Script</h3>
+<h3 id="38-option-commands">3.8 Option Commands</h3>
+<h2 id="4-machine-dependent-features">4 Machine Dependent Features</h2>
+<h3 id="41-h8300">4.1 H8/300</h3>
+<h3 id="42-intel-960-family">4.2 Intel 960 family</h3>
+<h2 id="5-bfd">5 BFD</h2>
 <h1 id="old-gnu">OLD GNU</h1>
 <p><a href="https://ftp.gnu.org/old-gnu/Manuals/" target="_blank">https://ftp.gnu.org/old-gnu/Manuals/</a></p>
 <h1 id="linke-ld">Linke (ld)</h1>
@@ -1028,7 +1266,7 @@
 <p>&#x9759;&#x6001;&#x94FE;&#x63A5;&#x7684;&#x5E93; &#x4F7F;&#x7528;-Wl,-dn -L&#x9759;&#x6001;&#x5E93;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84; -l&#x9759;&#x6001;&#x5E93;&#x540D;, &#x52A8;&#x6001;&#x94FE;&#x63A5;&#x7684;&#x5E93;&#x4F7F;&#x7528;-Wl,-dy -L&#x52A8;&#x6001;&#x5E93;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84; -l&#x52A8;&#x6001;&#x5E93;&#x540D;&#xFF1A;-Wl,-dn -Lxxx -lyyy -Wl,-dy -Lnnn, -lmmm
 &#xFF0C;&#x5176;&#x4E2D;-dn&#x53EF;&#x4EE5;&#x66FF;&#x6362;&#x4E3A;-non_shared&#x3001;-Bstatic&#x3001;-static&#xFF0C;&#x5176;&#x4E2D;-dy&#x53EF;&#x4EE5;&#x66FF;&#x6362;&#x4E3A;-Bdynamic&#x3001;-call_shared</p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; Jim 2019-2020 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Revision time: 
-2020-09-30 16:49:13
+2020-10-16 18:04:13
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1085,7 +1323,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"GCC","level":"1.3.2.1.1","depth":4,"next":{"title":"Makefile","level":"1.3.2.1.2","depth":4,"path":"pages/os/GNUTools/Makefile.md","ref":"pages/os/GNUTools/Makefile.md","articles":[]},"previous":{"title":"GNU Tools","level":"1.3.2.1","depth":3,"ref":"","articles":[{"title":"GCC","level":"1.3.2.1.1","depth":4,"path":"pages/os/GNUTools/GCC.md","ref":"pages/os/GNUTools/GCC.md","articles":[]},{"title":"Makefile","level":"1.3.2.1.2","depth":4,"path":"pages/os/GNUTools/Makefile.md","ref":"pages/os/GNUTools/Makefile.md","articles":[]},{"title":"Git","level":"1.3.2.1.3","depth":4,"path":"pages/os/GNUTools/Git.md","ref":"pages/os/GNUTools/Git.md","articles":[]},{"title":"Markdown","level":"1.3.2.1.4","depth":4,"path":"pages/os/GNUTools/Markdown.md","ref":"pages/os/GNUTools/Markdown.md","articles":[]},{"title":"doxygen","level":"1.3.2.1.5","depth":4,"path":"pages/os/GNUTools/doxygen.md","ref":"pages/os/GNUTools/doxygen.md","articles":[]},{"title":"Shell","level":"1.3.2.1.6","depth":4,"path":"pages/os/GNUTools/Shell.md","ref":"pages/os/GNUTools/Shell.md","articles":[]},{"title":"License","level":"1.3.2.1.7","depth":4,"path":"pages/os/GNUTools/License.md","ref":"pages/os/GNUTools/License.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/os/GNUTools/GCC.md","mtime":"2020-09-30T08:49:13.891Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-14T02:03:45.660Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"GCC","level":"1.3.2.1.1","depth":4,"next":{"title":"Makefile","level":"1.3.2.1.2","depth":4,"path":"pages/os/GNUTools/Makefile.md","ref":"pages/os/GNUTools/Makefile.md","articles":[]},"previous":{"title":"GNU Tools","level":"1.3.2.1","depth":3,"ref":"","articles":[{"title":"GCC","level":"1.3.2.1.1","depth":4,"path":"pages/os/GNUTools/GCC.md","ref":"pages/os/GNUTools/GCC.md","articles":[]},{"title":"Makefile","level":"1.3.2.1.2","depth":4,"path":"pages/os/GNUTools/Makefile.md","ref":"pages/os/GNUTools/Makefile.md","articles":[]},{"title":"Git","level":"1.3.2.1.3","depth":4,"path":"pages/os/GNUTools/Git.md","ref":"pages/os/GNUTools/Git.md","articles":[]},{"title":"Markdown","level":"1.3.2.1.4","depth":4,"path":"pages/os/GNUTools/Markdown.md","ref":"pages/os/GNUTools/Markdown.md","articles":[]},{"title":"doxygen","level":"1.3.2.1.5","depth":4,"path":"pages/os/GNUTools/doxygen.md","ref":"pages/os/GNUTools/doxygen.md","articles":[]},{"title":"Shell","level":"1.3.2.1.6","depth":4,"path":"pages/os/GNUTools/Shell.md","ref":"pages/os/GNUTools/Shell.md","articles":[]},{"title":"License","level":"1.3.2.1.7","depth":4,"path":"pages/os/GNUTools/License.md","ref":"pages/os/GNUTools/License.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","back-to-top-button","hide-element","code","splitter","search-pro","custom-favicon","custom-favicon","popup","-sharing","sharing-plus","expandable-chapters","page-toc-button","pageview-count","tbfed-pagefooter","alerts"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Jim 2019-2020","modify_label":"Revision time: ","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"splitter":{},"search-pro":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"icon/favincon.ico","page-toc-button":{"maxTocDepth":4,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":true,"weibo":true,"twitter":true,"pocket":true,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/os/GNUTools/GCC.md","mtime":"2020-10-16T10:04:13.457Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-16T10:04:19.073Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
