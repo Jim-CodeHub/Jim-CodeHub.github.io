@@ -1,77 +1,87 @@
 
-组成：
-1. command 
-
-	ENTRY, MEMORY, SECTIONS, PHDRS
-
-	SECTIONS {
-		secname : { //secname 不是随意的，它一定是跟目标文件相关的格式，比如如果目标文件是a.out，那么secname只能选择.text，.data，.bss，
-					这怎么确定呢？到http://www.zap.org.au/elec2041-cdrom/gnutools/doc/gnu-assembler.pdf（gcc汇编）找就可以了
-
-					contents
-				  }
-	}
-
-	在SECTION中使用的command
-		PROVIDE:https://www.cnblogs.com/tureno/articles/3741291.html
-
-
-2. symbol
-
-	可以独立在command之外，也可以在command之内，类似C语言的变量，只不过没有类型，这类似于脚本语言的变量。
-
-
-
-
-
-
-
-
-
-
 # Using LD - the GNU linker
 
 *Free Software Foundation, ld version 2, last updated : November 07,1998. Copyright(C) 1991~1998 Free Software Foundation.*
 
 ## 1 Overview
 
-LD是编译工作的最后一步，利用**BFD库**将目标文件(\*.o)、归档文件(\*.a/\*.so)整合，以**重定位数据(Relocates data)**和**绑定符号引用(Ties up symbol references)**。GNU LD提供[**命令行**](#Command Line)和[**脚本**](#Linker Script)环境来配置运行参数，并提供尽可能多的调试信息。
+LD是编译工作的最后一步，利用**BFD库**将目标文件(\*.o)、归档文件(\*.a/\*.so)整合，以**重定位数据(Relocates data)**和**绑定符号引用(Ties up symbol references)**。GNU LD提供[**命令行**](#Command Line)和[**脚本**](#Linker Script)(\*.ld/\*.lds)环境来配置运行参数，并提供尽可能多的调试信息。
 
 > **[info] Note**
 >
-> 整合分配将输入文件的所有相同SECTION集中归纳并重定位SYMBOL在存储器的位置（绑定符号的绝对引用），最终服务于编译器的执行决策。
+> 整合分配将输入文件的所有相同SECTION集中归纳并重定位SYMBOL在存储器的位置（绑定符号的绝对引用），最终服务于编译器的执行决策。链接器脚本的实现与命令行功能部分重合，指定使用链接器脚本通过命令行`-T`选项，未指定链接器脚本时将使用编译器的默认链接库。
 
 ## <span id = "Command Line"> 2 Command Line </span>
 
+> **[info] Note**
+>
+> Command Line and Environment Variables are ignored. For more info, [click here](#https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_mono/ld.html#SEC2)。
+
 ## <span id = "Linker Script"> 3 Linker Script </span>
 
-链接器脚本（*.ld/*.lds）由Command、Symbol和Keyword组成，支持C语言的运算符、符号命名规则、表达式、赋值和注释（/\*...\*/）等，由命令行`-T`选项指定。链接器脚本的部分功能也可通过命令行实现。
+链接器脚本由Command和Expressions组成，支持C语言的运算符、符号命名规则、表达式、赋值和注释（/\*...\*/）等。
+
+### 3.0 Expressions 
+
+所有表达式的整型都为`long`或`unsigned long`类型、所有常量都是整型、支持所有C运算符、可以引用/定义/创建全局变量、提供内置函数。整型数值的使用与C相同，并支持以K、M、G结尾的缩略数值格式。符号（变量）类似解释型语言的弱类型变量，但不可以声明，需直接定义使用，符号作为全局变量定义于SECTIONS内/外，由点`.`、字母、下划线、数字和连字符`-`组成，并由点、字母或下划线开头，符号名不能与关键字冲突。赋值表达式需以分号结尾。
+
+Functions						| Description											| Remarks
+:-:								| :-:													| :-:
+ABSOLUTE(*exp*)					|														| 
+ADDR(section)					|														|
+LOADADDR(section)				|														|
+ALIGN(exp)						|														|
+DEFINED(symbol)					|														|
+NEXT(exp)						|														|
+SIZEOF(section)					|														|
+MAX(exp1, exp2)					|														|
+MIN(exp1, exp2)					|														|
+
+Keywords						| Description											| Remarks
+:-:								| :-:													| :-:
+AT								|														|
+FILEHDR							|														|
+FLAGS							|														|
+LENGTH							|														|
+NOCROSSREFS						|														|
+ORIGIN							|														|
+OVERLAY							|														|
+PROVIDE(*symbol = expression*)	|														|
+*all commands*					| -														| -
+*all Functions*					| -														| -
+
+符号赋值表达式同C（支持所有C的赋值运算符，表达式以分号结尾）。SECTIONS中使用的特殊变量`.`是定位计数器，表示所引用位置的当前地址值，通过赋值（只能增加）来改变偏移量。
+
+> **[info] dot `.`**
+>
+> 特殊链接器变量`.`用于SECTIONS中记录当前地址偏移量，且只能执行累加操作。
+
+## <span id = "Linker Script"> 3 Linker Script </span>
 
 ### 3.1 Command
 
-Command							| Description											| Remarks
-:-:								| :-:													| :-:
-[ENTRY](#ENTRY)					| 定义程序入口，即输出文件中要执行的第一条指令			| 可选且唯一
-[MEMORY](#MEMORY)				| 定义存储器范围，服务于SECTIONS并提供溢出报错机制		| 可选且唯一
-[SECTIONS](#SECTIONS)			| 整合并定位各段										| 必选且唯一
-PHDRS							| 自定义ELF头部信息										| 可选且少用
-VERSION							| 定义ELF共享库版本信息									| 可选且少用
-CONSTRUCTORS					| -														| 可选且少用 			
-CONSTRUCTORS					| -														| 可选且少用 			
-FLOAT							| -														| 可选且少用 				
-NOFLOAT							| -														| 可选且少用 				
-FORCE\_COMMON\_ALLOCATION		| -														| 可选且少用 				
-INCLUDE *filename*				| 包含其它链接器脚本，在当前目录或`-L`选项指定的目录搜索| 可选且少用 				
-INPUT							| -														| 可选且少用 				
-GROUP							| -														| 可选且少用 						
-OUTPUT							| -														| 可选且少用 						
-OUTPUT\_ARCH					| -														| 可选且少用 						
-OUTPUT\_FORMAT					| -														| 可选且少用 						
-SEARCH\_DIR (*path*)			| 定义归档文件的搜素目录，同`-L`选项					| 可选且少用 						
-STARTUP							| -														| 可选且少用 						
-TARGET							| -														| 可选且少用 												
-NOCROSSREFS						| -														| 可选且少用 						
-
+Command																			| Description											| Remarks
+:-:																				| :-:													| :-:
+[ENTRY](#ENTRY)																	| 定义程序入口，即输出文件中要执行的第一条指令			| 可选且唯一
+[MEMORY](#MEMORY)																| 定义存储器范围，服务于SECTIONS并提供溢出报错机制		| 可选且唯一
+[SECTIONS](#SECTIONS)															| **整合并按序定位各段**								| 必选且唯一
+[PHDRS](#https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_mono/ld.html#SEC23)	| 自定义ELF头部信息										| 可选且少用
+VERSION																			| 定义ELF共享库版本信息									| 可选且少用
+CONSTRUCTORS																	| -														| 可选且少用 			
+CONSTRUCTORS																	| -														| 可选且少用 			
+FLOAT																			| -														| 可选且少用 			
+NOFLOAT																			| -														| 可选且少用 			
+FORCE\_COMMON\_ALLOCATION														| -														| 可选且少用 			
+INCLUDE *filename*																| 包含其它链接器脚本，在当前目录或`-L`选项指定的目录搜索| 可选且少用 			
+INPUT																			| -														| 可选且少用 			
+GROUP																			| -														| 可选且少用 			
+OUTPUT																			| -														| 可选且少用 			
+OUTPUT\_ARCH																	| -														| 可选且少用 		
+OUTPUT\_FORMAT																	| -														| 可选且少用 			
+SEARCH\_DIR (*path*)															| 定义归档文件的搜素目录，同`-L`选项					| 可选且少用 			
+STARTUP																			| -														| 可选且少用 			
+TARGET																			| -														| 可选且少用 			
+NOCROSSREFS																		| -														| 可选且少用 						
 #### <span id = "ENTRY"> 3.1.1 ENTRY </span>
 
 ```
@@ -92,10 +102,49 @@ NOCROSSREFS						| -														| 可选且少用
 	}
 ```
 
-链接器默认存储器的所有连续地址都可用，通过`MEMORY`命令可配置存储器实际利用范围，最终通过*name*服务于`SECTIONS`。
+链接器默认存储器的所有连续地址都可用，通过`MEMORY`命令可配置存储器实际利用范围，最终通过*name*服务于`SECTIONS`（通过`> name`的方式将section定向于name区域）。可选的属性值有：`a`（Allocated sections）、`l`（Initialzed sections）、`i`（Initialzed sections）、`r`（Read-only sections）、`w`（Read/write sections）、`x`（Sections containing executable code）。
 
 #### <span id = "SECTIONS"> 3.1.3 SECTIONS </span>
 
+SECTIONS用于将输入文件（\*.o、\*.a、\*.so）各段（.text、.data、.bss ...）按序整合并定位到存储器中，如果不定义SECTIONS，则链接器将每个输入部分按第一次在输入文件中遇到的顺序放置到同名的输出部分中。
+
+```
+	SECTIONS
+	{
+		...	/**< Symbol或section定义。*/
+
+		*secname [start] [BLOCK(align)] [(NOLOAD)] : [AT ( ldadr )]*  /**< 冒号前后必须有空格。[]内容表可选。*/
+		{
+			*contents* 
+		} *[>region :phdr=fill]*
+
+		...	/**< Symbol或section定义。*/
+	}
+```
+
+Define			| Description											| Remarks
+:-:				| :-:													| :-:
+secname			| 输出段名，其命名受限于输出文件的格式					| 特殊名称`/DISCARD/`用于丢弃所指定段
+start			| 强制将输出段定位到start地址							| 如果同时使用了region，则必须在region范围内 
+BLOCK(*align*)	| 以*align*对齐方式开始该段								| -
+(NOLOAD)		| -														| -
+AT ( ldadr )	| 指定该段存储地址										| 不指定时存储地址与链接地址相同
+>region			| 将该段分配到MEMORY指定的区域							| -
+:phdr			| 将该段分配到由ELF头描述的段							| -
+=fill			| 填充(初始化)该段中所有未分配的区域					| -
+contents		| 符号定义、指定输入文件、指定输入段					| 指定文件的所有相同输入段或所有文件指定输入段的混合，支持正则表达式 
+
+> **[info] Note**
+>
+> 链接（运行）地址也是输出段的存储（加载）地址，当使用`AT`关键字时可将输出段的存储地址重定位，即该输出段在运行时将执行从存储地址到链接地址的拷贝操作（由编译器crt0库来完成）。
+
+## 4 Others 
+
+[MRI Compatible Script Files](#https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_mono/ld.html#SEC37)、[BFD](#https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_mono/ld.html#TOC30)、[Machine Dependent Features](#https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_mono/ld.html#SEC27)。
+
+---
+
+## <span id = "Appendix-A"> Appendix-A : X </span> 
 
 
 
@@ -111,26 +160,6 @@ NOCROSSREFS						| -														| 可选且少用
 
 
 
-
-
-
-
-
-
-
-
-
-
-### 3.2 Symbol 
-
-符号类似解释语言的弱类型变量，但需直接定义使用，可定义于SECTIONS内外作为全局变量被其它链接器脚本引用。符号由点`.`、字母、下划线、数字和连字符`-`组成，并由点、字母或下划线开头，符号名不能与关键词冲突。
-
-
-
-
-符号赋值表达式同C（支持所有C的赋值运算符，表达式以分号结尾）。
-
-### 3.3 Keyword
 
 
 
@@ -258,6 +287,36 @@ Semicolons `;` must appear at the end of [assignment](#Assignment) expressions a
 ### 4.2 Intel 960 family
 
 ## 5 BFD
+
+
+
+
+
+
+
+
+组成：
+1. command 
+
+	ENTRY, MEMORY, SECTIONS, PHDRS
+
+	SECTIONS {
+		secname : { //secname 不是随意的，它一定是跟目标文件相关的格式，比如如果目标文件是a.out，那么secname只能选择.text，.data，.bss，
+					这怎么确定呢？到http://www.zap.org.au/elec2041-cdrom/gnutools/doc/gnu-assembler.pdf（gcc汇编）找就可以了
+
+					contents
+				  }
+	}
+
+	在SECTION中使用的command
+		PROVIDE:https://www.cnblogs.com/tureno/articles/3741291.html
+
+
+2. symbol
+
+	可以独立在command之外，也可以在command之内，类似C语言的变量，只不过没有类型，这类似于脚本语言的变量。
+
+
 
 
 
