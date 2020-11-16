@@ -233,6 +233,7 @@ TBD
 # 3 PCB design software 
 
 ## 3.1 KICAD
+
 Refer to [KICAD Official website](https://kicad-pcb.org/)
 
 划线时按住Ctrl，可以走垂直、水平和45度角线
@@ -252,6 +253,9 @@ Refer to [KICAD Official website](https://kicad-pcb.org/)
 
 - 层对齐标记
 
+### 注意
+
+KICAD中执行电器规则检查（EMC）时可能在电源引脚处报错（引脚连接其他引脚，但不受任何引脚驱动），根据官方文档，可以给地与电源标记为PWR\_FLAG（即地连接PWR\_FLAG、VCC/+24V/+15V或其它电源等也要与PWR\_FLAG连接），PWR\_FLAG可以在KICAD的电源中寻找。
 
 ## 3.2 Altium designer
 Refer to [Altium Official website](https://www.altium.com)
@@ -275,13 +279,110 @@ Refer to [Altium Official website](https://www.altium.com)
 
 - 元件命名还可以“批次化”，比如一个板子只有三个同样的IC，实现的功能和引脚都是一样的，则将U1使用的电阻命名为C1、C2、C3...，而U2中与U1同样位置的电阻命名为C11、C12、C13...。以此类推.这样在元件摆放时非常方便
 
+- 同一类型元件尽量摆在一起，并且尽量方向一致（如二极管），这样方便维护和避免手工安装元件出错
+
+2. 发热元器件远离IC，并且要适当加大彼此间隔
+3. 丝印文字适当大小，并且尽量保持方向一致
+4. 输入输出引脚两侧对向放置
+5. 电源线和流经大电流的线要比信号线宽
+6. 在PCB布线时，如果有布不通的时候，也可以在原理图上做更改，然后更新到PCB；比如原理图上引脚顺序的变动对实际布线有很大的影响。
+7. 引脚第一针脚绕PCB按顺时针或逆时针放置，并且防呆接口的内外朝向要一致
+8. 电机驱动线1~1.5mm， 电源线可以更宽，一般信号线0.25即可。线间距0.3，边缘切割层线宽0.1mm
+8. 尺寸标注（是指标有N的工具），要选中.CrtYd层时绘制才有效（类似边缘切割层，一定要先切换到该层再绘制，绘制好之后再切换到同层时还会保留）
+10. 芯片封装，一定要搜索芯片的全称手册，否则封装可能不同，比如CD4051B和CD4051BM就是两个尺寸的封装
+11. 宁可走直角也不要走锐角
+12. 电源线宽度尽量全图一致
+
+
+
 ### 关于引脚Jx
-- 引脚在排列时，一排或一列的第一个引脚方向要一致，这会为调试、使用者提供极大的方便。如果这样放置对布线增加了复杂度，那么就在原理图中重新定义引脚排序
+- 引脚在排列时，一排或一列的第一个引脚方向要一致(并且按顺时针或逆时针顺序走)，这会为调试、使用者提供极大的方便。如果这样放置对布线增加了复杂度，那么就在原理图中重新定义引脚排序
 - 输入引脚与输出引脚尽量分开排列，尽量在对立方向，比如一个驱动板，左面是主板输入信号的引脚，右边是输出信号驱动电机的引脚，这样分开有助于施工人员的现场布线，
 也对抗干扰有一定的帮助
 - 电源插座靠边放
 
-### AD18 小技巧&快捷键
+### 为PCB生产而准备
+
+PCB画好之后，就要开始生产，多数PCB厂家都支持GERBER文件，也有厂家可以直接支持原图，
+
+1. 工艺边
+
+如果需要SMT流水线焊接，那么你的PCB可能要加工艺边，加工艺边的目的是可以使你的PCB在机器上能加工，如果PCB元器件距离边界小于5mm，那么就需要加工艺边了，工艺边就是非电路板使用部分，只是为了生产而已，工艺边一般5mm。
+
+另外，如果是不规则PCB，那么一定要加工艺边。如果规则图形一侧小于5mm，一侧大于5mm，那么一侧加工艺边就行，其实本质就是保证: 如果用SMT焊接，就需要加工艺边，目的是保证有一个平行边有5mm的宽度。
+
+https://www.baidu.com/link?url=OEkEeqMCxsRNze53BxBp2DuqYH3c_QmaseOp2MepW_ZaYMr8LwuTud8Q3bXAdz9WH9pFl1Jskmv8aq9VKqjfM7akkxXoZZP8Ighbwy-8zja&wd=&eqid=936cd9620009cd2d000000065faf5f93
+
+2. mark点
+
+mark点也是为SMT焊接准备的，用于光学定位，有局部mark点，全局mark点，另外工艺边上一定要加mark点
+
+KiCad中的mark点封装为Fiducial
+
+详情参考：https://www.cnblogs.com/zhiqiang_zhang/p/11179605.html
+
+https://blog.csdn.net/longkousong/article/details/83689873
+
+
+3. 定位孔
+
+定位孔是工艺边上，用于定位使用的机械孔
+
+4. Vcut和邮票孔
+
+如果需要自己拼板（拼板的目的是为了批量生产PCB，节省成本，因为做PCB有最小面积需求，小于最小面积都是一个价格，类似快递首重，所以要一次生产同样的多个板或者不同样的多个板子，那么就需要拼板），那么每个板子之间可以用Vcut槽或邮票孔，Vcut槽就是两个板子之间一条V沟壑的槽，等PCB生产回来之后 可以轻松分开使用，邮票孔也是同样的道理，将板子的连接处打上一条小孔，就减少了板子之间的连接力度，也是为了方便掰开，能用Vcut尽量用Vcut，Vcut比较整齐，但有些情况Vcut，因为大多数厂家对Vcut有要求：比如PCB的厚度、板子之间要“一条线”等等（一条线就是从A到B，A和B是必须是两边，中间不能有PCB），这时邮票孔就派上用场了。
+
+邮票孔一般没有限制，但实际试用时 掰断有凹槽，影响美观。
+
+https://bbs.21ic.com/icview-2578974-1-1.html
+		https://jingyan.baidu.com/article/d71306357f850b52fdf475de.html
+https://www.bilibili.com/video/BV1xZ4y1x7Cy
+
+5. 拼版
+
+拼版（PANELIZING）
+
+拼版目的是为了一次生产多块同样的或不同的PCB（PCB厂对于面积是收费标准之一，像快递的首重一样，没到首重算首重，PCB面积也是一样，没到一定面积收这个面积的钱，所以一块一块生产显然是不划算的，不如拼凑在一起当成一个PCB来处理），每块板子之间通过邮票孔或者Vcut连接，这时每个单独的一块板都不需要工艺边了，而是将整个拼好的板子加上工艺边。
+
+另外，如果是SMT贴片的，还需要在拼版的工艺边上加上mark点。
+
+参看：https://jingyan.baidu.com/album/d71306357f850b52fdf475de.html?picindex=1
+
+https://hackaday.com/2019/03/12/panelizing-boards-in-kicad/
+
+拼板与工艺边：
+https://www.baidu.com/link?url=J83m2_be7l97nUT1i4_2-OZd_n64jpUlMtXRKfCbBA8AlAuas0TsmHLQzIwwlwFN&wd=&eqid=c1e946ff0005b3a9000000065fafa78b
+
+4-1 : kicad拼版
+
+	1. 从电脑中独立启动PcbNew（注意：不能从工程中启动，要独立启动，比如windows下的开始中可以找到PcbNew，实际上PcbNew、Schema等都是KICAD的独立程序）
+		2. 点击设置电路板，进行图层数量、层勾选（如果参与拼版的PCB铜层数量相同就好办，还没试过铜层不同的，那应该与最多层的一致）
+			3. 点击菜单栏“文件->添加PCB”，选择要拼版的PCB（在其它的KICAD工程中已经画好的PCB），并添加，反复如此添加所有要拼版的PCB
+					注意：添加好之后每个板子之间会出现若干飞线，最起码有GND飞线，这是KICAD认为这些同名的点是电气相通的，不用理会，隐藏飞线即可
+						4. 每一种板 都可以选中（选中该板）后右单击，然后选择“重复”（这个类似复制一次）或者选择“创建阵列”（复制成 成行成列的）来创建多个副本，按需求创建，然后将所有板子排列好。板与板之间可以用邮票孔或者Vcut槽链接，板与板之间的距离根据邮票孔或Vcut或实际情况来确定。
+								邮票孔一般成两排，但每排长度根据实际情况确定，小板子拼接排长就短一点，否则就长一点
+									5. 以上步骤都是建立在每个板子都没有加工艺边的情况，因为要拼版生产，对单独一个板子加工艺边就根本没有必要了， 所以现在要对整个拼板加工艺边，工艺边与拼好的板子之间也可以选择用邮票孔或Vcut槽，工艺边宽度5mm，如有必要则在每个工艺边上加定位孔，如果要机器SMT贴装则还要在工艺边上加mark点
+										
+										
+										注意：有些PCB厂家支持给用户拼版的，只需提供GERBER文件（或原图）。PCB厂家按最小面积或最指定量来生产，比如100平方mm是最小面积，你的板子是10个平方mm，那么默认就给你做10块，你给了gerber之后，注明最小面积，自由拼板，厂家就给你做出来了。
+											
+											自由拼板（不管是几种不同的还是相同的）省心省力，缺点是PCB厂可能不会按照最节省的方式拼接，同样是拼图，有省面积的方法，也有浪费的方法，PCB厂肯定不会考虑这些，他们应该考虑最高效的拼接方式。所以 如果你的板子 对于不同的拼接方法 会有很大面积的节省（也就是可以多产出很多板子），那么就自己拼，否则就让厂家搞定就好了。
+												
+												最终成品参看：https://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=PCB%E6%8B%BC%E6%9D%BF&step_word=&hs=0&pn=40&spn=0&di=40920&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&istype=0&ie=utf-8&oe=utf-8&in=&cl=2&lm=-1&st=undefined&cs=1613643730%2C4136934760&os=732104247%2C3610206982&simid=4219698652%2C964665625&adpicid=0&lpn=0&ln=594&fr=&fmq=1605346003639_R&fm=&ic=undefined&s=undefined&hd=undefined&latest=undefined&copyright=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&ist=&jit=&cg=&bdtype=0&oriquery=&objurl=http%3A%2F%2Fimg-blog.csdnimg.cn%2F20181103192314204.png%3Fx-oss-process%3Dimage%2Fwatermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xvbmdrb3Vzb25n%2Csize_16%2Ccolor_FFFFFF%2Ct_70&fromurl=ippr_z2C%24qAzdH3FAzdH3Fks52_z%26e3Bvf1g_z%26e3BgjpAzdH3Fs5g2h57f5g2AzdH3Fw6ptvsjAzdH3F1jpwtsfAzdH3Fbnmblb0n&gsm=11&rpstart=0&rpnum=0&islist=&querylist=&force=undefined
+													
+													https://image.baidu.com/search/d
+
+
+##l?ct=503316480&z=0&ipn=d&word=PCB%E6%8B%BC%E6%9D%BF&step_word=&hs=0&pn=54&spn=0&di=28930&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&istype=0&ie=utf-8&oe=utf-8&in=&cl=2&lm=-1&st=undefined&cs=172591740%2C1824188642&os=2235375691%2C4158812490&simid=3413606615%2C358575057&adpicid=0&lpn=0&ln=594&fr=&fmq=1605346003639_R&fm=&ic=undefined&s=undefined&hd=undefined&latest=undefined&copyright=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&ist=&jit=&cg=&bdtype=0&oriquery=&objurl=http%3A%2F%2Fwww.51wendang.com%2Fpic%2Ffb3f043f8502a102e4b0803a%2F1-471-png_6_0_0_0_0_0_0_892.979_1262.879-893-0-0-893.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3Bc8ojg1wg2_z%26e3Bv54AzdH3F15vAzdH3Fuknua9nubcadw8adj9kabanw&gsm=11&rpstart=0&rpnum=0&islist=&querylist=&force=undefined
+	
+	https://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=PCB%E6%8B%BC%E6%9D%BF&step_word=&hs=0&pn=30&spn=0&di=11220&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&istype=0&ie=utf-8&oe=utf-8&in=&cl=2&lm=-1&st=undefined&cs=1526030979%2C1507801258&os=732008947%2C1231645015&simid=0%2C0&adpicid=0&lpn=0&ln=594&fr=&fmq=1605346003639_R&fm=&ic=undefined&s=undefined&hd=undefined&latest=undefined&copyright=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&ist=&jit=&cg=&bdtype=0&oriquery=&objurl=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180914%2F776d959fe8be47cfa282813597610b02.jpeg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3Bf5i7_z%26e3Bv54AzdH3FwAzdH3Fdcnbmbmcl_0l8a8n&gsm=1e&rpstart=0&rpnum=0&islist=&querylist=&force=undefined
+	
+	
+	注：工艺边是因为SMT工艺存在的，如果你的板子不需要（SMT）机器上锡并且不需要（SMT）机器焊接，那么就不需要工艺边，换句话说，裸板生产是不需要工艺边的。
+	
+Dumor邮票孔参数：长6.4mm 宽（两排邮票孔之间）1.55mm，两排，每排7个孔 （整个宽度【含孔】推荐2mm）
+
+拼版有两种方向：第一是通过将PCB在绘图中拼凑， 第二个是通过特别的软件将不同的gerber文件拼成一个gerber（较少用）# AD18 小技巧&快捷键
 - 原理图
 	
 - PCB
