@@ -189,7 +189,7 @@ STL包含三种类型代码：容器（Containers）、算法（Algorithms）和
 **模板使得算法独立于特定的数据类型，迭代器使得算法独立于使用的容器类型**。
 
 # 7 异常
-C++异常是处理程序错误的重要机制，不同于传统C的返回值判定、信号、断言、错误编号、跳转等处理方式，异常处理可获得更详细和精准的信息并将问题检测和问题处理分离，通过关键字$\color{#FF0000}{try}$检查异常、<font color=purple>throw</font>抛出异常、<font color=purple>catch</font>捕获异常，如果抛出异常后未进行捕获，则程序将被终止。
+C++异常是处理程序错误的重要机制，不同于传统C的返回值判定、信号、断言、错误编号、跳转等处理方式，异常处理可获得更详细和精准的信息并将问题检测和问题处理分离，通过关键字<font color=purple>try</font>检查异常、<font color=purple>throw</font>抛出异常、<font color=purple>catch</font>捕获异常，如果抛出异常后未进行捕获，则程序将被终止。
 
 `Code : CODEBLOCK{throw [expression]}; try{CODEBLOCK}catch(exception param list){...}...catch(...){...}`
  
@@ -398,3 +398,6 @@ string construct_uniq(uint8_t _size)
 因为string实际保存的字符串是指向堆的，保存结构体到文件时虽然给出了结构体指针，但是string中的数据并未保存进去。
 
 所以，结构体中的string要替换为字符数组。
+-----
+
+C++ 新标准关键
